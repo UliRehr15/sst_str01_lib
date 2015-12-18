@@ -20,7 +20,7 @@
 #define   _SST_STR01_LIB_HEADER
 
 /**
- * @defgroup sstStr01Lib
+ * @defgroup sstStr01Lib sstStr01Lib: sst String lib (Version 1)
  * cpp string library for sst
  */
 
@@ -50,20 +50,9 @@
 #define UNDEF_DOUBLE -999999999      // Undefine for Double
 
 //**************************************************************************
-//                Defines für Struktur FND_STRU
-//**************************************************************************
-/**
- * @brief Längendefinitionen für Dateinamen und Pfade
- */
-#define FMS_NAME_LEN    13        /**< Filenamenlänge (ASCIZ-Länge)            @ingroup sstStr01Lib */
-#define FMS_LONG_NAME   255       /**< Lange Dateinamen: max. ohne LW und Pfad @ingroup sstStr01Lib */
-#define MAX_PFAD        260       /**< maximale Pfadlängen                     @ingroup sstStr01Lib */
-#define MAX_CPFAD       MAX_PFAD  /**< maximale Länge eines Datei-Pfades       @ingroup sstStr01Lib */
-
 
 // forward declaration ---------------------------------------------------------
 
-// class sstTestBaseInternCls;
 class sstStr01IntCls;
 
 // Structures and Classes ------------------------------------------------------
@@ -326,7 +315,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert short int to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Int2_2String ( iKey, iVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Int2_2String ( iKey, iVal, *oSstStr);
      *
      * More Comment
      *
@@ -335,7 +324,6 @@ class sstStr01Cls
      * @param iKey     [in] For the moment 0
      * @param iVal     [in] short integer value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -353,7 +341,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert unsigned short int to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_UInt2_2String ( iKey, iVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_UInt2_2String ( iKey, iVal, *oSstStr);
      *
      * More Comment
      *
@@ -362,7 +350,6 @@ class sstStr01Cls
      * @param iKey     [in] For the moment 0
      * @param uiVal    [in] short integer value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -380,7 +367,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert long int to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Int4_2String ( iKey, lVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Int4_2String ( iKey, lVal, *oSstStr);
      *
      * More Comment
      *
@@ -389,7 +376,6 @@ class sstStr01Cls
      * @param iKey     [in]     For the moment 0
      * @param lVal     [in]     long integer value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out]    Error-String
      *
      * @return Errorstate
      *
@@ -407,7 +393,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert long int to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Int4_2String ( iKey, lVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Int4_2String ( iKey, lVal, *oSstStr);
      *
      * More Comment
      *
@@ -416,7 +402,6 @@ class sstStr01Cls
      * @param iKey     [in]     For the moment 0
      * @param ulVal    [in]     long integer value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out]    Error-String
      *
      * @return Errorstate
      *
@@ -434,7 +419,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert double value to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Dbl_2String ( iKey, dVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Dbl_2String ( iKey, dVal, *oSstStr);
      *
      * More Comment
      *
@@ -443,7 +428,6 @@ class sstStr01Cls
      * @param iKey     [in] For the moment 0
      * @param dVal     [in] double value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -461,7 +445,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert float value to csv-formatted string with format info and append to string <BR>
-     * iStat = oSstStr.Csv_Dbl_2String ( iKey, *cFmtStr, dVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Dbl_2String ( iKey, *cFmtStr, dVal, *oSstStr);
      *
      * More Comment
      *
@@ -471,7 +455,6 @@ class sstStr01Cls
      * @param cFmtStr  [in] Format String
      * @param fVal     [in] double value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -490,7 +473,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert double value to csv-formatted string with format info and append to string <BR>
-     * iStat = oSstStr.Csv_Dbl_2String ( iKey, *cFmtStr, dVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Dbl_2String ( iKey, *cFmtStr, dVal, *oSstStr);
      *
      * More Comment
      *
@@ -500,7 +483,6 @@ class sstStr01Cls
      * @param cFmtStr  [in] Format String
      * @param dVal     [in] double value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -519,7 +501,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert string value to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Str_2String ( iKey, oVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Str_2String ( iKey, oVal, *oSstStr);
      *
      * More Comment
      *
@@ -528,7 +510,6 @@ class sstStr01Cls
      * @param iKey     [in] For the moment 0
      * @param oVal     [in] string value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -546,7 +527,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert char string value to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Char_2String ( iKey, cVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Char_2String ( iKey, cVal, *oSstStr);
      *
      * More Comment
      *
@@ -555,7 +536,6 @@ class sstStr01Cls
      * @param iKey     [in] For the moment 0
      * @param cVal     [in] string value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *
@@ -573,7 +553,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // convert bool value to csv-formatted string and append to string <BR>
-     * iStat = oSstStr.Csv_Bool_2String ( iKey, bVal, *oSstStr, *oErrTxt);
+     * iStat = oSstStr.Csv_Bool_2String ( iKey, bVal, *oSstStr);
      *
      * More Comment
      *
@@ -582,7 +562,6 @@ class sstStr01Cls
      * @param iKey     [in] For the moment 0
      * @param bVal     [in] bool value
      * @param oSstStr  [in out] csv-formatted string
-     * @param oErrTxt  [out] Error-String
      *
      * @return Errorstate
      *

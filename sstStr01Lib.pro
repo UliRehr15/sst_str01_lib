@@ -28,10 +28,10 @@ SOURCES		+= \
 OTHER_FILES += README.md
 
 debug{
-  TARGET		= sstStr01Lib_d
+  TARGET		= sst_str01_lib_d
 }
 release{
-  TARGET		= sstStr01Lib_r
+  TARGET		= sst_str01_lib_r
 }
 
 DESTDIR     = ../libs

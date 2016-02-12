@@ -440,7 +440,7 @@ int sstStr01IntCls::CsvString2_Str ( int          iKey,
   iStat = Str1_Init( 0, sRetStr);
 
   // if (iKey == 1) strncpy(cBegrzZ,"\"",2);
-  strncpy( cBegrzZ, this->cBracket, 3);
+  strncpy( cBegrzZ, this->cBracket, 2);
   strncpy( cTrnZ, this->cSeparator, 2);
   strncpy( cNoInfo, this->cNoInfo, 2);
 
@@ -1477,21 +1477,29 @@ sstStr01IntCls::sstStr01IntCls()
 {
   memset(this->cSeparator,0,2);
   memset(this->cNoInfo,0,2);
-  memset(this->cBracket,0,3);
+  memset(this->cBracket,0,2);
+  memset(this->cBracketOpen,0,2);
+  memset(this->cBracketClose,0,2);
   this->ulPos = 0;
   this->iFormatKenn = 0;
   this->iDecType = 0;
   strncpy(this->cSeparator,";",2);
-  strncpy(this->cBracket,"'",3);
+  strncpy(this->cBracket,"'",2);
   strncpy(this->cNoInfo," ",2);
   iSeparatorTyp = 0;
   iBoolTyp = 0;
 }
 //=============================================================================
-int sstStr01IntCls::SetBracket(int iKey, char *cBracket)
+int sstStr01IntCls::SetBracket(int iKey, char *cTmpBracket)
 {
   if ( iKey != 0) return -1;
-  strncpy (this->cBracket, cBracket, 3);
+  // strncpy (this->cBracket, cTmpBracket, 3);
+  this->cBracket[0] = cTmpBracket[0];
+  this->cBracket[1] = 0;
+  this->cBracketOpen[0] = cTmpBracket[0];
+  this->cBracketOpen[1] = 0;
+  this->cBracketClose[0] = cTmpBracket[1];
+  this->cBracketClose[1] = 0;
   return 0;
 }
 //=============================================================================
@@ -1538,6 +1546,16 @@ char* sstStr01IntCls::GetNoInfoChar()
   return this->cNoInfo;
 }
 //=============================================================================
+char* sstStr01IntCls::GetBraketOpen()
+{
+  return this->cBracketOpen;
+}
+//=============================================================================
+char* sstStr01IntCls::GetBraketClose()
+{
+  return this->cBracketClose;
+}
+//=============================================================================
 std::string sstStr01IntCls::GetErrorString()
 {
   return this->oErrStr;
@@ -1547,6 +1565,19 @@ void sstStr01IntCls::ClearAll()
 {
   this->ulPos = 0;
   this->oErrStr.clear();
+}
+//=============================================================================
+int sstStr01IntCls::GetNextBrakeInfo (int             iKey,
+                                      std::string    *StrInfo,
+                                      std::string    *sTag)
+//-----------------------------------------------------------------------------
+{
+  int iStat = 0;
+  if (this->ulPos == 0) this->ulPos = 1;
+  iStat = Str1_GetNextBrakeInfo(iKey,StrInfo, &this->ulPos,this->GetBraketOpen(),
+                                                           this->GetBraketClose(),
+                                                           sTag);
+  return iStat;
 }
 //=============================================================================
 

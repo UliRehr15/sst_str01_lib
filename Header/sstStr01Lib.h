@@ -28,12 +28,6 @@
 
 #define dSTR1_TEXTLEN   300  // temporary row length maximum
 
-/**
- * @brief Extended explanation for define
- * @ingroup sstTemplateLib
- */
-#define dKODE_MIN
-
 
 #define CINT1_MIN         (-127-1)   // Minimum für Cint1
 #define CINT1_MAX           127      // Maximum für Cint1
@@ -215,7 +209,7 @@ class sstStr01Cls
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey      [in]     For the moment 0
      * @param oZeile    [in]     Lese-String
@@ -681,6 +675,25 @@ class sstStr01Cls
      // ----------------------------------------------------------------------------
      void ClearAll();
      //==============================================================================
+     /**
+     * @brief // Look for next Bracket Open and Close and return string inside <BR>
+     * iStat = oSstStr.GetNextBrakeInfo( iKey, &oStrInput, oStrResult);
+     *
+     * @param iKey       [in]  For the moment 0
+     * @param oStrInput  [in]  input string
+     * @param oStrResult [out] return string inside brackets
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int GetNextBrakeInfo (int             iKey,
+                           std::string    *oStrInput,
+                           std::string    *oStrResult);
+     //==============================================================================
+
   private:  // Private Funktionen
      sstStr01IntCls *poStr01Intern;   /**< Pointer to intern object */
 };

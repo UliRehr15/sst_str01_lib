@@ -36,8 +36,18 @@ int main ()
   int iStat = 0;
 //-----------------------------------------------------------------------------
 
+  printf("Test Str01Lib Start. \n");
+
   // Do some intern sstStr01 Tests
   iStat = sstStr01_DoSomeInternTests (0);
+
+  {
+    sstStr01Cls oSstStr;
+    oSstStr.SetBracket(0,(char*)"()");
+    oTestString = "  (MyTest) 800 ; xx '31;00'  ;Aufnahmepunkt;.T.";
+    iStat = oSstStr.GetNextBrakeInfo( 1, &oTestString, &oResultStr);
+    assert( strcmp(oResultStr.c_str(),"MyTest") == 0);
+  }
 
   sstStr01Cls oStringMan;  // sst String manager
 
@@ -135,6 +145,8 @@ int main ()
 
   iStat = sResult_Row.find("22;-6666666;63000;88888888;-23456,66;234,1;'abcdefg';'nn nn';.T.",0);
   assert(iStat == 0);
+
+  printf("Test Str01Lib Success. \n");
 
   // Fatal Errors goes to an assert
   if (iRet < 0)

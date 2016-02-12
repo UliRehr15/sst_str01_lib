@@ -10,4 +10,6 @@ Structure of coding projects should be:
 11.12.2015: Version 1.0: CSV Reading/Writing functions. <BR>
 18.12.2015: Version 1.1: Small corrections. <BR>
                          Lib Name, Error behavior. <BR>
+12.02.2016: Version 1.2: Extend doxygen documentation.  <BR>
+                         New function Get String inside Brackets <BR>
 

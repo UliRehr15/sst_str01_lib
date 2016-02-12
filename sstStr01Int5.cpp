@@ -267,7 +267,7 @@ unsigned long Str_StartOfInfo ( int  iKey,    // v  -> Vorerst immer 0
 * 24.09.04: Key = 1 für Rückwärts-Suche.  UR
 * 03.07.09: Rückwärts-Suche bei Ein-Zeichen-Texten korrigiert.  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:    [in] 0 = vorwärts, 1 = rückwärts
 * @param lPos:    [in] Suchen ab Position
@@ -354,7 +354,7 @@ unsigned long Str_EndOfInfo ( int   iKey,     // v  -> 0 oder 1
 * 11.03.03: String-Speicher jetzt Int4.  UR
 * 27.08.04: Wenn Info-Angabe leer, ist alles Information
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in] Vorerst immer 0
 * @param TstStr:  [in] Bearbeitungszeile

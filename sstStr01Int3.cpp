@@ -239,12 +239,12 @@ int Str1_GetNextPosSBracket (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_GetNextBrakeInfo (int            iKey,
-                           std::string   *StrInfo,
-                           unsigned long          *lStrPos,
-                           char          *cBrakeOpen,
-                           char          *cBrakeClose,
-                           std::string   *sTag)
+int Str1_GetNextBrakeInfo (int             iKey,
+                           std::string    *StrInfo,
+                           unsigned long  *lStrPos,
+                           char           *cBrakeOpen,
+                           char           *cBrakeClose,
+                           std::string    *sTag)
 //-----------------------------------------------------------------------------
 {
   unsigned long lLen = 0;

@@ -270,4 +270,12 @@ void sstStr01Cls::ClearAll()
   this->poStr01Intern->ClearAll();
 }
 //==============================================================================
+int sstStr01Cls::GetNextBrakeInfo (int             iKey,
+                                   std::string    *StrInfo,
+                                   std::string    *sTag)
+//-----------------------------------------------------------------------------
+{
+  return this->poStr01Intern->GetNextBrakeInfo(iKey,StrInfo,sTag);
+}
+//==============================================================================
 

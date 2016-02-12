@@ -27,24 +27,10 @@
 
 // Defines ---------------------------------------------------------------------
 
-#define dFINFO_NAM_LEN   12    /**< Extended Explanation for this Define @ingroup sstTemplateIntLib */
-
-/**
- * @brief Extended explanation for define
- * @ingroup sstTemplateIntLib
- */
-#define dKODE_MIN
-
-// Structures and Classes ------------------------------------------------------
-
+// Forward definitions ---------------------------------------------------------
 class sstStr01IntCls;
 
-//-----------------------------------------------------------------------------
-
-
-//------------------------------------------------------------------------------
-
-// Prototypen datei.c ----------------------------------------------------------
+// Structures and Classes ------------------------------------------------------
 
 //==============================================================================
 /**
@@ -54,7 +40,7 @@ class sstStr01IntCls;
 *
 * Changed: 19.02.10  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @author Re.
 *
@@ -85,7 +71,7 @@ class StrDs_Csv_Cls
 *
 * Changed: 21.04.15  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @author Re.
 *
@@ -155,7 +141,7 @@ class StrDs_CsvFnc_Cls
 *
 * Changed: 10.07.13 Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @author Re.
 *
@@ -166,22 +152,19 @@ class sstStr01IntCls
 {
   public:   // Öffentliche Funktionen
      sstStr01IntCls();  // Konstruktor
-
+     //=============================================================================
      /**
      * @brief // Csv ab Position in Integer konvertieren  <BR>
-     * iStat = Str1_AbPosCsv2Int2 ( iKey, oFrmtTyp, *TPos, *Zeile, *ErrTxt, *iRetVal);
+     * iStat = Str1_AbPosCsv2Int2 ( iKey, *Zeile, *iRetVal);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param TPos     [in out] Read from position in string
      * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
      * @param iRetVal  [out]    Result-Int2
      *
      * @return Errorstate
@@ -195,27 +178,22 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Int2 ( int          iKey,
-                      //        unsigned long        *TPos,
-                              std::string *Zeile,
-                        //      std::string *ErrTxt,
-                              int         *iRetVal);
+                           std::string *Zeile,
+                           int         *iRetVal);
      //=============================================================================
      /**
      * @brief Convert csv information from row positon in unsigned integer
      *
-     * iStat = CsvString2_UInt2 ( iKey, oFrmtTyp, *TPos, *Zeile, *ErrTxt, *uiRetVal);
+     * iStat = CsvString2_UInt2 ( iKey, *Zeile, *uiRetVal);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
-     * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param TPos     [in out] Read from position in string
-     * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
+     * @param iKey      [in]     For the moment 0
+     * @param Zeile     [in]     Lese-String
      * @param uiRetVal  [out]    Result-Int2
      *
      * @return Errorstate
@@ -228,30 +206,23 @@ class sstStr01IntCls
      * @date 30.03.10
      */
      //-----------------------------------------------------------------------------
-     int CsvString2_UInt2 ( int          iKey,
-                     //          unsigned long          *TPos,
-                               std::string   *Zeile,
-                       //        std::string   *ErrTxt,
-                               unsigned int  *uiRetVal);
-
-
+     int CsvString2_UInt2 ( int            iKey,
+                            std::string   *Zeile,
+                            unsigned int  *uiRetVal);
      //=============================================================================
      /**
      * @brief Csv ab Position in Long konvertieren
      *
-     * iStat = CsvString2_Int4 ( iKey, *TPos, *Zeile, *ErrTxt, *lRetVal);
+     * iStat = CsvString2_Int4 ( iKey, *Zeile, *lRetVal);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param TPos     [in out] Read from position in string
      * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
      * @param lRetVal  [out]    Result-Int4
      *
      * @return Errorstate
@@ -265,27 +236,22 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Int4 ( int          iKey,
-                //              unsigned long        *TPos,
-                              std::string *Zeile,
-                  //            std::string *ErrTxt,
-                              long        *lRetVal);
+                           std::string *Zeile,
+                           long        *lRetVal);
      //=============================================================================
      /**
      * @brief Csv ab Position in Unsigned Long konvertieren
      *
-     * iStat = CsvString2_UInt4 ( iKey, *TPos, *Zeile, *ErrTxt, *ulRetVal);
+     * iStat = CsvString2_UInt4 ( iKey, *Zeile, *ulRetVal);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param TPos     [in out] Read from position in string
      * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
      * @param ulRetVal [out]    Result-Unsigned Int4
      *
      * @return Errorstate
@@ -299,28 +265,22 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_UInt4 ( int               iKey,
-                //               unsigned long             *TPos,
-                               std::string      *Zeile,
-                  //             std::string      *ErrTxt,
-                               unsigned long    *ulRetVal);
-
+                            std::string      *Zeile,
+                            unsigned long    *ulRetVal);
      //=============================================================================
      /**
      * @brief Csv ab Position in Double konvertieren
      *
-     * iStat = Str1_AbPosCsv2Dbl ( iKey, *TPos, *Zeile, *ErrTxt, *dRetVal);
+     * iStat = Str1_AbPosCsv2Dbl ( iKey, *Zeile, *dRetVal);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param TPos     [in out] Read from position in string
      * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
      * @param dRetVal  [out]    Result-Double
      *
      * @return Errorstate
@@ -334,26 +294,20 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Dbl ( int          iKey,
-                 //            unsigned long        *TPos,
-                             std::string *Zeile,
-                   //          std::string *ErrTxt,
-                             double      *dRetVal);
-
+                          std::string *Zeile,
+                          double      *dRetVal);
      //=============================================================================
      /**
      * @brief Csv ab Position in Float konvertieren
      *
-     * iStat = Str1_AbPosCsv2Flt ( iKey, *TPos, *Zeile, *ErrTxt, *fRetVal);
+     * iStat = Str1_AbPosCsv2Flt ( iKey, *Zeile, *fRetVal);
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param TPos     [in out] Read from position in string
      * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
      * @param fRetVal  [out]    Result-float
      *
      * @return Errorstate
@@ -367,28 +321,22 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Flt ( int          iKey,
-               //              unsigned long        *TPos,
-                             std::string *Zeile,
-                 //            std::string *ErrTxt,
-                             float       *fRetVal);
-
+                          std::string *Zeile,
+                          float       *fRetVal);
      //=============================================================================
      /**
      * @brief Convert csv information from row positon in sst string
      *
-     * iStat = CsvString2_Str ( iKey, *oFrmtTyp, *TPos, *Zeile, *ErrTxt, *sRetStr);
+     * iStat = CsvString2_Str ( iKey, *Zeile, *sRetStr);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in] Read from position in string
-     * @param TPos     [in out] Read from position in string
      * @param Zeile    [in]     Lese-String
-     * @param ErrTxt   [out]    Read-Error -bei Errtxt-
      * @param sRetStr  [out]    Result-String
      *
      * @return Errorstate
@@ -402,28 +350,22 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Str ( int               iKey,
-                  //           unsigned long             *TPos,
-                             std::string      *Zeile,
-                    //         std::string      *ErrTxt,
-                             std::string      *sRetStr);
-
+                          std::string      *Zeile,
+                          std::string      *sRetStr);
      //=============================================================================
      /**
      * @brief Csv ab Position in String konvertieren
      *
-     * iStat = CsvString2_Bool ( iKey, *oFrmtTyp, *TPos, *sZeile, *sErrTxt, *bRetVal);
+     * iStat = CsvString2_Bool ( iKey, *sZeile, *bRetVal);
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in] Read from position in string
-     * @param TPos     [in out] Read from position in string
      * @param sZeile   [in]     Lese-String
-     * @param sErrTxt  [out]    Read-Error -bei Errtxt-
      * @param bRetVal  [out]    Result Bool
      *
      * @return Errorstate
@@ -437,27 +379,22 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Bool ( int          iKey,
-                   //           unsigned long        *TPos,
-                              std::string *sZeile,
-                     //         std::string *sErrTxt,
-                              bool         *bRetVal);
+                           std::string *sZeile,
+                           bool         *bRetVal);
      //=============================================================================
      /**
      * @brief Csv ab Position in String konvertieren
      *
-     * iStat = int CsvString2_Char ( iKey, *oFrmtTyp, *TPos, *sZeile, *sErrTxt, *cRetVal, lRetValLen)
+     * iStat = int CsvString2_Char ( iKey, *sZeile, *cRetVal, lRetValLen)
      *
      * More Comment
      *
      * Changed: 30.03.10  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey        [in]     For the moment 0
-     * @param oFrmtTyp    [in] Read from position in string
-     * @param TPos        [in out] Read from position in string
      * @param sZeile      [in]     Lese-String
-     * @param sErrTxt     [out]    Read-Error -bei Errtxt-
      * @param cRetVal     [out]    Result Bool
      * @param lRetValLen  [in]    Result Bool
      *
@@ -472,28 +409,24 @@ class sstStr01IntCls
      */
      //-----------------------------------------------------------------------------
      int CsvString2_Char ( int          iKey,
-                  //            unsigned long        *TPos,
-                              std::string *sZeile,
-                    //          std::string *sErrTxt,
-                              char        *cRetVal,
-                              long         lRetValLen);
+                           std::string *sZeile,
+                           char        *cRetVal,
+                           long         lRetValLen);
      //==============================================================================
      /**
      * @brief convert short int to csv-formatted string and append to string
      *
-     * iStat = Csv_Int2_2String ( iKey, oFrmtTyp, iVal, *Zeile, *ErrTxt);
+     * iStat = Csv_Int2_2String ( iKey, iVal, &sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param iVal     [in] short integer value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -512,19 +445,17 @@ class sstStr01IntCls
      /**
      * @brief convert short int to csv-formatted string and append to string
      *
-     * iStat = Csv_Int2_2String ( iKey, oFrmtTyp, iVal, *Zeile, *ErrTxt);
+     * iStat = Csv_UInt2_2String ( iKey, uiVal, sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param uiVal    [in] short integer value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -543,19 +474,17 @@ class sstStr01IntCls
      /**
      * @brief convert long int to csv-formatted string and append to string
      *
-     * iStat = Csv_Int4_2String ( iKey, oFrmtTyp, lVal, *Zeile, *ErrTxt);
+     * iStat = Csv_Int4_2String ( iKey, lVal, *Zeile);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     Format Information
      * @param lVal     [in]     long integer value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out]    Error-String
      *
      * @return Errorstate
      *
@@ -574,19 +503,17 @@ class sstStr01IntCls
      /**
      * @brief convert long int to csv-formatted string and append to string
      *
-     * iStat = Csv_Int4_2String ( iKey, oFrmtTyp, lVal, *Zeile, *ErrTxt);
+     * iStat = Csv_UInt4_2String ( iKey, ulVal, sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in]     For the moment 0
-     * @param oFrmtTyp [in]     Format Information
      * @param ulVal    [in]     long integer value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out]    Error-String
      *
      * @return Errorstate
      *
@@ -605,19 +532,17 @@ class sstStr01IntCls
      /**
      * @brief convert double value to csv-formatted string and append to string
      *
-     * iStat = Csv_Dbl_2String ( iKey, *oFrmtTyp, dVal, *sst_str, *ErrTxt);
+     * iStat = Csv_Dbl_2String ( iKey, dVal, *sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param dVal     [in] double value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -636,20 +561,18 @@ class sstStr01IntCls
      /**
      * @brief convert double value to csv-formatted string and append to string
      *
-     * iStat = Csv_Dbl_2String ( iKey, *oFrmtTyp, *cFmtStr, dVal, *sst_str, *ErrTxt);
+     * iStat = Csv_Real_2String ( iKey, *cFmtStr, fVal, *sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param cFmtStr  [in] Format String
      * @param fVal     [in] double value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -669,20 +592,18 @@ class sstStr01IntCls
      /**
      * @brief convert double value to csv-formatted string and append to string
      *
-     * iStat = Csv_Dbl_2String ( iKey, *oFrmtTyp, *cFmtStr, dVal, *sst_str, *ErrTxt);
+     * iStat = Csv_Dbl_2String ( iKey, *cFmtStr, dVal, *sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param cFmtStr  [in] Format String
      * @param dVal     [in] double value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -702,19 +623,17 @@ class sstStr01IntCls
      /**
      * @brief convert string value to csv-formatted string and append to string
      *
-     * iStat = Csv_Str_2String ( iKey, oFrmtTyp, sVal, *sst_str, *ErrTxt);
+     * iStat = Csv_Str_2String ( iKey, sVal, *sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param sVal     [in] string value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -733,19 +652,17 @@ class sstStr01IntCls
      /**
      * @brief convert string value to csv-formatted string and append to string
      *
-     * iStat = Csv_Char_2String ( iKey, oFrmtTyp, cVal, *sst_str, *ErrTxt);
+     * iStat = Csv_Char_2String ( iKey, cVal, *sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param cVal     [in] string value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -764,19 +681,17 @@ class sstStr01IntCls
      /**
      * @brief convert bool value to csv-formatted string and append to string
      *
-     * iStat = Csv_Bool_2String ( iKey, oFrmtTyp, bVal, *sst_str, *ErrTxt);
+     * iStat = Csv_Bool_2String ( iKey, bVal, *sst_str);
      *
      * More Comment
      *
      * Changed: 04.05.11  Re.
      *
-     * @ingroup str_lib
+     * @ingroup sstStr01IntLib
      *
      * @param iKey     [in] For the moment 0
-     * @param oFrmtTyp [in] Format Information
      * @param bVal     [in] bool value
      * @param sst_str  [in out] csv-formatted string
-     * @param ErrTxt   [out] Error-String
      *
      * @return Errorstate
      *
@@ -869,6 +784,22 @@ class sstStr01IntCls
      char* GetNoInfoChar();
      //==============================================================================
      /**
+     * @brief Get Adress of Brake Open char
+     *
+     * @retval   Return adress of Brake Open char
+     */
+     // ----------------------------------------------------------------------------
+     char* GetBraketOpen();
+     //==============================================================================
+     /**
+     * @brief Get Adress of Brake Close char
+     *
+     * @retval   Return adress of Brake Close char
+     */
+     // ----------------------------------------------------------------------------
+     char* GetBraketClose();
+     //==============================================================================
+     /**
      * @brief Get Errorstring
      *
      * @retval   Return Errorstring
@@ -882,11 +813,31 @@ class sstStr01IntCls
      // ----------------------------------------------------------------------------
      void ClearAll();
      //==============================================================================
+     /**
+     * @brief // Look for next Bracket Open and Close and return string inside <BR>
+     * iStat = oSstStr.GetNextBrakeInfo( iKey, &oStrInput, oStrResult);
+     *
+     * @param iKey       [in]  For the moment 0
+     * @param oStrInput  [in]  input string
+     * @param oStrResult [out] return string inside brackets
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int GetNextBrakeInfo (int             iKey,
+                           std::string    *oStrInput,
+                           std::string    *oStrResult);
+     //==============================================================================
 
      // ~X();  // Destruktor
   private:  // Private Funktionen
-    char cSeparator[2];   //!< Separator Character, for example " " or ";"   */
-    char cBracket[3];     //!< For example "()" or "\x22"                    */
+    char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
+    char cBracket[2];   //!< For example "\x22"                    */
+    char cBracketOpen[2];   //!< For example "("                     */
+    char cBracketClose[2];  //!< For example ")"                    */
     char cNoInfo[2];      //!< For example " " blank                         */
     unsigned long ulPos;  //!< Read Position in sst String                  */
     int  iFormatKenn;     //!< fixcolumnformat=0; charseparatedformat=1      */
@@ -915,7 +866,7 @@ class sstStr01IntCls
 * 30.08.04: Auch Blanks werden kopiert.  UR
 * 04.06.14: Key=0:Blanks werden kopiert, Key=1:Blanks überlesen
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:    [in]  0 oder 1
 * @param Von:    [in]  von Textposition
@@ -947,7 +898,7 @@ int Str1_Zeile2Str ( int          Key,
 *
 * iStat = Str1_Zeile2Int ( Key, Von, Bis, *txt1, *ErrTxt, *iRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey    [in]   Vorerst immer 0
 * @param Von     [in]   Von Textposition
@@ -974,7 +925,7 @@ int Str1_Zeile2Int ( int          iKey,
 *
 * iStat = Str1_Zeile2Int4 ( iKey, Von, Bis, *txt, *ErrTxt, *lRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey    [in]  Vorerst immer 0
 * @param Von     [in]  Von Textposition
@@ -1001,7 +952,7 @@ int Str1_Zeile2Int4 ( int          iKey,
 *
 * iStat = Str1_Zeile2Dbl ( iKey, Von, Bis, *txt1, *ErrTxt, *dRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey    [in]  Vorerst immer 0
 * @param Von     [in]  Von Textposition
@@ -1044,7 +995,7 @@ int Str1_Zeile2Dbl ( int           iKey,
 * 03.08.04: Rücksprung nur, wenn -Bis- größer -ZeilLen-
 * 27.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1082,7 +1033,7 @@ int Str1_Str2Zeile ( int          Key,
 *
 * 14.09.12: Abgeleitet von Str1_Str2Zeile.    UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1119,7 +1070,7 @@ int Str1_Char2Zeile ( int          Key,
 *
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1155,7 +1106,7 @@ int Str1_Int2Zeile ( int          Key,
 *
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1192,7 +1143,7 @@ int Str1_UInt2Zeile ( int           Key,
 *
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey    [in]     0 oder 1
 * @param Von     [in]     von Textposition im Zielstring
@@ -1231,7 +1182,7 @@ int Str1_Int2ZeileFmt ( int           iKey,
 *
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1267,7 +1218,7 @@ int Str1_Int4Zeile ( int          Key,
 *
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key     [in]     0 oder 1
 * @param Von     [in]     von Textposition im Zielstring
@@ -1307,7 +1258,7 @@ int Str1_UInt4Zeile ( int             Key,
 * 05.04.02: Nachkomma-Stellen werden jetzt berücksichtigt.   UR
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1347,7 +1298,7 @@ int Str1_Real2ZeileFmt ( int           Key,
 * 05.04.02: Nachkomma-Stellen werden jetzt berücksichtigt.   UR
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1389,7 +1340,7 @@ int Str1_Real2Zeile ( int           Key,
 * 05.04.02: Nachkomma-Stellen werden jetzt berücksichtigt.   UR
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1431,7 +1382,7 @@ int Str1_Dbl2ZeileFmt ( int           Key,
 * 05.04.02: Nachkomma-Stellen werden jetzt berücksichtigt.   UR
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1472,7 +1423,7 @@ int Str1_Dbl2ZeileWnk ( int           Key,
 * 05.04.02: Nachkomma-Stellen werden jetzt berücksichtigt.   UR
 * 28.06.05: Doxy-Header.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in]     0 oder 1
 * @param Von:     [in]     von Textposition im Zielstring
@@ -1510,7 +1461,7 @@ int Str1_Dbl2Zeile ( int           Key,
 *
 * Geändert: 28.06.05  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey    [in]     0 oder 1
 * @param iStrTyp [in]     Format of Output String
@@ -1545,7 +1496,7 @@ int Str1_Bool2Zeile ( int          iKey,
 *
 * Changed: 16.02.10  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey [in]     For the moment 0
 * @param Str1 [out]    Str1-object
@@ -1569,7 +1520,7 @@ int Str1_Init ( int          iKey,
 *
 * iStat = Str1_AbPos2Str ( iKey, *lTPos, *cTrnZ, *sZeile, *sErrTxt, *sRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey     [in]     Vorerst immer null
 * @param lTPos    [in]     Read from position in string
@@ -1596,7 +1547,7 @@ int Str1_AbPos2Str ( int          iKey,
 *
 * iStat = Str1_AbPos2Str ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *tRet, iCRetLen);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey      [in]     Vorerst immer null
 * @param TPos      [in]     Read from position in string
@@ -1625,7 +1576,7 @@ int Str1_AbPos2Char ( int          iKey,
 *
 * iStat = Str1_AbPos2Int ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *iRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey       [in]      Vorerst immer null
 * @param TPos       [in]      Read from position in string
@@ -1651,7 +1602,7 @@ int Str1_AbPos2Int ( int          iKey,
 *
 * iStat = Str1_AbPos2UInt ( iKey, *lTPos, *cTrnZ, *sZeile, *sErrTxt, *uiRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey       [in]      Vorerst immer null
 * @param lTPos      [in]      Read from position in string
@@ -1682,7 +1633,7 @@ int Str1_AbPos2UInt ( int           iKey,
 *
 * Changed: 26.07.07  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:   [in]     For the moment 0
 * @param TPos:   [in out] Read from position in string
@@ -1717,7 +1668,7 @@ int Str1_AbPos2Int4 ( int          iKey,
 *
 * Changed: 26.07.07  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:   [in]      For the moment 0
 * @param TPos:   [in out]  Read from position in string
@@ -1748,7 +1699,7 @@ int Str1_AbPos2UInt4 ( int             iKey,
 *
 * iStat = Str1_AbPos2Real ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *dRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey   [in]     For the moment 0
 * @param TPos   [in]     Read from position in string
@@ -1775,7 +1726,7 @@ int Str1_AbPos2Real ( int           iKey,
 *
 * iStat = Str1_AbPos2Dbl ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *dRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey    [in]     For the moment 0
 * @param TPos    [in]     Read from position in string
@@ -1801,7 +1752,7 @@ int Str1_AbPos2Dbl ( int           iKey,
 *
 * iStat = Str1_AbPos2Bool ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *bRet);
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey     [in]     For the moment 0
 * @param TPos     [in]     Read from position in string
@@ -1833,7 +1784,7 @@ int Str1_AbPos2Bool ( int          iKey,
 *
 * Changed: 13.12.07  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:      [in]  For the moment 0
 * @param Str:       [in]  Eingabe-String
@@ -1864,7 +1815,7 @@ int Str1_StrSet (int          iKey,
 *
 * Changed: 19.09.12  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:      [in]     For the moment 0
 * @param sStrInfo:  [in out] string structure for import string
@@ -1893,7 +1844,7 @@ int Str1Cpy (int            iKey,
 *
 * Changed: 19.09.12  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:     [in]     For the moment 0
 * @param sStrInfo: [in out] string structure for import string
@@ -1922,7 +1873,7 @@ int Str1Cat (int            iKey,
 *
 * Changed: 17.04.12  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey: [in]
 * @param Zeile: [in]
@@ -1959,7 +1910,7 @@ int Str1_AbPos2StrBrk (int            iKey,
 *
 * Changed: 17.04.12  Re.
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey: [in]
 * @param Zeile: [in]
@@ -1988,7 +1939,7 @@ int Str1_AbPos2StrSBrk (int            iKey,
 /**
 * @brief In String durch Adresse und Länge bezeichneten Substring austauschen
 *
-* iStat = Str_SubS_Tausch ( iKey, *cWorkStr, iWorkStrLen, *cOldStrAdr, iOldStrLen, *cNewStr);
+* iStat = Str_SubS_Tausch ( iKey, *cWorkStr, *cOldStrAdr, iOldStrLen, *cNewStr);
 *
 * Es kann ein Austauschstring übergeben werden, sonst wird lediglich
 * der Substring aus dem String entfernt.
@@ -2000,11 +1951,10 @@ int Str1_AbPos2StrSBrk (int            iKey,
 * 26.07.04: Text, in dem getauscht werden soll, kann jetzt maximale Länge gleich
 *           Speichergröße haben.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey        [in] For the moment 0
 * @param cWorkStr    [in out] String to work
-* @param iWorkStrLen [in] Length of Workstring
 * @param cOldStrAdr  [in] Adress of Sub-String inside Workstring
 * @param iOldStrLen  [in] Length of Sub-String
 * @param cNewStr     [in] New Sub-String
@@ -2021,28 +1971,30 @@ int Str1_AbPos2StrSBrk (int            iKey,
 //-----------------------------------------------------------------------------
 int Str_SubS_Tausch ( int    iKey,
                       std::string  *cWorkStr,
-                      // unsigned int    iWorkStrLen,
                       std::string  *cOldStrAdr,
                       unsigned long    iOldStrLen,
                       std::string  *cNewStr);
 //=============================================================================
 /**
 * @brief Begrenzungszeichen in einem String ab Position Pos suchen.
+* iStat = Str1i_BeGrzFind ( iKey, ulPos, *BeGrzZ, *Text);
 *
-* iStat = Str1i_BeGrzFind ( Key, Pos, *BeGrzZ, *Text);
+* @param iKey   [in] For the moment 0
+* @param ulPos  [in] Suchen ab Position
+* @param BeGrzZ [in] Begrenzungszeichen
+* @param Text   [in] Prüf-Text
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-long Str1i_BeGrzFind ( int          Key,      /**< v  -> Vorerst immer 0    */
-                       unsigned long         Pos,      /**<   <-> Suchen ab Position */
-                       char        *BeGrzZ,   /**<   <-> Begrenzungszeichen */
-                       std::string *Text);    /**<   <-> Prüf-Text          */
-
+long Str1i_BeGrzFind ( int            iKey,
+                       unsigned long  ulPos,
+                       char          *BeGrzZ,
+                       std::string   *Text);
 //=============================================================================
 /**
 * @brief Find next Trennzeichen from Position Pos
@@ -2053,7 +2005,7 @@ long Str1i_BeGrzFind ( int          Key,      /**< v  -> Vorerst immer 0    */
 *
 * Changed: 05.11.07  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey: [in]     For the moment 0
 * @param Pos:  [in out] Suchen ab Position
@@ -2088,7 +2040,7 @@ long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
 * 25.11.04: Vorzeichen (+/-) darf nur an erster Stelle kommen.  UR
 * 14.12.07: Zu langer String wird zurückgewiesen.  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:   [in]  For the moment 0
 * @param LocInt: [in]  Konvertierungstext
@@ -2107,9 +2059,9 @@ long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Int ( int          Key,      /**< v  -> Vorerst immer 0    */
-                    std::string *LocInt,   /**<   <-> Konvertierungstext */
-                    int         *iRet);    /**<   <-> Result-Int2      */
+int Str1i_Txt2Int ( int          iKey,
+                    std::string *LocInt,
+                    int         *iRet);
 //=============================================================================
 /**
 * @brief String direkt in Int2 konvertieren
@@ -2123,11 +2075,11 @@ int Str1i_Txt2Int ( int          Key,      /**< v  -> Vorerst immer 0    */
 * 25.11.04: Vorzeichen (+/-) darf nur an erster Stelle kommen.  UR
 * 14.12.07: Zu langer String wird zurückgewiesen.  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:   [in]  For the moment 0
-* @param LocInt: [in]  Konvertierungstext
-* @param iRet:   [out] Result-Int2
+* @param iKey    [in]  For the moment 0
+* @param LocInt  [in]  Konvertierungstext
+* @param uiRet   [out] Result-Int2
 *
 * @return Errorstate
 *
@@ -2142,58 +2094,62 @@ int Str1i_Txt2Int ( int          Key,      /**< v  -> Vorerst immer 0    */
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2UInt ( int            Key,      /**< v  -> Vorerst immer 0    */
-                     std::string   *LocInt,   /**<   <-> Konvertierungstext */
-                     unsigned int  *uiRet);    /**<   <-> Result-Int2      */
-
+int Str1i_Txt2UInt ( int            iKey,
+                     std::string   *LocInt,
+                     unsigned int  *uiRet);
 //=============================================================================
 /**
 * @brief String direkt in Int4 konvertieren
+* iStat = Str1i_Txt2Int4 ( iKey, *LocInt, *lRet);
 *
-* iStat = Str1i_Txt2Int4 ( Key, *LocInt, *lRet);
+* @param iKey   [in]  For the moment 0
+* @param LocInt [in]  Konvertierungstext
+* @param lRet   [out] Result Long Int4
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Int4 ( int          Key,      /**< v  -> Vorerst immer 0    */
-                     std::string *LocInt,   /**<   <-> Konvertierungstext */
-                     long        *lRet);    /**<   <-> Result-Int2      */
+int Str1i_Txt2Int4 ( int          iKey,
+                     std::string *LocInt,
+                     long        *lRet);
 //=============================================================================
 /**
 * @brief String direkt in unsigned Int4 konvertieren
-*
 * iStat = Str1i_Txt2UInt4 ( iKey, *LocInt, *ulRet);
 *
-* @ingroup str_int_lib
+* @param iKey   [in]  For the moment 0
+* @param LocInt [in]  Konvertierungstext
+* @param ulRet  [out] Result-Unsigned Int4
+*
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2UInt4 ( int            iKey,      /**< v  -> Vorerst immer 0    */
-                      std::string   *LocInt,   /**<   <-> Konvertierungstext */
-                      unsigned long *ulRet);    /**<   <-> Result-Int2      */
-
+int Str1i_Txt2UInt4 ( int            iKey,
+                      std::string   *LocInt,
+                      unsigned long *ulRet);
 //=============================================================================
 /**
 * @brief String direkt in Real konvertieren
 *
-* iStat = Str1i_Txt2Real ( Key, *LocReal, *rRet);
+* iStat = Str1i_Txt2Real ( iKey, *LocReal, *rRet);
 *
 * Der String -LocReal- wird nicht vorverarbeit.
 *
 * Changed: 01.04.03  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:    [in]  For the moment 0
-* @param LocReal: [in]  Konvertierungstext
-* @param rRet:    [out] Result-Real
+* @param iKey    [in]  For the moment 0
+* @param LocReal [in]  Konvertierungstext
+* @param rRet    [out] Result-Real
 *
 * @return Errorstate
 *
@@ -2208,42 +2164,42 @@ int Str1i_Txt2UInt4 ( int            iKey,      /**< v  -> Vorerst immer 0    */
 * @date 01.04.03
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Real ( int           Key,
+int Str1i_Txt2Real ( int           iKey,
                      std::string  *LocReal,
                      float        *rRet);
 
 //=============================================================================
 /**
 * @brief String direkt in Double konvertieren.
+* iStat = Str1i_Txt2Dbl ( iKey, *LocDbl, *dRet);
 *
-* iStat = Str1i_Txt2Dbl ( Key, *LocDbl, *dRet);
+* @param iKey   [in]  For the moment 0
+* @param LocDbl [in]  Konvertierungstext
+* @param dRet   [out] Result Double
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Dbl ( int           Key,      /**< v  -> Vorerst immer 0    */
-                    std::string  *LocDbl,   /**<   <-> Konvertierungstext */
-                    double       *dRet);    /**<   <-> Result-Double    */
-
-//=============================================================================
+int Str1i_Txt2Dbl ( int           iKey,
+                    std::string  *LocDbl,
+                    double       *dRet);
 //=============================================================================
 /**
 * @brief Ist Prüfzeichen eine Zahl zwischen 0 und 9 ?
-*
 * iStat = Str1i_IsDigit ( Key, &Zeichen);
 *
 * Die Länge des Zeichen-Strings ist unwichtig
 *
 * Changed: 30.06.00  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:    [in] For the moment 0
-* @param Zeichen: [in] Prüfzeichen in String
+* @param iKey    [in] For the moment 0
+* @param Zeichen [in] Prüfzeichen in String
 *
 * @return Errorstate
 *
@@ -2256,26 +2212,25 @@ int Str1i_Txt2Dbl ( int           Key,      /**< v  -> Vorerst immer 0    */
 * @date 30.06.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_IsDigit ( int   Key,        /**< v  -> Vorerst immer 0 */
-                    char *Zeichen);   /**<   <-> Prüfzeichen     */
-
+int Str1i_IsDigit ( int   iKey,
+                    char *Zeichen);
 //=============================================================================
 /**
 * @brief search Position of string in string
 *
-* iStat = Str1i_AdrHasPos ( Key, *TPos, *Zeile, *TAdr);
+* iStat = Str1i_AdrHasPos ( iKey, *ulPos, *Zeile, *TAdr);
 *
 * Position 1..n
 *
 * Changed: 17.12.07  UR
 * 17.12.07: Ausprogrammiert.  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:  [in]  For the moment 0
-* @param TPos:  [out] Position of searchstring
-* @param Zeile: [in]  string
-* @param TAdr:  [in]  Searchstring
+* @param iKey   [in]  For the moment 0
+* @param ulPos  [out] Position of searchstring
+* @param Zeile  [in]  string
+* @param TAdr   [in]  Searchstring
 *
 * @return Errorstate
 *
@@ -2289,51 +2244,56 @@ int Str1i_IsDigit ( int   Key,        /**< v  -> Vorerst immer 0 */
 * @date 27.09.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_AdrHasPos ( int             Key,
-                      unsigned long  *TPos,
+int Str1i_AdrHasPos ( int             iKey,
+                      unsigned long  *ulPos,
                       std::string    *Zeile,
                       std::string    *TAdr);
 //=============================================================================
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.
+* StartPos = Str1i_StartOfInfo ( iKey, *ulPos, *TrnZ, *Text);
 *
-* StartPos = Str1i_StartOfInfo ( Key, *Pos, *TrnZ, *Text);
+* @param iKey  [in] For the moment 0
+* @param ulPos [in] Suchen ab Position
+* @param TrnZ  [in] Trennzeichen
+* @param Text  [in] Prüf-Text
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-long Str1i_StartOfInfo ( int          Key,     /**< v  -> Vorerst immer 0    */
-                         unsigned long         Pos,     /**<   <-> Suchen ab Position */
-                         char *TrnZ,    /**<   <-> Trennzeichen       */
-                         std::string *Text);   /**<   <-> Prüf-Text          */
-
+long Str1i_StartOfInfo ( int             iKey,
+                         unsigned long   ulPos,
+                         char           *TrnZ,
+                         std::string    *Text);
 //=============================================================================
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.
+* StartPos = Str1i_StartOfInfo2 ( iKey, *Pos, *TrnZ, *Text);
 *
-* StartPos = Str1i_StartOfInfo2 ( Key, *Pos, *TrnZ, *Text);
+* @param iKey [in] For the moment 0
+* @param Pos  [in] Suchen ab Position
+* @param TrnZ [in] Trennzeichen
+* @param Text [in] Prüf-Text
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-long Str1i_StartOfInfo2 ( int          Key,     /**< v  -> Vorerst immer 0    */
-                          unsigned long         Pos,     /**<   <-> Suchen ab Position */
-                          char        *TrnZ,    /**<   <-> Trennzeichen       */
-                          std::string *Text);   /**<   <-> Prüf-Text          */
-
+long Str1i_StartOfInfo2 ( int            iKey,
+                          unsigned long  Pos,
+                          char          *TrnZ,
+                          std::string   *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
-*
-* EndPos = Str1i_EndOfInfo ( Key, Pos, *TrnZ, *Text);
+* EndPos = Str1i_EndOfInfo ( iKey, ulPos, *TrnZ, *Text);
 *
 * Ab Position Pos wird vorwärts im String Text das Ende gesucht.
 * Ende kann sein ein NoInformation-Zeichen oder '\0'.
@@ -2349,12 +2309,12 @@ long Str1i_StartOfInfo2 ( int          Key,     /**< v  -> Vorerst immer 0    */
 * 11.03.03: Speichergröße jetzt Int4.  UR
 * 24.09.04: Key = 1 für Rückwärts-Suche.  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:    [in] For the moment 0
-* @param Pos:     [in] Suchen ab Position
-* @param NoInfoZ: [in] NoInformation-Zeichen
-* @param Text:    [in] Prüf-Text
+* @param iKey    [in] For the moment 0
+* @param ulPos   [in] Suchen ab Position
+* @param TrnZ    [in] NoInformation-Zeichen
+* @param Text    [in] Prüf-Text
 *
 * @return Errorstate
 *
@@ -2369,15 +2329,14 @@ long Str1i_StartOfInfo2 ( int          Key,     /**< v  -> Vorerst immer 0    */
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-unsigned long Str1i_EndOfInfo ( int          Key,     /**< v  -> Vorerst immer 0       */
-                                unsigned long         Pos,     /**<   <-> Read from position in string     */
-                                char        *TrnZ,    /**<   <-> Trennzeichen ist Ende */
-                                std::string *Text);   /**<   <-> Prüf-Text             */
+unsigned long Str1i_EndOfInfo ( int             iKey,
+                                unsigned long   ulPos,
+                                char           *TrnZ,
+                                std::string    *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
-*
-* EndPos = Str1i_EndOfInfo2 ( Key, Pos, *TrnZ, *Text);
+* EndPos = Str1i_EndOfInfo2 ( iKey, ulPos, TrnZ, *Text);
 *
 * Ab Position Pos wird vorwärts im String Text das Ende gesucht.
 * Ende kann sein ein NoInformation-Zeichen oder '\0'.
@@ -2393,12 +2352,12 @@ unsigned long Str1i_EndOfInfo ( int          Key,     /**< v  -> Vorerst immer 0
 * 11.03.03: Speichergröße jetzt Int4.  UR
 * 24.09.04: Key = 1 für Rückwärts-Suche.  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:    [in] For the moment 0
-* @param Pos:     [in] Suchen ab Position
-* @param NoInfoZ: [in] NoInformation-Zeichen
-* @param Text:    [in] Prüf-Text
+* @param iKey   [in] For the moment 0
+* @param ulPos  [in] Suchen ab Position
+* @param TrnZ   [in] NoInformation-Zeichen
+* @param Text   [in] Prüf-Text
 *
 * @return Errorstate
 *
@@ -2413,34 +2372,37 @@ unsigned long Str1i_EndOfInfo ( int          Key,     /**< v  -> Vorerst immer 0
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-long Str1i_EndOfInfo2 ( int          Key,     /**< v  -> Vorerst immer 0       */
-                        unsigned long         Pos,     /**<   <-> Read from position in string     */
-                        char        *TrnZ,    /**<   <-> Trennzeichen ist Ende */
-                        std::string *Text);   /**<   <-> Prüf-Text             */
-
+long Str1i_EndOfInfo2 ( int            iKey,
+                        unsigned long  ulPos,
+                        char          *TrnZ,
+                        std::string   *Text);
 //=============================================================================
 /**
 * @brief Lese nächsten String nach Suchstring.
+* iStat = Str1i_LesTxtNach ( iKey, *Zeile, *TrennZ, *SuchStr, *FindStr);
 *
-* iStat = Str1i_LesTxtNach ( Key, *Zeile, *TrennZ, *SuchStr, *FindStr);
+* @param iKey    [in] For the moment 0
+* @param Zeile   [in] Bearbeitungszeile
+* @param TrennZ  [in] String mit Trennzeichen
+* @param SuchStr [in] Such-String
+* @param FindStr [out] Result-String
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_LesTxtNach ( int           Key,       /**< v  -> Vorerst immer 0         */
-                       std::string *Zeile,      /**<   <-> Bearbeitungszeile       */
-                       char        *TrennZ,     /**<   <-> String mit Trennzeichen */
-                       std::string *SuchStr,    /**<   <-> Such-String             */
-                       std::string *FindStr);   /**<   <-> Result-String         */
+int Str1i_LesTxtNach ( int          iKey,
+                       std::string *Zeile,
+                       char        *TrennZ,
+                       std::string *SuchStr,
+                       std::string *FindStr);
 //=============================================================================
 /**
 * @brief Steht an Position Information im String ?
-*
-* iStat = Str1i_PosHasInfo ( Key, *TstStr, Pos, *InfoStr);
+* iStat = Str1i_PosHasInfo ( iKey, *TstStr, Pos, *InfoStr);
 *
 * Es wird der zu untersuchende String übergeben.
 * Dazu eine Positionsangabe zum String.
@@ -2452,12 +2414,12 @@ int Str1i_LesTxtNach ( int           Key,       /**< v  -> Vorerst immer 0      
 * 11.03.03: String-Speicher jetzt Int4.  UR
 * 27.08.04: Wenn Info-Angabe leer, ist alles Information
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param Key:     [in] Vorerst immer 0
-* @param TstStr:  [in] Bearbeitungszeile
-* @param Pos:     [in] Position im TstStr 1..n
-* @param InfoStr: [in] String mit Info-Angaben
+* @param iKey     [in] Vorerst immer 0
+* @param TstStr   [in] Bearbeitungszeile
+* @param Pos      [in] Position im TstStr 1..n
+* @param InfoStr  [in] String mit Info-Angaben
 *
 * @return Fehlerstatus
 *
@@ -2470,10 +2432,10 @@ int Str1i_LesTxtNach ( int           Key,       /**< v  -> Vorerst immer 0      
 * @date 08.09.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_PosHasInfo ( int              Key,      // v  -> Vorerst immer 0
-                       std::string    *TstStr,    //   <-> Bearbeitungszeile
-                       unsigned long    Pos,       // v <-> Position im TstStr 1..n
-                       char     *InfoStr);  //   <-> String mit Info-Angaben
+int Str1i_PosHasInfo ( int             iKey,
+                       std::string    *TstStr,
+                       unsigned long   Pos,
+                       char           *InfoStr);
 
 //=============================================================================
 /**
@@ -2489,7 +2451,7 @@ int Str1i_PosHasInfo ( int              Key,      // v  -> Vorerst immer 0
 *
 * 14.12.07: Umstellung auf StrDS1.  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in] Vorerst immer 0
 * @param TstStr:  [in] Bearbeitungszeile
@@ -2517,29 +2479,31 @@ int Str1i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
 //=============================================================================
 /**
 * @brief Nächste Information aus Text-Zeile in Int2 umwandeln.
+* iStat = Str1i_AbPos_Int ( iKey, *TAdr, *ErrTxt, *iRet);
 *
-* iStat = Str1i_AbPos_Int ( Key, *TAdr, *Zeile, *ErrTxt, *iRet);
+* @param iKey   [in]  For the moment 0
+* @param TAdr   [in]  Lesen ab Adresse
+* @param ErrTxt [in]  Read-Error bei ErrTxt
+* @param iRet   [out] Result Int2
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_AbPos_Int ( int          Key,     /**< v  -> Vorerst immer 0         */
-                      std::string  *TAdr,     /**<   <-> Lesen ab Adresse        */
-                      // std::string *Zeile,    /**<   <-> Lese-String             */
-                      std::string *ErrTxt,   /**<   <-> Read-Error -bei Errtxt- */
-                      int         *iRet);    /**<   <-> Result-Int2           */
-
+int Str1i_AbPos_Int ( int           iKey,
+                      std::string  *TAdr,
+                      std::string  *ErrTxt,
+                      int          *iRet);
 //=============================================================================
 /**
 * @brief Nächste Information aus Text-Zeile in Double umwandeln.
 *
 * iStat = Str1i_AbPos_Dbl ( Key, *TAdr, *Zeile, *ErrTxt, *dRet);
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
@@ -2563,7 +2527,7 @@ int Str1i_AbPos_Dbl ( int          Key);      /**< v  -> Vorerst immer 0        
 *
 * Changed: 14.12.07  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:   [in] For the moment 0
 * @param LocInt: [in] String
@@ -2592,7 +2556,7 @@ int Str1i_IntConvertible (int          iKey,
 *
 * Changed: 14.12.07  UR
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey:    [in] For the moment 0
 * @param LocReal: [in] String
@@ -2621,7 +2585,7 @@ int Str1_FloatConvertible (int          iKey,
 *
 * Changed: 20.12.11  Re.
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey: [in]     For the moment 0
 * @param txt1: [in out] string for removing spaces
@@ -2649,7 +2613,7 @@ int Stri_RemoveSpaces (int           iKey,
 *
 * Changed: 03.07.14  Re.
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey     [in]     For the moment 0
 * @param oFmtInfo [in]     Format Infos
@@ -2711,17 +2675,22 @@ int Str1i_IsBrakeClose (int            iKey,
 *
 * StartPos = Str_StartOfInfo ( Key, *Pos, *TrnZ, *Text);
 *
-* @ingroup str_int_lib
+* @param iKey [in] For the moment 0
+* @param Pos  [in] Suchen ab Position
+* @param TrnZ [in] Trennzeichen
+* @param Text [in] Prüf-Text
+*
+* @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-unsigned long Str_StartOfInfo ( int  Key,     /**< v  -> Vorerst immer 0    */
-                        unsigned long  Pos,     /**<   <-> Suchen ab Position */
-                        char *TrnZ,    /**<   <-> Trennzeichen       */
-                        std::string *Text);   /**<   <-> Prüf-Text          */
+unsigned long Str_StartOfInfo ( int             iKey,
+                                unsigned long   Pos,
+                                char           *TrnZ,
+                                std::string    *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
@@ -2741,12 +2710,12 @@ unsigned long Str_StartOfInfo ( int  Key,     /**< v  -> Vorerst immer 0    */
 * 24.09.04: Key = 1 für Rückwärts-Suche.  UR
 * 03.07.09: Rückwärts-Suche bei Ein-Zeichen-Texten korrigiert.  Re.
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
-* @param iKey:    [in] 0 = vorwärts, 1 = rückwärts
-* @param lPos:    [in] Suchen ab Position
-* @param NoInfoZ: [in] NoInformation-Zeichen
-* @param Text:    [in] Prüf-Text
+* @param iKey    [in] 0 = vorwärts, 1 = rückwärts
+* @param lPos    [in] Suchen ab Position
+* @param TrnZ    [in] NoInformation-Zeichen
+* @param Text    [in] Prüf-Text
 *
 * @return Errorstate
 *
@@ -2758,10 +2727,10 @@ unsigned long Str_StartOfInfo ( int  Key,     /**< v  -> Vorerst immer 0    */
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-unsigned long Str_EndOfInfo ( int   iKey,
-                     unsigned long  lPos,
-                     char *TrnZ,
-                     std::string *Text);
+unsigned long Str_EndOfInfo ( int             iKey,
+                              unsigned long   lPos,
+                              char           *TrnZ,
+                              std::string    *Text);
 //=============================================================================
 /**
 * @brief Steht an Position Information im String ?
@@ -2778,7 +2747,7 @@ unsigned long Str_EndOfInfo ( int   iKey,
 * 11.03.03: String-Speicher jetzt Int4.  UR
 * 27.08.04: Wenn Info-Angabe leer, ist alles Information
 *
-* @ingroup str_int_lib
+* @ingroup sstStr01IntLib
 *
 * @param Key:     [in] Vorerst immer 0
 * @param TstStr:  [in] Bearbeitungszeile
@@ -2804,7 +2773,7 @@ int Str_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
 /**
 * @brief In String durch Adresse und Länge bezeichneten Substring austauschen
 *
-* iStat = Str_SubS_Tausch ( iKey, *cWorkStr, iWorkStrLen, *cOldStrAdr, iOldStrLen, *cNewStr);
+* iStat = Str_SubS_Tausch ( iKey, *cWorkStr, *cOldStrAdr, *cNewStr);
 *
 * Es kann ein Austauschstring übergeben werden, sonst wird lediglich
 * der Substring aus dem String entfernt.
@@ -2816,14 +2785,12 @@ int Str_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
 * 26.07.04: Text, in dem getauscht werden soll, kann jetzt maximale Länge gleich
 *           Speichergröße haben.  UR
 *
-* @ingroup str_lib
+* @ingroup sstStr01IntLib
 *
 * @param iKey        [in] For the moment 0
 * @param cWorkStr    [in out] String to work
-* @param iWorkStrLen [in] Length of Workstring
 * @param cOldStrAdr  [in] Adress of Sub-String inside Workstring
-* @param iOldStrLen  [in] Length of Sub-String
-* @param cNewStr     [in] New Sub-String
+* @param cNewStr     [out] New Sub-String
 *
 * @return Errorstate
 *
@@ -2835,21 +2802,25 @@ int Str_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
 * @date 23.03.01
 */
 //-----------------------------------------------------------------------------
-int Str_SubS_Tausch ( int    iKey,
+int Str_SubS_Tausch ( int           iKey,
                       std::string  *cWorkStr,
-                      // unsigned int    iWorkStrLen,
                       std::string  *cOldStrAdr,
-                      // unsigned long    iOldStrLen,
                       std::string  *cNewStr);
-
+//=============================================================================
 int Str1_Test_FuncInt (int iKey);
-
+//=============================================================================
 int Str1_Csv_Test (int            iKey,
                    std::string   *sTstTxt,
                    std::string   *sErrTxt,
                    StrDs_Csv_Cls *oCsvSet);
-
-
+//=============================================================================
+int Str1_GetNextBrakeInfo (int             iKey,
+                           std::string    *StrInfo,
+                           unsigned long  *lStrPos,
+                           char           *cBrakeOpen,
+                           char           *cBrakeClose,
+                           std::string    *sTag);
+//=============================================================================
 
 #endif
 

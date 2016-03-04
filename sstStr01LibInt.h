@@ -646,7 +646,7 @@ class sstStr01IntCls
      */
      //------------------------------------------------------------------------------
      int Csv_Str_2String (int               iKey,
-                          std::string      *sVal,
+                          std::string       sVal,
                           std::string      *sst_str);
      //==============================================================================
      /**
@@ -740,7 +740,8 @@ class sstStr01IntCls
      int SetSeparatorTyp(int iKey, int iSeparatorTyp);
      //==============================================================================
      /**
-     * @brief Shortstory
+     * @brief Set bool type
+     * iStat = oSstStr.SetBoolTyp(iKey,iBoolTyp);
      *
      * @param iKey     [in] For the moment 0
      * @param iBoolTyp [in] For the moment 0
@@ -765,12 +766,10 @@ class sstStr01IntCls
      int GetSeparatorTyp();
      //==============================================================================
      /**
-     * @brief Shortstory
+     * @brief Get bool type
+     * iBoolTyp = oSstStr.GetBoolTyp();
      *
-     * @return Errorstate
-     *
-     * @retval   = 0: OK
-     * @retval   < 0: Unspecified Error
+     * @return int bool type
      */
      // ----------------------------------------------------------------------------
      int GetBoolTyp();
@@ -831,9 +830,26 @@ class sstStr01IntCls
                            std::string    *oStrInput,
                            std::string    *oStrResult);
      //==============================================================================
+     /**
+     * @brief // Get dec type type  <BR>
+     * iDecTyp = oSstStr.getDecType();
+     *
+     * @return int Decimal type
+     */
+     // ----------------------------------------------------------------------------
+     int getDecType() const;
+     //==============================================================================
+     /**
+     * @brief // Set decimal type  <BR>
+     * oSstStr.SetDecType ( value);
+     *
+     * @param value [in] Decimal type
+     */
+     // ----------------------------------------------------------------------------
+     void setDecType(int value);
+     //==============================================================================
 
-     // ~X();  // Destruktor
-  private:  // Private Funktionen
+private:  // Private functions
     char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
     char cBracket[2];   //!< For example "\x22"                    */
     char cBracketOpen[2];   //!< For example "("                     */
@@ -2825,3 +2841,4 @@ int Str1_GetNextBrakeInfo (int             iKey,
 #endif
 
 // --------------------------------------------------------------- File End ----
+

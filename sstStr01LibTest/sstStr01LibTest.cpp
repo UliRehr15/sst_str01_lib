@@ -41,6 +41,28 @@ int main ()
   // Do some intern sstStr01 Tests
   iStat = sstStr01_DoSomeInternTests (0);
 
+  { // Test decimal floating point or comma
+    sstStr01Cls oSstStr;
+    std::string oRetStr;
+    int iDecType = oSstStr.getDecType();
+    assert (iDecType==0);  // default is decimal comma
+    iStat = oSstStr.Csv_Dbl_2String(0,22.2,&oRetStr);
+    assert( oRetStr.compare("22,200") == 0);
+    oSstStr.setDecType(1); // set decimal point
+    oRetStr.clear();
+    iStat = oSstStr.Csv_Dbl_2String(0,22.2,&oRetStr);
+    assert( oRetStr.compare("22.200") == 0);
+  }
+
+  {
+    sstStr01Cls oSstStr;
+    std::string oRetStr;
+    oSstStr.SetBracket(0,(char*)"\x22");  // quotes
+    iStat = oSstStr.Csv_Str_2String(0,"Test",&oRetStr);
+    iStat = oSstStr.Csv_Str_2String(0,"Test",&oRetStr);
+    assert( oRetStr.compare("\x22Test\x22;\x22Test\x22") == 0);
+  }
+
   {
     sstStr01Cls oSstStr;
     oSstStr.SetBracket(0,(char*)"()");
@@ -137,7 +159,7 @@ int main ()
   if (iStat >= 0)
     iStat = oStringMan.Csv_Real_2String ( 0, cFrmtStrFlt, 234.1, &sResult_Row);
   if (iStat >= 0)
-    iStat = oStringMan.Csv_Str_2String ( 0, &oInput_Row, &sResult_Row);
+    iStat = oStringMan.Csv_Str_2String ( 0, oInput_Row, &sResult_Row);
   if (iStat >= 0)
     iStat = oStringMan.Csv_Char_2String ( 0, (char*)"nn nn", &sResult_Row);
   if (iStat >= 0)

@@ -1041,7 +1041,10 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
-  iStat = Str1_Dbl2Zeile ( 2, 1, dSTR1_TEXTLEN, dVal, 3, &locStr1);
+  if (this->iDecType == 0)
+    iStat = Str1_Dbl2Zeile ( 2, 1, dSTR1_TEXTLEN, dVal, 3, &locStr1);
+  else
+    iStat = Str1_Dbl2Zeile ( 0, 1, dSTR1_TEXTLEN, dVal, 3, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1158,7 +1161,7 @@ int sstStr01IntCls::Csv_DblFrmt_2String (int               iKey,
 }
 //=============================================================================
 int sstStr01IntCls::Csv_Str_2String (int               iKey,
-                                     std::string      *sVal,
+                                     std::string       sVal,
                                      std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
@@ -1186,7 +1189,7 @@ int sstStr01IntCls::Csv_Str_2String (int               iKey,
   // strncat(locStr1.Txt, this->cBracket, dSTR1_TEXTLEN);
   locStr1 = locStr1 + this->cBracket;
   // strncat(locStr1.Txt, cVal, dSTR1_TEXTLEN);
-  iStat = Str1Cat(0,&locStr1, sVal->c_str());
+  iStat = Str1Cat(0,&locStr1, sVal.c_str());
   // strncat( locStr1.Txt, this->cBracket, dSTR1_TEXTLEN);
   locStr1 = locStr1 + this->cBracket;
   // locStr1.AktLen = strlen(locStr1.Txt);
@@ -1353,7 +1356,7 @@ int StrDs_CsvFnc_Cls::WrtCsv( int               iKey,
   if (iStat >= 0)
     iStat = oFrmtTyp->Csv_Real_2String ( 0, cFrmtStrFlt, oCsvSet->fRetFloat, sResult_Row);
   if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Str_2String ( 0, &oCsvSet->sRetStr, sResult_Row);
+    iStat = oFrmtTyp->Csv_Str_2String ( 0, oCsvSet->sRetStr, sResult_Row);
   if (iStat >= 0)
     iStat = oFrmtTyp->Csv_Char_2String ( 0, oCsvSet->cRetStr, sResult_Row);
   if (iStat >= 0)
@@ -1578,6 +1581,16 @@ int sstStr01IntCls::GetNextBrakeInfo (int             iKey,
                                                            this->GetBraketClose(),
                                                            sTag);
   return iStat;
+}
+//=============================================================================
+int sstStr01IntCls::getDecType() const
+{
+return iDecType;
+}
+//=============================================================================
+void sstStr01IntCls::setDecType(int value)
+{
+iDecType = value;
 }
 //=============================================================================
 

@@ -11,5 +11,6 @@ Structure of coding projects should be:
 18.12.2015: Version 1.1: Small corrections. <BR>
                          Lib Name, Error behavior. <BR>
 12.02.2016: Version 1.2: Extend doxygen documentation.  <BR>
-                         New function Get String inside Brackets <BR>
+                         New function: Get String inside Brackets. <BR>
+04.03.2016: Version 1.3: Output select decimal floating point or comma.  <BR>
 

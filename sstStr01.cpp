@@ -193,7 +193,7 @@ int sstStr01Cls::Csv_DblFrmt_2String (int               iKey,
 }
 //==============================================================================
 int sstStr01Cls::Csv_Str_2String (int               iKey,
-                                  std::string      *sVal,
+                                  std::string       sVal,
                                   std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
@@ -276,6 +276,16 @@ int sstStr01Cls::GetNextBrakeInfo (int             iKey,
 //-----------------------------------------------------------------------------
 {
   return this->poStr01Intern->GetNextBrakeInfo(iKey,StrInfo,sTag);
+}
+//==============================================================================
+int sstStr01Cls::getDecType() const
+{
+  return this->poStr01Intern->getDecType();
+}
+//==============================================================================
+void sstStr01Cls::setDecType(int value)
+{
+  this->poStr01Intern->setDecType(value);
 }
 //==============================================================================
 

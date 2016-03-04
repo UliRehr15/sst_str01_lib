@@ -516,7 +516,7 @@ class sstStr01Cls
      */
      //------------------------------------------------------------------------------
      int Csv_Str_2String (int               iKey,
-                          std::string      *oVal,
+                          std::string       oVal,
                           std::string      *oSstStr);
      //==============================================================================
      /**
@@ -572,8 +572,10 @@ class sstStr01Cls
                            std::string      *oSstStr);
      //==============================================================================
      /**
-     * @brief // Set Braket chars <BR>
+     * @brief // Set Braket chars  "xx";"yy" <BR>
      * iStat = oSstStr.SetBracket( iKey, *cBracket);
+     *
+     * double quote:  For example "\x22"
      *
      * @param iKey     [in] For the moment 0
      * @param cBracket [in] one or two bracket chars
@@ -586,7 +588,7 @@ class sstStr01Cls
      int SetBracket(int iKey, char *cBracket);
      //==============================================================================
      /**
-     * @brief // Set Separator char <BR>
+     * @brief // Set Separator char  1;2;3;4  <BR>
      * iStat = oSstStr.SetSeparator( iKey, *cSeparator);
      *
      * @param iKey       [in] For the moment 0
@@ -693,8 +695,32 @@ class sstStr01Cls
                            std::string    *oStrInput,
                            std::string    *oStrResult);
      //==============================================================================
+     /**
+     * @brief // Get dec type <BR>
+     * iDecTyp = oSstStr.getDecType();
+     *
+     * floating comma = 0 (default)  <BR>
+     * floating point = 1  <BR>
+     *
+     * @return int Decimal type
+     */
+     // ----------------------------------------------------------------------------
+     int getDecType() const;
+     //==============================================================================
+     /**
+     * @brief // Set decimal type <BR>
+     * oSstStr.SetDecType ( value);
+     *
+     * floating comma = 0 (default)  <BR>
+     * floating point = 1  <BR>
+     *
+     * @param value [in] Decimal type
+     */
+     // ----------------------------------------------------------------------------
+     void setDecType(int value);
+     //==============================================================================
 
-  private:  // Private Funktionen
+private:  // Private functions
      sstStr01IntCls *poStr01Intern;   /**< Pointer to intern object */
 };
 

@@ -304,23 +304,22 @@ int Str1_GetNextBrakeInfo (int             iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_GetNextSBrakeInfo (int            iKey,
-                            std::string   *StrInfo,
-                            unsigned long          *lStrPos,
-                            char          *cSBrake,
-                            std::string   *sTag)
+int Str1_GetNextSBrakeInfo (int             iKey,
+                            std::string    *StrInfo,
+                            unsigned long  *lStrPos,
+                            char           *cSBrake,
+                            std::string    *sTag)
 //-----------------------------------------------------------------------------
 {
   unsigned long lLen = 0;
   unsigned long ii = 0;
   unsigned long lStartBracket = 0;
   unsigned long lStopBracket = 0;
-  int iBracketOpen = 0;
-  int iBracketFound = 0;
+  bool bBracketOpen = false;
+  bool bBracketFound = false;
   std::string   ErrTxt;
-  std::string NewTxt;
   std::string OldTxt;
-  int iRet  = 0;
+  // int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if (iKey < 0 || iKey > 1) return -1;
@@ -337,64 +336,37 @@ int Str1_GetNextSBrakeInfo (int            iKey,
     return 0;
   }
 
-  // strcpy(NewTxt,"\"");
-  NewTxt = "\"";
-
   for ( ii = *lStrPos; ii <= lLen; ii++)
   {
-      if ( Str1i_IsBrakeOpen( 0, StrInfo, ii, cSBrake))
+    if ( Str1i_IsBrakeOpen( 0, StrInfo, ii, cSBrake))
+    {
+      // yes, char is bracket
+      if (!bBracketOpen)
       {
-
-          if ( Str1i_IsBrakeOpen( 0, StrInfo, ii+1, cSBrake))
-          {
-
-              if (iBracketOpen == 0)
-              {  // double bracketchar and we are outside bracket
-                 // Start bracket and stop bracket
-                  lStartBracket=ii;
-                  lStopBracket=ii+1;
-                  iBracketFound = true;
-                  break;
-              }
-              else
-              {  // iInsideBracket == 1
-                 // iBracketOpen = 1;
-                  // In String durch Adresse und Länge bezeichneten Substring austauschen.
-
-                // iStat = Str_SubS_Tausch ( 0, StrInfo->Txt, dSTR1_TEXTLEN, &StrInfo->Txt[ii-1], 2, NewTxt);
-                OldTxt = *StrInfo;
-                OldTxt.erase(1,ii);
-                iStat = Str_SubS_Tausch ( 0, StrInfo, &OldTxt, &NewTxt);
-
-                  ii++;
-              }
-          }
-          else
-          {
-
-              if (iBracketOpen == 0)
-              {
-                  iBracketOpen = 1;
-                  iBracketFound  = 1;
-                  lStartBracket=ii;
-
-              }
-              else
-              {
-                  iBracketOpen = 0;
-                  lStopBracket=ii;
-                  break;
-              }
-          }
+        // we are outside bracket
+        // Start bracket
+        lStartBracket=ii;
+        bBracketFound = true;
+        bBracketOpen = true;
       }
       else
-      {
-
+      {  // we are inside bracket
+        lStopBracket = ii;
+        OldTxt = *StrInfo;
+        break;
       }
-  }
+    }
+  }  // for ii
 
   // no brackets found at all
-  if(!iBracketFound)
+  if(!bBracketFound)
+  {
+    *sTag = *StrInfo;
+    return 0;
+  }
+
+  // brackets found
+  if(bBracketFound && ii > lLen)
   {
     *sTag = *StrInfo;
     return 0;
@@ -408,21 +380,12 @@ int Str1_GetNextSBrakeInfo (int            iKey,
   }
 
   // Teil von String1 nach String2 kopieren.
-  iStat = Str1_Zeile2Str ( 0, lStartBracket, lStopBracket, StrInfo, &ErrTxt, sTag);
+  iStat = Str1_Zeile2Str ( 0, lStartBracket, lStopBracket, &OldTxt, &ErrTxt, sTag);
+  assert(iStat >= 0);
 
   *lStrPos = ii;
 
-  // Fatal Errors goes to an assert
-  if (iRet < 0)
-  {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
-  }
-
-  // Small Errors will given back
-  iRet = iStat;
-
-  return iRet;
+  return 1;
 }
 //=============================================================================
 int Str1_CopyStr (int            iKey,
@@ -676,19 +639,19 @@ int Str1_AbPos2Int4Brk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2StrSBrk (int            iKey,
-                        std::string   *Zeile,
-                        unsigned long          *lStrPos,
-                        char         *cDelimit,
-                        char         *cSBrake,
-                        std::string   *sTag)
+int Str1_AbPos2StrSBrk (int             iKey,
+                        std::string    *Zeile,
+                        unsigned long  *lStrPos,
+                        char           *cDelimit,
+                        char           *cSBrake,
+                        std::string    *sTag)
 //-----------------------------------------------------------------------------
 {
-  std::string   sPart;
-  std::string   sErrTxt;
-  unsigned long          lStrPosStart=0;
-  unsigned long          lStrPosStop=0;
-  unsigned long          lStrPosLoc = 1;
+  std::string     sPart;
+  std::string     sErrTxt;
+  unsigned long   lStrPosStart=0;
+  unsigned long   lStrPosStop=0;
+  unsigned long   lStrPosLoc = 1;
   int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------

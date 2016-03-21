@@ -20,7 +20,7 @@
 #define   _SST_STR01_LIB_INT_HEADER
 
 /**
- * @defgroup sstStr01IntLib
+ * @defgroup sstStr01IntLib sstStr01IntLib: sst Intern String lib (Version 1)
  * cpp string library for intern sst
  */
 
@@ -1919,7 +1919,6 @@ int Str1_AbPos2StrBrk (int            iKey,
 //==============================================================================
 /**
 * @brief Get Info until next delimiter and interpret info inside small brackets as string
-*
 * iStat = Str1_AbPos2StrSBrk ( iKey, *Zeile, *lStrPos, *cDelimit, *cSBrake, *sTag);
 *
 * More Comment
@@ -1928,12 +1927,12 @@ int Str1_AbPos2StrBrk (int            iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param iKey: [in]
-* @param Zeile: [in]
-* @param lStrPos: [in]
-* @param cDelimit: [in]
-* @param cSBrake: [in]
-* @param sTag: [out]
+* @param iKey     [in] iKey
+* @param Zeile    [in] String
+* @param lStrPos  [in] String position
+* @param cDelimit [in] Delimiter
+* @param cSBrake  [in] Bracket
+* @param sTag     [out] result string
 *
 * @return Errorstate
 *
@@ -1945,12 +1944,12 @@ int Str1_AbPos2StrBrk (int            iKey,
 * @date 17.04.12
 */
 //------------------------------------------------------------------------------
-int Str1_AbPos2StrSBrk (int            iKey,
-                        std::string   *Zeile,
-                        unsigned long          *lStrPos,
-                        char          *cDelimit,
-                        char          *cSBrake,
-                        std::string   *sTag);
+int Str1_AbPos2StrSBrk (int             iKey,
+                        std::string    *Zeile,
+                        unsigned long  *lStrPos,
+                        char           *cDelimit,
+                        char           *cSBrake,
+                        std::string    *sTag);
 //=============================================================================
 /**
 * @brief In String durch Adresse und Länge bezeichneten Substring austauschen
@@ -2836,6 +2835,40 @@ int Str1_GetNextBrakeInfo (int             iKey,
                            char           *cBrakeOpen,
                            char           *cBrakeClose,
                            std::string    *sTag);
+//==============================================================================
+/**
+* @brief  // Get next string inside simple brackets <BR>
+* iStat = Str1_GetNextSBrakeInfo ( iKey, &oString, &ulStrPos, &cSBracket, &oStrResult);
+*
+* For example return string "'xxx'" or "xxx" from string "ccc'xxx'777"  <BR>
+* iKey=0: Return with brackets, iKey=1: return without brackets
+*
+* Changed: 09.07.15  Re.
+*
+* @ingroup sstStr01IntLib
+*
+* @param iKey       [in]     0 or 1
+* @param oString    [in]     string
+* @param ulStrPos   [in out] old and new read position in string
+* @param cSBracket  [in]     1 char simple bracket
+* @param oStrResult [out]    result string inside brackets
+*
+* @return Errorstate
+*
+* @retval   = 1: result found
+* @retval   = 0: no result found
+* @retval   < 0: Unspecified Error
+*
+* @author Re.
+*
+* @date 09.07.15
+*/
+//------------------------------------------------------------------------------
+int Str1_GetNextSBrakeInfo (int             iKey,
+                            std::string    *oString,
+                            unsigned long  *ulStrPos,
+                            char           *cSBracket,
+                            std::string    *oStrResult);
 //=============================================================================
 
 #endif

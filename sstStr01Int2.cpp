@@ -1641,6 +1641,43 @@ int Str1_Test_FuncInt (int iKey) // v  -> For the moment 0
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
+  {
+    // Get next string inside simple brackets
+    char cSBracket[2];
+    strncpy(cSBracket,"'",2);
+    std::string oStrResult;
+    sLocZeile="nnn'cc'33";
+    ulPos = 4;
+    iStat = Str1_GetNextSBrakeInfo ( 1, &sLocZeile, &ulPos, cSBracket, &oStrResult);
+    assert(iStat == 1);
+    assert(oStrResult.compare("cc") == 0);
+    sLocZeile="nnn'cc'";
+    ulPos = 4;
+    iStat = Str1_GetNextSBrakeInfo ( 1, &sLocZeile, &ulPos, cSBracket, &oStrResult);
+    assert(iStat == 1);
+    assert(oStrResult.compare("cc") == 0);
+    sLocZeile="'cc'";
+    ulPos = 1;
+    iStat = Str1_GetNextSBrakeInfo ( 1, &sLocZeile, &ulPos, cSBracket, &oStrResult);
+    assert(iStat == 1);
+    assert(oStrResult.compare("cc") == 0);
+    sLocZeile="''";
+    ulPos = 1;
+    iStat = Str1_GetNextSBrakeInfo ( 1, &sLocZeile, &ulPos, cSBracket, &oStrResult);
+    assert(iStat == 1);
+    assert(oStrResult.compare("") == 0);
+    sLocZeile="xxxxxx";
+    ulPos = 1;
+    iStat = Str1_GetNextSBrakeInfo ( 1, &sLocZeile, &ulPos, cSBracket, &oStrResult);
+    assert(iStat == 0);
+    assert(oStrResult.compare("xxxxxx") == 0);
+    sLocZeile="xxx'xxx";
+    ulPos = 1;
+    iStat = Str1_GetNextSBrakeInfo ( 1, &sLocZeile, &ulPos, cSBracket, &oStrResult);
+    assert(iStat == 0);
+    assert(oStrResult.compare("xxx'xxx") == 0);
+  }
+
   // Zahl nach String konvertieren
   // iStat = Str_Dbl2Txt ( 1, -22.2, 2, LocStr);
   iStat = Str1_Dbl2Zeile( 1, 1,6,-22.2, 2, &sLocZeile);

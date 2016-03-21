@@ -444,8 +444,7 @@ int sstStr01IntCls::CsvString2_Str ( int          iKey,
   strncpy( cTrnZ, this->cSeparator, 2);
   strncpy( cNoInfo, this->cNoInfo, 2);
 
-  // iStat = Str1_AbPosS2Str ( 0, TPos, cBegrzZ, TrnZ, Zeile, ErrTxt, sRetStr);
-  // iStat = Str1_AbPos2StrSBrk ( 0, sZeile, lTPos, cTrnZ, cBegrzZ, sRetStr);
+  // Get Info until next delimiter and interpret info inside small brackets as string
   iStat = Str1_AbPos2StrSBrk ( 0, sZeile, &this->ulPos, cTrnZ, cBegrzZ, &sLocStr);
   if(sLocStr.length() <= 0) return 0;
 

@@ -48,14 +48,18 @@ SOURCES       = sstStr01Test.cpp \
 		sstStr01Int3.cpp \
 		sstStr01Int4.cpp \
 		sstStr01Int5.cpp \
-		sstStr01.cpp 
+		sstStr01.cpp \
+		sstStr01VarType.cpp \
+		sstStr01DefType.cpp 
 OBJECTS       = sstStr01Test.o \
 		sstStr01Int1.o \
 		sstStr01Int2.o \
 		sstStr01Int3.o \
 		sstStr01Int4.o \
 		sstStr01Int5.o \
-		sstStr01.o
+		sstStr01.o \
+		sstStr01VarType.o \
+		sstStr01DefType.o
 DIST          = /usr/lib/i386-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/i386-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/i386-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -323,6 +327,14 @@ sstStr01Int5.o: sstStr01Int5.cpp Header/sstStr01Lib.h \
 sstStr01.o: sstStr01.cpp Header/sstStr01Lib.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01.o sstStr01.cpp
+
+sstStr01VarType.o: sstStr01VarType.cpp Header/sstStr01Lib.h \
+		sstStr01LibInt.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01VarType.o sstStr01VarType.cpp
+
+sstStr01DefType.o: sstStr01DefType.cpp Header/sstStr01Lib.h \
+		sstStr01LibInt.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01DefType.o sstStr01DefType.cpp
 
 ####### Install
 

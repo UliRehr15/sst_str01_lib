@@ -48,12 +48,271 @@
 // forward declaration ---------------------------------------------------------
 
 class sstStr01IntCls;
+class sstStr01Cls;
 
 // Structures and Classes ------------------------------------------------------
 
 //==============================================================================
 /**
-* @brief Definition sstStr01IntCls
+* @brief Definition Enum VarType_enum
+*
+* All Variable types.  <BR>
+* <BR>
+* In File:  LL, II, FF, DD, CC, BB, DA <BR>
+*
+* Changed: 10.05.16  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 10.05.16
+*/
+// ----------------------------------------------------------------------------
+enum _sstStr01VarType_enum
+{ sstStr01Unknown,  //!< unknown       XX    */
+  sstStr01Char,     //!< char          CC    */
+  sstStr01WChar,    //!< wchar         WC    */
+  sstStr01Date,     //!< date          DA    */
+  sstStr01Bool,     //!< bool          BB    */
+  sstStr01Int,      //!< int           II    */
+  sstStr01UInt,     //!< unsigned int  UI    */
+  sstStr01Long,     //!< long          LL    */
+  sstStr01ULong,    //!< unsigned long UL    */
+  sstStr01Float,    //!< float         FF    */
+  sstStr01Double,   //!< double        DD    */
+  sstStr01String,   //!< string        ST    */
+  sstStr01Custom    //!< custom data type    */
+};
+typedef enum _sstStr01VarType_enum sstStr01VarType_enum;
+//==============================================================================
+/**
+* @brief String convert class for enum VarType_enum
+*
+* Converts enum to string and back <BR>
+*
+* Changed: 08.07.15  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 08.07.15
+*/
+// ----------------------------------------------------------------------------
+class sstStr01VarTypeCls
+{
+  public:   // Public functions
+     sstStr01VarTypeCls();  // Constructor
+    //~sstTestBaseCls();  // Destructor
+     //==============================================================================
+     /**
+     * @brief // convert string II,DD,CC ... to type enum <BR>
+     * iStat = oVarType.Str2Enm ( iKey, oTypeStr, &eLocType);
+     *
+     * @param iKey     [in]  For the moment 0
+     * @param oTypeStr [in]  For the moment 0
+     * @param eLocType [out] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Str2Enm (int                   iKey,
+                              std::string           oTypeStr,
+                              sstStr01VarType_enum *eLocType);
+     //==============================================================================
+     /**
+     * @brief // convert type enum to cpp var type full string int,double,char ... <BR>
+     * iStat = oVarType.Enm2FullStr ( iKey, eCppType, *cTypeStr);
+     *
+     * @param iKey     [in]  For the moment 0
+     * @param eCppType [in] For the moment 0
+     * @param oTypeStr [out]  return string int, double, char ...
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Enm2FullStr (int                    iKey,
+                           sstStr01VarType_enum   eCppType,
+                           std::string           *oTypeStr);
+     //==============================================================================
+     /**
+     * @brief // convert type enum to cpp var type string II, DD, CC ... <BR>
+     * iStat = oVarType.Enm2Str ( iKey, eCppType, *oTypeStr);
+     *
+     * @param iKey     [in]  For the moment 0
+     * @param eCppType [in] For the moment 0
+     * @param oTypeStr [out]  return string int, double, char ...
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Enm2Str (int                    iKey,
+                  sstStr01VarType_enum   eCppType,
+                  std::string           *oTypeStr);
+     //==============================================================================
+     /**
+     * @brief // convert type enum to short char i,d,c,..  <BR>
+     * iStat = oVarType.Enm2ShortStr ( iKey, eCppType, *cTypeChar);
+     *
+     * @param iKey      [in]  For the moment 0
+     * @param eCppType  [in] For the moment 0
+     * @param oTypeStr  [out]  For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Enm2ShortStr (int                    iKey,
+                           sstStr01VarType_enum   eCppType,
+                           std::string           *oTypeStr);
+// ----------------------------------------------------------------------------
+private:  // Private functions
+int Dum;        /**< Dummy */
+};
+//==============================================================================
+#define dSST_STR01_VAR_NAM_LEN   31    //!< string lenght of cpp object name @ingroup sstStr01Lib */
+//==============================================================================
+/**
+* @brief Definition record class for data classes and member variables
+*
+* Defines one variable member for example in cpp class. <br>
+* For example:   testdbf;testrec;fValue;FF;5;2   <br>
+*
+* Changed: 25.06.12  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 25.06.12
+*/
+// ---strClassDefCls-------------------------------------------------------------
+class sstStr01VarDefCls
+{
+  public:
+     sstStr01VarDefCls();  // Constructor
+   //  ~X();  // Destruktor
+     //==============================================================================
+     /**
+     * @brief // set system name in def type class <BR>
+     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     *
+     * @param oSysNamStr [in] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_SysNam(std::string oSysNamStr);
+     //==============================================================================
+     /**
+     * @brief // set class name in def type class <BR>
+     * iStat = oVarDef.Set_ObjNam(oClsNamStr);
+     *
+     * @param oClsNamStr [in] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_ObjNam(std::string oClsNamStr);
+     //==============================================================================
+     /**
+     * @brief // set Variable element name in def type class <BR>
+     * iStat = oVarDef.Set_EleNam(oEleNamStr);
+     *
+     * @param oEleNamStr [in] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_EleNam(std::string oEleNamStr);
+     //==============================================================================
+     /**
+     * @brief // set system naem in def type class <BR>
+     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     *
+     * @param oSysNamStr [in] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_Type(sstStr01VarType_enum eType);
+     //==============================================================================
+     /**
+     * @brief // set system naem in def type class <BR>
+     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     *
+     * @param oSysNamStr [in] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_Width(int iWidth);
+     //==============================================================================
+     /**
+     * @brief // set system naem in def type class <BR>
+     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     *
+     * @param oSysNamStr [in] For the moment 0
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_Dec(int iDec);
+     //==============================================================================
+     std::string Get_SysNam();
+     //==============================================================================
+     std::string Get_ObjNam();
+     //==============================================================================
+     std::string Get_EleNam();
+     //==============================================================================
+     sstStr01VarType_enum Get_Type();
+     //==============================================================================
+     int Get_Width();
+     //==============================================================================
+     int Get_Dec();
+     //==============================================================================
+
+  private:  // Private Funktionen
+     char cSysNam[dSST_STR01_VAR_NAM_LEN];  //!< System (Lib) name of classes          */
+     char cObjNam[dSST_STR01_VAR_NAM_LEN];  //!< Class name                            */
+     char cEleNam[dSST_STR01_VAR_NAM_LEN];  //!< Name of member variable               */
+     sstStr01VarType_enum eType;              //!< Type of member variable               */
+     int iWidth;                      //!< Whole Width ( incl. Dec) in file row 1 - 9999  */
+     int iDec;                        //!< Dec of float/double in file row 0 - 6 */
+};
+//==============================================================================
+/**
+* @brief Definition sstStr01Cls
 *
 * More Comment
 *
@@ -724,6 +983,75 @@ private:  // Private functions
      sstStr01IntCls *poStr01Intern;   /**< Pointer to intern object */
 };
 
+
+//==============================================================================
+/**
+* @brief Definition Class sstStr01VarDefFncCls
+*
+* More Comment
+*
+* Changed: 22.06.15  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 22.06.15
+*/
+// ----------------------------------------------------------------------------
+class sstStr01VarDefFncCls
+{
+  public:   // Public functions
+     sstStr01VarDefFncCls();   // Constructor
+  //   ~X();   // Destructor
+     //==============================================================================
+     /**
+     * @brief Read CSV Row from file as sstStr01VarDefCls object
+     *
+     * iStat = oVarDefFnc.ReadCSV( iKey, *sFilStr, *sErrTxt, *oStrType);
+     *
+     * @param iKey     [in] For the moment 0
+     * @param sFilStr  [in]
+     * @param sErrTxt  [out]
+     * @param oStrType [out]
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int ReadCSV(int           iKey,
+                 std::string  *sFilStr,
+                 std::string  *sErrTxt,
+                 sstStr01VarDefCls *oStrType);
+       //==============================================================================
+       /**
+       * @brief Write sstStr01VarDefCls object to CSV Row into file
+       *
+       * iStat = oVarDefFnc.WriteCSV( iKey, *oSstType, *sErrTxt, *sExpStr);
+       *
+       * @param iKey     [in] For the moment 0
+       * @param oSstType [in]
+       * @param sErrTxt  [out]
+       * @param sExpStr  [out]
+       *
+       * @return Errorstate
+       *
+       * @retval   = 0: OK
+       * @retval   < 0: Unspecified Error
+       */
+       // ----------------------------------------------------------------------------
+     int WriteCSV(int            iKey,
+                  sstStr01VarDefCls  oSstType,
+                  std::string   *sErrTxt,
+                  std::string   *sExpStr);
+// ----------------------------------------------------------------------------
+  // int Dum2;       /**< Dummy2 */
+  private:  // Private functions
+  //  int Dum;        /**< Dummy */
+  sstStr01Cls oCnvtStr;  /**< Convert String system */
+};
 
 // Do some intern sstStr01 Tests
 int sstStr01_DoSomeInternTests (int iKey);

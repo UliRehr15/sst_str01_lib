@@ -38,6 +38,61 @@ int main ()
 
   printf("Test Str01Lib Start. \n");
 
+  // test sstStr01VarTypeCls class
+
+  printf("Test Class sstStr01VarTypeCls.");
+  sstStr01VarType_enum eVarType = sstStr01Double;  // VarType is double
+  sstStr01VarTypeCls oVarType;
+  std::string oVarTypeStr;
+
+  // convert type enum to cpp var type full string int,double,char ...
+  oVarType.Enm2FullStr( 0, eVarType, &oVarTypeStr);
+  assert( oVarTypeStr.compare("double") == 0);
+
+  // convert type enum to cpp var type string II, DD, CC ...
+  oVarType.Enm2Str( 0, eVarType, &oVarTypeStr);
+  assert( oVarTypeStr.compare("DD") == 0);
+
+  // convert type enum to cpp var type small string i, d, c ...
+  oVarType.Enm2ShortStr( 0, eVarType, &oVarTypeStr);
+  assert( oVarTypeStr.compare("d") == 0);
+
+  oVarType.Str2Enm(0,"II",&eVarType);
+  assert(eVarType == sstStr01Int);
+  printf("Checked. \n");
+
+  printf("Test Class sstStr01VarDefCls.");
+  sstStr01VarDefCls oVarDef;
+  oVarDef.Set_SysNam("TestLib");     // group of classes
+  oVarDef.Set_ObjNam("TestClass");   // class name
+  oVarDef.Set_EleNam("VarName");     // variable name
+  oVarDef.Set_Type(sstStr01Double);  // type int, double, char ...
+  oVarDef.Set_Width(6);              // total width with decimal point and decimal precision
+  oVarDef.Set_Dec(2);                // decimal precision
+  printf("Checked\n");
+
+  printf("Test Class sstStr01VarDefFncCls.");
+  sstStr01VarDefFncCls oVarDefFnc;
+  std::string oVarDefStr;
+  std::string oErrStr;
+  oVarDefFnc.WriteCSV(0,oVarDef,&oErrStr, &oVarDefStr);
+  assert( oVarDefStr.compare("TestLib;TestClass;VarName;DD;6;2") == 0);
+
+  oVarDefStr = "TestLib2;TestClass3;VarNam8;CC;8;0";
+  iStat = oVarDefFnc.ReadCSV( 0, &oVarDefStr, &oErrStr, &oVarDef);
+  assert( iStat == 0);
+  std::string oCompareStr;
+  oCompareStr = oVarDef.Get_SysNam();
+  assert( oCompareStr.compare("TestLib2") == 0);
+  oCompareStr = oVarDef.Get_ObjNam();
+  assert( oCompareStr.compare("TestClass3") == 0);
+  oCompareStr = oVarDef.Get_EleNam();
+  assert( oCompareStr.compare("VarNam8") == 0);
+  assert( oVarDef.Get_Type() == sstStr01Char);
+  assert( oVarDef.Get_Width() == 8);
+  assert( oVarDef.Get_Dec() == 0);
+  printf("Checked\n");
+
   // Do some intern sstStr01 Tests
   iStat = sstStr01_DoSomeInternTests (0);
 

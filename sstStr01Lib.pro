@@ -23,7 +23,9 @@ SOURCES		+= \
     sstStr01Int3.cpp \
     sstStr01Int4.cpp \
     sstStr01Int5.cpp \
-    sstStr01.cpp
+    sstStr01.cpp \
+    sstStr01VarType.cpp \
+    sstStr01DefType.cpp
 
 OTHER_FILES += README.md
 

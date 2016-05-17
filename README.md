@@ -14,4 +14,6 @@ Structure of coding projects should be:
                          New function: Get String inside Brackets. <BR>
 04.03.2016: Version 1.3: Output select decimal floating point or comma.  <BR>
 21.03.2016: Version 1.4: Patch error in intern function Str1_GetNextSBrakeInfo.  <BR>
+17.05.2016: Version 1.5: Type definitions integer, double, char and so on.  <BR>
+                         Class/Member definitions: name class, name member, type, width and Dec.  <BR>
 

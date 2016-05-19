@@ -34,7 +34,7 @@ class sstStr01IntCls;
 
 //==============================================================================
 /**
-* @brief CSV Test Class StrDs_Csv_Cls
+* @brief CSV Test Class sstStr01Ds_Csv_Cls
 *
 * More Comment
 *
@@ -47,10 +47,10 @@ class sstStr01IntCls;
 * @date 19.02.10
 */
 // ----------------------------------------------------------------------------
-class StrDs_Csv_Cls
+class sstStr01Ds_Csv_Cls
 {
   public:   // Öffentliche Funktionen
-     StrDs_Csv_Cls();  // Konstruktor
+     sstStr01Ds_Csv_Cls();  // Konstruktor
     // ~X();  // Destruktor
      int iRetInt;              //!< Return Value Integer
      long lRetLong;            //!< Return Value Long Integer
@@ -65,7 +65,7 @@ class StrDs_Csv_Cls
 };
 //==============================================================================
 /**
-* @brief Test CSV Read/Write Class StrDs_CsvFnc_Cls
+* @brief Test CSV Read/Write Class sstStr01Ds_CsvFnc_Cls
 *
 * Read and Write CSV Testobject to row
 *
@@ -78,10 +78,10 @@ class StrDs_Csv_Cls
 * @date 21.04.15
 */
 // ----------------------------------------------------------------------------
-class StrDs_CsvFnc_Cls
+class sstStr01Ds_CsvFnc_Cls
 {
   public:   // Public functions
-     StrDs_CsvFnc_Cls();   // Constructor
+     sstStr01Ds_CsvFnc_Cls();   // Constructor
      //==============================================================================
      /**
      * @brief Write TestRecord to Row
@@ -103,7 +103,7 @@ class StrDs_CsvFnc_Cls
      int WrtCsv( int               iKey,
                  sstStr01IntCls *oFrmtTyp,
                  std::string      *sErrStr,
-                 StrDs_Csv_Cls    *oCsvSet,
+                 sstStr01Ds_Csv_Cls    *oCsvSet,
                  std::string      *sResult_Row);
      //==============================================================================
      /**
@@ -127,7 +127,7 @@ class StrDs_CsvFnc_Cls
                   sstStr01IntCls *oFrmtTyp,
                   std::string   *sTstTxt,
                   std::string   *sErrTxt,
-                  StrDs_Csv_Cls *oCsvSet);
+                  sstStr01Ds_Csv_Cls *oCsvSet);
     // ~X();   // Destructor
 // ----------------------------------------------------------------------------
   private:  // Private functions
@@ -870,7 +870,7 @@ private:  // Private functions
 /**
 * @brief Teil von String1 nach String2 kopieren
 *
-* iStat = Str1_Zeile2Str ( Key, Von, Bis, *txt1, *ErrTxt, *txt2);
+* iStat = sstStr011_Zeile2Str ( Key, Von, Bis, *txt1, *ErrTxt, *txt2);
 *
 * Weiterer Kommentar
 *
@@ -901,18 +901,17 @@ private:  // Private functions
 * @date 30.06.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Zeile2Str ( int          Key,
+int sstStr011_Zeile2Str ( int          Key,
                      unsigned long         Von,
                      unsigned long         Bis,
                      std::string *txt1,
                      std::string *ErrTxt,
                      std::string *txt2);
-
 //=============================================================================
 /**
 * @brief Teil von String nach Int2 konvertieren.
 *
-* iStat = Str1_Zeile2Int ( Key, Von, Bis, *txt1, *ErrTxt, *iRet);
+* iStat = sstStr011_Zeile2Int ( Key, Von, Bis, *txt1, *ErrTxt, *iRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -928,18 +927,17 @@ int Str1_Zeile2Str ( int          Key,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_Zeile2Int ( int          iKey,
+int sstStr011_Zeile2Int ( int          iKey,
                      unsigned long         Von,
                      unsigned long         Bis,
                      std::string *txt1,
                      std::string *ErrTxt,
                      int         *iRet);
-
 //=============================================================================
 /**
 * @brief Teil von String nach Int4 konvertieren.
 *
-* iStat = Str1_Zeile2Int4 ( iKey, Von, Bis, *txt, *ErrTxt, *lRet);
+* iStat = sstStr011_Zeile2Int4 ( iKey, Von, Bis, *txt, *ErrTxt, *lRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -955,7 +953,7 @@ int Str1_Zeile2Int ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_Zeile2Int4 ( int          iKey,
+int sstStr011_Zeile2Int4 ( int          iKey,
                       unsigned long         Von,
                       unsigned long         Bis,
                       std::string *txt,
@@ -966,7 +964,7 @@ int Str1_Zeile2Int4 ( int          iKey,
 /**
 * @brief Teil von String nach Double  konvertieren.
 *
-* iStat = Str1_Zeile2Dbl ( iKey, Von, Bis, *txt1, *ErrTxt, *dRet);
+* iStat = sstStr011_Zeile2Dbl ( iKey, Von, Bis, *txt1, *ErrTxt, *dRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -982,7 +980,7 @@ int Str1_Zeile2Int4 ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_Zeile2Dbl ( int           iKey,
+int sstStr011_Zeile2Dbl ( int           iKey,
                      unsigned long          Von,
                      unsigned long          Bis,
                      std::string  *txt1,
@@ -993,7 +991,7 @@ int Str1_Zeile2Dbl ( int           iKey,
 /**
 * @brief Kopieren eines String in einen Zeilenbereich
 *
-* iStat = Str1_Str2Zeile ( Key, Von, Bis, *sWert, *Zeile);
+* iStat = sstStr011_Str2Zeile ( Key, Von, Bis, *sWert, *Zeile);
 *
 * Und zwar in -Zeile- Platz-genau !!
 * Key = 0: linksbündig
@@ -1029,7 +1027,7 @@ int Str1_Zeile2Dbl ( int           iKey,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Str2Zeile ( int          Key,
+int sstStr011_Str2Zeile ( int          Key,
                      unsigned long         Von,
                      unsigned long         Bis,
                      std::string *sWert,
@@ -1039,7 +1037,7 @@ int Str1_Str2Zeile ( int          Key,
 /**
 * @brief Kopieren eines Char in einen Zeilenbereich
 *
-* iStat = Str1_Char2Zeile ( iKey, Von, Bis, *cWert, *Zeile);
+* iStat = sstStr011_Char2Zeile ( iKey, Von, Bis, *cWert, *Zeile);
 *
 * Und zwar in -Zeile- Platz-genau !!
 * Key = 0: linksbündig
@@ -1047,7 +1045,7 @@ int Str1_Str2Zeile ( int          Key,
 *
 * Geändert: 27.06.05  UR
 *
-* 14.09.12: Abgeleitet von Str1_Str2Zeile.    UR
+* 14.09.12: Abgeleitet von sstStr011_Str2Zeile.    UR
 *
 * @ingroup sstStr01IntLib
 *
@@ -1067,7 +1065,7 @@ int Str1_Str2Zeile ( int          Key,
 * @date 14.09.12
 */
 //-----------------------------------------------------------------------------
-int Str1_Char2Zeile ( int          Key,
+int sstStr011_Char2Zeile ( int          Key,
                       unsigned long         Von,
                       unsigned long         Bis,
                       char        *cWert,
@@ -1077,7 +1075,7 @@ int Str1_Char2Zeile ( int          Key,
 /**
 * @brief Int2 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Int2Zeile ( Key, Von, Bis, iWert, *Zeile, ZeilLen);
+* iStat = sstStr011_Int2Zeile ( Key, Von, Bis, iWert, *Zeile, ZeilLen);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1104,7 +1102,7 @@ int Str1_Char2Zeile ( int          Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Int2Zeile ( int          Key,
+int sstStr011_Int2Zeile ( int          Key,
                      unsigned long         Von,
                      unsigned long         Bis,
                      int          iWert,
@@ -1113,7 +1111,7 @@ int Str1_Int2Zeile ( int          Key,
 /**
 * @brief UInt2 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_UInt2Zeile ( Key, Von, Bis, uiWert, *Zeile, ZeilLen);
+* iStat = sstStr011_UInt2Zeile ( Key, Von, Bis, uiWert, *Zeile, ZeilLen);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1140,7 +1138,7 @@ int Str1_Int2Zeile ( int          Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_UInt2Zeile ( int           Key,
+int sstStr011_UInt2Zeile ( int           Key,
                       unsigned long          Von,
                       unsigned long          Bis,
                       unsigned int  uiWert,
@@ -1149,7 +1147,7 @@ int Str1_UInt2Zeile ( int           Key,
 /**
 * @brief Int2 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Int2Zeile ( Key, Von, Bis, iWert, *Zeile, ZeilLen);
+* iStat = sstStr011_Int2Zeile ( Key, Von, Bis, iWert, *Zeile, ZeilLen);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1178,7 +1176,7 @@ int Str1_UInt2Zeile ( int           Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Int2ZeileFmt ( int           iKey,
+int sstStr011_Int2ZeileFmt ( int           iKey,
                         unsigned long          Von,
                         unsigned long          Bis,
                         int           iWert,
@@ -1189,7 +1187,7 @@ int Str1_Int2ZeileFmt ( int           iKey,
 /**
 * @brief Int4 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
+* iStat = sstStr011_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1216,7 +1214,7 @@ int Str1_Int2ZeileFmt ( int           iKey,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Int4Zeile ( int          Key,
+int sstStr011_Int4Zeile ( int          Key,
                      unsigned long         Von,
                      unsigned long         Bis,
                      long         lWert,
@@ -1225,7 +1223,7 @@ int Str1_Int4Zeile ( int          Key,
 /**
 * @brief Int4 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
+* iStat = sstStr011_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1252,7 +1250,7 @@ int Str1_Int4Zeile ( int          Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_UInt4Zeile ( int             Key,
+int sstStr011_UInt4Zeile ( int             Key,
                       unsigned long            Von,
                       unsigned long            Bis,
                       unsigned long   ulWert,
@@ -1261,7 +1259,7 @@ int Str1_UInt4Zeile ( int             Key,
 /**
 * @brief Real in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Real2ZeileFmt ( Key, Von, Bis, *fWert ,cFmtStr, *Zeile);
+* iStat = sstStr011_Real2ZeileFmt ( Key, Von, Bis, *fWert ,cFmtStr, *Zeile);
 *
 * Konvertieren eines Real in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1293,7 +1291,7 @@ int Str1_UInt4Zeile ( int             Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Real2ZeileFmt ( int           Key,
+int sstStr011_Real2ZeileFmt ( int           Key,
                          unsigned long          Von,
                          unsigned long          Bis,
                          float         fWert,
@@ -1303,7 +1301,7 @@ int Str1_Real2ZeileFmt ( int           Key,
 /**
 * @brief Real in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Real2Zeile ( Key, Von, Bis, *fWert ,NachKo, *Zeile);
+* iStat = sstStr011_Real2Zeile ( Key, Von, Bis, *fWert ,NachKo, *Zeile);
 *
 * Konvertieren eines Real in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1333,7 +1331,7 @@ int Str1_Real2ZeileFmt ( int           Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Real2Zeile ( int           Key,
+int sstStr011_Real2Zeile ( int           Key,
                       unsigned long          Von,
                       unsigned long          Bis,
                       float         fWert,
@@ -1343,7 +1341,7 @@ int Str1_Real2Zeile ( int           Key,
 /**
 * @brief Double in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Dbl2ZeileFmt ( Key, Von, Bis, *dWert ,cFmtStr, *Zeile);
+* iStat = sstStr011_Dbl2ZeileFmt ( Key, Von, Bis, *dWert ,cFmtStr, *Zeile);
 *
 * Konvertieren eines Double in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1375,7 +1373,7 @@ int Str1_Real2Zeile ( int           Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Dbl2ZeileFmt ( int           Key,
+int sstStr011_Dbl2ZeileFmt ( int           Key,
                         unsigned long          Von,
                         unsigned long          Bis,
                         double        dWert,
@@ -1385,7 +1383,7 @@ int Str1_Dbl2ZeileFmt ( int           Key,
 /**
 * @brief Double in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Dbl2ZeileWnk ( Key, Von, Bis, *dWert ,NachKo, *Zeile);
+* iStat = sstStr011_Dbl2ZeileWnk ( Key, Von, Bis, *dWert ,NachKo, *Zeile);
 *
 * Konvertieren eines Double in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1417,7 +1415,7 @@ int Str1_Dbl2ZeileFmt ( int           Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Dbl2ZeileWnk ( int           Key,
+int sstStr011_Dbl2ZeileWnk ( int           Key,
                         unsigned long          Von,
                         unsigned long          Bis,
                         double        dWert,
@@ -1428,7 +1426,7 @@ int Str1_Dbl2ZeileWnk ( int           Key,
 /**
 * @brief Double in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Dbl2Zeile ( Key, Von, Bis, *dWert ,NachKo, *Zeile);
+* iStat = sstStr011_Dbl2Zeile ( Key, Von, Bis, *dWert ,NachKo, *Zeile);
 *
 * Konvertieren eines Double in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1458,7 +1456,7 @@ int Str1_Dbl2ZeileWnk ( int           Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Dbl2Zeile ( int           Key,
+int sstStr011_Dbl2Zeile ( int           Key,
                      unsigned long          Von,
                      unsigned long          Bis,
                      double        dWert,
@@ -1469,7 +1467,7 @@ int Str1_Dbl2Zeile ( int           Key,
 /**
 * @brief Bool in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = Str1_Bool2Zeile (iKey, iStrTyp, lVon, lBis, *bVal, *sZeile);
+* iStat = sstStr011_Bool2Zeile (iKey, iStrTyp, lVon, lBis, *bVal, *sZeile);
 *
 * Konvertieren eines Real in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1496,7 +1494,7 @@ int Str1_Dbl2Zeile ( int           Key,
 * @date 07.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1_Bool2Zeile ( int          iKey,
+int sstStr011_Bool2Zeile ( int          iKey,
                       long         iStrTyp,
                       unsigned long         lVon,
                       unsigned long         lBis,
@@ -1506,7 +1504,7 @@ int Str1_Bool2Zeile ( int          iKey,
 /**
 * @brief Init Str1 Object
 *
-* iStat = Str1_Init ( iKey, *Str1);
+* iStat = sstStr011_Init ( iKey, *Str1);
 *
 * More Comment
 *
@@ -1527,14 +1525,14 @@ int Str1_Bool2Zeile ( int          iKey,
 * @date 16.02.10
 */
 //------------------------------------------------------------------------------
-int Str1_Init ( int          iKey,
+int sstStr011_Init ( int          iKey,
                 std::string *Str1);
 
 //=============================================================================
 /**
 * @brief Nächste Information aus Text-Zeile in String umwandeln.
 *
-* iStat = Str1_AbPos2Str ( iKey, *lTPos, *cTrnZ, *sZeile, *sErrTxt, *sRet);
+* iStat = sstStr011_AbPos2Str ( iKey, *lTPos, *cTrnZ, *sZeile, *sErrTxt, *sRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1550,7 +1548,7 @@ int Str1_Init ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Str ( int          iKey,
+int sstStr011_AbPos2Str ( int          iKey,
                      unsigned long        *lTPos,
                      char        *cTrnZ,
                      std::string *sZeile,
@@ -1561,7 +1559,7 @@ int Str1_AbPos2Str ( int          iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Char umwandeln.
 *
-* iStat = Str1_AbPos2Str ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *tRet, iCRetLen);
+* iStat = sstStr011_AbPos2Str ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *tRet, iCRetLen);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1578,7 +1576,7 @@ int Str1_AbPos2Str ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Char ( int          iKey,
+int sstStr011_AbPos2Char ( int          iKey,
                       unsigned long        *TPos,
                       char        *TrnZ,
                       std::string *Zeile,
@@ -1590,7 +1588,7 @@ int Str1_AbPos2Char ( int          iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Int2 umwandeln.
 *
-* iStat = Str1_AbPos2Int ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *iRet);
+* iStat = sstStr011_AbPos2Int ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *iRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1606,7 +1604,7 @@ int Str1_AbPos2Char ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Int ( int          iKey,
+int sstStr011_AbPos2Int ( int          iKey,
                      unsigned long        *TPos,
                      char        *TrnZ,
                      std::string *Zeile,
@@ -1616,7 +1614,7 @@ int Str1_AbPos2Int ( int          iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Unsigned Int2 umwandeln.
 *
-* iStat = Str1_AbPos2UInt ( iKey, *lTPos, *cTrnZ, *sZeile, *sErrTxt, *uiRet);
+* iStat = sstStr011_AbPos2UInt ( iKey, *lTPos, *cTrnZ, *sZeile, *sErrTxt, *uiRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1632,7 +1630,7 @@ int Str1_AbPos2Int ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2UInt ( int           iKey,
+int sstStr011_AbPos2UInt ( int           iKey,
                       unsigned long         *lTPos,
                       char         *cTrnZ,
                       std::string  *sZeile,
@@ -1643,7 +1641,7 @@ int Str1_AbPos2UInt ( int           iKey,
 /**
 * @brief Read in Line from Position as Long Int until next Character TrnZ
 *
-* iStat = Str1_AbPos2Int4 ( iKey, *TPos, *TrnZ, *Zeile, *ErrTxt, *iRet4);
+* iStat = sstStr011_AbPos2Int4 ( iKey, *TPos, *TrnZ, *Zeile, *ErrTxt, *iRet4);
 *
 * More Comment
 *
@@ -1668,7 +1666,7 @@ int Str1_AbPos2UInt ( int           iKey,
 * @date 26.07.07
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Int4 ( int          iKey,
+int sstStr011_AbPos2Int4 ( int          iKey,
                       unsigned long        *TPos,
                       char        *TrnZ,
                       std::string *Zeile,
@@ -1678,7 +1676,7 @@ int Str1_AbPos2Int4 ( int          iKey,
 /**
 * @brief Read in Line from Position as Unsigned Long Int until next Character TrnZ
 *
-* iStat = Str1_AbPos2UInt4 ( iKey, *TPos, *TrnZ, *Zeile, *ErrTxt, *uiRet4);
+* iStat = sstStr011_AbPos2UInt4 ( iKey, *TPos, *TrnZ, *Zeile, *ErrTxt, *uiRet4);
 *
 * More Comment
 *
@@ -1703,7 +1701,7 @@ int Str1_AbPos2Int4 ( int          iKey,
 * @date 26.07.07
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2UInt4 ( int             iKey,
+int sstStr011_AbPos2UInt4 ( int             iKey,
                        unsigned long           *TPos,
                        char           *TrnZ,
                        std::string    *Zeile,
@@ -1713,7 +1711,7 @@ int Str1_AbPos2UInt4 ( int             iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Real umwandeln.
 *
-* iStat = Str1_AbPos2Real ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *dRet);
+* iStat = sstStr011_AbPos2Real ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *dRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1729,7 +1727,7 @@ int Str1_AbPos2UInt4 ( int             iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Real ( int           iKey,
+int sstStr011_AbPos2Real ( int           iKey,
                       unsigned long         *TPos,
                       char         *TrnZ,
                       std::string  *Zeile,
@@ -1740,7 +1738,7 @@ int Str1_AbPos2Real ( int           iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Double umwandeln.
 *
-* iStat = Str1_AbPos2Dbl ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *dRet);
+* iStat = sstStr011_AbPos2Dbl ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *dRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1756,7 +1754,7 @@ int Str1_AbPos2Real ( int           iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Dbl ( int           iKey,
+int sstStr011_AbPos2Dbl ( int           iKey,
                      unsigned long         *TPos,
                      char         *TrnZ,
                      std::string  *Zeile,
@@ -1766,7 +1764,7 @@ int Str1_AbPos2Dbl ( int           iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Bool umwandeln.
 *
-* iStat = Str1_AbPos2Bool ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *bRet);
+* iStat = sstStr011_AbPos2Bool ( Key, *TPos, *TrnZ, *Zeile, *ErrTxt, *bRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -1782,19 +1780,17 @@ int Str1_AbPos2Dbl ( int           iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1_AbPos2Bool ( int          iKey,
+int sstStr011_AbPos2Bool ( int          iKey,
                       unsigned long        *TPos,
                       char        *TrnZ,
                       std::string *Zeile,
                       std::string *ErrTxt,
                       bool        *bRet);
-
-//=============================================================================
 //=============================================================================
 /**
 * @brief String in String-Struktur kopieren
 *
-* iStat = Str1_StrSet ( iKey, *Str, *Str_Stru, StrLenMax);
+* iStat = sstStr011_StrSet ( iKey, *Str, *Str_Stru, StrLenMax);
 *
 * Wozu wird StrLenMax gebraucht?
 *
@@ -1817,15 +1813,15 @@ int Str1_AbPos2Bool ( int          iKey,
 * @date 13.12.07
 */
 //-----------------------------------------------------------------------------
-int Str1_StrSet (int          iKey,
+int sstStr011_StrSet (int          iKey,
                  char        *Str,
                  std::string *Str_Stru,
                  unsigned long         StrLenMax);
-
+//=============================================================================
 /**
 * @brief Copy Chars to Str1 structure
 *
-* iStat = Str1Cpy ( iKey, *sStrInfo, *cCopyChar);
+* iStat = sstStr011Cpy ( iKey, *sStrInfo, *cCopyChar);
 *
 * More Comment
 *
@@ -1847,14 +1843,14 @@ int Str1_StrSet (int          iKey,
 * @date 19.09.12
 */
 //------------------------------------------------------------------------------
-int Str1Cpy (int            iKey,
+int sstStr011Cpy (int            iKey,
              std::string   *sStrInfo,
              char          *cCopyChar);
 //==============================================================================
 /**
 * @brief Cat Chars to Str1 structure
 *
-* iStat = Str1Cat ( iKey, *sStrInfo, *cCatChar);
+* iStat = sstStr011Cat ( iKey, *sStrInfo, *cCatChar);
 *
 * More Comment
 *
@@ -1876,14 +1872,14 @@ int Str1Cpy (int            iKey,
 * @date 19.09.12
 */
 //------------------------------------------------------------------------------
-int Str1Cat (int            iKey,
+int sstStr011Cat (int            iKey,
              std::string   *sStrInfo,
              const char          *cCatChar);
 //==============================================================================
 /**
 * @brief Get Information until next delimiter and ignore brakes
 *
-* iStat = Str1_AbPos2StrBrk ( iKey, *Zeile, *lStrPos, *cDelimit, *cBrakeOpen, *cBrakeClose, *sTag);
+* iStat = sstStr011_AbPos2StrBrk ( iKey, *Zeile, *lStrPos, *cDelimit, *cBrakeOpen, *cBrakeClose, *sTag);
 *
 * More Comment
 *
@@ -1909,7 +1905,7 @@ int Str1Cat (int            iKey,
 * @date 17.04.12
 */
 //------------------------------------------------------------------------------
-int Str1_AbPos2StrBrk (int            iKey,
+int sstStr011_AbPos2StrBrk (int            iKey,
                        std::string   *Zeile,
                        unsigned long          *lStrPos,
                        char          *cDelimit,
@@ -1919,7 +1915,7 @@ int Str1_AbPos2StrBrk (int            iKey,
 //==============================================================================
 /**
 * @brief Get Info until next delimiter and interpret info inside small brackets as string
-* iStat = Str1_AbPos2StrSBrk ( iKey, *Zeile, *lStrPos, *cDelimit, *cSBrake, *sTag);
+* iStat = sstStr011_AbPos2StrSBrk ( iKey, *Zeile, *lStrPos, *cDelimit, *cSBrake, *sTag);
 *
 * More Comment
 *
@@ -1944,7 +1940,7 @@ int Str1_AbPos2StrBrk (int            iKey,
 * @date 17.04.12
 */
 //------------------------------------------------------------------------------
-int Str1_AbPos2StrSBrk (int             iKey,
+int sstStr011_AbPos2StrSBrk (int             iKey,
                         std::string    *Zeile,
                         unsigned long  *lStrPos,
                         char           *cDelimit,
@@ -1954,7 +1950,7 @@ int Str1_AbPos2StrSBrk (int             iKey,
 /**
 * @brief In String durch Adresse und Länge bezeichneten Substring austauschen
 *
-* iStat = Str_SubS_Tausch ( iKey, *cWorkStr, *cOldStrAdr, iOldStrLen, *cNewStr);
+* iStat = sstStr01_SubS_Tausch ( iKey, *cWorkStr, *cOldStrAdr, iOldStrLen, *cNewStr);
 *
 * Es kann ein Austauschstring übergeben werden, sonst wird lediglich
 * der Substring aus dem String entfernt.
@@ -1984,7 +1980,7 @@ int Str1_AbPos2StrSBrk (int             iKey,
 * @date 23.03.01
 */
 //-----------------------------------------------------------------------------
-int Str_SubS_Tausch ( int    iKey,
+int sstStr01_SubS_Tausch ( int    iKey,
                       std::string  *cWorkStr,
                       std::string  *cOldStrAdr,
                       unsigned long    iOldStrLen,
@@ -1992,7 +1988,7 @@ int Str_SubS_Tausch ( int    iKey,
 //=============================================================================
 /**
 * @brief Begrenzungszeichen in einem String ab Position Pos suchen.
-* iStat = Str1i_BeGrzFind ( iKey, ulPos, *BeGrzZ, *Text);
+* iStat = sstStr011i_BeGrzFind ( iKey, ulPos, *BeGrzZ, *Text);
 *
 * @param iKey   [in] For the moment 0
 * @param ulPos  [in] Suchen ab Position
@@ -2006,7 +2002,7 @@ int Str_SubS_Tausch ( int    iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-long Str1i_BeGrzFind ( int            iKey,
+long sstStr011i_BeGrzFind ( int            iKey,
                        unsigned long  ulPos,
                        char          *BeGrzZ,
                        std::string   *Text);
@@ -2014,7 +2010,7 @@ long Str1i_BeGrzFind ( int            iKey,
 /**
 * @brief Find next Trennzeichen from Position Pos
 *
-* iStat = Str1i_TrnZFind ( iKey, Pos, *TrnZ, *Text);
+* iStat = sstStr011i_TrnZFind ( iKey, Pos, *TrnZ, *Text);
 *
 * More Comment
 *
@@ -2037,7 +2033,7 @@ long Str1i_BeGrzFind ( int            iKey,
 * @date 05.11.07
 */
 //-----------------------------------------------------------------------------
-long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
+long sstStr011i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
                       unsigned long         Pos,      //   <-> Suchen ab Position
                       char        *TrnZ,     //   <-> Trennzeichen
                       std::string *Text);    //   <-> Prüf-Text
@@ -2046,7 +2042,7 @@ long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
 /**
 * @brief String direkt in Int2 konvertieren
 *
-* iStat = Str1i_Txt2Int ( Key, *LocInt, *iRet);
+* iStat = sstStr011i_Txt2Int ( Key, *LocInt, *iRet);
 *
 * Der String Txt wird nicht vorverarbeit.
 *
@@ -2074,14 +2070,14 @@ long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Int ( int          iKey,
+int sstStr011i_Txt2Int ( int          iKey,
                     std::string *LocInt,
                     int         *iRet);
 //=============================================================================
 /**
 * @brief String direkt in Int2 konvertieren
 *
-* iStat = Str1i_Txt2Int ( Key, *LocInt, *iRet);
+* iStat = sstStr011i_Txt2Int ( Key, *LocInt, *iRet);
 *
 * Der String Txt wird nicht vorverarbeit.
 *
@@ -2109,13 +2105,13 @@ int Str1i_Txt2Int ( int          iKey,
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2UInt ( int            iKey,
+int sstStr011i_Txt2UInt ( int            iKey,
                      std::string   *LocInt,
                      unsigned int  *uiRet);
 //=============================================================================
 /**
 * @brief String direkt in Int4 konvertieren
-* iStat = Str1i_Txt2Int4 ( iKey, *LocInt, *lRet);
+* iStat = sstStr011i_Txt2Int4 ( iKey, *LocInt, *lRet);
 *
 * @param iKey   [in]  For the moment 0
 * @param LocInt [in]  Konvertierungstext
@@ -2128,13 +2124,13 @@ int Str1i_Txt2UInt ( int            iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Int4 ( int          iKey,
+int sstStr011i_Txt2Int4 ( int          iKey,
                      std::string *LocInt,
                      long        *lRet);
 //=============================================================================
 /**
 * @brief String direkt in unsigned Int4 konvertieren
-* iStat = Str1i_Txt2UInt4 ( iKey, *LocInt, *ulRet);
+* iStat = sstStr011i_Txt2UInt4 ( iKey, *LocInt, *ulRet);
 *
 * @param iKey   [in]  For the moment 0
 * @param LocInt [in]  Konvertierungstext
@@ -2147,14 +2143,14 @@ int Str1i_Txt2Int4 ( int          iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2UInt4 ( int            iKey,
+int sstStr011i_Txt2UInt4 ( int            iKey,
                       std::string   *LocInt,
                       unsigned long *ulRet);
 //=============================================================================
 /**
 * @brief String direkt in Real konvertieren
 *
-* iStat = Str1i_Txt2Real ( iKey, *LocReal, *rRet);
+* iStat = sstStr011i_Txt2Real ( iKey, *LocReal, *rRet);
 *
 * Der String -LocReal- wird nicht vorverarbeit.
 *
@@ -2179,14 +2175,14 @@ int Str1i_Txt2UInt4 ( int            iKey,
 * @date 01.04.03
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Real ( int           iKey,
+int sstStr011i_Txt2Real ( int           iKey,
                      std::string  *LocReal,
                      float        *rRet);
 
 //=============================================================================
 /**
 * @brief String direkt in Double konvertieren.
-* iStat = Str1i_Txt2Dbl ( iKey, *LocDbl, *dRet);
+* iStat = sstStr011i_Txt2Dbl ( iKey, *LocDbl, *dRet);
 *
 * @param iKey   [in]  For the moment 0
 * @param LocDbl [in]  Konvertierungstext
@@ -2199,13 +2195,13 @@ int Str1i_Txt2Real ( int           iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_Txt2Dbl ( int           iKey,
+int sstStr011i_Txt2Dbl ( int           iKey,
                     std::string  *LocDbl,
                     double       *dRet);
 //=============================================================================
 /**
 * @brief Ist Prüfzeichen eine Zahl zwischen 0 und 9 ?
-* iStat = Str1i_IsDigit ( Key, &Zeichen);
+* iStat = sstStr011i_IsDigit ( Key, &Zeichen);
 *
 * Die Länge des Zeichen-Strings ist unwichtig
 *
@@ -2227,13 +2223,13 @@ int Str1i_Txt2Dbl ( int           iKey,
 * @date 30.06.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_IsDigit ( int   iKey,
+int sstStr011i_IsDigit ( int   iKey,
                     char *Zeichen);
 //=============================================================================
 /**
 * @brief search Position of string in string
 *
-* iStat = Str1i_AdrHasPos ( iKey, *ulPos, *Zeile, *TAdr);
+* iStat = sstStr011i_AdrHasPos ( iKey, *ulPos, *Zeile, *TAdr);
 *
 * Position 1..n
 *
@@ -2259,14 +2255,14 @@ int Str1i_IsDigit ( int   iKey,
 * @date 27.09.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_AdrHasPos ( int             iKey,
+int sstStr011i_AdrHasPos ( int             iKey,
                       unsigned long  *ulPos,
                       std::string    *Zeile,
                       std::string    *TAdr);
 //=============================================================================
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.
-* StartPos = Str1i_StartOfInfo ( iKey, *ulPos, *TrnZ, *Text);
+* StartPos = sstStr011i_StartOfInfo ( iKey, *ulPos, *TrnZ, *Text);
 *
 * @param iKey  [in] For the moment 0
 * @param ulPos [in] Suchen ab Position
@@ -2280,14 +2276,14 @@ int Str1i_AdrHasPos ( int             iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-long Str1i_StartOfInfo ( int             iKey,
+long sstStr011i_StartOfInfo ( int             iKey,
                          unsigned long   ulPos,
                          char           *TrnZ,
                          std::string    *Text);
 //=============================================================================
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.
-* StartPos = Str1i_StartOfInfo2 ( iKey, *Pos, *TrnZ, *Text);
+* StartPos = sstStr011i_StartOfInfo2 ( iKey, *Pos, *TrnZ, *Text);
 *
 * @param iKey [in] For the moment 0
 * @param Pos  [in] Suchen ab Position
@@ -2301,14 +2297,14 @@ long Str1i_StartOfInfo ( int             iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-long Str1i_StartOfInfo2 ( int            iKey,
+long sstStr011i_StartOfInfo2 ( int            iKey,
                           unsigned long  Pos,
                           char          *TrnZ,
                           std::string   *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
-* EndPos = Str1i_EndOfInfo ( iKey, ulPos, *TrnZ, *Text);
+* EndPos = sstStr011i_EndOfInfo ( iKey, ulPos, *TrnZ, *Text);
 *
 * Ab Position Pos wird vorwärts im String Text das Ende gesucht.
 * Ende kann sein ein NoInformation-Zeichen oder '\0'.
@@ -2344,14 +2340,14 @@ long Str1i_StartOfInfo2 ( int            iKey,
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-unsigned long Str1i_EndOfInfo ( int             iKey,
+unsigned long sstStr011i_EndOfInfo ( int             iKey,
                                 unsigned long   ulPos,
                                 char           *TrnZ,
                                 std::string    *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
-* EndPos = Str1i_EndOfInfo2 ( iKey, ulPos, TrnZ, *Text);
+* EndPos = sstStr011i_EndOfInfo2 ( iKey, ulPos, TrnZ, *Text);
 *
 * Ab Position Pos wird vorwärts im String Text das Ende gesucht.
 * Ende kann sein ein NoInformation-Zeichen oder '\0'.
@@ -2387,14 +2383,14 @@ unsigned long Str1i_EndOfInfo ( int             iKey,
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-long Str1i_EndOfInfo2 ( int            iKey,
+long sstStr011i_EndOfInfo2 ( int            iKey,
                         unsigned long  ulPos,
                         char          *TrnZ,
                         std::string   *Text);
 //=============================================================================
 /**
 * @brief Lese nächsten String nach Suchstring.
-* iStat = Str1i_LesTxtNach ( iKey, *Zeile, *TrennZ, *SuchStr, *FindStr);
+* iStat = sstStr011i_LesTxtNach ( iKey, *Zeile, *TrennZ, *SuchStr, *FindStr);
 *
 * @param iKey    [in] For the moment 0
 * @param Zeile   [in] Bearbeitungszeile
@@ -2409,7 +2405,7 @@ long Str1i_EndOfInfo2 ( int            iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_LesTxtNach ( int          iKey,
+int sstStr011i_LesTxtNach ( int          iKey,
                        std::string *Zeile,
                        char        *TrennZ,
                        std::string *SuchStr,
@@ -2417,7 +2413,7 @@ int Str1i_LesTxtNach ( int          iKey,
 //=============================================================================
 /**
 * @brief Steht an Position Information im String ?
-* iStat = Str1i_PosHasInfo ( iKey, *TstStr, Pos, *InfoStr);
+* iStat = sstStr011i_PosHasInfo ( iKey, *TstStr, Pos, *InfoStr);
 *
 * Es wird der zu untersuchende String übergeben.
 * Dazu eine Positionsangabe zum String.
@@ -2447,7 +2443,7 @@ int Str1i_LesTxtNach ( int          iKey,
 * @date 08.09.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_PosHasInfo ( int             iKey,
+int sstStr011i_PosHasInfo ( int             iKey,
                        std::string    *TstStr,
                        unsigned long   Pos,
                        char           *InfoStr);
@@ -2456,11 +2452,11 @@ int Str1i_PosHasInfo ( int             iKey,
 /**
 * @brief Steht im String an Position eins der übergebenen Zeichen?
 *
-* iStat = Str1i_PosIsZch ( Key, *TstStr, Pos, *ZchStr);
+* iStat = sstStr011i_PosIsZch ( Key, *TstStr, Pos, *ZchStr);
 *
 * Es wird der zu untersuchende String übergeben.
 * Dazu eine Positionsangabe zum String.
-* Verwandt mit Funktion Str_PosHasInfo, eine Art Umkehrung.
+* Verwandt mit Funktion sstStr01_PosHasInfo, eine Art Umkehrung.
 *
 * Changed: 14.12.07  UR
 *
@@ -2486,7 +2482,7 @@ int Str1i_PosHasInfo ( int             iKey,
 * @date 08.09.00
 */
 //-----------------------------------------------------------------------------
-int Str1i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
+int sstStr011i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
                      std::string *TstStr,    //   <-> Bearbeitungszeile
                      unsigned long         Pos,       // v <-> Position im TstStr 1..n
                      char        *ZchStr);   //   <-> String mit Zeichen
@@ -2494,7 +2490,7 @@ int Str1i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
 //=============================================================================
 /**
 * @brief Nächste Information aus Text-Zeile in Int2 umwandeln.
-* iStat = Str1i_AbPos_Int ( iKey, *TAdr, *ErrTxt, *iRet);
+* iStat = sstStr011i_AbPos_Int ( iKey, *TAdr, *ErrTxt, *iRet);
 *
 * @param iKey   [in]  For the moment 0
 * @param TAdr   [in]  Lesen ab Adresse
@@ -2508,7 +2504,7 @@ int Str1i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_AbPos_Int ( int           iKey,
+int sstStr011i_AbPos_Int ( int           iKey,
                       std::string  *TAdr,
                       std::string  *ErrTxt,
                       int          *iRet);
@@ -2516,7 +2512,7 @@ int Str1i_AbPos_Int ( int           iKey,
 /**
 * @brief Nächste Information aus Text-Zeile in Double umwandeln.
 *
-* iStat = Str1i_AbPos_Dbl ( Key, *TAdr, *Zeile, *ErrTxt, *dRet);
+* iStat = sstStr011i_AbPos_Dbl ( Key, *TAdr, *Zeile, *ErrTxt, *dRet);
 *
 * @ingroup sstStr01IntLib
 *
@@ -2525,7 +2521,7 @@ int Str1i_AbPos_Int ( int           iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int Str1i_AbPos_Dbl ( int          Key);      /**< v  -> Vorerst immer 0         */
+int sstStr011i_AbPos_Dbl ( int          Key);      /**< v  -> Vorerst immer 0         */
 //                      char        *TAdr,     /**<   <-> Lesen ab Adresse        */
 //                      std::string *Zeile,    /**<   <-> Lese-String             */
 //                      std::string *ErrTxt,   /**<   <-> Read-Error -bei Errtxt- */
@@ -2536,7 +2532,7 @@ int Str1i_AbPos_Dbl ( int          Key);      /**< v  -> Vorerst immer 0        
 /**
 * @brief Is String to Int/LongInt convertible?
 *
-*  iStat = Str1i_IntConvertible ( iKey, *LocInt);
+*  iStat = sstStr011i_IntConvertible ( iKey, *LocInt);
 *
 * More Comment
 *
@@ -2558,14 +2554,14 @@ int Str1i_AbPos_Dbl ( int          Key);      /**< v  -> Vorerst immer 0        
 * @date 14.12.07
 */
 //-----------------------------------------------------------------------------
-int Str1i_IntConvertible (int          iKey,
+int sstStr011i_IntConvertible (int          iKey,
                           std::string *LocInt);
 
 //=============================================================================
 /**
 * @brief Is String to Float/Double convertible?
 *
-* iStat  = Str1_FloatConvertible ( iKey, *LocReal);
+* iStat  = sstStr011_FloatConvertible ( iKey, *LocReal);
 *
 * More Comment
 *
@@ -2587,14 +2583,14 @@ int Str1i_IntConvertible (int          iKey,
 * @date 14.12.07
 */
 //-----------------------------------------------------------------------------
-int Str1_FloatConvertible (int          iKey,
+int sstStr011_FloatConvertible (int          iKey,
                            std::string *LocReal);
 
 //==============================================================================
 /**
 * @brief Remove starting and ending spaces from string
 *
-* iStat = Stri_RemoveSpaces ( iKey, txt1);
+* iStat = sstStr01i_RemoveSpaces ( iKey, txt1);
 *
 * More Comment
 *
@@ -2615,14 +2611,14 @@ int Str1_FloatConvertible (int          iKey,
 * @date 20.12.11
 */
 //------------------------------------------------------------------------------
-int Stri_RemoveSpaces (int           iKey,
+int sstStr01i_RemoveSpaces (int           iKey,
                        std::string  *txt1);
 
 //==============================================================================
 /**
 * @brief Remove ending spaces from string
 *
-* iStat = Str1i_RemoveEndingSpaces ( iKey, *oFmtInfo, *sZeile);
+* iStat = sstStr011i_RemoveEndingSpaces ( iKey, *oFmtInfo, *sZeile);
 *
 * More Comment
 *
@@ -2644,15 +2640,14 @@ int Stri_RemoveSpaces (int           iKey,
 * @date 03.07.14
 */
 //------------------------------------------------------------------------------
-int Str1i_RemoveEndingSpaces (int               iKey,
+int sstStr011i_RemoveEndingSpaces (int               iKey,
                               sstStr01IntCls *oFmtInfo,
                               std::string      *sZeile);
-//=============================================================================
 //==============================================================================
 /**
 * @brief Return next informationstring and ignore contents inside of brakes
 *
-* iStat = Str1i_IsDelimiter ( iKey, *Zeile, *cDelimit);
+* iStat = sstStr011i_IsDelimiter ( iKey, *Zeile, *cDelimit);
 *
 * More Comment
 *
@@ -2672,15 +2667,15 @@ int Str1i_RemoveEndingSpaces (int               iKey,
 * @date 16.02.10
 */
 //------------------------------------------------------------------------------
-int Str1i_IsDelimiter (int          iKey,
+int sstStr011i_IsDelimiter (int          iKey,
                        std::string *Zeile,
                        unsigned long         uPos,
                        char        *cDelimit);
-int Str1i_IsBrakeOpen (int            iKey,
+int sstStr011i_IsBrakeOpen (int            iKey,
                        std::string   *Zeile,
                        unsigned long  ulPos,
                        char          *cBrakeOpen);
-int Str1i_IsBrakeClose (int            iKey,
+int sstStr011i_IsBrakeClose (int            iKey,
                         std::string   *Zeile,
                         unsigned long  ulPos,
                         char          *cBrakeClose);
@@ -2688,7 +2683,7 @@ int Str1i_IsBrakeClose (int            iKey,
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.
 *
-* StartPos = Str_StartOfInfo ( Key, *Pos, *TrnZ, *Text);
+* StartPos = sstStr01_StartOfInfo ( Key, *Pos, *TrnZ, *Text);
 *
 * @param iKey [in] For the moment 0
 * @param Pos  [in] Suchen ab Position
@@ -2702,7 +2697,7 @@ int Str1i_IsBrakeClose (int            iKey,
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-unsigned long Str_StartOfInfo ( int             iKey,
+unsigned long sstStr01_StartOfInfo ( int             iKey,
                                 unsigned long   Pos,
                                 char           *TrnZ,
                                 std::string    *Text);
@@ -2742,7 +2737,7 @@ unsigned long Str_StartOfInfo ( int             iKey,
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-unsigned long Str_EndOfInfo ( int             iKey,
+unsigned long sstStr01_EndOfInfo ( int             iKey,
                               unsigned long   lPos,
                               char           *TrnZ,
                               std::string    *Text);
@@ -2750,7 +2745,7 @@ unsigned long Str_EndOfInfo ( int             iKey,
 /**
 * @brief Steht an Position Information im String ?
 *
-* iStat = Str_PosHasInfo ( Key, *TstStr, Pos, *InfoStr);
+* iStat = sstStr01_PosHasInfo ( Key, *TstStr, Pos, *InfoStr);
 *
 * Es wird der zu untersuchende String übergeben.
 * Dazu eine Positionsangabe zum String.
@@ -2780,7 +2775,7 @@ unsigned long Str_EndOfInfo ( int             iKey,
 * @date 08.09.00
 */
 //-----------------------------------------------------------------------------
-int Str_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
+int sstStr01_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
                        std::string *TstStr,   //   <-> Bearbeitungszeile
                        unsigned long  Pos,      // v <-> Position im TstStr 1..n
                        char *InfoStr); //   <-> String mit Info-Angaben
@@ -2788,7 +2783,7 @@ int Str_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
 /**
 * @brief In String durch Adresse und Länge bezeichneten Substring austauschen
 *
-* iStat = Str_SubS_Tausch ( iKey, *cWorkStr, *cOldStrAdr, *cNewStr);
+* iStat = sstStr01_SubS_Tausch ( iKey, *cWorkStr, *cOldStrAdr, *cNewStr);
 *
 * Es kann ein Austauschstring übergeben werden, sonst wird lediglich
 * der Substring aus dem String entfernt.
@@ -2817,19 +2812,19 @@ int Str_PosHasInfo ( int  Key,      // v  -> Vorerst immer 0
 * @date 23.03.01
 */
 //-----------------------------------------------------------------------------
-int Str_SubS_Tausch ( int           iKey,
+int sstStr01_SubS_Tausch ( int           iKey,
                       std::string  *cWorkStr,
                       std::string  *cOldStrAdr,
                       std::string  *cNewStr);
 //=============================================================================
-int Str1_Test_FuncInt (int iKey);
+int sstStr011_Test_FuncInt (int iKey);
 //=============================================================================
-int Str1_Csv_Test (int            iKey,
+int sstStr011_Csv_Test (int            iKey,
                    std::string   *sTstTxt,
                    std::string   *sErrTxt,
-                   StrDs_Csv_Cls *oCsvSet);
+                   sstStr01Ds_Csv_Cls *oCsvSet);
 //=============================================================================
-int Str1_GetNextBrakeInfo (int             iKey,
+int sstStr011_GetNextBrakeInfo (int             iKey,
                            std::string    *StrInfo,
                            unsigned long  *lStrPos,
                            char           *cBrakeOpen,
@@ -2838,7 +2833,7 @@ int Str1_GetNextBrakeInfo (int             iKey,
 //==============================================================================
 /**
 * @brief  // Get next string inside simple brackets <BR>
-* iStat = Str1_GetNextSBrakeInfo ( iKey, &oString, &ulStrPos, &cSBracket, &oStrResult);
+* iStat = sstStr011_GetNextSBrakeInfo ( iKey, &oString, &ulStrPos, &cSBracket, &oStrResult);
 *
 * For example return string "'xxx'" or "xxx" from string "ccc'xxx'777"  <BR>
 * iKey=0: Return with brackets, iKey=1: return without brackets
@@ -2864,7 +2859,7 @@ int Str1_GetNextBrakeInfo (int             iKey,
 * @date 09.07.15
 */
 //------------------------------------------------------------------------------
-int Str1_GetNextSBrakeInfo (int             iKey,
+int sstStr011_GetNextSBrakeInfo (int             iKey,
                             std::string    *oString,
                             unsigned long  *ulStrPos,
                             char           *cSBracket,

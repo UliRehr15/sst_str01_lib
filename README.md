@@ -1,5 +1,22 @@
 sstStr01Lib - sst String Processing Lib
 
+Import and Export of csv format files.
+
+for example create user record:
+double myDouble
+int    myInt
+char   myChar
+
+Create user csv import function:
+   sstStr01Import_to_double (record.mydouble)
+   sstStr01Import_to_int(record.myInt)
+   sstStr01Import_to_char(record.myChar)
+
+Create user csv Export function:
+   sstStr01Export_from_double (record.mydouble)
+   sstStr01Export_from_int(record.myInt)
+   sstStr01Export_from_char(record.myChar)
+
 Compile with QT 5.2 and QTCreator 3.0
 
 Structure of coding projects should be:
@@ -13,7 +30,8 @@ Structure of coding projects should be:
 12.02.2016: Version 1.2: Extend doxygen documentation.  <BR>
                          New function: Get String inside Brackets. <BR>
 04.03.2016: Version 1.3: Output select decimal floating point or comma.  <BR>
-21.03.2016: Version 1.4: Patch error in intern function Str1_GetNextSBrakeInfo.  <BR>
+21.03.2016: Version 1.4: Patch error in intern function sstStr011_GetNextSBrakeInfo.  <BR>
 17.05.2016: Version 1.5: Type definitions integer, double, char and so on.  <BR>
                          Class/Member definitions: name class, name member, type, width and Dec.  <BR>
+19.05.2016: Version 1.6: Improvements in namespace sstStr01.  <BR>
 

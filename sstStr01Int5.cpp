@@ -28,7 +28,7 @@
 //=============================================================================
 // Complete function description is in headerfile
 //-----------------------------------------------------------------------------
-int Str1i_IsBrakeOpen (int            iKey,
+int sstStr011i_IsBrakeOpen (int            iKey,
                        std::string   *Zeile,
                        unsigned long  ulPos,
                        char          *cBrakeOpen)
@@ -47,7 +47,7 @@ int Str1i_IsBrakeOpen (int            iKey,
 //=============================================================================
 // Complete function description is in headerfile
 //-----------------------------------------------------------------------------
-int Str1i_IsBrakeClose (int            iKey,
+int sstStr011i_IsBrakeClose (int            iKey,
                         std::string   *Zeile,
                         unsigned long  ulPos,
                         char          *cBrakeClose)
@@ -66,7 +66,7 @@ int Str1i_IsBrakeClose (int            iKey,
 //=============================================================================
 // Complete function description is in headerfile
 //-----------------------------------------------------------------------------
-int Str1i_IsDelimiter (int            iKey,
+int sstStr011i_IsDelimiter (int            iKey,
                        std::string   *Zeile,
                        unsigned long           lPos,
                        char          *cDelimit)
@@ -86,7 +86,7 @@ int Str1i_IsDelimiter (int            iKey,
 //=============================================================================
 // Complete function description is in headerfile
 //-----------------------------------------------------------------------------
-int Str1i_RemoveEndingSpaces (int               iKey,
+int sstStr011i_RemoveEndingSpaces (int               iKey,
                               sstStr01IntCls *oFmtInfo,
                               std::string      *sZeile)
 //-----------------------------------------------------------------------------
@@ -108,13 +108,13 @@ int Str1i_RemoveEndingSpaces (int               iKey,
   if (LenT1 < 1) return -1;  // no text
 
 
-  // ii = Str_StartOfInfo ( 0, 1, oFmtInfo->cNoInfo, sZeile->Txt);
+  // ii = sstStr01_StartOfInfo ( 0, 1, oFmtInfo->cNoInfo, sZeile->Txt);
   // if (ii>LenT1) return -1;  // Text complete empty
 
   // seach backwarts from LenT1
-  // jj = Str_EndOfInfo ( 1, LenT1, oFmtInfo->cNoInfo, sZeile->Txt);
-  // jj = Str1i_EndOfInfo ( 1, LenT1, oFmtInfo->cNoInfo, sZeile);
-  jj = Str1i_EndOfInfo ( 1, LenT1, oFmtInfo->GetNoInfoChar(), sZeile);
+  // jj = sstStr01_EndOfInfo ( 1, LenT1, oFmtInfo->cNoInfo, sZeile->Txt);
+  // jj = sstStr011i_EndOfInfo ( 1, LenT1, oFmtInfo->cNoInfo, sZeile);
+  jj = sstStr011i_EndOfInfo ( 1, LenT1, oFmtInfo->GetNoInfoChar(), sZeile);
 
   if (jj < LenT1)
   {
@@ -144,7 +144,7 @@ int Str1i_RemoveEndingSpaces (int               iKey,
   return iRet;
 }
 //=============================================================================
-int Stri_RemoveSpaces (int          iKey,
+int sstStr01i_RemoveSpaces (int          iKey,
                        std::string *txt1)    //   <-> Quelle ) // v  -> For the moment 0
 //-----------------------------------------------------------------------------
 {
@@ -165,11 +165,11 @@ int Stri_RemoveSpaces (int          iKey,
   if (LenT1 < 1) return -1;  // no text
 
 
-  ii = Str_StartOfInfo ( 0, 1, TrnZ, txt1);
+  ii = sstStr01_StartOfInfo ( 0, 1, TrnZ, txt1);
   if (ii>LenT1) return -1;  // Text complete empty
 
   // seach backwarts from LenT1
-  Str_EndOfInfo ( 1, LenT1, TrnZ, txt1);
+  sstStr01_EndOfInfo ( 1, LenT1, TrnZ, txt1);
 
   // txt2 = (char*) malloc(LenT1+1);
   // strcpy(txt2,txt1);
@@ -196,8 +196,8 @@ int Stri_RemoveSpaces (int          iKey,
 }
 //=============================================================================
 //$DA
-//$TOPIC Str_StartOfInfo
-unsigned long Str_StartOfInfo ( int  iKey,    // v  -> Vorerst immer 0
+//$TOPIC sstStr01_StartOfInfo
+unsigned long sstStr01_StartOfInfo ( int  iKey,    // v  -> Vorerst immer 0
                                 unsigned long  Pos,     //   <-> Suchen ab Position
                                 char *TrnZ,    //   <-> Trennzeichen
                                 std::string *Text)    //   <-> Prüf-Text
@@ -235,7 +235,7 @@ unsigned long Str_StartOfInfo ( int  iKey,    // v  -> Vorerst immer 0
   // Schleife über alle Buchstaben
   for ( ii = Pos; ii <= LenTxt; ii++)
   {
-    iStat = Str_PosHasInfo ( 0, Text, ii, TrnZ);
+    iStat = sstStr01_PosHasInfo ( 0, Text, ii, TrnZ);
     if (iStat == 1)
     {
       break;
@@ -284,7 +284,7 @@ unsigned long Str_StartOfInfo ( int  iKey,    // v  -> Vorerst immer 0
 * @date 14.07.00
 */
 //-----------------------------------------------------------------------------
-unsigned long Str_EndOfInfo ( int   iKey,     // v  -> 0 oder 1
+unsigned long sstStr01_EndOfInfo ( int   iKey,     // v  -> 0 oder 1
                      unsigned long  lPos,     // v  -> Suchen ab Position
                      char *NoInfoZ,  //   <-> NoInformation-Zeichen
                      std::string *Text)     //   <-> Prüf-Text
@@ -312,7 +312,7 @@ unsigned long Str_EndOfInfo ( int   iKey,     // v  -> 0 oder 1
     // im String text vorwärts Trennzeichen suchen
     for( ii = lPos; ii <= LenTxt; ii++)
     {
-      if (Str_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
+      if (sstStr01_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
     }
 
     if (ii > LenTxt+1)  return -1;   // keine Information im String
@@ -329,7 +329,7 @@ unsigned long Str_EndOfInfo ( int   iKey,     // v  -> 0 oder 1
     // im String text vorwärts Trennzeichen suchen
     for( ii = lPos; ii >= 1; ii--)
     {
-      if ( Str_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
+      if ( sstStr01_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
     }
 
     // if (ii <= 1)  return -1;   // keine Information im String
@@ -372,7 +372,7 @@ unsigned long Str_EndOfInfo ( int   iKey,     // v  -> 0 oder 1
 * @date 08.09.00
 */
 //-----------------------------------------------------------------------------
-int Str_PosHasInfo ( int  Key,       // v  -> Vorerst immer 0
+int sstStr01_PosHasInfo ( int  Key,       // v  -> Vorerst immer 0
                        std::string *TstStr,    //   <-> Bearbeitungszeile
                        unsigned long  Pos,       // v <-> Position im TstStr 1..n
                        char *NoInfoStr) //   <-> String mit NoInfo-Angaben
@@ -409,7 +409,7 @@ int Str_PosHasInfo ( int  Key,       // v  -> Vorerst immer 0
   return 1;
 }
 //=============================================================================
-int Str_SubS_Tausch ( int    iKey,      // v  -> Vorerst immer 0
+int sstStr01_SubS_Tausch ( int    iKey,      // v  -> Vorerst immer 0
                       std::string  *Text,      //   <-> Zu bearbeitender String
                       // int    TextLen,   // v  -> Speichergröße String
                       std::string  *SubStrAdr, // v  -> Anfang des Substrings

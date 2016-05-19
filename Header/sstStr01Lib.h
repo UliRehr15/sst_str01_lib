@@ -26,22 +26,22 @@
 
 // Defines ---------------------------------------------------------------------
 
-#define dSTR1_TEXTLEN   300  // temporary row length maximum
+#define dSSTSTR01_TEXTLEN   300  // temporary row length maximum
 
 
-#define CINT1_MIN         (-127-1)   // Minimum für Cint1
-#define CINT1_MAX           127      // Maximum für Cint1
-#define CUINT1_MAX          256U     // Maximum für Cuint1
+#define dSSTSTR01_CINT1_MIN         (-127-1)   // Minimum für Cint1
+#define dSSTSTR01_CINT1_MAX           127      // Maximum für Cint1
+#define dSSTSTR01_CUINT1_MAX          256U     // Maximum für Cuint1
 
-#define CINT2_MIN       (-32767-1)   // Minimum für Cint2
-#define CINT2_MAX         32767      // Maximum für Cint2
-#define CUINT2_MAX        65535U     // Maximum für Cuint2
+#define dSSTSTR01_CINT2_MIN       (-32767-1)   // Minimum für Cint2
+#define dSSTSTR01_CINT2_MAX         32767      // Maximum für Cint2
+#define dSSTSTR01_CUINT2_MAX        65535U     // Maximum für Cuint2
 
-#define CINT4_MIN  (-2147483647L-1)  // Minimum für Cint4
-#define CINT4_MAX    2147483647L     // Maximum für Cint4
-#define CUINT4_MAX   4294967295UL    // Maximum für Cuint4
+#define dSSTSTR01_CINT4_MIN  (-2147483647L-1)  // Minimum für Cint4
+#define dSSTSTR01_CINT4_MAX    2147483647L     // Maximum für Cint4
+#define dSSTSTR01_CUINT4_MAX   4294967295UL    // Maximum für Cuint4
 
-#define UNDEF_DOUBLE -999999999      // Undefine for Double
+#define dSSTSTR01_UNDEF_DOUBLE -999999999      // Undefine for Double
 
 //**************************************************************************
 
@@ -248,10 +248,10 @@ class sstStr01VarDefCls
      int Set_EleNam(std::string oEleNamStr);
      //==============================================================================
      /**
-     * @brief // set system naem in def type class <BR>
-     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     * @brief // set var type in def type class <BR>
+     * iStat = oVarDef.Set_Type ( eType);
      *
-     * @param oSysNamStr [in] For the moment 0
+     * @param eType [in] For the moment 0
      *
      * @return Errorstate
      *
@@ -262,10 +262,10 @@ class sstStr01VarDefCls
      int Set_Type(sstStr01VarType_enum eType);
      //==============================================================================
      /**
-     * @brief // set system naem in def type class <BR>
-     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     * @brief // set width in def type class <BR>
+     * iStat = oVarDef.Set_Width ( iWidth);
      *
-     * @param oSysNamStr [in] For the moment 0
+     * @param iWidth [in] For the moment 0
      *
      * @return Errorstate
      *
@@ -276,10 +276,10 @@ class sstStr01VarDefCls
      int Set_Width(int iWidth);
      //==============================================================================
      /**
-     * @brief // set system naem in def type class <BR>
-     * iStat = oVarDef.Set_SysNam(oSysNamStr);
+     * @brief // set dec in def type class <BR>
+     * iStat = oVarDef.Set_iDec( iDec);
      *
-     * @param oSysNamStr [in] For the moment 0
+     * @param iDec [in] For the moment 0
      *
      * @return Errorstate
      *
@@ -289,16 +289,58 @@ class sstStr01VarDefCls
      // ----------------------------------------------------------------------------
      int Set_Dec(int iDec);
      //==============================================================================
+     /**
+     * @brief // Get System Name from def type class <BR>
+     * oSysNamStr = oVarDef.Get_SysNam();
+     *
+     * @return string SysNam
+     */
+     // ----------------------------------------------------------------------------
      std::string Get_SysNam();
      //==============================================================================
+     /**
+     * @brief // Get class/object Name from def type class <BR>
+     * oObjNamStr = oVarDef.Get_ObjNam();
+     *
+     * @return string ObjNam
+     */
+     // ----------------------------------------------------------------------------
      std::string Get_ObjNam();
      //==============================================================================
+     /**
+     * @brief // Get variable/element Name from def type class <BR>
+     * oEleNamStr = oVarDef.Get_EleNam();
+     *
+     * @return string EleNam
+     */
+     // ----------------------------------------------------------------------------
      std::string Get_EleNam();
      //==============================================================================
+     /**
+     * @brief // Get variable type from def type class <BR>
+     * eVarType = oVarDef.Get_Type();
+     *
+     * @return enum type
+     */
+     // ----------------------------------------------------------------------------
      sstStr01VarType_enum Get_Type();
      //==============================================================================
+     /**
+     * @brief // Get width from def type class <BR>
+     * iWidth = oVarDef.Get_Width();
+     *
+     * @return int variable width
+     */
+     // ----------------------------------------------------------------------------
      int Get_Width();
      //==============================================================================
+     /**
+     * @brief // Get dec from def type class <BR>
+     * iDec = oVarDef.Get_Dec();
+     *
+     * @return string int dec
+     */
+     // ----------------------------------------------------------------------------
      int Get_Dec();
      //==============================================================================
 

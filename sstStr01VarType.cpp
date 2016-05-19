@@ -108,7 +108,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //  // Csv ab Position in String konvertieren.
 //  // Read System name
 //  // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
-//  iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+//  iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 
 //  if(iStat >= 0)
 //  {
@@ -116,7 +116,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    // strcpy(oStrType->cObjNam,sRetStr.Txt);
 //    // Read Class name
 //    // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
-//    iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+//    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 //  }
 
 //  if(iStat >= 0)
@@ -126,7 +126,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    // strcat(oStrType->cObjNam,sRetStr.Txt);
 //    // Read element name
 //    // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
-//    iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+//    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 //  }
 
 //  if(iStat >= 0)
@@ -134,7 +134,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    strcpy(oStrType->cEleNam,sRetStr.Txt);
 //    // Read element Type
 //    // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
-//    iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+//    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 //  }
 
 //  if (iStat >= 0)
@@ -148,7 +148,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    oStrType->eType = eLocType;
 //    // Read element width
 //    // iStat = Str1_AbPosCsv2Int2 ( 0, &TPos, sFilStr, sErrTxt, &iRet);
-//    iStat = Str1_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
+//    iStat = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
 //  }
 
 //  if(iStat >= 0)
@@ -156,7 +156,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    oStrType->iWidth = iRet;
 //    // Read element Dec
 //    // iStat = Str1_AbPosCsv2Int2 ( 0, &TPos, sFilStr, sErrTxt, &iRet);
-//    iStat = Str1_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
+//    iStat = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
 //  }
 
 //  if(iStat >= 0)
@@ -191,7 +191,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //  if ( iKey != 0) return -1;
 
 //  // Init Str1 object.
-//  iStat = Str1_Init ( 0, sExpStr);
+//  iStat = sstStr011_Init ( 0, sExpStr);
 
 //  // convert string value to csv-formatted string and append to string
 //  // Insert object name

@@ -133,14 +133,14 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
 
   // Csv ab Position in String konvertieren.
   // Read System name
-  iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+  iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 
   if(iStat >= 0)
   {
     // strncpy(oStrType->cSysNam,sRetStr.c_str(),dSST_STR01_VAR_NAM_LEN);
     oStrType->Set_SysNam(sRetStr);
     // Read Class name
-    iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
   }
 
   if(iStat >= 0)
@@ -148,7 +148,7 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // strncpy(oStrType->cObjNam,sRetStr.c_str(), dSST_STR01_VAR_NAM_LEN);
     oStrType->Set_ObjNam(sRetStr);
     // Read element name
-    iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
   }
 
   if(iStat >= 0)
@@ -156,7 +156,7 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // strncpy(oStrType->cEleNam,sRetStr.c_str(), dSST_STR01_VAR_NAM_LEN);
     oStrType->Set_EleNam(sRetStr);
     // Read element Type
-    iStat = Str1_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
   }
 
   if (iStat >= 0)
@@ -170,7 +170,7 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // oStrType->eType = eLocType;
     oStrType->Set_Type(eLocType);
     // Read element width
-    iStat = Str1_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
+    iStat = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
   }
 
   if(iStat >= 0)
@@ -178,7 +178,7 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // oStrType->iWidth = iRet;
     oStrType->Set_Width(iRet);
     // Read element Dec
-    iStat1 = Str1_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
+    iStat1 = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
   }
 
   if(iStat1 >= 0)
@@ -211,7 +211,7 @@ int sstStr01VarDefFncCls::WriteCSV(int            iKey,
   if ( iKey != 0) return -1;
 
   // Init Str1 object.
-  iStat = Str1_Init ( 0, sExpStr);
+  iStat = sstStr011_Init ( 0, sExpStr);
 
   // convert string value to csv-formatted string and append to string
   // Insert system name

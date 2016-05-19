@@ -26,7 +26,7 @@
 
 
 //=============================================================================
-int Str1i_LesTxtNach ( int          Key,     // v  -> Vorerst immer 0
+int sstStr011i_LesTxtNach ( int          Key,     // v  -> Vorerst immer 0
                        std::string *Zeile,   //   <-> Bearbeitungszeile
                        char        *TrennZ,  //   <-> String mit Trennzeichen
                        std::string *SuchStr, //   <-> Such-String
@@ -60,7 +60,7 @@ int Str1i_LesTxtNach ( int          Key,     // v  -> Vorerst immer 0
 
   // Position des Suchstrings ermitteln
   ii = 0;
-  iStat = Str1i_AdrHasPos ( 0, &ii, Zeile, SuchStr);
+  iStat = sstStr011i_AdrHasPos ( 0, &ii, Zeile, SuchStr);
   if (ii <= 0) return -1;
 
   // strcpy(NoInfoStr," (");  // Blank und KlammerAuf sind NoInfos
@@ -68,12 +68,12 @@ int Str1i_LesTxtNach ( int          Key,     // v  -> Vorerst immer 0
   // Nächste Information aus Text-Zeile in String umwandeln
   LenSuch = SuchStr->length();
   ii = ii + LenSuch;  // Position hinter Suchstring
-  iStat = Str1_AbPos2Str ( 0, &ii, TrennZ, Zeile, &ErrTxt, FindStr);
+  iStat = sstStr011_AbPos2Str ( 0, &ii, TrennZ, Zeile, &ErrTxt, FindStr);
 
   return iStat;
 }
 //=============================================================================
-int Str1i_PosHasInfo ( int          Key,       // v  -> Vorerst immer 0
+int sstStr011i_PosHasInfo ( int          Key,       // v  -> Vorerst immer 0
                        std::string *TstStr,    //   <-> Bearbeitungszeile
                        unsigned long         Pos,       // v <-> Position im TstStr 1..n
                        char *NoInfoStr) //   <-> String mit NoInfo-Angaben
@@ -113,7 +113,7 @@ int Str1i_PosHasInfo ( int          Key,       // v  -> Vorerst immer 0
   return 1;
 }
 //=============================================================================
-int Str1i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
+int sstStr011i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
                      std::string *TstStr,    //   <-> Bearbeitungszeile
                      unsigned long         Pos,       // v <-> Position im TstStr 1..n
                      char        *ZchStr)    //   <-> String mit Zeichen
@@ -153,7 +153,7 @@ int Str1i_PosIsZch ( int          Key,       // v  -> Vorerst immer 0
   return 0;      // Nein, keins der übergebenen Zeichen gefunden
 }
 //=============================================================================
-int Str1i_AdrHasPos ( int          Key,    // v  -> Vorerst immer 0
+int sstStr011i_AdrHasPos ( int          Key,    // v  -> Vorerst immer 0
                       unsigned long        *TPos,   //   <-> Position in Textzeile
                       std::string *Zeile,  //   <-> Textzeile
                       std::string *TAdr)   //   <-> Adresse in dieser Textzeile
@@ -197,7 +197,7 @@ int Str1i_AdrHasPos ( int          Key,    // v  -> Vorerst immer 0
   return iStat;
 }
 //=============================================================================
-int Str1i_AbPos_Int ( int          Key,    // v  -> Vorerst immer 0
+int sstStr011i_AbPos_Int ( int          Key,    // v  -> Vorerst immer 0
                       std::string *TAdr,   //   <-> Lesen ab Adresse in Zeile
                       // std::string *Zeile,  //   <-> Lese-String
                       std::string *ErrTxt, //   <-> Read-Error -bei Errtxt-
@@ -230,7 +230,7 @@ int Str1i_AbPos_Int ( int          Key,    // v  -> Vorerst immer 0
     tRet = tRet + TAdr->at(ii);
 
     // String direkt in Int2 konvertieren
-    istat = Str1i_Txt2Int ( 0, &tRet, iRet);
+    istat = sstStr011i_Txt2Int ( 0, &tRet, iRet);
     if (istat < 0) break;  // Text konnte nicht mehr interpretiert werden
   }
 
@@ -244,7 +244,7 @@ int Str1i_AbPos_Int ( int          Key,    // v  -> Vorerst immer 0
     // tRet.Txt[ii] = '\0';
     // tRet.AktLen = strlen(tRet.Txt);
     // String direkt in Int2 konvertieren
-    istat = Str1i_Txt2Int ( 0, &tRet, iRet);
+    istat = sstStr011i_Txt2Int ( 0, &tRet, iRet);
   }
 
   if(ii <= 0)
@@ -261,7 +261,7 @@ int Str1i_AbPos_Int ( int          Key,    // v  -> Vorerst immer 0
   return istat;
 }
 //=============================================================================
-int Str1i_AbPos_Dbl ( int          Key)    // v  -> Vorerst immer 0
+int sstStr011i_AbPos_Dbl ( int          Key)    // v  -> Vorerst immer 0
 //                      char        *TAdr,   //   <-> Lesen ab Adresse
 //                      std::string *Zeile,  //   <-> Lese-String
 //                      std::string *ErrTxt, //   <-> Read-Error -bei Errtxt-
@@ -406,7 +406,7 @@ int Str1_Char_Replace_c (int          Key,       // v  -> Vorerst immer 0
   return iRet;
 }
 //=============================================================================
-long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
+long sstStr011i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
                       unsigned long         Pos,      //   <-> Suchen ab Position
                       char        *TrnZ,     //   <-> Trennzeichen
                       std::string *Text)     //   <-> Prüf-Text
@@ -433,7 +433,7 @@ long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
   for ( ii = Pos; ii <= Text->length(); ii++)
   {
     // Steht im String an Position eins der übergebenen Zeichen?
-    iStat = Str1i_PosIsZch ( 0, Text, ii, TrnZ);
+    iStat = sstStr011i_PosIsZch ( 0, Text, ii, TrnZ);
     if ( iStat == 1)
     {
       break;  // Begrenzungszeichen gefunden, Ende der Suche
@@ -447,7 +447,7 @@ long Str1i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
   return StartPos;
 }
 //=============================================================================
-unsigned long Str1i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
+unsigned long sstStr011i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
                        unsigned long         Pos,      //   <-> Suchen ab Position
                        char        *NoInfoZ,  //   <-> NoInformation-Zeichen
                        std::string *Text)     //   <-> Prüf-Text
@@ -486,7 +486,7 @@ unsigned long Str1i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
     // im String text vorwärts Trennzeichen suchen
     for( ii = Pos; ii <= Text->length(); ii++)
     {
-      if (Str1i_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
+      if (sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
     }
 
     if (ii > Text->length() + 1)  return -1;   // keine Information im String
@@ -503,7 +503,7 @@ unsigned long Str1i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
     // im String text vorwärts Trennzeichen suchen
     for( ii = Pos; ii >= 1; ii--)
     {
-      if ( Str1i_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
+      if ( sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
     }
 
     if (ii < 1)  return -1;   // keine Information im String
@@ -513,7 +513,7 @@ unsigned long Str1i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
   return EndPos;
 }
 //=============================================================================
-long Str1i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
+long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
                         unsigned long         Pos,      //   <-> Suchen ab Position
                         char        *NoInfoZ,  //   <-> NoInformation-Zeichen
                         std::string *Text)     //   <-> Prüf-Text
@@ -552,7 +552,7 @@ long Str1i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
     // im String text vorwärts Trennzeichen suchen
     for( ii = Pos; ii <= Text->length(); ii++)
     {
-      if (Str1i_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
+      if (sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
     }
 
     if (ii > Text->length()+1)  return -1;   // keine Information im String
@@ -569,7 +569,7 @@ long Str1i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
     // im String text vorwärts Trennzeichen suchen
     for( ii = Pos; ii >= 1; ii--)
     {
-      if ( Str1i_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
+      if ( sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
     }
 
     if (ii < 1)  return -1;   // keine Information im String
@@ -579,7 +579,7 @@ long Str1i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
   return EndPos;
 }
 //=============================================================================
-long Str1i_StartOfInfo ( int          iKey,
+long sstStr011i_StartOfInfo ( int          iKey,
                          unsigned long         Pos,
                          char *TrnZ,
                          std::string *Text)
@@ -613,7 +613,7 @@ long Str1i_StartOfInfo ( int          iKey,
   // Schleife über alle Buchstaben
   for ( ii = Pos; ii <= Text->length(); ii++)
   {
-    iStat = Str1i_PosHasInfo ( 0, Text, ii, TrnZ);
+    iStat = sstStr011i_PosHasInfo ( 0, Text, ii, TrnZ);
     if (iStat == 1)
     {
       break;
@@ -627,7 +627,7 @@ long Str1i_StartOfInfo ( int          iKey,
   return StartPos;
 }
 //=============================================================================
-long Str1i_StartOfInfo2 ( int          iKey,
+long sstStr011i_StartOfInfo2 ( int          iKey,
                           unsigned long         Pos,
                           char        *TrnZ,
                           std::string *Text)
@@ -651,7 +651,7 @@ long Str1i_StartOfInfo2 ( int          iKey,
   // Schleife über alle Buchstaben
   for ( ii = Pos; ii <= Text->length(); ii++)
   {
-    iStat = Str1i_PosHasInfo ( 0, Text, ii, TrnZ);
+    iStat = sstStr011i_PosHasInfo ( 0, Text, ii, TrnZ);
     if (iStat == 1)
     {
       break;
@@ -665,7 +665,7 @@ long Str1i_StartOfInfo2 ( int          iKey,
   return StartPos;
 }
 //=============================================================================
-int Str1i_IsDigit ( int   Key,
+int sstStr011i_IsDigit ( int   Key,
                     char *Zeichen)
 //-----------------------------------------------------------------------------
 {
@@ -677,7 +677,7 @@ int Str1i_IsDigit ( int   Key,
   return 0;
 }
 //=============================================================================
-int Str1i_Txt2Int ( int          Key,     // v  -> Vorerst immer 0
+int sstStr011i_Txt2Int ( int          Key,     // v  -> Vorerst immer 0
                     std::string *LocInt,  //   <-> Konvertierungstext
                     int         *iRet)    //   <-> Result-Int2
 //-----------------------------------------------------------------------------
@@ -693,7 +693,7 @@ int Str1i_Txt2Int ( int          Key,     // v  -> Vorerst immer 0
   // Interne Funktion, keine Prüfung der Stringparameter
 
   // Is String to Int/LongInt convertible?
-  iStat = Str1i_IntConvertible ( 0, LocInt);
+  iStat = sstStr011i_IntConvertible ( 0, LocInt);
 
   if (iStat == 1)
   {
@@ -706,7 +706,7 @@ int Str1i_Txt2Int ( int          Key,     // v  -> Vorerst immer 0
   return iStat;
 }
 //=============================================================================
-int Str1i_Txt2UInt ( int            Key,      // v  -> Vorerst immer 0
+int sstStr011i_Txt2UInt ( int            Key,      // v  -> Vorerst immer 0
                      std::string   *LocInt,   //   <-> Konvertierungstext
                      unsigned int  *uiRet)    //   <-> Result-Int2
 //-----------------------------------------------------------------------------
@@ -722,7 +722,7 @@ int Str1i_Txt2UInt ( int            Key,      // v  -> Vorerst immer 0
   // Interne Funktion, keine Prüfung der Stringparameter
 
   // Is String to Int/LongInt convertible?
-  iStat = Str1i_IntConvertible ( 0, LocInt);
+  iStat = sstStr011i_IntConvertible ( 0, LocInt);
 
   if (iStat == 1)
   {
@@ -735,7 +735,7 @@ int Str1i_Txt2UInt ( int            Key,      // v  -> Vorerst immer 0
   return iStat;
 }
 //=============================================================================
-int Str1i_Txt2Int4 ( int          Key,     // v  -> Vorerst immer 0
+int sstStr011i_Txt2Int4 ( int          Key,     // v  -> Vorerst immer 0
                      std::string *LocInt,  //   <-> Konvertierungstext
                      long        *lRet)    //   <-> Result-Int2
 //-----------------------------------------------------------------------------
@@ -753,7 +753,7 @@ int Str1i_Txt2Int4 ( int          Key,     // v  -> Vorerst immer 0
   // Interne Funktion, keine Prüfung der Stringparameter
 
   // Is String to Int/LongInt convertible?
-  iStat = Str1i_IntConvertible ( 0, LocInt);
+  iStat = sstStr011i_IntConvertible ( 0, LocInt);
 
   if (iStat == 1)
   {
@@ -766,7 +766,7 @@ int Str1i_Txt2Int4 ( int          Key,     // v  -> Vorerst immer 0
   return iStat;
 }
 //=============================================================================
-int Str1i_Txt2UInt4 ( int             iKey,
+int sstStr011i_Txt2UInt4 ( int             iKey,
                       std::string    *LocInt,
                       unsigned long  *ulRet)
 //-----------------------------------------------------------------------------
@@ -784,7 +784,7 @@ int Str1i_Txt2UInt4 ( int             iKey,
   // Interne Funktion, keine Prüfung der Stringparameter
 
   // Is String to Int/LongInt convertible?
-  iStat = Str1i_IntConvertible ( 0, LocInt);
+  iStat = sstStr011i_IntConvertible ( 0, LocInt);
 
   if (iStat == 1)
   {
@@ -797,7 +797,7 @@ int Str1i_Txt2UInt4 ( int             iKey,
   return iStat;
 }
 //=============================================================================
-int Str1i_Txt2Real ( int          Key,
+int sstStr011i_Txt2Real ( int          Key,
                      std::string *LocReal,
                      float       *rRet)
 //-----------------------------------------------------------------------------
@@ -817,7 +817,7 @@ int Str1i_Txt2Real ( int          Key,
   // Interne Funktion, keine Prüfung der Stringparameter
 
   // Is String to Float/Double convertible?
-  iStat  = Str1_FloatConvertible ( 0, LocReal);
+  iStat  = sstStr011_FloatConvertible ( 0, LocReal);
   if(iStat == 1)
   {
     // String is convertible, go on!
@@ -842,7 +842,7 @@ int Str1i_Txt2Real ( int          Key,
   return iStat;
 }
 //=============================================================================
-int Str1i_Txt2Dbl ( int          Key,     // v  -> Vorerst immer 0
+int sstStr011i_Txt2Dbl ( int          Key,     // v  -> Vorerst immer 0
                     std::string *LocDbl,  //   <-> Konvertierungstext
                     double      *dRet)    //   <-> Result-Double
 //.............................................................................
@@ -860,7 +860,7 @@ int Str1i_Txt2Dbl ( int          Key,     // v  -> Vorerst immer 0
   // Interne Funktion, keine Prüfung der Stringparameter
 
   // Is String to Float/Double convertible?
-  iStat  = Str1_FloatConvertible ( 0, LocDbl);
+  iStat  = sstStr011_FloatConvertible ( 0, LocDbl);
   if(iStat == 1)
   {
     // String is convertible, go on!
@@ -882,7 +882,7 @@ int Str1i_Txt2Dbl ( int          Key,     // v  -> Vorerst immer 0
   return iStat;
 }
 //=============================================================================
-long Str1i_BeGrzFind ( int          Key,     // v  -> Vorerst immer 0
+long sstStr011i_BeGrzFind ( int          Key,     // v  -> Vorerst immer 0
                        unsigned long         Pos,     //   <-> Suchen ab Position
                        char        *BeGrzZ,  //   <-> Begrenzungszeichen
                        std::string *Text)    //   <-> Prüf-Text
@@ -908,7 +908,7 @@ long Str1i_BeGrzFind ( int          Key,     // v  -> Vorerst immer 0
   for ( ii = Pos; ii <= Text->length(); ii++)
   {
     // Steht im String an Position eins der übergebenen Zeichen?
-    iStat = Str1i_PosIsZch ( 0, Text, ii, BeGrzZ);
+    iStat = sstStr011i_PosIsZch ( 0, Text, ii, BeGrzZ);
     if ( iStat == 1)
     {
       break;  // Begrenzungszeichen gefunden, Ende der Suche
@@ -922,7 +922,7 @@ long Str1i_BeGrzFind ( int          Key,     // v  -> Vorerst immer 0
   return StartPos;
 }
 //=============================================================================
-int Str1i_IntConvertible (int          iKey,
+int sstStr011i_IntConvertible (int          iKey,
                           std::string *LocInt)
 //-----------------------------------------------------------------------------
 {
@@ -938,7 +938,7 @@ int Str1i_IntConvertible (int          iKey,
 
   for ( unsigned long ii=1; ii<=LocInt->length(); ii++)
   {
-    if ( !(Str1i_IsDigit( 0, &LocInt->at(ii-1)) ) )
+    if ( !(sstStr011i_IsDigit( 0, &LocInt->at(ii-1)) ) )
     {
       // Nicht-Zahl gefunden
       if ( (LocInt->at(ii-1) != '+') &&
@@ -968,7 +968,7 @@ int Str1i_IntConvertible (int          iKey,
   return 1;
 }
 //=============================================================================
-int Str1_FloatConvertible (int          iKey,
+int sstStr011_FloatConvertible (int          iKey,
                            std::string *LocReal)
 //-----------------------------------------------------------------------------
 {
@@ -977,7 +977,7 @@ int Str1_FloatConvertible (int          iKey,
 
   for (unsigned long ii=1; ii<=LocReal->length(); ii++)
   {
-    if ( !(Str1i_IsDigit( 0, &LocReal->at(ii-1)) ) )
+    if ( !(sstStr011i_IsDigit( 0, &LocReal->at(ii-1)) ) )
     {
       // Nicht-Zahl gefunden
         if ( LocReal->at(ii-1) == ',')

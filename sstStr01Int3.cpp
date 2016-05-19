@@ -48,19 +48,19 @@ int Str1_GetNextInfo (int            iKey,
 
   for ( ii = *lStrPos; ii <= lLen; ii++)
   {
-      if ( Str1i_IsBrakeOpen( 0, Zeile, ii, cBrakeOpen))
+      if ( sstStr011i_IsBrakeOpen( 0, Zeile, ii, cBrakeOpen))
       {
 
           iBrakeOpen++;
       }
 
-      else if ( Str1i_IsBrakeClose ( 0, Zeile, ii, cBrakeClose))
+      else if ( sstStr011i_IsBrakeClose ( 0, Zeile, ii, cBrakeClose))
       {
 
           iBrakeOpen--;
       }
 
-      else if ( iBrakeOpen==0 && Str1i_IsDelimiter ( 0, Zeile, ii, cDelimit))
+      else if ( iBrakeOpen==0 && sstStr011i_IsDelimiter ( 0, Zeile, ii, cDelimit))
       {
 
           break;
@@ -72,7 +72,7 @@ int Str1_GetNextInfo (int            iKey,
   }
 
   // Teil von String1 nach String2 kopieren.
-  iStat = Str1_Zeile2Str ( 0, *lStrPos, ii, Zeile, &ErrTxt, sTag);
+  iStat = sstStr011_Zeile2Str ( 0, *lStrPos, ii, Zeile, &ErrTxt, sTag);
 
   *lStrPos = ii +1;
 
@@ -111,19 +111,19 @@ int Str1_GetNextPosBracket (int            iKey,
 
   for ( ii = *lStrPos; ii <= lLen; ii++)
   {
-      if ( Str1i_IsBrakeOpen( 0, Zeile, ii, cBrakeOpen))
+      if ( sstStr011i_IsBrakeOpen( 0, Zeile, ii, cBrakeOpen))
       {
 
           iBrakeOpen++;
       }
 
-      else if ( Str1i_IsBrakeClose ( 0, Zeile, ii, cBrakeClose))
+      else if ( sstStr011i_IsBrakeClose ( 0, Zeile, ii, cBrakeClose))
       {
 
           iBrakeOpen--;
       }
 
-      else if ( iBrakeOpen==0 && Str1i_IsDelimiter ( 0, Zeile, ii, cDelimit))
+      else if ( iBrakeOpen==0 && sstStr011i_IsDelimiter ( 0, Zeile, ii, cDelimit))
       {
 
           break;
@@ -135,7 +135,7 @@ int Str1_GetNextPosBracket (int            iKey,
   }
 
   // Teil von String1 nach String2 kopieren.
-  // iStat = Str1_Zeile2Str ( 0, *lStrPos, ii, Zeile, &ErrTxt, sTag);
+  // iStat = sstStr011_Zeile2Str ( 0, *lStrPos, ii, Zeile, &ErrTxt, sTag);
 
   *lStrPos = ii +1;
 
@@ -173,10 +173,10 @@ int Str1_GetNextPosSBracket (int            iKey,
 
   for ( ii = *lStrPos; ii <= lLen; ii++)
   {
-      if ( Str1i_IsBrakeOpen( 0, Zeile, ii, cBrakeOpen))
+      if ( sstStr011i_IsBrakeOpen( 0, Zeile, ii, cBrakeOpen))
       {
 
-          if ( Str1i_IsBrakeOpen( 0, Zeile, ii+1, cBrakeOpen))
+          if ( sstStr011i_IsBrakeOpen( 0, Zeile, ii+1, cBrakeOpen))
           {
 
               if (iInsideBracket == 0)
@@ -200,7 +200,7 @@ int Str1_GetNextPosSBracket (int            iKey,
 
       }
 
-      else if ( Str1i_IsDelimiter ( 0, Zeile, ii, cDelimit) && iInsideBracket == 0)
+      else if ( sstStr011i_IsDelimiter ( 0, Zeile, ii, cDelimit) && iInsideBracket == 0)
       {
           // if delimiter found and not inside brackets
           iDelimitFound = 1;
@@ -213,7 +213,7 @@ int Str1_GetNextPosSBracket (int            iKey,
   }
 
   // Teil von String1 nach String2 kopieren.
-  // iStat = Str1_Zeile2Str ( 0, *lStrPos, ii, Zeile, &ErrTxt, sTag);
+  // iStat = sstStr011_Zeile2Str ( 0, *lStrPos, ii, Zeile, &ErrTxt, sTag);
 
   if (iDelimitFound == 1)
   {
@@ -239,7 +239,7 @@ int Str1_GetNextPosSBracket (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_GetNextBrakeInfo (int             iKey,
+int sstStr011_GetNextBrakeInfo (int             iKey,
                            std::string    *StrInfo,
                            unsigned long  *lStrPos,
                            char           *cBrakeOpen,
@@ -261,14 +261,14 @@ int Str1_GetNextBrakeInfo (int             iKey,
 
   for ( ii = *lStrPos; ii <= lLen; ii++)
   {
-      if ( Str1i_IsBrakeOpen( 0, StrInfo, ii, cBrakeOpen))
+      if ( sstStr011i_IsBrakeOpen( 0, StrInfo, ii, cBrakeOpen))
       {
 
           iBrakeOpen++;
           if (iBrakeOpen==1) lStartBreak=ii;
       }
 
-      else if ( Str1i_IsBrakeClose ( 0, StrInfo, ii, cBrakeClose))
+      else if ( sstStr011i_IsBrakeClose ( 0, StrInfo, ii, cBrakeClose))
       {
 
           iBrakeOpen--;
@@ -284,9 +284,9 @@ int Str1_GetNextBrakeInfo (int             iKey,
 
   if (iKey == 0)
   // Teil von String1 nach String2 kopieren.
-      iStat = Str1_Zeile2Str ( 0, lStartBreak, ii, StrInfo, &ErrTxt, sTag);
+      iStat = sstStr011_Zeile2Str ( 0, lStartBreak, ii, StrInfo, &ErrTxt, sTag);
   else
-      iStat = Str1_Zeile2Str ( 0, lStartBreak+1, ii-1, StrInfo, &ErrTxt, sTag);
+      iStat = sstStr011_Zeile2Str ( 0, lStartBreak+1, ii-1, StrInfo, &ErrTxt, sTag);
 
 
   *lStrPos = ii+1;
@@ -304,7 +304,7 @@ int Str1_GetNextBrakeInfo (int             iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_GetNextSBrakeInfo (int             iKey,
+int sstStr011_GetNextSBrakeInfo (int             iKey,
                             std::string    *StrInfo,
                             unsigned long  *lStrPos,
                             char           *cSBrake,
@@ -338,7 +338,7 @@ int Str1_GetNextSBrakeInfo (int             iKey,
 
   for ( ii = *lStrPos; ii <= lLen; ii++)
   {
-    if ( Str1i_IsBrakeOpen( 0, StrInfo, ii, cSBrake))
+    if ( sstStr011i_IsBrakeOpen( 0, StrInfo, ii, cSBrake))
     {
       // yes, char is bracket
       if (!bBracketOpen)
@@ -380,7 +380,7 @@ int Str1_GetNextSBrakeInfo (int             iKey,
   }
 
   // Teil von String1 nach String2 kopieren.
-  iStat = Str1_Zeile2Str ( 0, lStartBracket, lStopBracket, &OldTxt, &ErrTxt, sTag);
+  iStat = sstStr011_Zeile2Str ( 0, lStartBracket, lStopBracket, &OldTxt, &ErrTxt, sTag);
   assert(iStat >= 0);
 
   *lStrPos = ii;
@@ -401,7 +401,7 @@ int Str1_CopyStr (int            iKey,
 
   lStrLen = strlen(CopyStr);
 
-  if (lStrLen > dSTR1_TEXTLEN) return -2;
+  if (lStrLen > dSSTSTR01_TEXTLEN) return -2;
 
   *StrInfo = CopyStr;  // ->Txt,CopyStr);
   // StrInfo->AktLen = lStrLen;
@@ -419,7 +419,7 @@ int Str1_CopyStr (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1Cpy (int            iKey,
+int sstStr011Cpy (int            iKey,
              std::string   *StrInfo,
              char          *CopyStr)
 //-----------------------------------------------------------------------------
@@ -433,9 +433,9 @@ int Str1Cpy (int            iKey,
   lStrLen = strlen(CopyStr);
 
   if (lStrLen < 0) return -2;
-  if (lStrLen >= dSTR1_TEXTLEN) return -3;
+  if (lStrLen >= dSSTSTR01_TEXTLEN) return -3;
 
-  *StrInfo = CopyStr; // , dSTR1_TEXTLEN-1);
+  *StrInfo = CopyStr; // , dSSTSTR01_TEXTLEN-1);
   // StrInfo->AktLen = lStrLen;
   // StrInfo->AktLen = strlen(StrInfo->Txt);
 
@@ -452,7 +452,7 @@ int Str1Cpy (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1Cat (int            iKey,
+int sstStr011Cat (int            iKey,
              std::string   *StrInfo,
              const char          *cCatChar)
 //-----------------------------------------------------------------------------
@@ -466,10 +466,10 @@ int Str1Cat (int            iKey,
   lStrLen = strlen(cCatChar);
 
   if (lStrLen <= 0) return -2;
-  // if ((StrInfo->AktLen+lStrLen) >= dSTR1_TEXTLEN) return -3;
+  // if ((StrInfo->AktLen+lStrLen) >= dSSTSTR01_TEXTLEN) return -3;
 
-  // strncat(StrInfo->Txt, cCatChar, dSTR1_TEXTLEN-1);
-  *StrInfo = *StrInfo + cCatChar;  // , dSTR1_TEXTLEN-1);
+  // strncat(StrInfo->Txt, cCatChar, dSSTSTR01_TEXTLEN-1);
+  *StrInfo = *StrInfo + cCatChar;  // , dSSTSTR01_TEXTLEN-1);
   // StrInfo->AktLen = StrInfo->AktLen + lStrLen;
   // StrInfo->AktLen = strlen(StrInfo->Txt);
 
@@ -486,7 +486,7 @@ int Str1Cat (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2StrBrk (int            iKey,
+int sstStr011_AbPos2StrBrk (int            iKey,
                        std::string   *Zeile,
                        unsigned long          *lStrPos,
                        char          *cDelimit,
@@ -515,10 +515,10 @@ int Str1_AbPos2StrBrk (int            iKey,
   lStrPosStop = *lStrPos;
 
   // Teil von String1 nach String2 kopieren.
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart, lStrPosStop-2, Zeile, &sErrTxt, sTag);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart, lStrPosStop-2, Zeile, &sErrTxt, sTag);
 
   // Return from next informationstring contents inside of brakes
-  // iStat = Str1_GetNextBrakeInfo ( 1, &sPart, &lTPos, cBrakeOpen, cBrakeClose, sTag);
+  // iStat = sstStr011_GetNextBrakeInfo ( 1, &sPart, &lTPos, cBrakeOpen, cBrakeClose, sTag);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -533,7 +533,7 @@ int Str1_AbPos2StrBrk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2IntBrk (int            iKey,
+int sstStr011_AbPos2IntBrk (int            iKey,
                        std::string   *Zeile,
                        unsigned long          *lStrPos,
                        char          *cDelimit,
@@ -564,14 +564,14 @@ int Str1_AbPos2IntBrk (int            iKey,
   lStrPosStop = *lStrPos;
 
   // Teil von String1 nach String2 kopieren.
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart, lStrPosStop-2, Zeile, &sErrTxt, &sPart);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart, lStrPosStop-2, Zeile, &sErrTxt, &sPart);
 
   // Return from next informationstring contents inside of brakes
-  iStat = Str1_GetNextBrakeInfo ( 1, &sPart, &lTPos, cBrakeOpen, cBrakeClose, &sTag);
+  iStat = sstStr011_GetNextBrakeInfo ( 1, &sPart, &lTPos, cBrakeOpen, cBrakeClose, &sTag);
 
   // Nächste Information aus Text-Zeile in Int2 umwandeln.
   lTPos = 1;
-  iStat = Str1_AbPos2Int ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, iReturn);
+  iStat = sstStr011_AbPos2Int ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, iReturn);
 
 
   // Fatal Errors goes to an assert
@@ -587,7 +587,7 @@ int Str1_AbPos2IntBrk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2Int4Brk (int            iKey,
+int sstStr011_AbPos2Int4Brk (int            iKey,
                         std::string   *Zeile,
                         unsigned long          *lStrPos,
                         char          *cDelimit,
@@ -616,14 +616,14 @@ int Str1_AbPos2Int4Brk (int            iKey,
   lStrPosStop = *lStrPos;
 
   // Teil von String1 nach String2 kopieren.
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart, lStrPosStop-2, Zeile, &sErrTxt, &sPart);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart, lStrPosStop-2, Zeile, &sErrTxt, &sPart);
 
   // Return from next informationstring contents inside of brakes
-  iStat = Str1_GetNextBrakeInfo ( 1, &sPart, &lTPos, cBrakeOpen, cBrakeClose, &sTag);
+  iStat = sstStr011_GetNextBrakeInfo ( 1, &sPart, &lTPos, cBrakeOpen, cBrakeClose, &sTag);
 
   // Nächste Information aus Text-Zeile in Int2 umwandeln.
   lTPos = 1;
-  iStat = Str1_AbPos2Int4 ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, lReturn);
+  iStat = sstStr011_AbPos2Int4 ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, lReturn);
 
 
   // Fatal Errors goes to an assert
@@ -639,7 +639,7 @@ int Str1_AbPos2Int4Brk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2StrSBrk (int             iKey,
+int sstStr011_AbPos2StrSBrk (int             iKey,
                         std::string    *Zeile,
                         unsigned long  *lStrPos,
                         char           *cDelimit,
@@ -660,8 +660,8 @@ int Str1_AbPos2StrSBrk (int             iKey,
   lStrPosStart = *lStrPos;  // Delimiter
   *lStrPos = *lStrPos +1;   // Open Brake
 
-  iStat = Str1_Init(0,&sPart);
-  iStat = Str1_Init(0,&sErrTxt);
+  iStat = sstStr011_Init(0,&sPart);
+  iStat = sstStr011_Init(0,&sErrTxt);
 
   // Return next informationstring and ignore contents inside of small brackets
   iStat = Str1_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
@@ -672,11 +672,11 @@ int Str1_AbPos2StrSBrk (int             iKey,
   // lStrPosNeu is next position after Delimiter
   // lStrPosNeu-1 is Delimiter
   // lStrPosNeu-2 is last Informatin before Delimiter
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
 
   // Return from next informationstring contents inside of small brackets
   // For Example 'Text'
-  iStat = Str1_GetNextSBrakeInfo ( 1, &sPart, &lStrPosLoc, cSBrake, sTag);
+  iStat = sstStr011_GetNextSBrakeInfo ( 1, &sPart, &lStrPosLoc, cSBrake, sTag);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -691,7 +691,7 @@ int Str1_AbPos2StrSBrk (int             iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2IntSBrk (int            iKey,
+int sstStr011_AbPos2IntSBrk (int            iKey,
                         std::string   *Zeile,
                         unsigned long          *lStrPos,
                         char          *cDelimit,
@@ -722,15 +722,15 @@ int Str1_AbPos2IntSBrk (int            iKey,
   // lStrPosNeu is next position after Delimiter
   // lStrPosNeu-1 is Delimiter
   // lStrPosNeu-2 is last Informatin before Delimiter
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
 
   // Return from next informationstring contents inside of small brackets
   // iKey=1: Remove Brackets
-  iStat = Str1_GetNextSBrakeInfo ( 1, &sPart, &lTPos, cSBrake, &sTag);
+  iStat = sstStr011_GetNextSBrakeInfo ( 1, &sPart, &lTPos, cSBrake, &sTag);
 
   // Nächste Information aus Text-Zeile in Int2 umwandeln.
   lTPos = 0;
-  iStat = Str1_AbPos2Int ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, iReturn);
+  iStat = sstStr011_AbPos2Int ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, iReturn);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -745,7 +745,7 @@ int Str1_AbPos2IntSBrk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2Int4SBrk (int            iKey,
+int sstStr011_AbPos2Int4SBrk (int            iKey,
                          std::string   *Zeile,
                          unsigned long          *lStrPos,
                          char          *cDelimit,
@@ -776,15 +776,15 @@ int Str1_AbPos2Int4SBrk (int            iKey,
   // lStrPosNeu is next position after Delimiter
   // lStrPosNeu-1 is Delimiter
   // lStrPosNeu-2 is last Informatin before Delimiter
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
 
   // Return from next informationstring contents inside of small brackets
   // iKey=1: Remove Brackets
-  iStat = Str1_GetNextSBrakeInfo ( 1, &sPart, &lTPos, cSBrake, &sTag);
+  iStat = sstStr011_GetNextSBrakeInfo ( 1, &sPart, &lTPos, cSBrake, &sTag);
 
   // Nächste Information aus Text-Zeile in Int2 umwandeln.
   lTPos = 0;
-  iStat = Str1_AbPos2Int4 ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, lReturn);
+  iStat = sstStr011_AbPos2Int4 ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, lReturn);
 
 
   // Fatal Errors goes to an assert
@@ -800,7 +800,7 @@ int Str1_AbPos2Int4SBrk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPos2DblSBrk (int            iKey,
+int sstStr011_AbPos2DblSBrk (int            iKey,
                         std::string   *Zeile,
                         unsigned long          *lStrPos,
                         char          *cDelimit,
@@ -831,14 +831,14 @@ int Str1_AbPos2DblSBrk (int            iKey,
   // lStrPosNeu is next position after Delimiter
   // lStrPosNeu-1 is Delimiter
   // lStrPosNeu-2 is last Informatin before Delimiter
-  iStat = Str1_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
+  iStat = sstStr011_Zeile2Str ( 0, lStrPosStart+1, lStrPosStop-1, Zeile, &sErrTxt, &sPart);
 
   // Return from next informationstring contents inside of small brackets
   // iKey=1: Remove Brackets
-  iStat = Str1_GetNextSBrakeInfo ( 1, &sPart, &lTPos, cSBrake, &sTag);
+  iStat = sstStr011_GetNextSBrakeInfo ( 1, &sPart, &lTPos, cSBrake, &sTag);
 
   lTPos = 0;
-  iStat = Str1_AbPos2Dbl ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, dReturn);
+  iStat = sstStr011_AbPos2Dbl ( 0, &lTPos, cDelimit, &sTag, &sErrTxt, dReturn);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -853,7 +853,7 @@ int Str1_AbPos2DblSBrk (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_Init (int            iKey,
+int sstStr011_Init (int            iKey,
                std::string   *sZeile)
 //-----------------------------------------------------------------------------
 {
@@ -862,7 +862,7 @@ int Str1_Init (int            iKey,
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
-  // memset(sZeile->Txt,0,dSTR1_TEXTLEN);
+  // memset(sZeile->Txt,0,dSSTSTR01_TEXTLEN);
   sZeile->clear();
   // sZeile->Txt[0] = 0;
   // sZeile->AktLen = 0;

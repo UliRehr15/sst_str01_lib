@@ -32,7 +32,7 @@ int sstStr01_DoSomeInternTests (int iKey)
 //  long TPos=0;
   std::string oZeile;
   std::string oErrTxt;
-  StrDs_Csv_Cls oCsvSet;
+  sstStr01Ds_Csv_Cls oCsvSet;
 //  int iRetVal=0;
 
   int iRet  = 0;
@@ -41,7 +41,7 @@ int sstStr01_DoSomeInternTests (int iKey)
   if ( iKey != 0) return -1;
 
   // Do more intern Tests
-  iStat = Str1_Test_FuncInt ( 0);
+  iStat = sstStr011_Test_FuncInt ( 0);
   assert(iStat >= 0);
 
   oCsvSet.bVal = 0;
@@ -56,12 +56,12 @@ int sstStr01_DoSomeInternTests (int iKey)
 
   oZeile ="  800 ;  3100  ; 23,5;  -345,576; Aufnahmepunkt";
 
-  iStat = Str1_Csv_Test ( 0, &oZeile, &oErrTxt, &oCsvSet);
+  iStat = sstStr011_Csv_Test ( 0, &oZeile, &oErrTxt, &oCsvSet);
   assert(iStat >= 0);
   assert(oCsvSet.iRetInt == 800);
   assert(oCsvSet.lRetLong == 3100);
 
-  StrDs_CsvFnc_Cls oTestCsv;
+  sstStr01Ds_CsvFnc_Cls oTestCsv;
   std::string oCsvTestStr;
   std::string oErrStr;
   std::string oResultStr;

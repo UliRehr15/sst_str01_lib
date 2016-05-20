@@ -275,7 +275,7 @@ int sstStr011i_AbPos_Dbl ( int          Key)    // v  -> Vorerst immer 0
   return istat;
 }
 //=============================================================================
-int Str1_SubS_Tausch ( int          Key,       // v  -> Vorerst immer 0
+int sstStr011_SubS_Tausch ( int          Key,       // v  -> Vorerst immer 0
                        std::string *Text,      //   <-> Zu bearbeitender String
                        // int          TextLen,   // v  -> Speichergröße String
                        std::string     *SubStrAdr, // v  -> Anfang des Substrings
@@ -355,7 +355,7 @@ int Str1_SubS_Tausch ( int          Key,       // v  -> Vorerst immer 0
   return istat;
 }
 //=============================================================================
-int Str1_Char_Replace_c (int          Key,       // v  -> Vorerst immer 0
+int sstStr011_Char_Replace_c (int          Key,       // v  -> Vorerst immer 0
                          char         OldChar,   //    -> Zu ersetzendes Zeichen
                          char         NewChar,   //    -> Ersatzzeichen
                          std::string *Text)      //   <-> Zu bearbeitender String

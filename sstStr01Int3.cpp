@@ -26,7 +26,7 @@
 
 
 //=============================================================================
-int Str1_GetNextInfo (int            iKey,
+int sstStr011_GetNextInfo (int            iKey,
                       std::string   *Zeile,
                       long          *lStrPos,
                       char          *cDelimit,
@@ -90,7 +90,7 @@ int Str1_GetNextInfo (int            iKey,
 }
 
 //=============================================================================
-int Str1_GetNextPosBracket (int            iKey,
+int sstStr011_GetNextPosBracket (int            iKey,
                             std::string   *Zeile,
                             unsigned long          *lStrPos,
                             char          *cDelimit,
@@ -152,7 +152,7 @@ int Str1_GetNextPosBracket (int            iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_GetNextPosSBracket (int            iKey,
+int sstStr011_GetNextPosSBracket (int            iKey,
                              std::string   *Zeile,
                              unsigned long          *lStrPos,
                              char          *cDelimit,
@@ -388,7 +388,7 @@ int sstStr011_GetNextSBrakeInfo (int             iKey,
   return 1;
 }
 //=============================================================================
-int Str1_CopyStr (int            iKey,
+int sstStr011_CopyStr (int            iKey,
                   std::string   *StrInfo,
                   char          *CopyStr)
 //-----------------------------------------------------------------------------
@@ -509,8 +509,8 @@ int sstStr011_AbPos2StrBrk (int            iKey,
   lStrPosStart = *lStrPos;
 
   // Return next informationstring and ignore contents inside of brakes
-  // iStat = Str1_GetNextInfo ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose, sTag);
-  iStat = Str1_GetNextPosBracket ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose);
+  // iStat = sstStr011_GetNextInfo ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose, sTag);
+  iStat = sstStr011_GetNextPosBracket ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose);
 
   lStrPosStop = *lStrPos;
 
@@ -558,8 +558,8 @@ int sstStr011_AbPos2IntBrk (int            iKey,
   lStrPosStart = *lStrPos;
 
   // Return next informationstring and ignore contents inside of brakes
-  // iStat = Str1_GetNextInfo ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose, sTag);
-  iStat = Str1_GetNextPosBracket ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose);
+  // iStat = sstStr011_GetNextInfo ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose, sTag);
+  iStat = sstStr011_GetNextPosBracket ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose);
 
   lStrPosStop = *lStrPos;
 
@@ -610,8 +610,8 @@ int sstStr011_AbPos2Int4Brk (int            iKey,
   lStrPosStart = *lStrPos;
 
   // Return next informationstring and ignore contents inside of brakes
-  // iStat = Str1_GetNextInfo ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose, sTag);
-  iStat = Str1_GetNextPosBracket ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose);
+  // iStat = sstStr011_GetNextInfo ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose, sTag);
+  iStat = sstStr011_GetNextPosBracket ( 0, Zeile, lStrPos, cDelimit, cBrakeOpen, cBrakeClose);
 
   lStrPosStop = *lStrPos;
 
@@ -664,7 +664,7 @@ int sstStr011_AbPos2StrSBrk (int             iKey,
   iStat = sstStr011_Init(0,&sErrTxt);
 
   // Return next informationstring and ignore contents inside of small brackets
-  iStat = Str1_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
+  iStat = sstStr011_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
 
   lStrPosStop = *lStrPos;  // Delimiter
 
@@ -714,7 +714,7 @@ int sstStr011_AbPos2IntSBrk (int            iKey,
   *lStrPos = *lStrPos +1;   // Open Brake
 
   // Return next informationstring and ignore contents inside of small brackets
-  iStat = Str1_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
+  iStat = sstStr011_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
 
   lStrPosStop = *lStrPos;
 
@@ -768,7 +768,7 @@ int sstStr011_AbPos2Int4SBrk (int            iKey,
   *lStrPos = *lStrPos +1;   // Open Brake
 
   // Return next informationstring and ignore contents inside of small brackets
-  iStat = Str1_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
+  iStat = sstStr011_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
 
   lStrPosStop = *lStrPos;
 
@@ -823,7 +823,7 @@ int sstStr011_AbPos2DblSBrk (int            iKey,
   *lStrPos = *lStrPos +1;   // Open Brake
 
   // Return next informationstring and ignore contents inside of small brackets
-  iStat = Str1_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
+  iStat = sstStr011_GetNextPosSBracket ( 0, Zeile, lStrPos, cDelimit, cSBrake);
 
   lStrPosStop = *lStrPos;
 

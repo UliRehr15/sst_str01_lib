@@ -107,7 +107,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 
 //  // Csv ab Position in String konvertieren.
 //  // Read System name
-//  // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
+//  // iStat = sstStr011_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
 //  iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 
 //  if(iStat >= 0)
@@ -115,7 +115,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    strcpy(oStrType->cSysNam,sRetStr.Txt);
 //    // strcpy(oStrType->cObjNam,sRetStr.Txt);
 //    // Read Class name
-//    // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
+//    // iStat = sstStr011_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
 //    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 //  }
 
@@ -125,7 +125,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //    // strcat(oStrType->cObjNam,"_");
 //    // strcat(oStrType->cObjNam,sRetStr.Txt);
 //    // Read element name
-//    // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
+//    // iStat = sstStr011_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
 //    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 //  }
 
@@ -133,7 +133,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //  {
 //    strcpy(oStrType->cEleNam,sRetStr.Txt);
 //    // Read element Type
-//    // iStat = Str1_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
+//    // iStat = sstStr011_AbPosCsv2Str ( 0, &TPos, sFilStr, sErrTxt, &sRetStr);
 //    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
 //  }
 
@@ -147,7 +147,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 
 //    oStrType->eType = eLocType;
 //    // Read element width
-//    // iStat = Str1_AbPosCsv2Int2 ( 0, &TPos, sFilStr, sErrTxt, &iRet);
+//    // iStat = sstStr011_AbPosCsv2Int2 ( 0, &TPos, sFilStr, sErrTxt, &iRet);
 //    iStat = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
 //  }
 
@@ -155,7 +155,7 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //  {
 //    oStrType->iWidth = iRet;
 //    // Read element Dec
-//    // iStat = Str1_AbPosCsv2Int2 ( 0, &TPos, sFilStr, sErrTxt, &iRet);
+//    // iStat = sstStr011_AbPosCsv2Int2 ( 0, &TPos, sFilStr, sErrTxt, &iRet);
 //    iStat = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
 //  }
 
@@ -195,15 +195,15 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 
 //  // convert string value to csv-formatted string and append to string
 //  // Insert object name
-//  iStat = Str1_Char_2Csv ( 0, oSstType->cSysNam, sExpStr, sErrTxt);
+//  iStat = sstStr011_Char_2Csv ( 0, oSstType->cSysNam, sExpStr, sErrTxt);
 
 //  // convert string value to csv-formatted string and append to string
 //  // Insert object name
-//  iStat = Str1_Char_2Csv ( 0, oSstType->cObjNam, sExpStr, sErrTxt);
+//  iStat = sstStr011_Char_2Csv ( 0, oSstType->cObjNam, sExpStr, sErrTxt);
 
 //  // convert string value to csv-formatted string and append to string
 //  // insert element name
-//  iStat = Str1_Char_2Csv ( 0, oSstType->cEleNam, sExpStr, sErrTxt);
+//  iStat = sstStr011_Char_2Csv ( 0, oSstType->cEleNam, sExpStr, sErrTxt);
 
 //  // convert string value to csv-formatted string and append to string
 //  // insert variable type information
@@ -212,37 +212,37 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //  {
 //  case myFloat:
 //  {
-//      iStat = Str1_Char_2Csv ( 0, (char*) "FF", sExpStr, sErrTxt);
+//      iStat = sstStr011_Char_2Csv ( 0, (char*) "FF", sExpStr, sErrTxt);
 //    break;
 //  }
 //  case myDouble:
 //  {
-//      iStat = Str1_Char_2Csv ( 0, (char*) "DD", sExpStr, sErrTxt);
+//      iStat = sstStr011_Char_2Csv ( 0, (char*) "DD", sExpStr, sErrTxt);
 //    break;
 //  }
 //  case myInt:
 //  {
-//      iStat = Str1_Char_2Csv ( 0, (char*) "II", sExpStr, sErrTxt);
+//      iStat = sstStr011_Char_2Csv ( 0, (char*) "II", sExpStr, sErrTxt);
 //    break;
 //  }
 //  case myLong:
 //  {
-//      iStat = Str1_Char_2Csv ( 0, (char*) "LL", sExpStr, sErrTxt);
+//      iStat = sstStr011_Char_2Csv ( 0, (char*) "LL", sExpStr, sErrTxt);
 //    break;
 //  }
 //  case myChar:
 //  {
-//      iStat = Str1_Char_2Csv ( 0, (char*) "CC", sExpStr, sErrTxt);
+//      iStat = sstStr011_Char_2Csv ( 0, (char*) "CC", sExpStr, sErrTxt);
 //    break;
 //  }
 //  case myDate:
 //  {
-//      iStat = Str1_Char_2Csv ( 0, (char*) "DA", sExpStr, sErrTxt);
+//      iStat = sstStr011_Char_2Csv ( 0, (char*) "DA", sExpStr, sErrTxt);
 //    break;
 //  }
 //  case myBool:
 //  {
-//    iStat = Str1_Char_2Csv ( 0, (char*) "BB", sExpStr, sErrTxt);
+//    iStat = sstStr011_Char_2Csv ( 0, (char*) "BB", sExpStr, sErrTxt);
 //    break;
 //  }
 //  default:
@@ -251,9 +251,9 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //  }
 //  }
 
-//  iStat = Str1_Int2_2Csv ( 0, oSstType->iWidth, sExpStr, sErrTxt);
+//  iStat = sstStr011_Int2_2Csv ( 0, oSstType->iWidth, sExpStr, sErrTxt);
 
-//  iStat = Str1_Int2_2Csv ( 0, oSstType->iDec, sExpStr, sErrTxt);
+//  iStat = sstStr011_Int2_2Csv ( 0, oSstType->iDec, sExpStr, sErrTxt);
 
 //  // Fatal Errors goes to an assert
 //  if (iRet < 0)

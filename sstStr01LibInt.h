@@ -34,107 +34,6 @@ class sstStr01IntCls;
 
 //==============================================================================
 /**
-* @brief CSV Test Class sstStr01Ds_Csv_Cls
-*
-* More Comment
-*
-* Changed: 19.02.10  Re.
-*
-* @ingroup sstStr01IntLib
-*
-* @author Re.
-*
-* @date 19.02.10
-*/
-// ----------------------------------------------------------------------------
-class sstStr01Ds_Csv_Cls
-{
-  public:   // Öffentliche Funktionen
-     sstStr01Ds_Csv_Cls();  // Konstruktor
-    // ~X();  // Destruktor
-     int iRetInt;              //!< Return Value Integer
-     long lRetLong;            //!< Return Value Long Integer
-     unsigned int uiRetInt;    //!< Return Value unsigned Integer
-     unsigned long ulRetLong;  //!< Return Value unsigned Long Integer
-     double dRetDouble;        //!< Return Value Double
-     float fRetFloat;          //!< Return Value Float
-     std::string sRetStr;      //!< Return Value String Ds
-     char cRetStr[21];         //!< Return Value Char String
-     bool bVal;                //!< Return Value Bool
-  private:  // Private Funktionen
-};
-//==============================================================================
-/**
-* @brief Test CSV Read/Write Class sstStr01Ds_CsvFnc_Cls
-*
-* Read and Write CSV Testobject to row
-*
-* Changed: 21.04.15  Re.
-*
-* @ingroup sstStr01IntLib
-*
-* @author Re.
-*
-* @date 21.04.15
-*/
-// ----------------------------------------------------------------------------
-class sstStr01Ds_CsvFnc_Cls
-{
-  public:   // Public functions
-     sstStr01Ds_CsvFnc_Cls();   // Constructor
-     //==============================================================================
-     /**
-     * @brief Write TestRecord to Row
-     *
-     * iStat = oCsvRowFnc.WrtCsv(  iKey, *oFrmtTyp, *sErrStr, *oCsvSet, *sResult_Row);
-     *
-     * @param iKey [in]         For the moment 0
-     * @param oFrmtTyp [in]     For the moment 0
-     * @param sErrStr [in]      For the moment 0
-     * @param oCsvSet [in]      For the moment 0
-     * @param sResult_Row [out]  Result row
-     *
-     * @return Errorstate
-     *
-     * @retval   = 0: OK
-     * @retval   < 0: Unspecified Error
-     */
-     // ----------------------------------------------------------------------------
-     int WrtCsv( int               iKey,
-                 sstStr01IntCls *oFrmtTyp,
-                 std::string      *sErrStr,
-                 sstStr01Ds_Csv_Cls    *oCsvSet,
-                 std::string      *sResult_Row);
-     //==============================================================================
-     /**
-     * @brief Read TestRecord from Row
-     *
-     * iStat = oCsvRowFnc.ReadCsv( iKey, *oFrmtTyp, *sTstTxt, *sErrTxt, *oCsvSet);
-     *
-     * @param iKey [in]     For the moment 0
-     * @param oFrmtTyp [in] For the moment 0
-     * @param sTstTxt  [in]  For the moment 0
-     * @param sErrTxt  [in]  For the moment 0
-     * @param oCsvSet  [out] result test object
-     *
-     * @return Errorstate
-     *
-     * @retval   = 0: OK
-     * @retval   < 0: Unspecified Error
-     */
-     // ----------------------------------------------------------------------------
-     int ReadCsv( int            iKey,
-                  sstStr01IntCls *oFrmtTyp,
-                  std::string   *sTstTxt,
-                  std::string   *sErrTxt,
-                  sstStr01Ds_Csv_Cls *oCsvSet);
-    // ~X();   // Destructor
-// ----------------------------------------------------------------------------
-  private:  // Private functions
-};
-//==============================================================================
-//==============================================================================
-/**
 * @brief Definition sstStr01IntCls
 *
 * More Comment
@@ -155,7 +54,7 @@ class sstStr01IntCls
      //=============================================================================
      /**
      * @brief // Csv ab Position in Integer konvertieren  <BR>
-     * iStat = Str1_AbPosCsv2Int2 ( iKey, *Zeile, *iRetVal);
+     * iStat = sstStr011_AbPosCsv2Int2 ( iKey, *Zeile, *iRetVal);
      *
      * More Comment
      *
@@ -271,7 +170,7 @@ class sstStr01IntCls
      /**
      * @brief Csv ab Position in Double konvertieren
      *
-     * iStat = Str1_AbPosCsv2Dbl ( iKey, *Zeile, *dRetVal);
+     * iStat = sstStr011_AbPosCsv2Dbl ( iKey, *Zeile, *dRetVal);
      *
      * More Comment
      *
@@ -300,7 +199,7 @@ class sstStr01IntCls
      /**
      * @brief Csv ab Position in Float konvertieren
      *
-     * iStat = Str1_AbPosCsv2Flt ( iKey, *Zeile, *fRetVal);
+     * iStat = sstStr011_AbPosCsv2Flt ( iKey, *Zeile, *fRetVal);
      *
      * Changed: 30.03.10  Re.
      *
@@ -2822,7 +2721,7 @@ int sstStr011_Test_FuncInt (int iKey);
 int sstStr011_Csv_Test (int            iKey,
                    std::string   *sTstTxt,
                    std::string   *sErrTxt,
-                   sstStr01Ds_Csv_Cls *oCsvSet);
+                   sstStr01TestRecFullCls *oCsvSet);
 //=============================================================================
 int sstStr011_GetNextBrakeInfo (int             iKey,
                            std::string    *StrInfo,

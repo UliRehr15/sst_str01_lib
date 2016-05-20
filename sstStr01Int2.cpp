@@ -1384,7 +1384,7 @@ int sstStr011_AbPos2Bool ( int          iKey,      /**< v  -> Vorerst immer 0   
   return iRet;
 }
 //=============================================================================
-int Str1_AbPosS2Str ( int          iKey,
+int sstStr011_AbPosS2Str ( int          iKey,
                       unsigned long        *Pos,
                       char        *BeGrzZ,
                       char        *NoInfZ,
@@ -1465,7 +1465,7 @@ int Str1_AbPosS2Str ( int          iKey,
   return iStat;
 }
 //=============================================================================
-int Str1_AbPosK2Str ( int          iKey,
+int sstStr011_AbPosK2Str ( int          iKey,
                       unsigned long        *Pos,
                       char        *BeGrzZ,
                       char        *NoInfZ,
@@ -1544,7 +1544,7 @@ int Str1_AbPosK2Str ( int          iKey,
   return iStat;
 }
 //=============================================================================
-int Str1_AbPosK3Str ( int          iKey,
+int sstStr011_AbPosK3Str ( int          iKey,
                       unsigned long        *Pos,
                       char        *TrnZ,
                       char        *KlmZ,

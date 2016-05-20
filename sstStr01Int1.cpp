@@ -25,7 +25,7 @@
 #include "sstStr01LibInt.h"
 
 //=============================================================================
-int Str1_AbPosCsv2Int2 ( int          iKey,
+int sstStr011_AbPosCsv2Int2 ( int          iKey,
                          unsigned long        *TPos,
                          std::string *Zeile,
                          std::string *ErrTxt,
@@ -55,7 +55,7 @@ int Str1_AbPosCsv2Int2 ( int          iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPosCsv2Int4 ( int          iKey,
+int sstStr011_AbPosCsv2Int4 ( int          iKey,
                          unsigned long        *TPos,
                          std::string *Zeile,
                          std::string *ErrTxt,
@@ -85,7 +85,7 @@ int Str1_AbPosCsv2Int4 ( int          iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPosCsv2Dbl ( int          iKey,
+int sstStr011_AbPosCsv2Dbl ( int          iKey,
                         unsigned long        *TPos,
                         std::string *Zeile,
                         std::string *ErrTxt,
@@ -115,7 +115,7 @@ int Str1_AbPosCsv2Dbl ( int          iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPosCsv2Flt ( int          iKey,
+int sstStr011_AbPosCsv2Flt ( int          iKey,
                         unsigned long        *TPos,
                         std::string *Zeile,
                         std::string *ErrTxt,
@@ -145,7 +145,7 @@ int Str1_AbPosCsv2Flt ( int          iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_AbPosCsv2Str ( int          iKey,
+int sstStr011_AbPosCsv2Str ( int          iKey,
                         unsigned long        *lTPos,
                         std::string *sZeile,
                         std::string *sErrTxt,
@@ -167,7 +167,7 @@ int Str1_AbPosCsv2Str ( int          iKey,
   iStat = sstStr011_Init( 0, sRetStr);
 
   strncpy(cTrnZ,";",2);
-  // iStat = Str1_AbPosS2Str ( 0, TPos, cBegrzZ, TrnZ, Zeile, ErrTxt, sRetStr);
+  // iStat = sstStr011_AbPosS2Str ( 0, TPos, cBegrzZ, TrnZ, Zeile, ErrTxt, sRetStr);
   // iStat = sstStr011_AbPos2StrSBrk ( 0, sZeile, lTPos, cTrnZ, cBegrzZ, sRetStr);
   iStat = sstStr011_AbPos2StrSBrk ( 0, sZeile, lTPos, cTrnZ, cBegrzZ, &sLocStr);
   if(sLocStr.length() <= 0) return 0;
@@ -571,7 +571,7 @@ int sstStr01IntCls::CsvString2_Char ( int          iKey,
   return iRet;
 }
 //=============================================================================
-int Str1_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *ErrTxt)
+int sstStr011_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
   std::string locStr1;
@@ -614,7 +614,7 @@ int Str1_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *ErrTxt
   return iRet;
 }
 //=============================================================================
-int Str1_UInt2_2Csv (int iKey,unsigned int uiVal, std::string *sst_str, std::string *ErrTxt)
+int sstStr011_UInt2_2Csv (int iKey,unsigned int uiVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
   std::string locStr1;
@@ -657,7 +657,7 @@ int Str1_UInt2_2Csv (int iKey,unsigned int uiVal, std::string *sst_str, std::str
   return iRet;
 }
 //=============================================================================
-int Str1_Int4_2Csv (int iKey, long lVal, std::string *sst_str, std::string *ErrTxt)
+int sstStr011_Int4_2Csv (int iKey, long lVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
   std::string locStr1;
@@ -701,7 +701,7 @@ int Str1_Int4_2Csv (int iKey, long lVal, std::string *sst_str, std::string *ErrT
   return iRet;
 }
 //=============================================================================
-int Str1_UInt4_2Csv (int iKey, unsigned long ulVal, std::string *sst_str, std::string *ErrTxt)
+int sstStr011_UInt4_2Csv (int iKey, unsigned long ulVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
   std::string locStr1;
@@ -745,7 +745,7 @@ int Str1_UInt4_2Csv (int iKey, unsigned long ulVal, std::string *sst_str, std::s
   return iRet;
 }
 //=============================================================================
-int Str1_Dbl_2Csv (int iKey,double dVal, std::string *sst_str, std::string *ErrTxt)
+int sstStr011_Dbl_2Csv (int iKey,double dVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
   std::string locStr1;
@@ -789,7 +789,7 @@ int Str1_Dbl_2Csv (int iKey,double dVal, std::string *sst_str, std::string *ErrT
   return iRet;
 }
 //=============================================================================
-int Str1_Char_2Csv (int iKey,char *cVal, std::string *sst_str, std::string *ErrTxt)
+int sstStr011_Char_2Csv (int iKey,char *cVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
   std::string locStr1;
@@ -1316,151 +1316,52 @@ int sstStr01IntCls::Csv_Bool_2String (int               iKey,
   return iRet;
 }
 //=============================================================================
-sstStr01Ds_Csv_Cls::sstStr01Ds_Csv_Cls()
-{
-  // memset ( this, 0, sizeof(*this));
-}
-//=============================================================================
-sstStr01Ds_CsvFnc_Cls::sstStr01Ds_CsvFnc_Cls()
-{
-  memset ( this, 0, sizeof(*this));
-}
-//=============================================================================
-int sstStr01Ds_CsvFnc_Cls::WrtCsv( int               iKey,
-                              sstStr01IntCls *oFrmtTyp,
-                              std::string      *sErrStr,
-                              sstStr01Ds_Csv_Cls    *oCsvSet,
-                              std::string      *sResult_Row)
-{
-  int iStat = 0;
-  char cFrmtStrDbl[20];
-  char cFrmtStrFlt[20];
-  //-----------------------------------------------------------------------------
-  if ( iKey != 0) return -1;
-
-  strncpy(cFrmtStrFlt,"%# 06.1f",20);
-  // strncpy(cFrmtStrDbl,"%# 015.4f",20);
-  strncpy(cFrmtStrDbl,"%# 15.2f",20);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Int2_2String ( 0, oCsvSet->iRetInt, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Int4_2String ( 0, oCsvSet->lRetLong, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_UInt2_2String ( 0, oCsvSet->uiRetInt, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_UInt4_2String ( 0, oCsvSet->ulRetLong, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_DblFrmt_2String ( 0, cFrmtStrDbl, oCsvSet->dRetDouble, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Real_2String ( 0, cFrmtStrFlt, oCsvSet->fRetFloat, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Str_2String ( 0, oCsvSet->sRetStr, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Char_2String ( 0, oCsvSet->cRetStr, sResult_Row);
-  if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Bool_2String ( 0, oCsvSet->bVal, sResult_Row);
-
-  if (iStat < 0)
-  {
-    *sErrStr = oFrmtTyp->GetErrorString();
-  }
-  return iStat;
-}
-//=============================================================================
-//int iRetInt;              //!< Return Value Integer
-//long lRetLong;            //!< Return Value Long Integer
-//unsigned int uiRetInt;    //!< Return Value unsigned Integer
-//unsigned long ulRetLong;  //!< Return Value unsigned Long Integer
-//double dRetDouble;        //!< Return Value Double
-//float fRetFloat;          //!< Return Value Float
-//std::string sRetStr;      //!< Return Value String Ds
-//char cRetStr[21];         //!< Return Value Char String
-//bool bRetStr;             //!< Return Value Bool
-//=============================================================================
-int sstStr01Ds_CsvFnc_Cls::ReadCsv( int iKey,
-                               sstStr01IntCls *oFrmtTyp,
-                               std::string   *sTstTxt,
-                               std::string   *sErrTxt,
-                               sstStr01Ds_Csv_Cls *oCsvSet)
-{
-  // unsigned long lTxtPos = 0;
-  int iRet  = 0;
-  int iStat = 0;
-  //-----------------------------------------------------------------------------
-  if ( iKey != 0) return -1;
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Int2( 0, sTstTxt, &oCsvSet->iRetInt);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Int4( 0, sTstTxt, &oCsvSet->lRetLong);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_UInt2( 0, sTstTxt, &oCsvSet->uiRetInt);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_UInt4( 0, sTstTxt, &oCsvSet->ulRetLong);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Dbl( 0, sTstTxt, &oCsvSet->dRetDouble);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Flt( 0, sTstTxt, &oCsvSet->fRetFloat);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Str( 0, sTstTxt, &oCsvSet->sRetStr);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Char( 0, sTstTxt, oCsvSet->cRetStr, 21);
-
-  if (iStat >= 0)
-    iStat = oFrmtTyp->CsvString2_Bool( 0, sTstTxt, &oCsvSet->bVal);
-
-  if (iStat < 0)
-  {
-    *sErrTxt = oFrmtTyp->GetErrorString();
-  }
-
-  // Fatal Errors goes to an assert
-  if (iRet < 0)
-  {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
-  }
-
-  // Small Errors will given back
-  iRet = iStat;
-
-  return iRet;
-}
-//=============================================================================
 int sstStr011_Csv_Test (int            iKey,
                    std::string   *sTstTxt,
                    std::string   *sErrTxt,
-                   sstStr01Ds_Csv_Cls *oCsvSet)
+                   sstStr01TestRecFullCls *oCsvSet)
 //-----------------------------------------------------------------------------
 {
   unsigned long lTxtPos = 0;
+  int iTmpVal=0;
+  long lTmpVal=0;
+  double dTmpVal=0.0;
+  float fTmpVal=0.0;
+  std::string sTmpVal;
   int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
   if (iStat >= 0)
-    iStat = Str1_AbPosCsv2Int2 ( 0, &lTxtPos, sTstTxt, sErrTxt, &oCsvSet->iRetInt);
+  {
+    iStat = sstStr011_AbPosCsv2Int2 ( 0, &lTxtPos, sTstTxt, sErrTxt, &iTmpVal);
+    oCsvSet->setIVal(iTmpVal);
+  }
 
   if (iStat >= 0)
-    iStat = Str1_AbPosCsv2Int4 ( 0, &lTxtPos, sTstTxt, sErrTxt, &oCsvSet->lRetLong);
+  {
+    iStat = sstStr011_AbPosCsv2Int4 ( 0, &lTxtPos, sTstTxt, sErrTxt, &lTmpVal);
+    oCsvSet->setLVal(lTmpVal);
+  }
 
   if (iStat >= 0)
-    iStat = Str1_AbPosCsv2Dbl ( 0, &lTxtPos, sTstTxt, sErrTxt, &oCsvSet->dRetDouble);
+  {
+    iStat = sstStr011_AbPosCsv2Dbl ( 0, &lTxtPos, sTstTxt, sErrTxt, &dTmpVal);
+    oCsvSet->setDVal(dTmpVal);
+  }
 
   if (iStat >= 0)
-    iStat = Str1_AbPosCsv2Flt ( 0, &lTxtPos, sTstTxt, sErrTxt, &oCsvSet->fRetFloat);
+  {
+    iStat = sstStr011_AbPosCsv2Flt ( 0, &lTxtPos, sTstTxt, sErrTxt, &fTmpVal);
+    oCsvSet->setFVal(fTmpVal);
+  }
 
   if (iStat >= 0)
-    iStat = Str1_AbPosCsv2Str ( 0, &lTxtPos, sTstTxt, sErrTxt, &oCsvSet->sRetStr);
+  {
+    iStat = sstStr011_AbPosCsv2Str ( 0, &lTxtPos, sTstTxt, sErrTxt, &sTmpVal);
+    oCsvSet->setSVal(sTmpVal);
+  }
 
   // Fatal Errors goes to an assert
   if (iRet < 0)

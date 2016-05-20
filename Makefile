@@ -50,7 +50,8 @@ SOURCES       = sstStr01Test.cpp \
 		sstStr01Int5.cpp \
 		sstStr01.cpp \
 		sstStr01VarType.cpp \
-		sstStr01DefType.cpp 
+		sstStr01DefType.cpp \
+		sstStr01TestRec.cpp 
 OBJECTS       = sstStr01Test.o \
 		sstStr01Int1.o \
 		sstStr01Int2.o \
@@ -59,7 +60,8 @@ OBJECTS       = sstStr01Test.o \
 		sstStr01Int5.o \
 		sstStr01.o \
 		sstStr01VarType.o \
-		sstStr01DefType.o
+		sstStr01DefType.o \
+		sstStr01TestRec.o
 DIST          = /usr/lib/i386-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/i386-linux-gnu/qt5/mkspecs/common/shell-unix.conf \
 		/usr/lib/i386-linux-gnu/qt5/mkspecs/common/unix.conf \
@@ -335,6 +337,10 @@ sstStr01VarType.o: sstStr01VarType.cpp Header/sstStr01Lib.h \
 sstStr01DefType.o: sstStr01DefType.cpp Header/sstStr01Lib.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01DefType.o sstStr01DefType.cpp
+
+sstStr01TestRec.o: sstStr01TestRec.cpp Header/sstStr01Lib.h \
+		sstStr01LibInt.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01TestRec.o sstStr01TestRec.cpp
 
 ####### Install
 

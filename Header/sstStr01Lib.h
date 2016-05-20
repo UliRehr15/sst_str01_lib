@@ -179,7 +179,7 @@ class sstStr01VarTypeCls
                            std::string           *oTypeStr);
 // ----------------------------------------------------------------------------
 private:  // Private functions
-int Dum;        /**< Dummy */
+// int Dum;        /**< Dummy */
 };
 //==============================================================================
 #define dSST_STR01_VAR_NAM_LEN   31    //!< string lenght of cpp object name @ingroup sstStr01Lib */
@@ -1094,6 +1094,233 @@ class sstStr01VarDefFncCls
   //  int Dum;        /**< Dummy */
   sstStr01Cls oCnvtStr;  /**< Convert String system */
 };
+//==============================================================================
+/**
+* @brief CSV Test Class sstStr01Ds_Csv_Cls
+*
+* More Comment
+*
+* Changed: 19.02.10  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 19.02.10
+*/
+// ----------------------------------------------------------------------------
+class sstStr01TestRecSmallCls
+{
+  public:   // Öffentliche Funktionen
+     sstStr01TestRecSmallCls();  // Konstruktor
+    // ~X();  // Destruktor
+     int getIVal() const;
+     void setIVal(int value);
+
+     char* getCVal();
+     void setCVal(const char *value);
+
+private:  // Private Funktionen
+     int iVal;              //!< Test Value Integer
+     char cVal[21];         //!< Test Value Char String
+};
+//==============================================================================
+/**
+* @brief Test CSV Read/Write Class sstStr01TestRecFullFncCls
+*
+* Read and Write CSV Testobject to row
+*
+* Changed: 21.04.15  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 21.04.15
+*/
+// ----------------------------------------------------------------------------
+class sstStr01TestRecSmallFncCls
+{
+  public:   // Public functions
+     sstStr01TestRecSmallFncCls();   // Constructor
+     //==============================================================================
+     /**
+     * @brief Write TestRecord to Row
+     *
+     * iStat = oCsvRowFnc.WrtCsv(  iKey, *oFrmtTyp, *sErrStr, *oCsvSet, *sResult_Row);
+     *
+     * @param iKey [in]         For the moment 0
+     * @param oFrmtTyp [in]     For the moment 0
+     * @param sErrStr [in]      For the moment 0
+     * @param oCsvSet [in]      For the moment 0
+     * @param sResult_Row [out]  Result row
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int WrtCsv( int               iKey,
+                 sstStr01Cls *oFrmtTyp,
+                 std::string      *sErrStr,
+                 sstStr01TestRecSmallCls    *oCsvSet,
+                 std::string      *sResult_Row);
+     //==============================================================================
+     /**
+     * @brief Read TestRecord from Row
+     *
+     * iStat = oCsvRowFnc.ReadCsv( iKey, *oFrmtTyp, *sTstTxt, *sErrTxt, *oCsvSet);
+     *
+     * @param iKey [in]     For the moment 0
+     * @param oFrmtTyp [in] For the moment 0
+     * @param sTstTxt  [in]  For the moment 0
+     * @param sErrTxt  [in]  For the moment 0
+     * @param oCsvSet  [out] result test object
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int ReadCsv( int            iKey,
+                  sstStr01Cls *oFrmtTyp,
+                  std::string   *sTstTxt,
+                  std::string   *sErrTxt,
+                  sstStr01TestRecSmallCls *oCsvSet);
+    // ~X();   // Destructor
+// ----------------------------------------------------------------------------
+  private:  // Private functions
+};
+//==============================================================================
+/**
+* @brief CSV Test Class sstStr01Ds_Csv_Cls
+*
+* More Comment
+*
+* Changed: 19.02.10  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 19.02.10
+*/
+// ----------------------------------------------------------------------------
+class sstStr01TestRecFullCls
+{
+  public:   // Öffentliche Funktionen
+     sstStr01TestRecFullCls();  // Konstruktor
+    // ~X();  // Destruktor
+     int getIVal() const;
+     void setIVal(int value);
+
+     long getLVal() const;
+     void setLVal(long value);
+
+     unsigned int getUiVal() const;
+     void setUiVal(unsigned int value);
+
+     unsigned long getUlVal() const;
+     void setUlVal(unsigned long value);
+
+     double getDVal() const;
+     void setDVal(double value);
+
+     float getFVal() const;
+     void setFVal(float value);
+
+     std::string getSVal() const;
+     void setSVal(const std::string &value);
+
+     char* getCVal();
+     void setCVal(const char *value);
+
+     bool getBVal() const;
+     void setBVal(bool value);
+
+private:  // Private Funktionen
+     int iVal;              //!< Test Value Integer
+     long lVal;             //!< Test Value Long Integer
+     unsigned int uiVal;    //!< Test Value unsigned Integer
+     unsigned long ulVal;   //!< Test Value unsigned Long Integer
+     double dVal;           //!< Test Value Double
+     float fVal;            //!< Test Value Float
+     std::string sVal;      //!< Test Value String Ds
+     char cVal[21];         //!< Test Value Char String
+     bool bVal;             //!< Test Value Bool
+};
+//==============================================================================
+/**
+* @brief Test CSV Read/Write Class sstStr01TestRecFullFncCls
+*
+* Read and Write CSV Testobject to row
+*
+* Changed: 21.04.15  Re.
+*
+* @ingroup sstStr01Lib
+*
+* @author Re.
+*
+* @date 21.04.15
+*/
+// ----------------------------------------------------------------------------
+class sstStr01TestRecFullFncCls
+{
+  public:   // Public functions
+     sstStr01TestRecFullFncCls();   // Constructor
+     //==============================================================================
+     /**
+     * @brief Write TestRecord to Row
+     *
+     * iStat = oCsvRowFnc.WrtCsv(  iKey, *oFrmtTyp, *sErrStr, *oCsvSet, *sResult_Row);
+     *
+     * @param iKey [in]         For the moment 0
+     * @param oFrmtTyp [in]     For the moment 0
+     * @param sErrStr [in]      For the moment 0
+     * @param oCsvSet [in]      For the moment 0
+     * @param sResult_Row [out]  Result row
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int WrtCsv( int               iKey,
+                 sstStr01Cls *oFrmtTyp,
+                 std::string      *sErrStr,
+                 sstStr01TestRecFullCls    *oCsvSet,
+                 std::string      *sResult_Row);
+     //==============================================================================
+     /**
+     * @brief Read TestRecord from Row
+     *
+     * iStat = oCsvRowFnc.ReadCsv( iKey, *oFrmtTyp, *sTstTxt, *sErrTxt, *oCsvSet);
+     *
+     * @param iKey [in]     For the moment 0
+     * @param oFrmtTyp [in] For the moment 0
+     * @param sTstTxt  [in]  For the moment 0
+     * @param sErrTxt  [in]  For the moment 0
+     * @param oCsvSet  [out] result test object
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int ReadCsv( int            iKey,
+                  sstStr01Cls *oFrmtTyp,
+                  std::string   *sTstTxt,
+                  std::string   *sErrTxt,
+                  sstStr01TestRecFullCls *oCsvSet);
+    // ~X();   // Destructor
+// ----------------------------------------------------------------------------
+  private:  // Private functions
+};
+//==============================================================================
 
 // Do some intern sstStr01 Tests
 int sstStr01_DoSomeInternTests (int iKey);

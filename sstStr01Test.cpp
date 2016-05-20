@@ -28,11 +28,11 @@
 int sstStr01_DoSomeInternTests (int iKey)
 //-----------------------------------------------------------------------------
 {
-  sstStr01IntCls oFrmtTyp;
+  sstStr01Cls oFrmtTyp;
 //  long TPos=0;
   std::string oZeile;
   std::string oErrTxt;
-  sstStr01Ds_Csv_Cls oCsvSet;
+  sstStr01TestRecFullCls oCsvSet;
 //  int iRetVal=0;
 
   int iRet  = 0;
@@ -44,24 +44,24 @@ int sstStr01_DoSomeInternTests (int iKey)
   iStat = sstStr011_Test_FuncInt ( 0);
   assert(iStat >= 0);
 
-  oCsvSet.bVal = 0;
-  strncpy(oCsvSet.cRetStr,"s",2);
-  oCsvSet.dRetDouble = 26437484.33;
-  oCsvSet.fRetFloat = 23.3;
-  oCsvSet.iRetInt = -4;
-  oCsvSet.lRetLong = -33333333;
-  oCsvSet.sRetStr = "sfasalfa";
-  oCsvSet.uiRetInt = 444;
-  oCsvSet.ulRetLong = 666666666;
+  oCsvSet.setBVal(0);
+  oCsvSet.setCVal("s");
+  oCsvSet.setDVal(26437484.33);
+  oCsvSet.setFVal(23.3);
+  oCsvSet.setIVal(-4);
+  oCsvSet.setLVal(-33333333);
+  oCsvSet.setSVal("sfasalfa");
+  oCsvSet.setUiVal(444);
+  oCsvSet.setUlVal(666666666);
 
   oZeile ="  800 ;  3100  ; 23,5;  -345,576; Aufnahmepunkt";
 
   iStat = sstStr011_Csv_Test ( 0, &oZeile, &oErrTxt, &oCsvSet);
   assert(iStat >= 0);
-  assert(oCsvSet.iRetInt == 800);
-  assert(oCsvSet.lRetLong == 3100);
+  assert(oCsvSet.getIVal() == 800);
+  assert(oCsvSet.getLVal() == 3100);
 
-  sstStr01Ds_CsvFnc_Cls oTestCsv;
+  sstStr01TestRecFullFncCls oTestCsv;
   std::string oCsvTestStr;
   std::string oErrStr;
   std::string oResultStr;
@@ -81,8 +81,8 @@ int sstStr01_DoSomeInternTests (int iKey)
 
   iStat = oTestCsv.ReadCsv( 0, &oFrmtTyp, &oCsvTestStr, &oErrStr, &oCsvSet);
   assert(iStat >= 0);
-  assert(oCsvSet.iRetInt == 22);
-  assert(oCsvSet.lRetLong == -6666666);
+  assert(oCsvSet.getIVal() == 22);
+  assert(oCsvSet.getLVal() == -6666666);
 
   oFrmtTyp.SetBoolTyp(0,2);  // .T.
 

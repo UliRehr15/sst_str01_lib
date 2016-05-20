@@ -25,7 +25,8 @@ SOURCES		+= \
     sstStr01Int5.cpp \
     sstStr01.cpp \
     sstStr01VarType.cpp \
-    sstStr01DefType.cpp
+    sstStr01DefType.cpp \
+    sstStr01TestRec.cpp
 
 OTHER_FILES += README.md
 

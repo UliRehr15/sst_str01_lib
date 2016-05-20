@@ -34,4 +34,6 @@ Structure of coding projects should be:
 17.05.2016: Version 1.5: Type definitions integer, double, char and so on.  <BR>
                          Class/Member definitions: name class, name member, type, width and Dec.  <BR>
 19.05.2016: Version 1.6: Improvements in namespace sstStr01.  <BR>
+20.05.2016: Version 1.7: More improvements in namespace sstStr01.  <BR>
+                         Add small and full test record classes.  <BR>
 

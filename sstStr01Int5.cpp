@@ -26,18 +26,15 @@
 #include "sstStr01LibInt.h"
 
 //=============================================================================
-// Complete function description is in headerfile
-//-----------------------------------------------------------------------------
 int sstStr011i_IsBrakeOpen (int            iKey,
-                       std::string   *Zeile,
-                       unsigned long  ulPos,
-                       char          *cBrakeOpen)
+                            std::string   *Zeile,
+                            unsigned long  ulPos,
+                            char          *cBrakeOpen)
 //-----------------------------------------------------------------------------
 {
-  // int iRet  = 0;
-  // int iStat = 0;
-//-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
+  if ( ulPos > Zeile->length()) return 0;
 
   if (Zeile->at(ulPos-1) == cBrakeOpen[0])
       return 1;

@@ -31,6 +31,7 @@ int main ()
   std::string oErrorStr;
   std::string oResultStr;
   int iResult = 0;
+  unsigned long ulResult = 0;
 
   int iRet  = 0;
   int iStat = 0;
@@ -186,6 +187,18 @@ int main ()
   // Information 3
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
   assert( strcmp(oResultStr.c_str(),"") == 0);
+
+  // === Test CSV Reading 4 with delimiters
+  oTestString = "800;'3100'";
+  oStringMan.ClearAll();
+  oStringMan.SetBracket(0,(char*) "'");
+
+  // Information 1
+  if(iStat >= 0)  iStat = oStringMan.CsvString2_UInt4( 0, &oTestString, &ulResult);
+  assert( ulResult == 800);
+  // Information 2
+  if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
+  assert( strcmp(oResultStr.c_str(),"3100") == 0);
 
   // === Test CSV Writing 1
   oStringMan.ClearAll();

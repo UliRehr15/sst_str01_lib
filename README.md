@@ -36,4 +36,6 @@ Structure of coding projects should be:
 19.05.2016: Version 1.6: Improvements in namespace sstStr01.  <BR>
 20.05.2016: Version 1.7: More improvements in namespace sstStr01.  <BR>
                          Add small and full test record classes.  <BR>
+13.06.2016: Version 1.8: Better Handling of NAN Values.  <BR>
+                         Patch error reading bracket strings <BR>
 

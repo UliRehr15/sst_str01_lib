@@ -2552,7 +2552,7 @@ int sstStr011i_RemoveEndingSpaces (int               iKey,
 *
 * Changed: 16.02.10  Re.
 *
-* @ingroup examples
+* @ingroup sstStr01IntLib
 *
 * @param iKey: [in] For the moment 0
 *
@@ -2567,17 +2567,66 @@ int sstStr011i_RemoveEndingSpaces (int               iKey,
 */
 //------------------------------------------------------------------------------
 int sstStr011i_IsDelimiter (int          iKey,
-                       std::string *Zeile,
-                       unsigned long         uPos,
-                       char        *cDelimit);
+                            std::string *Zeile,
+                            unsigned long         uPos,
+                            char        *cDelimit);
+//==============================================================================
+/**
+* @brief // check, whether char at position is bracket open or not  <BR>
+* iStat = sstStr011i_IsBrakeOpen ( iKey, *Zeile, ulPos, cBrakeOpen);
+*
+* Changed: 13.06.16  Re.
+*
+* @ingroup sstStr01IntLib
+*
+* @param iKey [in] For the moment 0
+* @param Zeile [in] sst string
+* @param ulPos [in] Position in sst string
+* @param cBrakeOpen [in] bracket open char
+*
+* @return Errorstate
+*
+* @retval   = 1: char at position is bracket open
+* @retval   = 0: char at position is not bracket open
+* @retval   < 0: Unspecified Error
+*
+* @author Re.
+*
+* @date 16.02.10
+*/
+//------------------------------------------------------------------------------
 int sstStr011i_IsBrakeOpen (int            iKey,
-                       std::string   *Zeile,
-                       unsigned long  ulPos,
-                       char          *cBrakeOpen);
+                            std::string   *Zeile,
+                            unsigned long  ulPos,
+                            char          *cBrakeOpen);
+//==============================================================================
+/**
+* @brief Return next informationstring and ignore contents inside of brakes
+*
+* iStat = sstStr011i_IsDelimiter ( iKey, *Zeile, *cDelimit);
+*
+* More Comment
+*
+* Changed: 16.02.10  Re.
+*
+* @ingroup examples
+*
+* @param iKey: [in] For the moment 0
+*
+* @return Errorstate
+*
+* @retval   = 0: OK
+* @retval   < 0: Unspecified Error
+*
+* @author Re.
+*
+* @date 16.02.10
+*/
+//------------------------------------------------------------------------------
 int sstStr011i_IsBrakeClose (int            iKey,
-                        std::string   *Zeile,
-                        unsigned long  ulPos,
-                        char          *cBrakeClose);
+                             std::string   *Zeile,
+                             unsigned long  ulPos,
+                             char          *cBrakeClose);
 //=============================================================================
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.

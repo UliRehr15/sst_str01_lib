@@ -17,6 +17,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include <assert.h>
 
 #include <string>
@@ -578,6 +579,12 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   if (iKey < 0 || iKey > 3) return -1;
   iStat = 0;
 
+  if (isnan(fWert)== true)
+  {
+    Zeile->clear();
+    return 0;
+  }
+
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
 
@@ -651,6 +658,12 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
   // if (iKey != 0 && iKey != 1) return -1;
   if (iKey < 0 || iKey > 3) return -1;
   iStat = 0;
+
+  if (isnan(fWert)== true)
+  {
+    Zeile->clear();
+    return 0;
+  }
 
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
@@ -732,6 +745,12 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
   if (iKey < 0 || iKey > 3) return -1;
   iStat = 0;
 
+  if (isnan(dWert)== true)
+  {
+    Zeile->clear();
+    return 0;
+  }
+
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
 
@@ -809,6 +828,12 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
   if (iKey < 0 || iKey > 3) return -1;
   iStat = 0;
 
+  if (isnan(dWert)== true)
+  {
+    Zeile->clear();
+    return 0;
+  }
+
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
   // sprintf(LocStr.Txt, "%d", NachKo);
@@ -865,35 +890,34 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
 
 }
 //=============================================================================
-int sstStr011_Dbl2Zeile ( int          iKey,    // v  -> 0 oder 1
-                     unsigned long         Von,     // v  -> von Textposition
-                     unsigned long         Bis,     // v  -> bis Textposition
-                     double       dWert,   //   <-> Quelle
-                     int          NachKo,  // v  -> Nachkomma
-                     std::string *Zeile)   //   <-> Ziel
+int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
+                          unsigned long  Von,     // v  -> von Textposition
+                          unsigned long  Bis,     // v  -> bis Textposition
+                          double         dWert,   //   <-> Quelle
+                          int            NachKo,  // v  -> Nachkomma
+                          std::string   *Zeile)   //   <-> Ziel
 //-----------------------------------------------------------------------------
 {
-  // char Buffer[10];
-  // char Buffer[11];
   char Format[8];
   std::string LocStr;
 
   char TrnZ[2];    // String of no Information
   char cLocChar[50];
   unsigned long Pos1;
-  // long Pos2;
-
-  // char *pLocStr;
 
   int iStat;
 //.............................................................................
-  // if (iKey != 0 && iKey != 1) return -1;
   if (iKey < 0 || iKey > 3) return -1;
   iStat = 0;
 
+  if (isnan(dWert)== true)
+  {
+    Zeile->clear();
+    return 0;
+  }
+
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
-  // sprintf(LocStr.Txt, "%d", NachKo);
   sprintf(cLocChar, "%d", NachKo);
   LocStr = cLocChar;
 
@@ -902,30 +926,21 @@ int sstStr011_Dbl2Zeile ( int          iKey,    // v  -> 0 oder 1
   // programmieren.
 
   // Format-Anweisung zusammenstellen
-  // strcpy(Format,"%6.");
   strncpy(Format,"%7.",8);
-  // strcat(Format, itoa( NachKo, Buffer, 10) );
   strncat(Format, LocStr.c_str(),8);
-  // strcat(Format, itoa( NachKo, Buffer, 11) );
   strncat(Format,"lf",8);
 
   // Convert double to string with format string
   iStat = sstStr011_Init ( 0, &LocStr);
-  // sprintf(LocStr.Txt, Format, dWert);
   sprintf(cLocChar, Format, dWert);
   LocStr = cLocChar;
 
   //Remove starting and ending spaces from string
   iStat = sstStr01i_RemoveSpaces ( 0, &LocStr);
-  // LocStr.AktLen = strlen(LocStr.Txt);
-
-  // iStat = sstStr011_Str2Zeile ( iKey, Von, Bis, &LocStr, Zeile, ZeilLen);
 
   if (iKey == 2 || iKey == 3)
   {
-    // pLocStr = strchr(LocStr.Txt,'.');  // Zeichen Punkt in String suchen
     unsigned long ulPos = LocStr.find(".");  // Zeichen Punkt in String suchen
-    // pLocStr[0] = ',';
     LocStr.replace(ulPos,1,",");
   }
 
@@ -940,8 +955,6 @@ int sstStr011_Dbl2Zeile ( int          iKey,    // v  -> 0 oder 1
 
   Pos1 = Zeile->length();
   sstStr011i_EndOfInfo ( 1, Pos1, TrnZ, Zeile);
-  // Zeile->Txt[Pos2] = '\0';
-  // Zeile->AktLen = strlen(Zeile->Txt);
 
   return iStat;
 
@@ -1296,12 +1309,12 @@ int sstStr011_AbPos2Real ( int          Key,    // v  -> Vorerst immer 0
   return istat;
 }
 //=============================================================================
-int sstStr011_AbPos2Dbl ( int          Key,    // v  -> Vorerst immer 0
-                     unsigned long        *TPos,   //   <-> Read from position in string
-                     char        *TrnZ,   //   <-> Lesen bis Trennzeichen
-                     std::string *Zeile,  //   <-> Lese-String
-                     std::string *ErrTxt, //   <-> Read-Error -bei Errtxt-
-                     double      *dRet)   //   <-> Result-Double
+int sstStr011_AbPos2Dbl ( int              Key,    // v  -> Vorerst immer 0
+                          unsigned long   *TPos,   //   <-> Read from position in string
+                          char            *TrnZ,   //   <-> Lesen bis Trennzeichen
+                          std::string     *Zeile,  //   <-> Lese-String
+                          std::string     *ErrTxt, //   <-> Read-Error -bei Errtxt-
+                          double          *dRet)   //   <-> Result-Double
 //.............................................................................
 {
   std::string tRet;   // String mit ZwischenResult

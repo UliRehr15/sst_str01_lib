@@ -79,6 +79,8 @@ int sstStr01_DoSomeInternTests (int iKey)
 
   oCsvTestStr = "22;-6666666;63000;88888888;-23456.66;234.1;abcdefg;nn nn;.T.";
 
+  oFrmtTyp.SetBoolTyp(0,2);
+
   iStat = oTestCsv.ReadCsv( 0, &oFrmtTyp, &oCsvTestStr, &oErrStr, &oCsvSet);
   assert(iStat >= 0);
   assert(oCsvSet.getIVal() == 22);

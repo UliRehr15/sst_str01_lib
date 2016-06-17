@@ -31,6 +31,7 @@ int main ()
   std::string oErrorStr;
   std::string oResultStr;
   int iResult = 0;
+  double dResult = 0.0;
   unsigned long ulResult = 0;
 
   int iRet  = 0;
@@ -129,6 +130,8 @@ int main ()
 
   sstStr01Cls oStringMan;  // sst String manager
 
+  oStringMan.SetBoolTyp(0,2);
+
   // === Test CSV Reading 1
   oTestString = "  800 ; xx '31;00'  ;Aufnahmepunkt;.T.";
 
@@ -146,7 +149,7 @@ int main ()
   assert( bRetVal == 1);  // Result should be true
 
   // === Test CSV Reading 2
-  oTestString = ";3100;Aufnahmepunkt";
+  oTestString = ";3100;;Aufnahmepunkt";
   oStringMan.ClearAll();
   oResultStr.clear();
 
@@ -157,6 +160,9 @@ int main ()
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Int2 ( 0, &oTestString, &iResult);
   assert( iResult == 3100);
   // Information 3
+  if(iStat >= 0)  iStat = oStringMan.CsvString2_Dbl ( 0, &oTestString, &dResult);
+  assert( dResult == dSSTSTR01_UNDEF_DOUBLE);
+  // Information 4
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
   assert( strcmp(oResultStr.c_str(),"Aufnahmepunkt") == 0);
 
@@ -188,7 +194,7 @@ int main ()
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
   assert( strcmp(oResultStr.c_str(),"") == 0);
 
-  // === Test CSV Reading 4 with delimiters
+  // === Test CSV Reading 5 with delimiters
   oTestString = "800;'3100'";
   oStringMan.ClearAll();
   oStringMan.SetBracket(0,(char*) "'");

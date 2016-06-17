@@ -70,13 +70,13 @@ int sstStr011i_LesTxtNach ( int          Key,     // v  -> Vorerst immer 0
   ii = ii + LenSuch;  // Position hinter Suchstring
   iStat = sstStr011_AbPos2Str ( 0, &ii, TrennZ, Zeile, &ErrTxt, FindStr);
 
-  return iStat;
+  return iStat;// sstStr011i_PosHasInfo
 }
 //=============================================================================
 int sstStr011i_PosHasInfo ( int          Key,       // v  -> Vorerst immer 0
-                       std::string *TstStr,    //   <-> Bearbeitungszeile
-                       unsigned long         Pos,       // v <-> Position im TstStr 1..n
-                       char *NoInfoStr) //   <-> String mit NoInfo-Angaben
+                            std::string *TstStr,    //   <-> Bearbeitungszeile
+                            unsigned long         Pos,       // v <-> Position im TstStr 1..n
+                            char *NoInfoStr) //   <-> String mit NoInfo-Angaben
 //-----------------------------------------------------------------------------
 {
   // long LenTstStr;
@@ -514,9 +514,9 @@ unsigned long sstStr011i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
 }
 //=============================================================================
 long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
-                        unsigned long         Pos,      //   <-> Suchen ab Position
-                        char        *NoInfoZ,  //   <-> NoInformation-Zeichen
-                        std::string *Text)     //   <-> Prüf-Text
+                             unsigned long         Pos,      //   <-> Suchen ab Position
+                             char        *NoInfoZ,  //   <-> NoInformation-Zeichen
+                             std::string *Text)     //   <-> Prüf-Text
 //-----------------------------------------------------------------------------
 {
   // long LenTxt;
@@ -538,7 +538,8 @@ long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
   { // Übergebene Position soll Anfang einer Information sein.
     // Jetzt vorwärts suchen bis zum Ende der Informtion
 
-    if (Text->at(Pos-1) == *NoInfoZ)
+    // if (Text->at(Pos-1) == *NoInfoZ)
+    if (Text->at(Pos-1) == NoInfoZ[0])
     {
       // Look for End of Information
       // Found End of Information
@@ -628,19 +629,27 @@ long sstStr011i_StartOfInfo ( int          iKey,
 }
 //=============================================================================
 long sstStr011i_StartOfInfo2 ( int          iKey,
-                          unsigned long         Pos,
-                          char        *TrnZ,
-                          std::string *Text)
+                               unsigned long         Pos,
+                               char        *TrnZ,
+                               std::string *Text)
 //-----------------------------------------------------------------------------
 {
-  // long LenTxt;
-  unsigned long StartPos;
+   // long LenTxt;
+   unsigned long StartPos;
 
-  unsigned long ii;
-  int iStat = 0;
+   unsigned long ii;
+   int iStat = 0;
 //.............................................................................
   if (iKey != 0) return -1;
   if (Pos > Text->length()) return -2;
+
+//  if (Pos == 0)
+//  {
+//    return 1;
+//  }
+
+//  if (sstStr011i_PosHasInfo ( 0, Text, Pos, TrnZ) == 1) return Pos;
+//  else return Pos+1;
 
   // Interne Funktion, keine Prüfung der Stringparameter
 

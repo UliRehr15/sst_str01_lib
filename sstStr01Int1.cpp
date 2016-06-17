@@ -191,228 +191,194 @@ int sstStr011_AbPosCsv2Str ( int          iKey,
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_Int2 ( int          iKey,
-                               //            unsigned long        *TPos,
-                                           std::string *sZeile,
-                               //            std::string *sErrTxt,
-                                           int         *iRetVal)
+                                      std::string *sZeile,
+                                      int         *iRetVal)
 //-----------------------------------------------------------------------------
 {
-  char cDelimit[2];
-  std::string sResult;
-  unsigned long ulTPos = 0;
+  std::string oRetStr;
 
-  int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  iStat = sstStr011_Init ( 0, &sResult);
+  *iRetVal = dSSTSTR01_CINT2_MAX;
 
-  iStat = this->CsvString2_Str ( 0, sZeile, &sResult);
-  if(iStat < 0)
+  iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
+
+  if( iStat != 0)
   {
-    return iStat;
-  }
-  if(sResult.length() <= 0)
-  {
-    return 0;
+    return -1;
   }
 
-  // Nächste Information aus Text-Zeile in Int2 umwandeln.
-  ulTPos = 0;
-  strncpy( cDelimit, this->cSeparator, 2);
-  iStat = sstStr011_AbPos2Int ( 0, &ulTPos, cDelimit, &sResult, &this->oErrStr, iRetVal);
+  if(oRetStr.length() <= 0) return 0;
 
-  // Heavy Errors goes to an assert
-  if (iRet < 0)
-  {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
-  }
+  // String direkt in Double konvertieren
+  iStat = sstStr011i_Txt2Int( 0, &oRetStr, iRetVal);
 
-  // Small Errors will given back
-  iRet = iStat;
+  return iStat;
 
-  return iRet;
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_UInt2 ( int          iKey,
-                                //            unsigned long           *TPos,
-                                            std::string    *sZeile,
-                                  //          std::string    *sErrTxt,
-                                            unsigned int   *uiRetVal)
+                                       std::string    *sZeile,
+                                       unsigned int   *uiRetVal)
 //-----------------------------------------------------------------------------
 {
-  char cDelimit[2];
-  std::string sResult;
-  unsigned long ulTPos = 0;
+  std::string oRetStr;
 
-  int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  iStat = sstStr011_Init ( 0, &sResult);
+  *uiRetVal = dSSTSTR01_CUINT2_MAX;
 
-  iStat = this->CsvString2_Str ( 0, sZeile, &sResult);
-  if(iStat < 0)
+  iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
+
+  if( iStat != 0)
   {
-    return iStat;
-  }
-  if(sResult.length() <= 0)
-  {
-    return 0;
+    return -1;
   }
 
-  // Nächste Information aus Text-Zeile in Int2 umwandeln.
-  ulTPos = 0;
-  strncpy( cDelimit, this->cSeparator, 2);
-  iStat = sstStr011_AbPos2UInt ( 0, &ulTPos, cDelimit, &sResult, &this->oErrStr, uiRetVal);
+  if(oRetStr.length() <= 0) return 0;
 
-  // Heavy Errors goes to an assert
-  if (iRet < 0)
-  {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
-  }
+  // String direkt in Double konvertieren
+  iStat = sstStr011i_Txt2UInt( 0, &oRetStr, uiRetVal);
 
-  // Small Errors will given back
-  iRet = iStat;
+  return iStat;
 
-  return iRet;
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_Int4 ( int          iKey,
-                          //                 unsigned long        *TPos,
-                                           std::string *sZeile,
-                            //               std::string *ErrTxt,
-                                           long        *lRetVal)
+                                      std::string *sZeile,
+                                      long        *lRetVal)
 //-----------------------------------------------------------------------------
 {
-  // char TrnZ[3];
+  std::string oRetStr;
 
-  int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  // call function
-  iStat = sstStr011_AbPos2Int4 ( 0, &this->ulPos, this->cSeparator, sZeile, &this->oErrStr, lRetVal);
+  *lRetVal = dSSTSTR01_CINT4_MAX;
 
-  // Heavy Errors goes to an assert
-  if (iRet < 0)
+  iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
+
+  if( iStat != 0)
   {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
+    return -1;
   }
 
-  // Small Errors will given back
-  iRet = iStat;
+  if(oRetStr.length() <= 0) return 0;
 
-  return iRet;
+  // String direkt in Double konvertieren
+  iStat = sstStr011i_Txt2Int4( 0, &oRetStr, lRetVal);
+
+  return iStat;
+
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_UInt4 ( int              iKey,
-                       //                     unsigned long             *TPos,
-                                            std::string      *sZeile,
-                         //                   std::string      *ErrTxt,
-                                            unsigned long    *ulRetVal)
+                                       std::string      *sZeile,
+                                       unsigned long    *ulRetVal)
 //-----------------------------------------------------------------------------
 {
-  // char TrnZ[3];
+  std::string oRetStr;
 
-  int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  // call function
-  iStat = sstStr011_AbPos2UInt4 ( 0, &this->ulPos, this->cSeparator, sZeile, &this->oErrStr, ulRetVal);
+  *ulRetVal = dSSTSTR01_CUINT4_MAX;
 
-  // Heavy Errors goes to an assert
-  if (iRet < 0)
+  iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
+
+  if( iStat != 0)
   {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
+    return -1;
   }
 
-  // Small Errors will given back
-  iRet = iStat;
+  if(oRetStr.length() <= 0) return 0;
 
-  return iRet;
+  // String direkt in Double konvertieren
+  iStat = sstStr011i_Txt2UInt4( 0, &oRetStr, ulRetVal);
+
+  return iStat;
+
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_Dbl ( int          iKey,
-                    //                      unsigned long        *TPos,
-                                          std::string *sZeile,
-                      //                    std::string *ErrTxt,
-                                          double      *dRetVal)
+                                     std::string *sZeile,
+                                     double      *dRetVal)
 //-----------------------------------------------------------------------------
 {
-  // char TrnZ[3];
+  std::string oRetStr;
 
-  int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  // strcpy( TrnZ,"; ");
-  // iStat = sstStr011_AbPos2Dbl ( 0, TPos, TrnZ, Zeile, ErrTxt, dRetVal);
-  iStat = sstStr011_AbPos2Dbl ( 0, &this->ulPos, this->cSeparator, sZeile, &this->oErrStr, dRetVal);
+  *dRetVal = dSSTSTR01_UNDEF_DOUBLE;
 
-  // Heavy Errors goes to an assert
-  if (iRet < 0)
+  iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
+
+  if( iStat != 0)
   {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
+    return -1;
   }
 
-  // Small Errors will given back
-  iRet = iStat;
+  if(oRetStr.length() <= 0) return 0;
 
-  return iRet;
+  // String direkt in Double konvertieren
+  iStat = sstStr011i_Txt2Dbl ( 0, &oRetStr, dRetVal);
+
+  return iStat;
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_Flt ( int          iKey,
-                    //                      unsigned long        *TPos,
-                                          std::string *sZeile,
-                      //                    std::string *ErrTxt,
-                                          float       *fRetVal)
+                                     std::string *sZeile,
+                                     float       *fRetVal)
 //-----------------------------------------------------------------------------
 {
-  char TrnZ[3];
+  std::string oRetStr;
 
-  int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  strcpy( TrnZ,"; ");
-  iStat = sstStr011_AbPos2Real ( 0, &this->ulPos, TrnZ, sZeile, &this->oErrStr, fRetVal);
+  *fRetVal = dSSTSTR01_UNDEF_DOUBLE;
 
-  // Heavy Errors goes to an assert
-  if (iRet < 0)
+  iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
+
+  if( iStat != 0)
   {
-    // Expression (iRet >= 0) has to be fullfilled
-    assert(0);
+    return -1;
   }
 
-  // Small Errors will given back
-  iRet = iStat;
+  if(oRetStr.length() <= 0) return 0;
 
-  return iRet;
+  // String direkt in Double konvertieren
+  iStat = sstStr011i_Txt2Real( 0, &oRetStr, fRetVal);
+
+  return iStat;
+
 }
 //=============================================================================
 int sstStr01IntCls::CsvString2_Str ( int          iKey,
@@ -494,20 +460,63 @@ int sstStr01IntCls::CsvString2_Bool ( int          iKey,
     return 0;
   }
 
-  //iStat = strncmp(sResult.Txt,".F.",3);
-  iStat = sResult.find(".F.",0);
-  if (iStat == 0)
+  //  0=0/1, 1=F/T,2=.F./.T.
+  switch (this->iBoolTyp)
   {
-    *bRetVal = 0;
-    return 0;
-  }
-  // iStat = strncmp(sResult.Txt,".T.",3);
-  iStat = sResult.find(".T.",0);
-  if (iStat == 0)
+  case 0:
   {
-    *bRetVal = 1;
-    return 0;
+    iStat = sResult.find("0",0);
+    if (iStat == 0)
+    {
+      *bRetVal = 0;
+      return 0;
+    }
+    iStat = sResult.find("1",0);
+    if (iStat == 0)
+    {
+      *bRetVal = 1;
+      return 0;
+    }
   }
+    break;
+  case 1:
+  {
+    iStat = sResult.find("F",0);
+    if (iStat == 0)
+    {
+      *bRetVal = 0;
+      return 0;
+    }
+    iStat = sResult.find("T",0);
+    if (iStat == 0)
+    {
+      *bRetVal = 1;
+      return 0;
+    }
+  }
+    break;
+  case 2:
+  {
+    iStat = sResult.find(".F.",0);
+    if (iStat == 0)
+    {
+      *bRetVal = 0;
+      return 0;
+    }
+    iStat = sResult.find(".T.",0);
+    if (iStat == 0)
+    {
+      *bRetVal = 1;
+      return 0;
+    }
+  }
+    break;
+  default:
+    assert(0);
+    break;
+  }
+
+
 
   *bRetVal = 0;
   iStat = -2;

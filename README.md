@@ -38,4 +38,6 @@ Structure of coding projects should be:
                          Add small and full test record classes.  <BR>
 13.06.2016: Version 1.8: Better Handling of NAN Values.  <BR>
                          Patch error reading bracket strings <BR>
+17.06.2016: Version 1.9: Better Handling of empty Values.  <BR>
+                         Extend working with bool values.  <BR>
 

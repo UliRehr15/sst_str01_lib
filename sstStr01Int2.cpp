@@ -1328,6 +1328,7 @@ int sstStr011_AbPos2Dbl ( int              Key,    // v  -> Vorerst immer 0
 
   // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   istat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
+  // iStat = this
   if( istat != 0)
   {
     return -1;

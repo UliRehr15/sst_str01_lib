@@ -142,7 +142,7 @@ int sstStr011i_RemoveEndingSpaces (int               iKey,
 }
 //=============================================================================
 int sstStr01i_RemoveSpaces (int          iKey,
-                       std::string *txt1)    //   <-> Quelle ) // v  -> For the moment 0
+                            std::string *txt1)    //   <-> Quelle ) // v  -> For the moment 0
 //-----------------------------------------------------------------------------
 {
   unsigned long LenT1;     // Länge Quell-String
@@ -160,7 +160,6 @@ int sstStr01i_RemoveSpaces (int          iKey,
 
   LenT1 = txt1->length();  // Länge von Text 1
   if (LenT1 < 1) return -1;  // no text
-
 
   ii = sstStr01_StartOfInfo ( 0, 1, TrnZ, txt1);
   if (ii>LenT1) return -1;  // Text complete empty

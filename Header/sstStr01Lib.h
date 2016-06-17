@@ -936,7 +936,7 @@ class sstStr01Cls
      * iStat = oSstStr.SetBoolTyp( iKey, iBoolTyp);
      *
      * @param iKey     [in] For the moment 0
-     * @param iBoolTyp [in] For the moment 0
+     * @param iBoolTyp [in] 0=0/1, 1=F/T, 2=.F./.T.
      *
      * @return Errorstate
      *

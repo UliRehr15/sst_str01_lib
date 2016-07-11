@@ -598,8 +598,19 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   // strcat(Format,"f");
 
   // Convert Float to string with format string
-  sprintf( cLocChar, cFmtStr, fWert);
-  LocStr = cLocChar;
+  if (fWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && fWert > dSSTSTR01_UNDEF_DOUBLE)
+  {
+    sprintf(cLocChar, cFmtStr, fWert);
+    LocStr = cLocChar;
+  }
+  else
+  {
+    Zeile->clear();
+    return 0;
+  }
+
+  // sprintf( cLocChar, cFmtStr, fWert);
+  // LocStr = cLocChar;
 
   //Remove starting and ending spaces from string
   // iStat = sstStr01i_RemoveSpaces ( 0, LocStr.Txt);
@@ -684,8 +695,20 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
   // Convert Float to string with format string
   iStat = sstStr011_Init ( 0, &LocStr);
   // sprintf(LocStr.Txt, Format, fWert);
-  sprintf(cLocChar, Format, fWert);
-  LocStr = cLocChar;
+
+  if (fWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && fWert > dSSTSTR01_UNDEF_DOUBLE)
+  {
+    sprintf(cLocChar, Format, fWert);
+    LocStr = cLocChar;
+  }
+  else
+  {
+    Zeile->clear();
+    return 0;
+  }
+
+  // sprintf(cLocChar, Format, fWert);
+  // LocStr = cLocChar;
 
   //Remove starting and ending spaces from string
   iStat = sstStr01i_RemoveSpaces ( 0, &LocStr);
@@ -767,8 +790,19 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
 
   // Convert double to string wiht format string
   // sprintf(LocStr.Txt, cFmtStr, dWert);
-  sprintf(cLocChar, cFmtStr, dWert);
-  LocStr = cLocChar;
+  if (dWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && dWert > dSSTSTR01_UNDEF_DOUBLE)
+  {
+    sprintf(cLocChar, cFmtStr, dWert);
+    LocStr = cLocChar;
+  }
+  else
+  {
+    Zeile->clear();
+    return 0;
+  }
+
+  // sprintf(cLocChar, cFmtStr, dWert);
+  // LocStr = cLocChar;
 
   //Remove starting and ending spaces from string
   iStat = sstStr01i_RemoveSpaces ( 0, &LocStr);
@@ -855,8 +889,19 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
   // Convert double to string wiht format string
   iStat = sstStr011_Init ( 0, &LocStr);
   // sprintf(LocStr.Txt, Format, dWert);
-  sprintf(cLocChar, Format, dWert);
-  LocStr = cLocChar;
+  if (dWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && dWert > dSSTSTR01_UNDEF_DOUBLE)
+  {
+    sprintf(cLocChar, Format, dWert);
+    LocStr = cLocChar;
+  }
+  else
+  {
+    Zeile->clear();
+    return 0;
+  }
+
+  // sprintf(cLocChar, Format, dWert);
+  // LocStr = cLocChar;
 
   //Remove starting and ending spaces from string
   iStat = sstStr01i_RemoveSpaces ( 0, &LocStr);
@@ -902,7 +947,8 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
   std::string LocStr;
 
   char TrnZ[2];    // String of no Information
-  char cLocChar[50];
+  // char cLocChar[50];
+  char cLocChar[200];
   unsigned long Pos1;
 
   int iStat;
@@ -932,8 +978,16 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
 
   // Convert double to string with format string
   iStat = sstStr011_Init ( 0, &LocStr);
-  sprintf(cLocChar, Format, dWert);
-  LocStr = cLocChar;
+  if (dWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && dWert > dSSTSTR01_UNDEF_DOUBLE)
+  {
+    sprintf(cLocChar, Format, dWert);
+    LocStr = cLocChar;
+  }
+  else
+  {
+    Zeile->clear();
+    return 0;
+  }
 
   //Remove starting and ending spaces from string
   iStat = sstStr01i_RemoveSpaces ( 0, &LocStr);

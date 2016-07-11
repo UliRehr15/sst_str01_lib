@@ -40,4 +40,5 @@ Structure of coding projects should be:
                          Patch error reading bracket strings <BR>
 17.06.2016: Version 1.9: Better Handling of empty Values.  <BR>
                          Extend working with bool values.  <BR>
+11.07.2016: Version 1.10: Better Handling of extreme double Values.  <BR>
 

@@ -807,13 +807,15 @@ int sstStr011i_Txt2UInt4 ( int             iKey,
 }
 //=============================================================================
 int sstStr011i_Txt2Real ( int          Key,
-                     std::string *LocReal,
-                     float       *rRet)
+                          std::string *LocReal,
+                          float       *rRet)
 //-----------------------------------------------------------------------------
 {
   char *enz;  // Zeiger auf Konvertierungs-Fehler
+  // std::string::size_type sz;     // alias of size_t
+  // char cTmpChar[10];
 
-  double LocDbl;
+  // double LocFlt;
 
   int iStat =  0;
 //.............................................................................
@@ -827,6 +829,7 @@ int sstStr011i_Txt2Real ( int          Key,
 
   // Is String to Float/Double convertible?
   iStat  = sstStr011_FloatConvertible ( 0, LocReal);
+  // iStat = 1;
   if(iStat == 1)
   {
     // String is convertible, go on!
@@ -837,15 +840,16 @@ int sstStr011i_Txt2Real ( int          Key,
     return -2;
   }
 
-  LocDbl = strtod( LocReal->c_str(), &enz);
+  char *saved_locale;
+  saved_locale = setlocale(LC_NUMERIC, "C");
+  /* do your strtod thing */
+  *rRet = strtof( LocReal->c_str(), &enz);
+  setlocale(LC_NUMERIC, saved_locale);
+
   if ( strlen(enz) != 0)
   {
     *rRet = 0.0;  // Return-Wert zurücksetzen
     return -2;
-  }
-  else
-  {
-    *rRet = (float) LocDbl;
   }
 
   return iStat;

@@ -41,4 +41,6 @@ Structure of coding projects should be:
 17.06.2016: Version 1.9: Better Handling of empty Values.  <BR>
                          Extend working with bool values.  <BR>
 11.07.2016: Version 1.10: Better Handling of extreme double Values.  <BR>
+07.08.2016: Version 1.11: Setlocale for convert float/double functions.  <BR>
+                          Extend test convert string to CSV. <BR>
 

@@ -2,6 +2,7 @@ TEMPLATE	= lib
 CONFIG		+= warn_on
 CONFIG    -= qt
 CONFIG    -= windows
+# CONFIG    += c++11
 
 # CONFIG    -= debug  # ist RELEASE aktiv
 CONFIG    -= release  # ist DEBUG aktiv

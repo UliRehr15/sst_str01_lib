@@ -23,6 +23,8 @@
 
 // Structures and Classes ------------------------------------------------------
 
+// Test String to CSV functions
+int Test_String2CSV (int iKey);
 
 #endif
 

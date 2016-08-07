@@ -242,6 +242,10 @@ int main ()
   iStat = sResult_Row.find("22;-6666666;63000;88888888;-23456,66;234,1;'abcdefg';'nn nn';.T.",0);
   assert(iStat == 0);
 
+  // Test String to CSV functions
+  iStat = Test_String2CSV ( 0);
+
+
   printf("Test Str01Lib Success. \n");
 
   // Fatal Errors goes to an assert
@@ -250,6 +254,73 @@ int main ()
     // Expression (iRet >= 0) has to be fullfilled
     assert(0);
   }
+
+  // Small Errors will given back
+  iRet = iStat;
+
+  return iRet;
+}
+//=============================================================================
+int Test_String2CSV (int iKey)
+//-----------------------------------------------------------------------------
+{
+
+  std::string oTestStr;
+  sstStr01Cls oCsvConvert;
+
+  int iVal = 0;
+  long lVal = 0;
+  unsigned int uiVal = 0;
+  unsigned long ulVal = 0;
+  float fVal = 0.0;
+  double dVal = 0.0;
+  bool bVal = false;
+  std::string oStrVal;
+  char cVal[10];
+
+  int iRet  = 0;
+  int iStat = 0;
+  //-----------------------------------------------------------------------------
+  if ( iKey != 0) return -1;
+
+ printf("Test Functions CSV-String to Value. ");
+ oTestStr = "22;-6666666;63000;88888888;-23456,66;1,10;'abcdefg';'nn nn';.T.";
+
+  oCsvConvert.SetBoolTyp(0,2);  // .F. + .T.
+
+  oCsvConvert.CsvString2_Int2( 0, &oTestStr, &iVal);
+  assert(iVal == 22);
+  oCsvConvert.CsvString2_Int4( 0, &oTestStr, &lVal);
+  assert(lVal == -6666666);
+
+  oCsvConvert.CsvString2_UInt2( 0, &oTestStr, &uiVal);
+  assert(uiVal == 63000);
+  oCsvConvert.CsvString2_UInt4( 0, &oTestStr, &ulVal);
+  assert(ulVal == 88888888);
+
+  oCsvConvert.CsvString2_Dbl( 0, &oTestStr, &dVal);
+  assert(dVal == -23456.66);
+  oCsvConvert.CsvString2_Flt( 0, &oTestStr, &fVal);
+  assert(fVal > 1.1 && fVal < 1.2);
+
+  oCsvConvert.CsvString2_Str( 0, &oTestStr, &oStrVal);
+  assert(oStrVal == "abcdefg");
+  oCsvConvert.CsvString2_Char( 0, &oTestStr, cVal, 10);
+  iStat = strncmp(cVal,"nn nn",10);
+  assert(iStat == 0);
+
+  oCsvConvert.CsvString2_Bool( 0, &oTestStr, &bVal);
+  assert(bVal == true);
+
+  printf("Checked. \n");
+
+  // Fatal Errors goes to an assert
+
+  // Pipe |
+  // Smaller <
+  // Greater >
+
+  assert(iRet >= 0);
 
   // Small Errors will given back
   iRet = iStat;

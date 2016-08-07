@@ -14,7 +14,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = 
 CFLAGS        = -m32 -pipe -g -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -m32 -pipe -g -Wall -W -fPIC $(DEFINES)
+CXXFLAGS      = -m32 -pipe -g -std=c++0x -Wall -W -fPIC $(DEFINES)
 INCPATH       = -I. -I../Header -I../../../Qt/5.5/gcc/mkspecs/linux-g++-32
 QMAKE         = /home/uli-le/Qt/5.5/gcc/bin/qmake
 DEL_FILE      = rm -f
@@ -173,6 +173,7 @@ DIST          = ../../../Qt/5.5/gcc/mkspecs/features/spec_pre.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/default_pre.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/resolve_config.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/default_post.prf \
+		../../../Qt/5.5/gcc/mkspecs/features/c++11.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/warn_on.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/testcase_targets.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/exceptions.prf \
@@ -333,6 +334,7 @@ Makefile: sstStr01LibTest.pro ../../../Qt/5.5/gcc/mkspecs/linux-g++-32/qmake.con
 		../../../Qt/5.5/gcc/mkspecs/features/default_pre.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/resolve_config.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/default_post.prf \
+		../../../Qt/5.5/gcc/mkspecs/features/c++11.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/warn_on.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/testcase_targets.prf \
 		../../../Qt/5.5/gcc/mkspecs/features/exceptions.prf \
@@ -463,6 +465,7 @@ Makefile: sstStr01LibTest.pro ../../../Qt/5.5/gcc/mkspecs/linux-g++-32/qmake.con
 ../../../Qt/5.5/gcc/mkspecs/features/default_pre.prf:
 ../../../Qt/5.5/gcc/mkspecs/features/resolve_config.prf:
 ../../../Qt/5.5/gcc/mkspecs/features/default_post.prf:
+../../../Qt/5.5/gcc/mkspecs/features/c++11.prf:
 ../../../Qt/5.5/gcc/mkspecs/features/warn_on.prf:
 ../../../Qt/5.5/gcc/mkspecs/features/testcase_targets.prf:
 ../../../Qt/5.5/gcc/mkspecs/features/exceptions.prf:

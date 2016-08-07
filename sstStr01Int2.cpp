@@ -623,7 +623,10 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   {
     // pLocStr = strchr(LocStr.Txt,'.');  // Zeichen Punkt in String suchen
     unsigned long ulPos = LocStr.find(".");  // Zeichen Punkt in String suchen
-    LocStr.replace(ulPos,1,",");  // Zeichen Punkt in String suchen
+    if (ulPos != LocStr.npos)
+    {
+      LocStr.replace(ulPos,1,",");  // Zeichen Punkt in String suchen
+    }
     // pLocStr[0] = ',';
   }
 
@@ -995,7 +998,10 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
   if (iKey == 2 || iKey == 3)
   {
     unsigned long ulPos = LocStr.find(".");  // Zeichen Punkt in String suchen
-    LocStr.replace(ulPos,1,",");
+    if (ulPos != LocStr.npos)
+    {
+      LocStr.replace(ulPos,1,",");
+    }
   }
 
   if (iKey == 0 || iKey == 2)

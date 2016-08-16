@@ -43,4 +43,5 @@ Structure of coding projects should be:
 11.07.2016: Version 1.10: Better Handling of extreme double Values.  <BR>
 07.08.2016: Version 1.11: Setlocale for convert float/double functions.  <BR>
                           Extend test convert string to CSV. <BR>
+16.08.2016: Version 1.12: DefType Class with additional Infos Strings for Doxygen.  <BR>
 

@@ -248,6 +248,48 @@ class sstStr01VarDefCls
      int Set_EleNam(std::string oEleNamStr);
      //==============================================================================
      /**
+     * @brief // set system Info in def type class <BR>
+     * iStat = oVarDef.Set_SysInfo(oSysInfoStr);
+     *
+     * @param oSysInfoStr [in] Info string
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_SysInfo(std::string oSysInfoStr);
+     //==============================================================================
+     /**
+     * @brief // set class Info in def type class <BR>
+     * iStat = oVarDef.Set_ObjInfo(oClsInfoStr);
+     *
+     * @param oClsInfoStr [in] Info string
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_ObjInfo(std::string oClsInfoStr);
+     //==============================================================================
+     /**
+     * @brief // set Variable element Info in def type class <BR>
+     * iStat = oVarDef.Set_EleInfo(oEleInfoStr);
+     *
+     * @param oEleInfoStr [in] Info string
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
+     int Set_EleInfo(std::string oEleInfoStr);
+     //==============================================================================
+     /**
      * @brief // set var type in def type class <BR>
      * iStat = oVarDef.Set_Type ( eType);
      *
@@ -317,6 +359,33 @@ class sstStr01VarDefCls
      std::string Get_EleNam();
      //==============================================================================
      /**
+     * @brief // Get System Info from def type class <BR>
+     * oSysInfoStr = oVarDef.Get_SysInfo();
+     *
+     * @return string SysInfo
+     */
+     // ----------------------------------------------------------------------------
+     std::string Get_SysInfo();
+     //==============================================================================
+     /**
+     * @brief // Get class/object Info from def type class <BR>
+     * oObjInfoStr = oVarDef.Get_ObjInfo();
+     *
+     * @return string ObjInfo
+     */
+     // ----------------------------------------------------------------------------
+     std::string Get_ObjInfo();
+     //==============================================================================
+     /**
+     * @brief // Get variable/element Info from def type class <BR>
+     * oEleInfoStr = oVarDef.Get_EleInfo();
+     *
+     * @return string EleInfo
+     */
+     // ----------------------------------------------------------------------------
+     std::string Get_EleInfo();
+     //==============================================================================
+     /**
      * @brief // Get variable type from def type class <BR>
      * eVarType = oVarDef.Get_Type();
      *
@@ -351,6 +420,9 @@ class sstStr01VarDefCls
      sstStr01VarType_enum eType;              //!< Type of member variable               */
      int iWidth;                      //!< Whole Width ( incl. Dec) in file row 1 - 9999  */
      int iDec;                        //!< Dec of float/double in file row 0 - 6 */
+     char cSysInfo[dSST_STR01_VAR_NAM_LEN];      //!< Info String for System / Library for doxygen  */
+     char cObjInfo[dSST_STR01_VAR_NAM_LEN];      //!< Info String for Class for doxygen             */
+     char cEleInfo[dSST_STR01_VAR_NAM_LEN];      //!< Info String for Class Element for doxygen     */
 };
 //==============================================================================
 /**

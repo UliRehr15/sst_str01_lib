@@ -34,7 +34,9 @@ sstStr01VarDefCls::sstStr01VarDefCls()
   this->eType = sstStr01Unknown;
   this->iWidth=0;
   this->iDec=0;
-
+  memset(this->cSysInfo,0,dSST_STR01_VAR_NAM_LEN);
+  memset(this->cObjInfo,0,dSST_STR01_VAR_NAM_LEN);
+  memset(this->cEleInfo,0,dSST_STR01_VAR_NAM_LEN);
 }
 //=============================================================================
 int sstStr01VarDefCls::Set_SysNam(std::string oLocStr)
@@ -52,6 +54,24 @@ int sstStr01VarDefCls::Set_ObjNam(std::string oLocStr)
 int sstStr01VarDefCls::Set_EleNam(std::string oLocStr)
 {
   strncpy(this->cEleNam,oLocStr.c_str(),dSST_STR01_VAR_NAM_LEN);
+  return 0;
+}
+//=============================================================================
+int sstStr01VarDefCls::Set_SysInfo(std::string oLocStr)
+{
+  strncpy(this->cSysInfo,oLocStr.c_str(),dSST_STR01_VAR_NAM_LEN);
+  return 0;
+}
+//=============================================================================
+int sstStr01VarDefCls::Set_ObjInfo(std::string oLocStr)
+{
+  strncpy(this->cObjInfo,oLocStr.c_str(),dSST_STR01_VAR_NAM_LEN);
+  return 0;
+}
+//=============================================================================
+int sstStr01VarDefCls::Set_EleInfo(std::string oLocStr)
+{
+  strncpy(this->cEleInfo,oLocStr.c_str(),dSST_STR01_VAR_NAM_LEN);
   return 0;
 }
 //=============================================================================
@@ -91,6 +111,27 @@ std::string sstStr01VarDefCls::Get_EleNam()
 {
   std::string oLocStr;
   oLocStr = this->cEleNam;
+  return oLocStr;
+}
+//=============================================================================
+std::string sstStr01VarDefCls::Get_SysInfo()
+{
+  std::string oLocStr;
+  oLocStr = this->cSysInfo;
+  return oLocStr;
+}
+//=============================================================================
+std::string sstStr01VarDefCls::Get_ObjInfo()
+{
+  std::string oLocStr;
+  oLocStr = this->cObjInfo;
+  return oLocStr;
+}
+//=============================================================================
+std::string sstStr01VarDefCls::Get_EleInfo()
+{
+  std::string oLocStr;
+  oLocStr = this->cEleInfo;
   return oLocStr;
 }
 //=============================================================================

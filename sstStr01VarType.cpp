@@ -31,8 +31,8 @@ sstStr01VarTypeCls::sstStr01VarTypeCls()
 }
 //=============================================================================
 int sstStr01VarTypeCls::Str2Enm (int                   iKey,
-                                             std::string           oTypeStr,
-                                             sstStr01VarType_enum *eLocType)
+                                 std::string           oTypeStr,
+                                 sstStr01VarType_enum *eLocType)
 //-----------------------------------------------------------------------------
 {
   int iRet  = 0;
@@ -40,15 +40,25 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
+  if (oTypeStr.length() != 2) return -2;
+
   // LL, II, FF, DD, CC, BB, DA
 
   if (strncmp(oTypeStr.c_str(),"LL",2) == 0)
   {
     *eLocType = sstStr01Long;
   }
+  else if(strncmp(oTypeStr.c_str(),"UL",2) == 0)
+  {
+    *eLocType = sstStr01ULong;
+  }
   else if(strncmp(oTypeStr.c_str(),"II",2) == 0)
   {
     *eLocType = sstStr01Int;
+  }
+  else if(strncmp(oTypeStr.c_str(),"UI",2) == 0)
+  {
+    *eLocType = sstStr01UInt;
   }
   else if(strncmp(oTypeStr.c_str(),"FF",2) == 0)
   {
@@ -283,7 +293,9 @@ int sstStr01VarTypeCls::Enm2FullStr (int           iKey,
   switch (eCppType)
   {
   case sstStr01Int:    *oTypeChar ="int";break;
+  case sstStr01UInt:    *oTypeChar ="unsigned int";break;
   case sstStr01Long:   *oTypeChar = "long";break;
+  case sstStr01ULong:   *oTypeChar = "unsigned long";break;
   case sstStr01Char:   *oTypeChar = "char";break;
   case sstStr01Float:  *oTypeChar = "float";break;
   case sstStr01Double: *oTypeChar = "double";break;
@@ -344,7 +356,9 @@ int sstStr01VarTypeCls::Enm2ShortStr (int                    iKey,
   switch (eCppType)
   {
   case sstStr01Int:    *oTypeStr = "i"; break;
+  case sstStr01UInt:    *oTypeStr = "ui"; break;
   case sstStr01Long:   *oTypeStr = "l"; break;
+  case sstStr01ULong:   *oTypeStr = "ul"; break;
   case sstStr01Char:   *oTypeStr = "c"; break;
   case sstStr01Float:  *oTypeStr = "f"; break;
   case sstStr01Double: *oTypeStr = "d"; break;

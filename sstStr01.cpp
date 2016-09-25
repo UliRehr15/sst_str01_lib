@@ -228,6 +228,12 @@ int sstStr01Cls::SetSeparator(int iKey, char *cSeparator)
   return this->poStr01Intern->SetSeparator(iKey,cSeparator);
 }
 //==============================================================================
+int sstStr01Cls::SetNoInfoChar(int iKey, char *cNoInfoChar)
+//-----------------------------------------------------------------------------
+{
+  return this->poStr01Intern->SetNoInfoChar(iKey,cNoInfoChar);
+}
+//==============================================================================
 int sstStr01Cls::SetReadPositon(int iKey, unsigned long lStartReadPos)
 //-----------------------------------------------------------------------------
 {

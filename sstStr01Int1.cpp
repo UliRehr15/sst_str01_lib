@@ -1422,6 +1422,13 @@ int sstStr01IntCls::SetSeparator(int iKey, char *cSeparator)
   return 0;
 }
 //=============================================================================
+int sstStr01IntCls::SetNoInfoChar(int iKey, char *cNoInfoChar)
+{
+  if ( iKey != 0) return -1;
+  strncpy ( this->cNoInfo, cNoInfoChar, 2);
+  return 0;
+}
+//=============================================================================
 int sstStr01IntCls::SetReadPositon(int iKey, unsigned long ulTmpPos)
 {
   if ( iKey != 0) return -1;

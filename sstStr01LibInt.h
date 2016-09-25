@@ -618,6 +618,12 @@ class sstStr01IntCls
      */
      int SetSeparator(int iKey, char *cSeparator);
      //==============================================================================
+     /** Set No Information  char
+     * @param iKey For the moment 0
+     * @param cNoInfoChar CSV Separator: for example ";" (default)
+     */
+     int SetNoInfoChar(int iKey, char *cNoInfoChar);
+     //==============================================================================
      /** Set Read Position in String
      * @param iKey For the moment 0
      * @param lStartReadPos Set new Read position
@@ -625,10 +631,10 @@ class sstStr01IntCls
      int SetReadPositon(int iKey, unsigned long lStartReadPos);
      //==============================================================================
      /**
-     * @brief Shortstory
+     * @brief // 0=No Sep, 1=only strings,2=All
      *
      * @param iKey          [in] For the moment 0
-     * @param iSeparatorTyp [in] For the moment 0
+     * @param iSeparatorTyp [in] 0 or 1 or 2
      *
      * @return Errorstate
      *
@@ -2554,7 +2560,10 @@ int sstStr011i_RemoveEndingSpaces (int               iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param iKey: [in] For the moment 0
+* @param iKey     [in] For the moment 0
+* @param Zeile    [in] Zeile
+* @param uPos     [in] uPos
+* @param cDelimit [in] cDelimit
 *
 * @return Errorstate
 *

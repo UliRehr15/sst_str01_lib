@@ -974,6 +974,14 @@ class sstStr01Cls
      */
      int SetSeparator(int iKey, char *cSeparator);
      //==============================================================================
+     /** Set No Information  char
+     *
+     * @param iKey For the moment 0
+     * @param cNoInfoChar CSV Separator: for example ";" (default)
+     *
+     */
+     int SetNoInfoChar(int iKey, char *cNoInfoChar);
+     //==============================================================================
      /**
      * @brief // Set Read Position in String <BR>
      * iStat = oSstStr.SetReadPositon ( iKey, ulStartReadPos);
@@ -1186,12 +1194,48 @@ class sstStr01TestRecSmallCls
   public:   // Öffentliche Funktionen
      sstStr01TestRecSmallCls();  // Konstruktor
     // ~X();  // Destruktor
+     //==============================================================================
+     /**
+     * @brief // Get test integer value
+     * iVal = oTestRecSmall.getIVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      int getIVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Variable element name in def type class <BR>
+     * iStat = oTestRecSmall.setIVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setIVal(int value);
-
+     //==============================================================================
+     /**
+     * @brief // Get test char value
+     * cVal = oTestRecSmall.getCVal();
+     *
+     * @return string ObjNam
+     */
+     // ----------------------------------------------------------------------------
      char* getCVal();
+     //==============================================================================
+     /**
+     * @brief // set test char value
+     * iStat = oTestRecSmall.setCVal(value);
+     *
+     * @param value [in] value
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     */
+     // ----------------------------------------------------------------------------
      void setCVal(const char *value);
-
+     //==============================================================================
 private:  // Private Funktionen
      int iVal;              //!< Test Value Integer
      char cVal[21];         //!< Test Value Char String
@@ -1285,31 +1329,175 @@ class sstStr01TestRecFullCls
   public:   // Öffentliche Funktionen
      sstStr01TestRecFullCls();  // Konstruktor
     // ~X();  // Destruktor
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      int getIVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setIVal(int value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      long getLVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setLVal(long value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      unsigned int getUiVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setUiVal(unsigned int value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      unsigned long getUlVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setUlVal(unsigned long value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      double getDVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setDVal(double value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      float getFVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setFVal(float value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      std::string getSVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setSVal(const std::string &value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      char* getCVal();
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setCVal(const char *value);
 
+     //==============================================================================
+     /**
+     * @brief // Get test value
+     * iVal = oTestRecFull.getVal();
+     *
+     * @return value
+     */
+     // ----------------------------------------------------------------------------
      bool getBVal() const;
+     //==============================================================================
+     /**
+     * @brief // set Value <BR>
+     * iStat = oTestRecFull.setVal(Value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
      void setBVal(bool value);
 
 private:  // Private Funktionen

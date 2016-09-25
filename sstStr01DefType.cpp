@@ -164,24 +164,26 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
   sstStr01VarType_enum eLocType;
   sstStr01VarTypeCls oVarType;
   std::string  sRetStr;
-  char cTrnZ[2]=";";
-  unsigned long TPos = 0;
+  // char cTrnZ[2]=";";
+  // unsigned long TPos = 0;
   int iRet  = 0;
   int iStat = 0;
-  int iStat1 = 0;
+  // int iStat1 = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
+  this->oCnvtStr.SetReadPositon(0,0);
+
   // Csv ab Position in String konvertieren.
   // Read System name
-  iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+  iStat = this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
 
   if(iStat >= 0)
   {
     // strncpy(oStrType->cSysNam,sRetStr.c_str(),dSST_STR01_VAR_NAM_LEN);
     oStrType->Set_SysNam(sRetStr);
     // Read Class name
-    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+    iStat = this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
   }
 
   if(iStat >= 0)
@@ -189,7 +191,7 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // strncpy(oStrType->cObjNam,sRetStr.c_str(), dSST_STR01_VAR_NAM_LEN);
     oStrType->Set_ObjNam(sRetStr);
     // Read element name
-    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+    iStat = this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
   }
 
   if(iStat >= 0)
@@ -197,7 +199,7 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // strncpy(oStrType->cEleNam,sRetStr.c_str(), dSST_STR01_VAR_NAM_LEN);
     oStrType->Set_EleNam(sRetStr);
     // Read element Type
-    iStat = sstStr011_AbPos2Str ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &sRetStr);
+    iStat = this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
   }
 
   if (iStat >= 0)
@@ -211,22 +213,34 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     // oStrType->eType = eLocType;
     oStrType->Set_Type(eLocType);
     // Read element width
-    iStat = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
+    iStat = this->oCnvtStr.CsvString2_Int2( 0, sFilStr, &iRet);
   }
 
   if(iStat >= 0)
   {
-    // oStrType->iWidth = iRet;
-    oStrType->Set_Width(iRet);
-    // Read element Dec
-    iStat1 = sstStr011_AbPos2Int ( 0, &TPos, cTrnZ, sFilStr, sErrTxt, &iRet);
+    oStrType->Set_Width( iRet);
+    // Read element optional Dec
+    this->oCnvtStr.CsvString2_Int2( 0, sFilStr, &iRet);
   }
 
-  if(iStat1 >= 0)
+  if(iStat >= 0)
   {
-    // oStrType->iDec = iRet;
-    oStrType->Set_Dec(iRet);
+    oStrType->Set_Dec( iRet);
   }
+
+  // Read optional description
+  this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
+  oStrType->Set_SysInfo(sRetStr);
+
+  // Read optional description
+    this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
+    oStrType->Set_ObjInfo(sRetStr);
+
+    // Read optional description
+    this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
+    oStrType->Set_EleInfo(sRetStr);
+
+    *sErrTxt = this->oCnvtStr.GetErrorString();
 
   // Fatal Errors goes to an assert
   if (iRet < 0)

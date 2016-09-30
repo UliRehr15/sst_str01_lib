@@ -183,13 +183,14 @@ int sstStr011_Zeile2Dbl ( int          Key,    // v  -> Vorerst immer 0
                      std::string *txt,    //   <-> Quelle
                      std::string *ErrTxt, //   <-> Read-Error -bei Errtxt-
                      double      *dRet)   //   <-> Ziel
+//.............................................................................
 {
   std::string LocDbl;
   // char *enz;
 
   unsigned long TLen;  // Text-Länge in LocDbl
   int istat;
-//.............................................................................
+  //.............................................................................
   if (Key != 0) return -1;
   istat = 0;
 
@@ -211,6 +212,50 @@ int sstStr011_Zeile2Dbl ( int          Key,    // v  -> Vorerst immer 0
   if (istat < 0)
   {
     *dRet = 0.0;
+    // LocDbl.Txt[11] = '\0';
+    // strcpy ( ErrTxt->Txt, LocDbl.Txt);  // wo lag das Problem, zurück für Protokoll
+    *ErrTxt = LocDbl;  // wo lag das Problem, zurück für Protokoll
+    return -1;
+  }
+
+  return istat;
+}
+//=============================================================================
+int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
+                     unsigned long         Von,    // v  -> von Textposition
+                     unsigned long         Bis,    // v  -> bis Textposition
+                     std::string *txt,    //   <-> Quelle
+                     std::string *ErrTxt, //   <-> Read-Error -bei Errtxt-
+                     float         *fRet)   //   <-> Ziel
+//.............................................................................
+{
+  std::string LocDbl;
+  // char *enz;
+
+  unsigned long TLen;  // Text-Länge in LocDbl
+  int istat;
+//.............................................................................
+  if (Key != 0) return -1;
+  istat = 0;
+
+  // enz = NULL;  // Zeiger auf Read-Error
+
+  istat = sstStr011_Zeile2Str ( 0, Von, Bis, txt, ErrTxt, &LocDbl);
+
+  TLen = LocDbl.length();
+  if ( TLen <= 0)
+  {
+    // String leer, keine Umformung möglich
+    *fRet = 0.0;  // Return-Wert zurücksetzen
+    return -1;
+  }
+
+  // String direkt in Double konvertieren
+  istat = sstStr011i_Txt2Real( 0, &LocDbl, fRet);
+
+  if (istat < 0)
+  {
+    *fRet = 0.0;
     // LocDbl.Txt[11] = '\0';
     // strcpy ( ErrTxt->Txt, LocDbl.Txt);  // wo lag das Problem, zurück für Protokoll
     *ErrTxt = LocDbl;  // wo lag das Problem, zurück für Protokoll

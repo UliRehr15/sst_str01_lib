@@ -894,6 +894,32 @@ int sstStr011_Zeile2Dbl ( int           iKey,
 
 //=============================================================================
 /**
+* @brief Teil von String nach Double  konvertieren.
+*
+* iStat = sstStr011_Zeile2Dbl ( iKey, Von, Bis, *txt1, *ErrTxt, *dRet);
+*
+* @ingroup sstStr01IntLib
+*
+* @param iKey    [in]  Vorerst immer 0
+* @param Von     [in]  Von Textposition
+* @param Bis     [in]  Bis Textposition
+* @param txt1    [in]  Text Quelle
+* @param ErrTxt  [out] Read-Error bei ErrTxt
+* @param dRet    [out] Result Double
+*
+* @author ur
+*
+* @date 11.02.05
+*/
+//-----------------------------------------------------------------------------
+int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
+                     unsigned long         Von,    // v  -> von Textposition
+                     unsigned long         Bis,    // v  -> bis Textposition
+                     std::string *txt,    //   <-> Quelle
+                     std::string *ErrTxt, //   <-> Read-Error -bei Errtxt-
+                     float         *fRet);   //   <-> Ziel
+//=============================================================================
+/**
 * @brief Kopieren eines String in einen Zeilenbereich
 *
 * iStat = sstStr011_Str2Zeile ( Key, Von, Bis, *sWert, *Zeile);

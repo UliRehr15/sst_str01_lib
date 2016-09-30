@@ -12,9 +12,9 @@ CONFIG    += staticlib
 INCLUDEPATH = ./Header
 
 # SOURCES		+= str1_lib1.cpp
-HEADERS		+= \
-    sstStr01LibInt.h \
-    Header/sstStr01Lib.h
+HEADERS		+=  sstStr01LibInt.h \
+              Header/sstStr01Lib.h \
+              Header/sstStr01FixColWidth.h
     # Header/sstStr01Kern.h
 
 SOURCES		+= \
@@ -27,7 +27,8 @@ SOURCES		+= \
     sstStr01.cpp \
     sstStr01VarType.cpp \
     sstStr01DefType.cpp \
-    sstStr01TestRec.cpp
+    sstStr01TestRec.cpp \
+    sstStr01Fcw.cpp
 
 OTHER_FILES += README.md
 

@@ -54,7 +54,8 @@ SOURCES       = sstStr01Test.cpp \
 		sstStr01.cpp \
 		sstStr01VarType.cpp \
 		sstStr01DefType.cpp \
-		sstStr01TestRec.cpp 
+		sstStr01TestRec.cpp \
+		sstStr01Fcw.cpp 
 OBJECTS       = sstStr01Test.o \
 		sstStr01Int1.o \
 		sstStr01Int2.o \
@@ -64,7 +65,8 @@ OBJECTS       = sstStr01Test.o \
 		sstStr01.o \
 		sstStr01VarType.o \
 		sstStr01DefType.o \
-		sstStr01TestRec.o
+		sstStr01TestRec.o \
+		sstStr01Fcw.o
 DIST          = ../../Qt/5.5/gcc/mkspecs/features/spec_pre.prf \
 		../../Qt/5.5/gcc/mkspecs/common/unix.conf \
 		../../Qt/5.5/gcc/mkspecs/common/linux.conf \
@@ -194,7 +196,8 @@ DIST          = ../../Qt/5.5/gcc/mkspecs/features/spec_pre.prf \
 		../../Qt/5.5/gcc/mkspecs/features/yacc.prf \
 		../../Qt/5.5/gcc/mkspecs/features/lex.prf \
 		sstStr01Lib.pro sstStr01LibInt.h \
-		Header/sstStr01Lib.h sstStr01Test.cpp \
+		Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h sstStr01Test.cpp \
 		sstStr01Int1.cpp \
 		sstStr01Int2.cpp \
 		sstStr01Int3.cpp \
@@ -203,7 +206,8 @@ DIST          = ../../Qt/5.5/gcc/mkspecs/features/spec_pre.prf \
 		sstStr01.cpp \
 		sstStr01VarType.cpp \
 		sstStr01DefType.cpp \
-		sstStr01TestRec.cpp
+		sstStr01TestRec.cpp \
+		sstStr01Fcw.cpp
 QMAKE_TARGET  = sst_str01_lib_d
 DESTDIR       = ../libs/#avoid trailing-slash linebreak
 TARGET        = libsst_str01_lib_d.a
@@ -579,6 +583,11 @@ sstStr01DefType.o: sstStr01DefType.cpp Header/sstStr01Lib.h \
 sstStr01TestRec.o: sstStr01TestRec.cpp Header/sstStr01Lib.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01TestRec.o sstStr01TestRec.cpp
+
+sstStr01Fcw.o: sstStr01Fcw.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
+		sstStr01LibInt.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Fcw.o sstStr01Fcw.cpp
 
 ####### Install
 

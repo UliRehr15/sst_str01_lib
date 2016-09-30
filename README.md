@@ -45,4 +45,6 @@ Structure of coding projects should be:
                           Extend test convert string to CSV. <BR>
 16.08.2016: Version 1.12: DefType Class with additional Infos Strings for Doxygen.  <BR>
 25.09.2016: Version 1.13: More improvements for DefType Class.  <BR>
+30.09.2016: Version 1.14: New Import/Export class fix colums width format. <BR>
+                          Its prototype and totally untested. <BR>
 

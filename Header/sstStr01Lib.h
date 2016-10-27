@@ -788,7 +788,7 @@ class sstStr01Cls
      * @brief // convert double value to csv-formatted string and append to string <BR>
      * iStat = oSstStr.Csv_Dbl_2String ( iKey, dVal, *oSstStr);
      *
-     * More Comment
+     * Decimal Formatted with intern value uiDec.
      *
      * Changed: 04.05.11  Re.
      *
@@ -1099,6 +1099,28 @@ class sstStr01Cls
      */
      // ----------------------------------------------------------------------------
      void setDecType(int value);
+     //==============================================================================
+     /**
+     * @brief // Get number of decimal values for formatting double/float  <BR>
+     * uiValue = oSstStr.getUiDec();
+     *
+     * Default is uiDec = 3
+     *
+     * @return unsigned int value
+     */
+     // ----------------------------------------------------------------------------
+     unsigned int getUiDec() const;
+     //==============================================================================
+     /**
+     * @brief // Set number of decimal values for formatting double/float <BR>
+     * oSstStr.SetUiVal ( value);
+     *
+     * Default is uiDec = 3
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
+     void setUiDec(unsigned int value);
      //==============================================================================
 
 private:  // Private functions

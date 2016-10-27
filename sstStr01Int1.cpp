@@ -1050,9 +1050,11 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
 
   // convert double to string (floating comma value: KeyBit1=1)
   if (this->iDecType == 0)
-    iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+    // iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+    iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
   else
-    iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+    // iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+    iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1398,8 +1400,9 @@ sstStr01IntCls::sstStr01IntCls()
   strncpy(this->cSeparator,";",2);
   strncpy(this->cBracket,"'",2);
   strncpy(this->cNoInfo," ",2);
-  iSeparatorTyp = 0;
-  iBoolTyp = 0;
+  this->iSeparatorTyp = 0;
+  this->iBoolTyp = 0;
+  this->uiDec = 3;
 }
 //=============================================================================
 int sstStr01IntCls::SetBracket(int iKey, char *cTmpBracket)
@@ -1509,5 +1512,14 @@ void sstStr01IntCls::setDecType(int value)
 iDecType = value;
 }
 //=============================================================================
-
+unsigned int sstStr01IntCls::getUiDec() const
+{
+return uiDec;
+}
+//=============================================================================
+void sstStr01IntCls::setUiDec(unsigned int value)
+{
+uiDec = value;
+}
+//=============================================================================
 

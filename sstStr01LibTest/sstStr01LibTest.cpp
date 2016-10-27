@@ -105,7 +105,12 @@ int main ()
     assert (iDecType==0);  // default is decimal comma
     iStat = oSstStr.Csv_Dbl_2String(0,22.2,&oRetStr);
     assert( oRetStr.compare("22,200") == 0);
+    oRetStr.clear();
+    oSstStr.setUiDec(4);
+    iStat = oSstStr.Csv_Dbl_2String(0,22.23456,&oRetStr);
+    assert( oRetStr.compare("22,2346") == 0);
     oSstStr.setDecType(1); // set decimal point
+    oSstStr.setUiDec(3);
     oRetStr.clear();
     iStat = oSstStr.Csv_Dbl_2String(0,22.2,&oRetStr);
     assert( oRetStr.compare("22.200") == 0);

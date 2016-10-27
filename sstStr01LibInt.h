@@ -753,19 +753,38 @@ class sstStr01IntCls
      // ----------------------------------------------------------------------------
      void setDecType(int value);
      //==============================================================================
+     /**
+     * @brief // Get value  <BR>
+     * uiValue = oSstStr.getUiDec();
+     *
+     * @return unsigned int value
+     */
+     // ----------------------------------------------------------------------------
+     unsigned int getUiDec() const;
+     //==============================================================================
+     /**
+     * @brief // Set value  <BR>
+     * oSstStr.SetUiVal ( value);
+     *
+     * @param value [in] value
+     */
+     // ----------------------------------------------------------------------------
+     void setUiDec(unsigned int value);
+     //==============================================================================
 
 private:  // Private functions
-    char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
-    char cBracket[2];   //!< For example "\x22"                    */
+     char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
+    char cBracket[2];       //!< For example "\x22"                    */
     char cBracketOpen[2];   //!< For example "("                     */
     char cBracketClose[2];  //!< For example ")"                    */
-    char cNoInfo[2];      //!< For example " " blank                         */
-    unsigned long ulPos;  //!< Read Position in sst String                  */
-    int  iFormatKenn;     //!< fixcolumnformat=0; charseparatedformat=1      */
-    int  iDecType;        //!< floating comma = 0; floating point = 1        */
-    int  iSeparatorTyp;   //!< 0=No Sep, 1=only strings,2=All                */
-    int  iBoolTyp;        //!< 0=0/1, 1=F/T,2=.F./.T.                        */
-    std::string oErrStr;  //!< Error string                                  */
+    char cNoInfo[2];        //!< For example " " blank                         */
+    unsigned long ulPos;    //!< Read Position in sst String                  */
+    int  iFormatKenn;       //!< fixcolumnformat=0; charseparatedformat=1      */
+    int  iDecType;          //!< floating comma = 0; floating point = 1        */
+    int  iSeparatorTyp;     //!< 0=No Sep, 1=only strings,2=All                */
+    int  iBoolTyp;          //!< 0=0/1, 1=F/T,2=.F./.T.                        */
+    unsigned int  uiDec;    //!< default 3 for double/float 0.000              */
+    std::string oErrStr;    //!< Error string                                  */
 };
 
 
@@ -903,16 +922,16 @@ int sstStr011_Zeile2Dbl ( int           iKey,
 * @param iKey    [in]  Vorerst immer 0
 * @param Von     [in]  Von Textposition
 * @param Bis     [in]  Bis Textposition
-* @param txt1    [in]  Text Quelle
+* @param txt     [in]  Text Quelle
 * @param ErrTxt  [out] Read-Error bei ErrTxt
-* @param dRet    [out] Result Double
+* @param fRet    [out] Result Double
 *
 * @author ur
 *
 * @date 11.02.05
 */
 //-----------------------------------------------------------------------------
-int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
+int sstStr011_Zeile2Float ( int          iKey,    // v  -> Vorerst immer 0
                      unsigned long         Von,    // v  -> von Textposition
                      unsigned long         Bis,    // v  -> bis Textposition
                      std::string *txt,    //   <-> Quelle
@@ -2852,4 +2871,3 @@ int sstStr011_GetNextSBrakeInfo (int             iKey,
 #endif
 
 // --------------------------------------------------------------- File End ----
-

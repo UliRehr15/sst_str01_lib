@@ -1122,6 +1122,15 @@ class sstStr01Cls
      // ----------------------------------------------------------------------------
      void setUiDec(unsigned int value);
      //==============================================================================
+     /**
+     * @brief // Get actual read position  <BR>
+     * ulPos = oSstStr.getReadPosition();
+     *
+     * @return unsigned long read position
+     */
+     // ----------------------------------------------------------------------------
+     unsigned long getReadPosition() const;
+     //==============================================================================
 
 private:  // Private functions
      sstStr01IntCls *poStr01Intern;   /**< Pointer to intern object */

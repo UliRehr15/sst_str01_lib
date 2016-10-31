@@ -48,4 +48,5 @@ Structure of coding projects should be:
 30.09.2016: Version 1.14: New Import/Export class fix colums width format. <BR>
                           Its prototype and totally untested. <BR>
 27.10.2016: Version 1.15: Set decimal places for double/float csv writing. <BR>
+31.10.2016: Version 1.16: new function -getReadPosition- in string. <BR>
 

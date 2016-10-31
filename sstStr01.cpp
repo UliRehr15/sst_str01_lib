@@ -297,13 +297,16 @@ void sstStr01Cls::setDecType(int value)
 unsigned int sstStr01Cls::getUiDec() const
 {
   return this->poStr01Intern->getUiDec();
-  //return uiDec;
 }
 //=============================================================================
 void sstStr01Cls::setUiDec(unsigned int value)
 {
   this->poStr01Intern->setUiDec(value);
-  // uiDec = value;
+}
+//=============================================================================
+unsigned long sstStr01Cls::getReadPosition() const
+{
+  return this->poStr01Intern->getReadPosition();
 }
 //=============================================================================
 

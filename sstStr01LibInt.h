@@ -771,6 +771,15 @@ class sstStr01IntCls
      // ----------------------------------------------------------------------------
      void setUiDec(unsigned int value);
      //==============================================================================
+     /**
+     * @brief // Get actual read position  <BR>
+     * ulPos = oSstStr.getReadPosition();
+     *
+     * @return unsigned long read position
+     */
+     // ----------------------------------------------------------------------------
+     unsigned long getReadPosition() const;
+     //==============================================================================
 
 private:  // Private functions
      char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
@@ -2871,3 +2880,4 @@ int sstStr011_GetNextSBrakeInfo (int             iKey,
 #endif
 
 // --------------------------------------------------------------- File End ----
+

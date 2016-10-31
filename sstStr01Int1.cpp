@@ -1522,4 +1522,9 @@ void sstStr01IntCls::setUiDec(unsigned int value)
 uiDec = value;
 }
 //=============================================================================
+unsigned long sstStr01IntCls::getReadPosition() const
+{
+return ulPos;
+}
+//=============================================================================
 

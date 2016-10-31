@@ -143,6 +143,8 @@ int main ()
   // Information 1
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
   assert( strcmp(oResultStr.c_str(),"800") == 0);
+  unsigned long ulPos = oStringMan.getReadPosition();
+  assert(ulPos == 7);  // Position 7 is semicolon
   // Information 2
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
   assert( strcmp(oResultStr.c_str(),"31;00") == 0);

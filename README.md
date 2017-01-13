@@ -49,4 +49,7 @@ Structure of coding projects should be:
                           Its prototype and totally untested. <BR>
 27.10.2016: Version 1.15: Set decimal places for double/float csv writing. <BR>
 31.10.2016: Version 1.16: new function -getReadPosition- in string. <BR>
+13.01.2017: Version 1.17: Full test of fix column width functions. <BR>
+                          New function split csv string into parts and return as vector. <BR>
+                          New function -GetSeparator- . <BR>
 

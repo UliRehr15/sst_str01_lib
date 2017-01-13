@@ -7,6 +7,7 @@
 #include <assert.h>
 
 #include <string>
+#include <vector>
 
 #include "sstStr01Lib.h"
 #include "sstStr01FixColWidth.h"
@@ -33,22 +34,25 @@ sstStr01FcwCls::sstStr01FcwCls()
 //=============================================================================
 int sstStr01FcwCls::String2Str(int iKey, int iColWidth, std:: string oFcwStr, std::string *oStrVal)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   std::string oErrStr;
   std::string oRetStr;
+  // iColWidth--;
 
-  int iStat = sstStr011_Zeile2Str ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, oStrVal);
+  int iStat = sstStr011_Zeile2Str ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, &oFcwStr, &oErrStr, oStrVal);
   // strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::String2Char(int iKey, int iColWidth, std:: string oFcwStr, char *cVal, int iCharLen)
 {
-  if ( iKey != 0) return -1;
+  //if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   std::string oErrStr;
   std::string oRetStr;
@@ -56,150 +60,167 @@ int sstStr01FcwCls::String2Char(int iKey, int iColWidth, std:: string oFcwStr, c
   int iStat = sstStr011_Zeile2Str ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, &oRetStr);
   strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
+
+  //  unsigned long ulPos = this->GetReadPosition();
+//  if (ulPos == 0)
+//    this->SetReadPositon(0, ulPos+iColWidth+1);
+//  else
+//    this->SetReadPositon(0, ulPos+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::Char2String(int iKey, int iColWidth, char *cVal, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
-  int iStat = sstStr011_Char2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, cVal, oFcwStr);
+  int iStat = sstStr011_Char2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, cVal, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::String2Int(int iKey, int iColWidth, std:: string oFcwStr, int *iVal)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   std::string oErrStr;
   // std::string oRetStr;
 
-  int iStat = sstStr011_Zeile2Int ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, iVal);
+  int iStat = sstStr011_Zeile2Int ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, &oFcwStr, &oErrStr, iVal);
   // strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::Int2String(int iKey, int iColWidth, int iVal, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
-  int iStat = sstStr011_Int2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, iVal, oFcwStr);
+  int iStat = sstStr011_Int2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, iVal, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::String2Long(int iKey, int iColWidth, std:: string oFcwStr, long *lVal)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   std::string oErrStr;
   // std::string oRetStr;
 
-  int iStat = sstStr011_Zeile2Int4 ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, lVal);
+  int iStat = sstStr011_Zeile2Int4 ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, &oFcwStr, &oErrStr, lVal);
   // strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::Long2String(int iKey, int iColWidth, long lVal, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
-  int iStat = sstStr011_Int4Zeile( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, lVal, oFcwStr);
+  int iStat = sstStr011_Int4Zeile( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, lVal, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::String2Dbl(int iKey, int iColWidth, std:: string oFcwStr, double *dVal)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   std::string oErrStr;
   // std::string oRetStr;
 
-  int iStat = sstStr011_Zeile2Dbl ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, dVal);
+  int iStat = sstStr011_Zeile2Dbl ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, &oFcwStr, &oErrStr, dVal);
   // strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::Dbl2String(int iKey, int iColWidth, double dVal, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
-  int iStat = sstStr011_Dbl2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, dVal, 4, oFcwStr);
+  int iStat = sstStr011_Dbl2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, dVal, 4, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::DblFrmt2String(int iKey, int iColWidth, double dVal, std:: string oFrmtStr, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   char cFrmtTxt[30];
   strncpy(cFrmtTxt,oFrmtStr.c_str(),30);
 
-  int iStat = sstStr011_Dbl2ZeileFmt( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, dVal, cFrmtTxt, oFcwStr);
+  int iStat = sstStr011_Dbl2ZeileFmt( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, dVal, cFrmtTxt, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::String2Float(int iKey, int iColWidth, std:: string oFcwStr, float *fVal)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   std::string oErrStr;
   // std::string oRetStr;
 
-  int iStat = sstStr011_Zeile2Float( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, fVal);
+  int iStat = sstStr011_Zeile2Float( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, &oFcwStr, &oErrStr, fVal);
   // strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::Float2String(int iKey, int iColWidth, float fVal, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
-  int iStat = sstStr011_Real2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, fVal, 4, oFcwStr);
+  int iStat = sstStr011_Real2Zeile ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, fVal, 4, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }
 //=============================================================================
 int sstStr01FcwCls::FloatFrmt2String(int iKey, int iColWidth, float fVal, std:: string oFrmtStr, std:: string *oFcwStr)
 {
-  if ( iKey != 0) return -1;
+  // if ( iKey != 0) return -1;
+  if (iKey < 0 || iKey > 3) return -1;
 
   char cFrmtTxt[30];
   strncpy(cFrmtTxt,oFrmtStr.c_str(),30);
 
-  int iStat = sstStr011_Real2ZeileFmt( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, fVal, cFrmtTxt, oFcwStr);
+  int iStat = sstStr011_Real2ZeileFmt( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, fVal, cFrmtTxt, oFcwStr);
 
-  this->SetReadPositon(0,this->GetReadPosition()+iColWidth+1);
+  this->SetReadPositon(0,this->GetReadPosition()+iColWidth);
 
   return iStat;
 }

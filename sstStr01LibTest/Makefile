@@ -513,6 +513,7 @@ compiler_clean:
 ####### Compile
 
 sstStr01LibTest.o: sstStr01LibTest.cpp ../Header/sstStr01Lib.h \
+		../Header/sstStr01FixColWidth.h \
 		sstStr01LibTest.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01LibTest.o sstStr01LibTest.cpp
 

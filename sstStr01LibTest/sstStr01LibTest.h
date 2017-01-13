@@ -26,6 +26,9 @@
 // Test String to CSV functions
 int Test_String2CSV (int iKey);
 
+// Test Fcw class and functions
+int Test_FixColumnWidthSystem (int iKey);
+
 #endif
 
 // ------------------------------------------------------------------- Ende ----

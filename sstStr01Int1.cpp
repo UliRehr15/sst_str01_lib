@@ -20,6 +20,7 @@
 #include <assert.h>
 
 #include <string>
+#include <vector>
 
 #include "sstStr01Lib.h"
 #include "sstStr01LibInt.h"
@@ -578,6 +579,42 @@ int sstStr01IntCls::CsvString2_Char ( int          iKey,
   iRet = iStat;
 
   return iRet;
+}
+//=============================================================================
+int sstStr01IntCls::CsvString2_VectorAll ( int                  iKey,
+                                           const std::string    oCsvRow,
+                                           std::vector<std::string> *data)
+{
+  if ( iKey != 0) return -1;
+
+  // vector<std::string> data;
+//  data->push_back("aaa");
+//  data->push_back("");
+//  data->push_back("ccc");
+
+  // int ii = data->size();
+
+  std::string oTmpCsvStr;
+  std::string oTmpStr;
+
+ //  myStr = data->at(1);
+
+  unsigned long ulTmpPos = this->getReadPosition();
+
+  this->SetReadPositon(0,0);
+  oTmpCsvStr = oCsvRow;
+
+  int iStat1 = this->CsvString2_Str( 0, &oTmpCsvStr, &oTmpStr);
+
+  while (iStat1 >= 0)
+  {
+    data->push_back(oTmpStr);
+    iStat1 = this->CsvString2_Str(0,&oTmpCsvStr,&oTmpStr);
+  }
+
+
+  this->SetReadPositon(0,ulTmpPos);
+  return 0;
 }
 //=============================================================================
 int sstStr011_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *ErrTxt)
@@ -1423,6 +1460,11 @@ int sstStr01IntCls::SetSeparator(int iKey, char *cSeparator)
   if ( iKey != 0) return -1;
   strncpy ( this->cSeparator, cSeparator, 2);
   return 0;
+}
+//=============================================================================
+std::string sstStr01IntCls::GetSeparator()
+{
+  return this->cSeparator;
 }
 //=============================================================================
 int sstStr01IntCls::SetNoInfoChar(int iKey, char *cNoInfoChar)

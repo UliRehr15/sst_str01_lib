@@ -11,13 +11,15 @@
  * See the COPYING file for more information.
  *
  **********************************************************************/
-// sstStr01Lib.h   07.12.15  Re.   24.11.15  Re.
+// sstStr01Lib.h   17.01.17  Re.   24.11.15  Re.
 //
 // Datastructures and Prototypes for system "sstStrLib"
 //
 
 #ifndef   _SST_STR01_LIB_HEADER
 #define   _SST_STR01_LIB_HEADER
+
+#include <vector>
 
 /**
  * @defgroup sstStr01Lib sstStr01Lib: sst String lib (Version 1)
@@ -188,7 +190,9 @@ private:  // Private functions
 * @brief Definition record class for data classes and member variables
 *
 * Defines one variable member for example in cpp class. <br>
-* For example:   testdbf;testrec;fValue;FF;5;2   <br>
+* For example:   testdbf;testrec;fValue;FF;5;2;Info_Sys;Info_Obj;Info_Ele   <br>
+*
+* Info Strings are for doxygen.
 *
 * Changed: 25.06.12  Re.
 *
@@ -679,6 +683,32 @@ class sstStr01Cls
                            std::string     *oZeile,
                            char            *cRetVal,
                            unsigned long    ulRetValLen);
+     //=============================================================================
+     /**
+     * @brief // Convert csv information to string vector array <BR>
+     * iStat = oSstStr.CsvString2_VectorAll ( iKey, &oCsvRow, &data)
+     *
+     * More Comment
+     *
+     * Changed: 30.03.10  Re.
+     *
+     * @param iKey      [in]     For the moment 0
+     * @param oCsvRow   [in]     Lese-String
+     * @param data      [out]    return Vector array of strings
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     *
+     * @author Re.
+     *
+     * @date 30.03.10
+     */
+     //-----------------------------------------------------------------------------
+     int CsvString2_VectorAll ( int                  iKey,
+                                const std::string    oCsvRow,
+                                std::vector<std::string> *data);
      //==============================================================================
      /**
      * @brief // convert short int to csv-formatted string and append to string <BR>
@@ -973,6 +1003,14 @@ class sstStr01Cls
      * @retval   < 0: Unspecified Error
      */
      int SetSeparator(int iKey, char *cSeparator);
+     //==============================================================================
+     /**
+     * @brief // Get Separator char  1;2;3;4  <BR>
+     * oSepStr = oSstStr.GetSeparator();
+     *
+     * @return Separator String
+     */
+     std::string GetSeparator();
      //==============================================================================
      /** Set No Information  char
      *

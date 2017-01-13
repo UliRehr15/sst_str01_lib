@@ -21,6 +21,7 @@
 #include <assert.h>
 
 #include <string>
+#include <vector>
 
 // #include "sstStr01Kern.h"
 #include "sstStr01Lib.h"
@@ -40,7 +41,7 @@ int sstStr011_Zeile2Str ( int          Key,    // v  -> Vorerst immer 0
                      std::string *txt2)   //   <-  Resultstring
 //-----------------------------------------------------------------------------
 {
-  unsigned long LenT1;     // Länge Quell-String
+  unsigned long LenT1;     // LÃ¤nge Quell-String
 
   char TrnZ[2];   // Trennzeichen
   unsigned long iiVon;
@@ -59,7 +60,7 @@ int sstStr011_Zeile2Str ( int          Key,    // v  -> Vorerst immer 0
   if (Key == 0)  memset(TrnZ,0,2);    // Trennzeichen Leer
   else           strncpy(TrnZ," ",2);   // Trennzeichen Blank, warum auch immer
 
-  LenT1 = txt1->length();  // Länge von Text 1
+  LenT1 = txt1->length();  // LÃ¤nge von Text 1
   if(LenT1 <= 0) return -2;
 
   // txt1->AktLen = LenT1;
@@ -73,7 +74,7 @@ int sstStr011_Zeile2Str ( int          Key,    // v  -> Vorerst immer 0
   iiVon = ii;
   if (Bis > LenT1) Bis = LenT1;
 
-  // Zeichen übertragen bis Ende der Information
+  // Zeichen Ã¼bertragen bis Ende der Information
   // strcpy(TrnZ,"\0");      // kein Trennzeichen, auch Blanks werden kopiert
   jj = 0;
   for( ii = iiVon; ii<=Bis; ii++)
@@ -89,11 +90,11 @@ int sstStr011_Zeile2Str ( int          Key,    // v  -> Vorerst immer 0
       break;  // keine weitere Information
     }
   }
-  // txt2->Txt[jj] = '\0';  // Result-String abschließen
+  // txt2->Txt[jj] = '\0';  // Result-String abschlieÃen
   // txt2->AktLen = strlen(txt2->Txt);
   // ErrTxt[11] = '\0';
-  // strcpy( ErrTxt->Txt,txt2->Txt);  // wo lag das Problem, zurück für Protokoll
-  *ErrTxt = *txt2;  // wo lag das Problem, zurück für Protokoll
+  // strcpy( ErrTxt->Txt,txt2->Txt);  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
+  *ErrTxt = *txt2;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
 
   // ErrTxt->AktLen = txt2->AktLen;
   // *ErrTxt = *txt2;
@@ -116,7 +117,8 @@ int sstStr011_Zeile2Int ( int          Key,    // v  -> Vorerst immer 0
   if (Key != 0) return -1;
   istat = 0;
 
-  istat = sstStr011_Zeile2Str ( 0, Von, Bis, txt, ErrTxt, &LocInt);
+  // Key = 1: trim no info chars at begin and end of string
+  istat = sstStr011_Zeile2Str ( 1, Von, Bis, txt, ErrTxt, &LocInt);
 
   TLen = LocInt.length();
   if(TLen <= 0)
@@ -132,8 +134,8 @@ int sstStr011_Zeile2Int ( int          Key,    // v  -> Vorerst immer 0
   {
     *iRet = 0;
     // LocInt.Txt[11] = '\0';
-    // strcpy ( ErrTxt->Txt, LocInt.Txt);  // wo lag das Problem, zurück für Protokoll
-    *ErrTxt = LocInt;  // wo lag das Problem, zurück für Protokoll
+    // strcpy ( ErrTxt->Txt, LocInt.Txt);  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
+    *ErrTxt = LocInt;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
   return istat;
@@ -154,7 +156,8 @@ int sstStr011_Zeile2Int4 ( int          Key,    // v  -> Vorerst immer 0
   if (Key != 0) return -1;
   istat = 0;
 
-  istat = sstStr011_Zeile2Str ( 0, Von, Bis, txt, ErrTxt, &LocInt);
+  // Key = 1: trim no info chars at begin and end of string
+  istat = sstStr011_Zeile2Str ( 1, Von, Bis, txt, ErrTxt, &LocInt);
 
   TLen = LocInt.length();
   if(TLen <= 0)
@@ -170,8 +173,8 @@ int sstStr011_Zeile2Int4 ( int          Key,    // v  -> Vorerst immer 0
   {
     *lRet = 0;
     // LocInt.Txt[11] = '\0';
-    // strcpy ( ErrTxt->Txt, LocInt.Txt);  // wo lag das Problem, zurück für Protokoll
-    *ErrTxt = LocInt;  // wo lag das Problem, zurück für Protokoll
+    // strcpy ( ErrTxt->Txt, LocInt.Txt);  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
+    *ErrTxt = LocInt;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
   return istat;
@@ -188,7 +191,7 @@ int sstStr011_Zeile2Dbl ( int          Key,    // v  -> Vorerst immer 0
   std::string LocDbl;
   // char *enz;
 
-  unsigned long TLen;  // Text-Länge in LocDbl
+  unsigned long TLen;  // Text-LÃ¤nge in LocDbl
   int istat;
   //.............................................................................
   if (Key != 0) return -1;
@@ -196,13 +199,14 @@ int sstStr011_Zeile2Dbl ( int          Key,    // v  -> Vorerst immer 0
 
   // enz = NULL;  // Zeiger auf Read-Error
 
-  istat = sstStr011_Zeile2Str ( 0, Von, Bis, txt, ErrTxt, &LocDbl);
+  // Key = 1: trim no info chars at begin and end of string
+  istat = sstStr011_Zeile2Str ( 1, Von, Bis, txt, ErrTxt, &LocDbl);
 
   TLen = LocDbl.length();
   if ( TLen <= 0)
   {
-    // String leer, keine Umformung möglich
-    *dRet = 0.0;  // Return-Wert zurücksetzen
+    // String leer, keine Umformung mÃ¶glich
+    // *dRet = 0.0;  // Return-Wert zurÃ¼cksetzen
     return -1;
   }
 
@@ -213,8 +217,8 @@ int sstStr011_Zeile2Dbl ( int          Key,    // v  -> Vorerst immer 0
   {
     *dRet = 0.0;
     // LocDbl.Txt[11] = '\0';
-    // strcpy ( ErrTxt->Txt, LocDbl.Txt);  // wo lag das Problem, zurück für Protokoll
-    *ErrTxt = LocDbl;  // wo lag das Problem, zurück für Protokoll
+    // strcpy ( ErrTxt->Txt, LocDbl.Txt);  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
+    *ErrTxt = LocDbl;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
 
@@ -232,7 +236,7 @@ int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
   std::string LocDbl;
   // char *enz;
 
-  unsigned long TLen;  // Text-Länge in LocDbl
+  unsigned long TLen;  // Text-LÃ¤nge in LocDbl
   int istat;
 //.............................................................................
   if (Key != 0) return -1;
@@ -240,13 +244,14 @@ int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
 
   // enz = NULL;  // Zeiger auf Read-Error
 
-  istat = sstStr011_Zeile2Str ( 0, Von, Bis, txt, ErrTxt, &LocDbl);
+    // Key = 1: trim no info chars at begin and end of string
+  istat = sstStr011_Zeile2Str ( 1, Von, Bis, txt, ErrTxt, &LocDbl);
 
   TLen = LocDbl.length();
   if ( TLen <= 0)
   {
-    // String leer, keine Umformung möglich
-    *fRet = 0.0;  // Return-Wert zurücksetzen
+    // String leer, keine Umformung mÃ¶glich
+    *fRet = 0.0;  // Return-Wert zurÃ¼cksetzen
     return -1;
   }
 
@@ -257,8 +262,8 @@ int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
   {
     *fRet = 0.0;
     // LocDbl.Txt[11] = '\0';
-    // strcpy ( ErrTxt->Txt, LocDbl.Txt);  // wo lag das Problem, zurück für Protokoll
-    *ErrTxt = LocDbl;  // wo lag das Problem, zurück für Protokoll
+    // strcpy ( ErrTxt->Txt, LocDbl.Txt);  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
+    *ErrTxt = LocDbl;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
 
@@ -272,17 +277,19 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
                      std::string *Zeile)   //   <-> Ziel
 //-----------------------------------------------------------------------------
 {
-  unsigned long sWertBis;   // Länge sWert
+  unsigned long sWertBis;   // LÃ¤nge sWert
   unsigned long sWertVon;   // Infomation in sWert beginnt bei Position sWertVon
 
-  unsigned long sWertLen;   // Netto-Länge des Einfügetextes -sWert-
-  unsigned long IZeilLen;   // Länge des angemeldeten Einfüge-Platzes in Zeile
-  unsigned long LenDiff;    // Differenz Bedarf und Angebot
+  unsigned long sWertLen;   // Netto-LÃ¤nge des EinfÃ¼getextes -sWert-
+  unsigned long IZeilLen;   // LÃ¤nge des angemeldeten EinfÃ¼ge-Platzes in Zeile
+  // unsigned long LenDiff;    // Differenz Bedarf und Angebot
+  // unsigned long LenDiff = 0;    // Differenz Bedarf und Angebot
   char TrnZ[2];    // Trennzeichen
 
-  unsigned long AktZeilLen; // Aktuelle Länge des Zielstrings
+  unsigned long AktZeilLen; // Aktuelle LÃ¤nge des Zielstrings
 
   sstStr01IntCls oFmtInfo;
+  std::string oLocSWert = *sWert;
 
   unsigned long ii;
   unsigned long jj;
@@ -293,11 +300,11 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
   strcpy(TrnZ," ");     // kein Trennzeichen
 
   // Eingangsparameter auswerten: Teil 1
-  if ( Bis > dSSTSTR01_TEXTLEN) return -1;       // Platzbedarf in -Zeile- zu groß
+  if ( Bis > dSSTSTR01_TEXTLEN) return -1;       // Platzbedarf in -Zeile- zu groÃ
   if ( Von > Bis) return -1;           // Parameter unlogisch
 
-  AktZeilLen = Zeile->length();          // Aktuelle Länge des Zielstrings
-  if(AktZeilLen > dSSTSTR01_TEXTLEN) return -1;  // Zielstring ist länger als erlaubt
+  AktZeilLen = Zeile->length();          // Aktuelle LÃ¤nge des Zielstrings
+  if(AktZeilLen > dSSTSTR01_TEXTLEN) return -1;  // Zielstring ist lÃ¤nger als erlaubt
 
   // Beginn und Ende der Information im Eingabe-String feststellen
   sWertBis = sWert->length();
@@ -306,13 +313,13 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
 
   // Speicherbedarf auswerten
   IZeilLen = Bis      - Von      +1;      // Platzangebot in Zeile
-  sWertLen = sWertBis - sWertVon +1;      // Länge des Einfügestrings
-  LenDiff  = IZeilLen - sWertLen;         // Differenz Angebot/Bedarf
+  sWertLen = sWertBis - sWertVon +1;      // LÃ¤nge des EinfÃ¼gestrings
+  // LenDiff  = IZeilLen - sWertLen;         // Differenz Angebot/Bedarf
 
   // Eingangsparameter auswerten: Teil 2
-  // if( LenDiff < 0) return -1;    // zu wenig Einfügeplatz
+  // if( LenDiff < 0) return -1;    // zu wenig EinfÃ¼geplatz
 
-  // Wenn aktuelle Zeile kürzer als Einfügeposition
+  // Wenn aktuelle Zeile kÃ¼rzer als EinfÃ¼geposition
   if (AktZeilLen < Bis)
   {
     for( ii = AktZeilLen; ii <= Bis-1; ii++)
@@ -320,7 +327,7 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
       *Zeile = *Zeile + " ";  // Blanks !!
       // *Zeile = *Zeile + " ";  // Blanks !!
     }
-    // Zeile->Txt[ii-1] = '\0';  // Information abschließen
+    // Zeile->Txt[ii-1] = '\0';  // Information abschlieÃen
   }
 
   // Einfüge-Start in Zeile feststellen
@@ -328,20 +335,24 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
   {
     // linksbündig
     jj = Von;
+    // Zeile->replace(1, 2, oLocSWert, 1, 2);
+    Zeile->replace(jj-1, IZeilLen, *sWert, 0, IZeilLen);
   }
   else
   {
     // rechtsbündig
-    jj = Von + LenDiff;  // Text kürzer als Platzhalter ?
+    // jj = Von + LenDiff;  // Text kürzer als Platzhalter ?
+    jj = Bis - sWertLen + 1;  // Text kürzer als Platzhalter ?
+    Zeile->replace(jj-1,sWertLen, *sWert);
   }
 
   // Zeile->replace(sWertVon-1,sWertLen, *sWert);
-  Zeile->replace(jj-1,sWertLen, *sWert);
+  // Zeile->replace(jj-1,sWertLen, *sWert);
 
-  // Text übertragen
+  // Text Ã¼bertragen
 //  for( ii = sWertVon; ii<=sWertBis; ii++)
 //  {
-//    // if ( sWert->Txt[ii-1] != '\0')  // Blanks im einzufügenden String sollen erlaubt sein ?!
+//    // if ( sWert->Txt[ii-1] != '\0')  // Blanks im einzufÃ¼genden String sollen erlaubt sein ?!
 //    // {
 //      // Zeile->Txt[jj-1] = sWert->Txt[ii-1];
 //      // *Zeile = *Zeile + sWert->at(ii-1);
@@ -380,7 +391,7 @@ int sstStr011_Char2Zeile ( int          iKey,    // v  -> 0 oder 1
   if (iStat < 0) return -2;
 
   // Kopieren eines String in einen Zeilenbereich.
-  iStat = sstStr011_Str2Zeile ( 0, Von, Bis, &sWert, Zeile);
+  iStat = sstStr011_Str2Zeile ( iKey, Von, Bis, &sWert, Zeile);
 
   return iStat;
 }
@@ -413,13 +424,13 @@ int sstStr011_Int2Zeile ( int          Key,     // v  -> 0 oder 1
   LocStr = cLocChar;
   // LocStr.AktLen = strlen(LocStr.Txt);
 
-  // Hier wäre auch sprintf möglich
-  //  sprintf ( LocStr,"%02i", Num);      // zweistellig, linksbündig, mit Nullen auffüllen
+  // Hier wÃ¤re auch sprintf mÃ¶glich
+  //  sprintf ( LocStr,"%02i", Num);      // zweistellig, linksbÃ¼ndig, mit Nullen auffÃ¼llen
 
   iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   Pos1 = Zeile->length();
   sstStr011i_EndOfInfo ( 1, Pos1, TrnZ, Zeile);
   // Zeile->Txt[Pos2] = '\0';
@@ -456,13 +467,13 @@ int sstStr011_UInt2Zeile ( int          Key,     // v  -> 0 oder 1
   LocStr = cLocChar;
   // LocStr.AktLen = strlen(LocStr.Txt);
 
-  // Hier wäre auch sprintf möglich
-  //  sprintf ( LocStr,"%02i", Num);      // zweistellig, linksbündig, mit Nullen auffüllen
+  // Hier wÃ¤re auch sprintf mÃ¶glich
+  //  sprintf ( LocStr,"%02i", Num);      // zweistellig, linksbÃ¼ndig, mit Nullen auffÃ¼llen
 
   iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   Pos1 = Zeile->length();
   sstStr011i_EndOfInfo ( 1, Pos1, TrnZ, Zeile);
   // Zeile->Txt[Pos2] = '\0';
@@ -498,15 +509,15 @@ int sstStr011_Int2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
   // StrAdr = itoa( iWert, LocStr.Txt, 10);  // Fehlerbehandlung ??
   // LocStr.AktLen = strlen(LocStr.Txt);
 
-  // Hier wäre auch sprintf möglich
-  sprintf ( cLocChar,cFmtStr, iWert);      // zweistellig, linksbündig, mit Nullen auffüllen
-  LocStr = cLocChar;     // zweistellig, linksbündig, mit Nullen auffüllen
+  // Hier wÃ¤re auch sprintf mÃ¶glich
+  sprintf ( cLocChar,cFmtStr, iWert);      // zweistellig, linksbÃ¼ndig, mit Nullen auffÃ¼llen
+  LocStr = cLocChar;     // zweistellig, linksbÃ¼ndig, mit Nullen auffÃ¼llen
   // LocStr.AktLen = strlen(LocStr.Txt);
 
   iStat = sstStr011_Str2Zeile ( iKey, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   Pos1 = Zeile->length();
   sstStr011i_EndOfInfo ( 1, Pos1, TrnZ, Zeile);
   // Zeile->Txt[Pos2] = '\0';
@@ -547,8 +558,8 @@ int sstStr011_Int4Zeile ( int          Key,     // v  -> 0 oder 1
 
   iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   Pos1 = Zeile->length();
   sstStr011i_EndOfInfo ( 1, Pos1, TrnZ, Zeile);
   // Zeile->Txt[Pos2] = '\0';
@@ -589,8 +600,8 @@ int sstStr011_UInt4Zeile ( int             Key,     // v  -> 0 oder 1
 
   iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   Pos1 = Zeile->length();
   sstStr011i_EndOfInfo ( 1, Pos1, TrnZ, Zeile);
   // Zeile->Txt[Pos2] = '\0';
@@ -633,8 +644,8 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
 
-  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefüllt
-  // werden. -sprintf- ist besser, aber Format-String wäre variabel zu
+  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefÃ¼llt
+  // werden. -sprintf- ist besser, aber Format-String wÃ¤re variabel zu
   // programmieren.
 
   // Format-Anweisung zusammenstellen
@@ -680,8 +691,8 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   else
     iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   strcpy(TrnZ," ");     // Blank is no Information
 
   Pos1 = Zeile->length();
@@ -730,8 +741,8 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
   sprintf(cLocChar, "%d", NachKo);
   LocStr = cLocChar;
 
-  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefüllt
-  // werden. -sprintf- ist besser, aber Format-String wäre variabel zu
+  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefÃ¼llt
+  // werden. -sprintf- ist besser, aber Format-String wÃ¤re variabel zu
   // programmieren.
 
   // Format-Anweisung zusammenstellen
@@ -777,8 +788,8 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
   else
     iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   strcpy(TrnZ," ");     // Blank is no Information
 
   Pos1 = Zeile->length();
@@ -825,13 +836,13 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
   // Init LocStr-Structure
   iStat = sstStr011_Init ( 0, &LocStr);
 
-  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefüllt
-  // werden. -sprintf- ist besser, aber Format-String wäre variabel zu
+  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefÃ¼llt
+  // werden. -sprintf- ist besser, aber Format-String wÃ¤re variabel zu
   // programmieren.
 
   // Format-Anweisung zusammenstellen
   // strcpy(Format,"%6.");
-  // strcpy(Format,"%#07.");  // Führende Nullstellen > 000.12 oder -001.23
+  // strcpy(Format,"%#07.");  // FÃ¼hrende Nullstellen > 000.12 oder -001.23
   // strcat(Format, itoa( NachKo, Buffer, 10) );
   // strcat(Format, itoa( NachKo, Buffer, 11) );
   // strcat(Format,"lf");
@@ -871,8 +882,8 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
   else
     iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   strcpy(TrnZ," ");     // Blank is no Information
 
   Pos1 = Zeile->length();
@@ -922,13 +933,13 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
   sprintf(cLocChar, "%d", NachKo);
   LocStr = cLocChar;
 
-  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefüllt
-  // werden. -sprintf- ist besser, aber Format-String wäre variabel zu
+  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefÃ¼llt
+  // werden. -sprintf- ist besser, aber Format-String wÃ¤re variabel zu
   // programmieren.
 
   // Format-Anweisung zusammenstellen
   // strcpy(Format,"%6.");
-  strncpy(Format,"%#07.",8);  // Führende Nullstellen > 000.12 oder -001.23
+  strncpy(Format,"%#07.",8);  // FÃ¼hrende Nullstellen > 000.12 oder -001.23
   // strcat(Format, itoa( NachKo, Buffer, 10) );
   strncat(Format, LocStr.c_str(),8);
   // strcat(Format, itoa( NachKo, Buffer, 11) );
@@ -970,8 +981,8 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
   else
     iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   strcpy(TrnZ," ");     // Blank is no Information
 
   Pos1 = Zeile->length();
@@ -1015,8 +1026,8 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
   sprintf(cLocChar, "%d", NachKo);
   LocStr = cLocChar;
 
-  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefüllt
-  // werden. -sprintf- ist besser, aber Format-String wäre variabel zu
+  // -gcvt- funktioniert nicht so besonders, da Nullstellen nicht aufgefÃ¼llt
+  // werden. -sprintf- ist besser, aber Format-String wÃ¤re variabel zu
   // programmieren.
 
   // Format-Anweisung zusammenstellen
@@ -1054,8 +1065,8 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
   else
     iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
 
-  // Abschließende Spaces in String löschen
-  // Ende der Information in einem String rückwärts suchen
+  // AbschlieÃende Spaces in String lÃ¶schen
+  // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
   strcpy(TrnZ," ");     // Blank is no Information
 
   Pos1 = Zeile->length();
@@ -1119,7 +1130,7 @@ int sstStr011_AbPos2Str ( int          Key,    // v  -> Vorerst immer 0
                      std::string *tRet)   //   <-> Result-String
 //.............................................................................
 {
-  // long LenT1;  // Länge Zeile
+  // long LenT1;  // LÃ¤nge Zeile
 
   unsigned long StartPos;
   unsigned long EndPos;
@@ -1128,7 +1139,7 @@ int sstStr011_AbPos2Str ( int          Key,    // v  -> Vorerst immer 0
 //.............................................................................
   if (Key != 0) return -1;
   istat = 0;
-  // LenT1 = Zeile->length();  // Länge von Text 1
+  // LenT1 = Zeile->length();  // LÃ¤nge von Text 1
 
   // Look for Start of Information
   // StartPos = sstStr011i_StartOfInfo ( 0, (*Pos+1), TrnZ, Zeile);
@@ -1167,7 +1178,7 @@ int sstStr011_AbPos2Char ( int          Key,    // v  -> Vorerst immer 0
 //.............................................................................
   if (Key != 0) return -1;
 
-  // Nächste Information aus Text-Zeile in String umwandeln.
+  // NÃ¤chste Information aus Text-Zeile in String umwandeln.
   iStat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
 
   strncpy(cRet,tRet.c_str(),iCRetLen);
@@ -1184,14 +1195,14 @@ int sstStr011_AbPos2Int ( int          Key,    // v  -> Vorerst immer 0
 //.............................................................................
 {
   std::string tRet;   // String mit ZwischenResult
-  long  LenT;       // Textlänge des ZwischenResult
+  long  LenT;       // TextlÃ¤nge des ZwischenResult
 
   int istat;
 //.............................................................................
   if (Key != 0) return -1;
   istat = 0;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   istat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   if( istat != 0)
   {
@@ -1211,8 +1222,8 @@ int sstStr011_AbPos2Int ( int          Key,    // v  -> Vorerst immer 0
   if(istat < 0)
   {
     *iRet = 0;
-    // tRet.Txt[11] = '\0';        // String kürzen
-    *ErrTxt = tRet;    // wo lag das Problem, zurück für Protokoll
+    // tRet.Txt[11] = '\0';        // String kÃ¼rzen
+    *ErrTxt = tRet;    // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
   return istat;
@@ -1227,14 +1238,14 @@ int sstStr011_AbPos2UInt ( int             Key,    // v  -> Vorerst immer 0
 //.............................................................................
 {
   std::string tRet;   // String mit ZwischenResult
-  unsigned long  LenT;       // Textlänge des ZwischenResult
+  unsigned long  LenT;       // TextlÃ¤nge des ZwischenResult
 
   int istat;
 //.............................................................................
   if (Key != 0) return -1;
   istat = 0;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   istat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   if( istat != 0)
   {
@@ -1254,8 +1265,8 @@ int sstStr011_AbPos2UInt ( int             Key,    // v  -> Vorerst immer 0
   if(istat < 0)
   {
     *uiRet = 0;
-    // tRet.Txt[11] = '\0';        // String kürzen
-    *ErrTxt = tRet;    // wo lag das Problem, zurück für Protokoll
+    // tRet.Txt[11] = '\0';        // String kÃ¼rzen
+    *ErrTxt = tRet;    // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
   return istat;
@@ -1270,7 +1281,7 @@ int sstStr011_AbPos2Int4 ( int          iKey,    // v  -> For the moment 0
 //-----------------------------------------------------------------------------
 {
   std::string tRet;   // String mit ZwischenResult
-  unsigned long  LenT;       // Textlänge des ZwischenResult
+  unsigned long  LenT;       // TextlÃ¤nge des ZwischenResult
 
   int iRet;
   int iStat;
@@ -1279,7 +1290,7 @@ int sstStr011_AbPos2Int4 ( int          iKey,    // v  -> For the moment 0
   iRet = 0;
   iStat = 0;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   iStat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   if( iStat != 0)
   {
@@ -1299,8 +1310,8 @@ int sstStr011_AbPos2Int4 ( int          iKey,    // v  -> For the moment 0
   if(iStat < 0)
   {
     *iRet4 = 0;
-    // tRet.Txt[11] = '\0';        // String kürzen
-    *ErrTxt = tRet;    // wo lag das Problem, zurück für Protokoll
+    // tRet.Txt[11] = '\0';        // String kÃ¼rzen
+    *ErrTxt = tRet;    // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
 
@@ -1326,7 +1337,7 @@ int sstStr011_AbPos2UInt4 ( int             iKey,
 //-----------------------------------------------------------------------------
 {
   std::string tRet;   // String mit ZwischenResult
-  unsigned long  LenT;       // Textlänge des ZwischenResult
+  unsigned long  LenT;       // TextlÃ¤nge des ZwischenResult
 
   int iRet;
   int iStat;
@@ -1335,7 +1346,7 @@ int sstStr011_AbPos2UInt4 ( int             iKey,
   iRet = 0;
   iStat = 0;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   iStat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   if( iStat != 0)
   {
@@ -1355,8 +1366,8 @@ int sstStr011_AbPos2UInt4 ( int             iKey,
   if(iStat < 0)
   {
     *uiRet4 = 0;
-    // tRet.Txt[11] = '\0';        // String kürzen
-    *ErrTxt = tRet;    // wo lag das Problem, zurück für Protokoll
+    // tRet.Txt[11] = '\0';        // String kÃ¼rzen
+    *ErrTxt = tRet;    // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
 
@@ -1382,7 +1393,7 @@ int sstStr011_AbPos2Real ( int          Key,    // v  -> Vorerst immer 0
 //.............................................................................
 {
   std::string tRet;   // String mit ZwischenResult
-  long  LenT;       // Textlänge des ZwischenResult
+  long  LenT;       // TextlÃ¤nge des ZwischenResult
   int  istat;
 //.............................................................................
   if (Key != 0) return -1;
@@ -1390,7 +1401,7 @@ int sstStr011_AbPos2Real ( int          Key,    // v  -> Vorerst immer 0
 
   *rRet = 0.0;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   istat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   if( istat != 0)
   {
@@ -1406,8 +1417,8 @@ int sstStr011_AbPos2Real ( int          Key,    // v  -> Vorerst immer 0
   if (istat < 0)
   {
     *rRet = 0.0;
-    // tRet.Txt[11] = '\0';      // Text kürzen
-    *ErrTxt = tRet;  // wo lag das Problem, zurück für Protokoll
+    // tRet.Txt[11] = '\0';      // Text kÃ¼rzen
+    *ErrTxt = tRet;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
 
@@ -1423,7 +1434,7 @@ int sstStr011_AbPos2Dbl ( int              Key,    // v  -> Vorerst immer 0
 //.............................................................................
 {
   std::string tRet;   // String mit ZwischenResult
-  long  LenT;       // Textlänge des ZwischenResult
+  long  LenT;       // TextlÃ¤nge des ZwischenResult
   int  istat;
 //.............................................................................
   if (Key != 0) return -1;
@@ -1431,7 +1442,7 @@ int sstStr011_AbPos2Dbl ( int              Key,    // v  -> Vorerst immer 0
 
   *dRet = dSSTSTR01_UNDEF_DOUBLE;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   istat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   // iStat = this
   if( istat != 0)
@@ -1448,8 +1459,8 @@ int sstStr011_AbPos2Dbl ( int              Key,    // v  -> Vorerst immer 0
   if (istat < 0)
   {
     *dRet = 0.0;
-    // tRet.Txt[11] = '\0';      // Text kürzen
-    *ErrTxt = tRet;  // wo lag das Problem, zurück für Protokoll
+    // tRet.Txt[11] = '\0';      // Text kÃ¼rzen
+    *ErrTxt = tRet;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
     return -1;
   }
 
@@ -1465,14 +1476,14 @@ int sstStr011_AbPos2Bool ( int          iKey,      /**< v  -> Vorerst immer 0   
 //-----------------------------------------------------------------------------
 {
   std::string tRet;   // String mit ZwischenResult
-  unsigned long  LenT;       // Textlänge des ZwischenResult
+  unsigned long  LenT;       // TextlÃ¤nge des ZwischenResult
 
   int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
-  // nächste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
+  // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   iStat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);
   if( iStat != 0)
   {
@@ -1512,7 +1523,7 @@ int sstStr011_AbPosS2Str ( int          iKey,
                       std::string *tRet)
 //-----------------------------------------------------------------------------
 {
-  unsigned long LenT1;  // Länge Zeile
+  unsigned long LenT1;  // LÃ¤nge Zeile
 
   unsigned long BeGrzPos;  // Zweite Position der Begrenzung
   unsigned long StartPos;
@@ -1522,10 +1533,10 @@ int sstStr011_AbPosS2Str ( int          iKey,
 //.............................................................................
   if (iKey != 0) return -1;
 
-  LenT1 = Zeile->length();  // Länge von Lese-String
+  LenT1 = Zeile->length();  // LÃ¤nge von Lese-String
   if (LenT1 <= 0) return -2;
 
-  LenT1 = strlen(BeGrzZ);  // Länge von Lese-String
+  LenT1 = strlen(BeGrzZ);  // LÃ¤nge von Lese-String
   if (LenT1 <= 0) return -3;
 
   // if (*Pos <= 0) return -4;
@@ -1535,7 +1546,7 @@ int sstStr011_AbPosS2Str ( int          iKey,
     // Position ist Begrenzung
   // if (Zeile->Txt[*Pos-1] == BeGrzZ[0])
   if (Zeile->at(*Pos-1) == BeGrzZ[0])
-  { // Übergebene Position ist Begrenzungszeichen
+  { // Ãbergebene Position ist Begrenzungszeichen
     if(*Pos == 1)
     {  // Position 1 ist Begrenzungszeichen
       tRet->clear();      // Result-String ist leer
@@ -1571,7 +1582,7 @@ int sstStr011_AbPosS2Str ( int          iKey,
   StartPos = sstStr011i_StartOfInfo ( 0, (StartPos+1), NoInfZ, Zeile);
   if (StartPos <= 0) return -5;
 
-  // Ende der Information rückwärts in einem String feststellen
+  // Ende der Information rÃ¼ckwÃ¤rts in einem String feststellen
   EndPos = sstStr011i_EndOfInfo ( 1, (BeGrzPos-1), NoInfZ, Zeile);
   if ( EndPos <= 0) return -5;
 
@@ -1593,7 +1604,7 @@ int sstStr011_AbPosK2Str ( int          iKey,
                       std::string *tRet)
 //-----------------------------------------------------------------------------
 {
-  unsigned long LenT1;  // Länge Zeile
+  unsigned long LenT1;  // LÃ¤nge Zeile
 
   unsigned long BeGrzPos;  // Zweite Position der Begrenzung
   unsigned long StartPos;
@@ -1603,10 +1614,10 @@ int sstStr011_AbPosK2Str ( int          iKey,
 //.............................................................................
   if (iKey != 0) return -1;
 
-  LenT1 = Zeile->length();  // Länge von Lese-String
+  LenT1 = Zeile->length();  // LÃ¤nge von Lese-String
   if (LenT1 <= 0) return -2;
 
-  LenT1 = strlen(BeGrzZ);  // Länge von Lese-String
+  LenT1 = strlen(BeGrzZ);  // LÃ¤nge von Lese-String
   if (LenT1 <= 0) return -3;
 
   if (*Pos <= 0) return -4;
@@ -1614,7 +1625,7 @@ int sstStr011_AbPosK2Str ( int          iKey,
 
     // Position ist Begrenzung
   if (Zeile->at(*Pos-1) == BeGrzZ[0])
-  { // Übergebene Position ist Begrenzungszeichen
+  { // Ãbergebene Position ist Begrenzungszeichen
     if(*Pos == 1)
     {  // Position 1 ist Begrenzungszeichen
       tRet->clear();      // Result-String ist leer
@@ -1650,7 +1661,7 @@ int sstStr011_AbPosK2Str ( int          iKey,
   StartPos = sstStr011i_StartOfInfo ( 0, (StartPos+1), NoInfZ, Zeile);
   if (StartPos <= 0) return -5;
 
-  // Ende der Information rückwärts in einem String feststellen
+  // Ende der Information rÃ¼ckwÃ¤rts in einem String feststellen
   EndPos = sstStr011i_EndOfInfo ( 1, (BeGrzPos-1), NoInfZ, Zeile);
   if ( EndPos <= 0) return -5;
 
@@ -1672,7 +1683,7 @@ int sstStr011_AbPosK3Str ( int          iKey,
                       std::string *tRet)
 //-----------------------------------------------------------------------------
 {
-  unsigned long LenT1;  // Länge Zeile
+  unsigned long LenT1;  // LÃ¤nge Zeile
 
   unsigned long BeGrzPos;  // Zweite Position der Begrenzung
   unsigned long StartPos;
@@ -1684,7 +1695,7 @@ int sstStr011_AbPosK3Str ( int          iKey,
 
   if (*Pos <= 0) return -4;
 
-  LenT1 = Zeile->length();  // Länge von Lese-String
+  LenT1 = Zeile->length();  // LÃ¤nge von Lese-String
   if (LenT1 <= 0) return -2;
 
   if (*Pos > LenT1) return -4;
@@ -1701,7 +1712,7 @@ int sstStr011_AbPosK3Str ( int          iKey,
 
   // Position ist Begrenzung
   if (Zeile->at(*Pos-1) == TrnZ[0])
-  { // Übergebene Position ist Begrenzungszeichen
+  { // Ãbergebene Position ist Begrenzungszeichen
     if(*Pos == 1)
     {  // Position 1 ist Begrenzungszeichen
       tRet->clear();      // Result-String ist leer
@@ -1736,7 +1747,7 @@ int sstStr011_AbPosK3Str ( int          iKey,
   StartPos = sstStr011i_StartOfInfo ( 0, (StartPos+1), KlmZ, Zeile);
   if (StartPos <= 0) return -5;
 
-  // Ende der Information rückwärts in einem String feststellen
+  // Ende der Information rÃ¼ckwÃ¤rts in einem String feststellen
   EndPos = sstStr011i_EndOfInfo ( 1, (BeGrzPos-1), KlmZ, Zeile);
   if ( EndPos <= 0) return -5;
 
@@ -1759,6 +1770,16 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+
+  {
+    // Is String to Float/Double convertible? <BR>
+    std::string oTestStr = "22";
+    iStat  = sstStr011_FloatConvertible ( 0, &oTestStr);
+    assert(iStat == 1);
+    oTestStr = "xx";
+    iStat  = sstStr011_FloatConvertible ( 0, &oTestStr);
+    assert(iStat == 0);
+  }
 
   {
     // Get next string inside simple brackets
@@ -1803,7 +1824,7 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   ulPos = sLocZeile.find("-22.20",0);
   assert(ulPos==0);
 
-  // Steht im String an Position eins der übergebenen Zeichen?
+  // Steht im String an Position eins der Ã¼bergebenen Zeichen?
   int Key = 0;
   std::string TstStr;
   char ZchStr[4];
@@ -1811,12 +1832,12 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   iStat = sstStr011_StrSet ( 0, (char*)"Te;t", &TstStr, 10);
   long Pos = 1;
   iStat = sstStr011i_PosIsZch ( Key, &TstStr, Pos, ZchStr);
-  assert( iStat == 0);  // Nein, an Position 1 steht keins der das übergebenen Zeichen
+  assert( iStat == 0);  // Nein, an Position 1 steht keins der das Ã¼bergebenen Zeichen
   Pos = 3;
   iStat = sstStr011i_PosIsZch ( Key, &TstStr, Pos, ZchStr);
-  assert( iStat == 1);  // Ja, an Position 3 steht das übergebene Zeichen Semikolon
+  assert( iStat == 1);  // Ja, an Position 3 steht das Ã¼bergebene Zeichen Semikolon
 
-  // Übergebene Zeichen in einem String ab Position Pos suchen.
+  // Ãbergebene Zeichen in einem String ab Position Pos suchen.
   Key = 0;
   Pos = 1;
   char BeGrzZ[4];
@@ -1833,13 +1854,13 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   strcpy (TrnZ, ";");
   iStat = sstStr011_StrSet ( 0, (char*)"Te;t", &Text, 10);
   lPos = sstStr011i_TrnZFind ( iKey, Pos, TrnZ, &Text);
-  assert( lPos == -2);  // Übergebene Position falsch
+  assert( lPos == -2);  // Ãbergebene Position falsch
   Pos  = 1;
   lPos = sstStr011i_TrnZFind ( iKey, Pos, TrnZ, &Text);
   assert( lPos == 3);   // Trennzeichen auf Position 3
   Pos  = 3;
   lPos = sstStr011i_TrnZFind ( iKey, Pos, TrnZ, &Text);
-  assert( lPos == 3);   // Übergebene Position ist auch Trennzeichen
+  assert( lPos == 3);   // Ãbergebene Position ist auch Trennzeichen
   Pos  = 4;
   lPos = sstStr011i_TrnZFind ( iKey, Pos, TrnZ, &Text);
   assert( lPos == 0);   // Kein Zeichen gefunden
@@ -2008,14 +2029,14 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   assert(StartPos == 2);  // Pos 0 is OK
   Pos = 6;
   StartPos = sstStr011i_StartOfInfo ( Key, Pos, NoInfZ, &Text);
-  assert(StartPos == -2);  // End of String reached
+  assert(StartPos == 0);  // End of String reached
   Pos = 2;
   StartPos = sstStr011i_StartOfInfo ( Key, Pos, NoInfZ, &Text);
   assert(StartPos == 2);  // Position 2 is Information
   iStat = sstStr011_StrSet ( 0, (char*)"      ", &Text, 10);
   Pos = 1;
   StartPos = sstStr011i_StartOfInfo ( Key, Pos, NoInfZ, &Text);
-  assert(StartPos == -3);  // No Information found
+  assert(StartPos == 0);  // No Information found
   iStat = sstStr011_StrSet ( 0, (char*)"--Te;t", &Text, 10);
 
   strcpy(NoInfZ,"-; ");
@@ -2024,7 +2045,7 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   assert(StartPos == 3);  // Position 3 ist NoInformation
 
   // Ende der Information in einem String vom Anfang her feststellen.
-  Key = 0;  // Aus der Information heraus vorwärts suchen
+  Key = 0;  // Aus der Information heraus vorwÃ¤rts suchen
   Pos = 1;
   strcpy(NoInfZ,"-; ");
   iStat = sstStr011_StrSet ( 0, (char*)"Te;t; ", &Text, 10);
@@ -2036,7 +2057,7 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   assert(EndPos == 4);  // Position 3 ist NoInformation
   Pos = 0;
   EndPos = sstStr011i_EndOfInfo ( Key, Pos, NoInfZ, &Text);
-  assert(EndPos == -2);  // Pos 0 not OK
+  assert(EndPos == 0);  // Pos 0 not OK
   Pos = 5;
   EndPos = sstStr011i_EndOfInfo ( Key, Pos, NoInfZ, &Text);
   assert(EndPos == 4);  // Warum auch immer, falsche Herangehensweise
@@ -2047,7 +2068,7 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   EndPos = sstStr011i_EndOfInfo ( Key, Pos, NoInfZ, &Text);
   assert(EndPos == 4);  //
 
-  // Lese nächsten String nach Suchstring.
+  // Lese nÃ¤chsten String nach Suchstring.
   // Key
   // Zeile
   // TrennZ
@@ -2084,10 +2105,10 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   iStat = sstStr011i_PosHasInfo ( Key, &TstStr, Pos, InfoStr);
   assert(iStat == 1);  // Position is Information
 
-  // Nächste Information aus Text-Zeile in Int2 umwandeln.
+  // NÃ¤chste Information aus Text-Zeile in Int2 umwandeln.
   Key = 0;
   // Zeile
-  iStat = sstStr011_StrSet ( 0,(char*) "Es stehen 10 Bäume", &Zeile, 50);
+  iStat = sstStr011_StrSet ( 0,(char*) "Es stehen 10 BÃ¤ume", &Zeile, 50);
   std::string ErrTxt;
   // TAdr = &Zeile.Txt[10];
   iRet = 0;
@@ -2096,7 +2117,7 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
 
 
   // Ende der Information in einem String vom Anfang her feststellen.
-  Key = 0;  // Aus der Information heraus vorwärts suchen
+  Key = 0;  // Aus der Information heraus vorwÃ¤rts suchen
   strcpy(NoInfZ," ");
   std::string cText;
   cText = "1    ";

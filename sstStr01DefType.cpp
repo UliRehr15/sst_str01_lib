@@ -20,6 +20,7 @@
 #include <assert.h>
 
 #include <string>
+#include <vector>
 
 #include "sstStr01Lib.h"
 #include "sstStr01LibInt.h"
@@ -293,6 +294,18 @@ int sstStr01VarDefFncCls::WriteCSV(int            iKey,
 
   // insert dec
   iStat = this->oCnvtStr.Csv_Int2_2String( 0, oSstType.Get_Dec(), sExpStr);
+
+  // convert string value to csv-formatted string and append to string
+  // Insert system information
+  iStat = this->oCnvtStr.Csv_Str_2String( 0, oSstType.Get_SysInfo(), sExpStr);
+
+  // convert string value to csv-formatted string and append to string
+  // Insert object information
+  iStat = this->oCnvtStr.Csv_Str_2String( 0, oSstType.Get_ObjInfo(), sExpStr);
+
+  // convert string value to csv-formatted string and append to string
+  // insert element information
+  iStat = this->oCnvtStr.Csv_Str_2String( 0, oSstType.Get_EleInfo(), sExpStr);
 
   *sErrTxt = this->oCnvtStr.GetErrorString();
 

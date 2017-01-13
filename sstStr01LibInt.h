@@ -311,6 +311,32 @@ class sstStr01IntCls
                            std::string *sZeile,
                            char        *cRetVal,
                            long         lRetValLen);
+     //=============================================================================
+     /**
+     * @brief // Convert csv information to string vector array <BR>
+     * iStat = oSstStr.CsvString2_VectorAll ( iKey, &oCsvRow, &data)
+     *
+     * More Comment
+     *
+     * Changed: 30.03.10  Re.
+     *
+     * @param iKey      [in]     For the moment 0
+     * @param oCsvRow   [in]     Lese-String
+     * @param data      [out]    return Vector array of strings
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     *
+     * @author Re.
+     *
+     * @date 30.03.10
+     */
+     //-----------------------------------------------------------------------------
+     int CsvString2_VectorAll ( int                  iKey,
+                                const std::string    oCsvRow,
+                                std::vector<std::string> *data);
      //==============================================================================
      /**
      * @brief convert short int to csv-formatted string and append to string
@@ -617,6 +643,14 @@ class sstStr01IntCls
      * @param cSeparator CSV Separator: for example ";" (default)
      */
      int SetSeparator(int iKey, char *cSeparator);
+     //==============================================================================
+     /**
+     * @brief // Get Separator char  1;2;3;4  <BR>
+     * oSepStr = oSstStr.GetSeparator();
+     *
+     * @return Separator String
+     */
+     std::string GetSeparator();
      //==============================================================================
      /** Set No Information  char
      * @param iKey For the moment 0
@@ -2220,7 +2254,7 @@ int sstStr011i_AdrHasPos ( int             iKey,
                       std::string    *TAdr);
 //=============================================================================
 /**
-* @brief Beginn der Information in einem String ab Position Pos feststellen.
+* @brief // Beginn der Information in einem String ab Position Pos feststellen. <BR>
 * StartPos = sstStr011i_StartOfInfo ( iKey, *ulPos, *TrnZ, *Text);
 *
 * @param iKey  [in] For the moment 0
@@ -2228,17 +2262,24 @@ int sstStr011i_AdrHasPos ( int             iKey,
 * @param TrnZ  [in] Trennzeichen
 * @param Text  [in] Prüf-Text
 *
+* Changed: 13.01.17: Return unsigned long.  Re.
+*
 * @ingroup sstStr01IntLib
 *
 * @author ur
 *
 * @date 11.02.05
+*
+* @return Position in string or Error
+*
+* @retval   > 0: Position in string (1..n)
+* @retval   = 0: Error or no position found
 */
 //-----------------------------------------------------------------------------
-long sstStr011i_StartOfInfo ( int             iKey,
-                         unsigned long   ulPos,
-                         char           *TrnZ,
-                         std::string    *Text);
+unsigned long sstStr011i_StartOfInfo ( int             iKey,
+                                       unsigned long   ulPos,
+                                       char           *TrnZ,
+                                       std::string    *Text);
 //=============================================================================
 /**
 * @brief Beginn der Information in einem String ab Position Pos feststellen.
@@ -2254,9 +2295,14 @@ long sstStr011i_StartOfInfo ( int             iKey,
 * @author ur
 *
 * @date 11.02.05
+*
+* @return Position in string or Error
+*
+* @retval   > 0: Position in string (1..n)
+* @retval   = 0: Error or no position found
 */
 //-----------------------------------------------------------------------------
-long sstStr011i_StartOfInfo2 ( int            iKey,
+unsigned long sstStr011i_StartOfInfo2 ( int            iKey,
                           unsigned long  Pos,
                           char          *TrnZ,
                           std::string   *Text);
@@ -2297,6 +2343,11 @@ long sstStr011i_StartOfInfo2 ( int            iKey,
 * @author ur
 *
 * @date 14.07.00
+*
+* @return Position in string or Error
+*
+* @retval   > 0: Position in string (1..n)
+* @retval   = 0: Error or no position found
 */
 //-----------------------------------------------------------------------------
 unsigned long sstStr011i_EndOfInfo ( int             iKey,
@@ -2340,9 +2391,14 @@ unsigned long sstStr011i_EndOfInfo ( int             iKey,
 * @author ur
 *
 * @date 14.07.00
+*
+* @return Position in string or Error
+*
+* @retval   > 0: Position in string (1..n)
+* @retval   = 0: Error or no position found
 */
 //-----------------------------------------------------------------------------
-long sstStr011i_EndOfInfo2 ( int            iKey,
+unsigned long sstStr011i_EndOfInfo2 ( int            iKey,
                         unsigned long  ulPos,
                         char          *TrnZ,
                         std::string   *Text);
@@ -2518,8 +2574,7 @@ int sstStr011i_IntConvertible (int          iKey,
 
 //=============================================================================
 /**
-* @brief Is String to Float/Double convertible?
-*
+* @brief // Is String to Float/Double convertible? <BR>
 * iStat  = sstStr011_FloatConvertible ( iKey, *LocReal);
 *
 * More Comment
@@ -2528,8 +2583,8 @@ int sstStr011i_IntConvertible (int          iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param iKey:    [in] For the moment 0
-* @param LocReal: [in] String
+* @param iKey    [in] For the moment 0
+* @param LocReal [in out] String
 *
 * @return Errorstate
 *
@@ -2543,7 +2598,7 @@ int sstStr011i_IntConvertible (int          iKey,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_FloatConvertible (int          iKey,
-                           std::string *LocReal);
+                                std::string  *LocReal);
 
 //==============================================================================
 /**

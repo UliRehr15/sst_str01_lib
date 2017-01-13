@@ -20,6 +20,7 @@
 #include <assert.h>
 
 #include <string>
+#include <vector>
 
 #include "sstStr01Lib.h"
 #include "sstStr01LibInt.h"
@@ -133,6 +134,14 @@ int sstStr01Cls::CsvString2_Char ( int          iKey,
   // return this->poStr01Intern->CsvString2_Char(iKey,TPos,sZeile,sErrTxt,cRetVal,lRetValLen);
   return this->poStr01Intern->CsvString2_Char(iKey,sZeile,cRetVal,lRetValLen);
 }
+//=============================================================================
+int sstStr01Cls::CsvString2_VectorAll ( int                  iKey,
+                                        const std::string    oCsvRow,
+                                        std::vector<std::string> *data)
+{
+  return this->poStr01Intern->CsvString2_VectorAll(iKey,oCsvRow,data);
+}
+
 //==============================================================================
 int sstStr01Cls::Csv_Int2_2String  (int               iKey,
                                     int               iVal,
@@ -226,6 +235,12 @@ int sstStr01Cls::SetSeparator(int iKey, char *cSeparator)
 //-----------------------------------------------------------------------------
 {
   return this->poStr01Intern->SetSeparator(iKey,cSeparator);
+}
+//==============================================================================
+std::string sstStr01Cls::GetSeparator()
+//-----------------------------------------------------------------------------
+{
+  return this->poStr01Intern->GetSeparator();
 }
 //==============================================================================
 int sstStr01Cls::SetNoInfoChar(int iKey, char *cNoInfoChar)

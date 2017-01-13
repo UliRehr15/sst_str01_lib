@@ -17,10 +17,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <string>
 #include <assert.h>
 
+#include <iostream>
+#include <string>
+#include <vector>
+
+
 #include <sstStr01Lib.h>
+#include <sstStr01FixColWidth.h>
 
 #include "sstStr01LibTest.h"
 
@@ -78,7 +83,7 @@ int main ()
   std::string oVarDefStr;
   std::string oErrStr;
   oVarDefFnc.WriteCSV(0,oVarDef,&oErrStr, &oVarDefStr);
-  assert( oVarDefStr.compare("TestLib;TestClass;VarName;DD;6;2") == 0);
+  assert( oVarDefStr.compare("TestLib;TestClass;VarName;DD;6;2;;;") == 0);
 
   oVarDefStr = "TestLib2;TestClass3;VarNam8;CC;8;0";
   iStat = oVarDefFnc.ReadCSV( 0, &oVarDefStr, &oErrStr, &oVarDef);
@@ -252,6 +257,9 @@ int main ()
   // Test String to CSV functions
   iStat = Test_String2CSV ( 0);
 
+  // Test fcw class and functions
+  iStat = Test_FixColumnWidthSystem ( 0);
+
 
   printf("Test Str01Lib Success. \n");
 
@@ -291,9 +299,13 @@ int Test_String2CSV (int iKey)
   if ( iKey != 0) return -1;
 
  printf("Test Functions CSV-String to Value. ");
- oTestStr = "22;-6666666;63000;88888888;-23456,66;1,10;'abcdefg';'nn nn';.T.";
+ oTestStr = "22;-6666666;63000;88888888;-23456,66;1,10;'  abcdefg';'nn nn';.T.";
+
+ std::vector<std::string> data;
+ oCsvConvert.CsvString2_VectorAll(0,oTestStr, &data);
 
   oCsvConvert.SetBoolTyp(0,2);  // .F. + .T.
+  // oCsvConvert.SetNoInfoChar(0,(char*)"");
 
   oCsvConvert.CsvString2_Int2( 0, &oTestStr, &iVal);
   assert(iVal == 22);
@@ -328,6 +340,152 @@ int Test_String2CSV (int iKey)
   // Greater >
 
   assert(iRet >= 0);
+
+  // Small Errors will given back
+  iRet = iStat;
+
+  return iRet;
+}
+//=============================================================================
+int Test_FixColumnWidthSystem (int iKey)
+//-----------------------------------------------------------------------------
+{
+  int iRet  = 0;
+  int iStat = 0;
+//-----------------------------------------------------------------------------
+  if ( iKey != 0) return -1;
+
+  {
+    sstStr01FcwCls oFcwCnvt;
+    int iColWidth = 2;
+    std::string oFcwStr = "12345678901234567890";
+    std::string oStrVal;
+    int iVal = 0;
+    long lVal = 0;
+    double dVal = 0;
+    float fVal = 0;
+
+    assert (oFcwCnvt.GetReadPosition()== 1);
+
+    // read next data from oFcwStr as string
+    iStat = oFcwCnvt.String2Str ( 0, iColWidth, oFcwStr, &oStrVal);
+    int iPos = oStrVal.compare("12");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 3);
+
+    // read next data from oFcwStr as string
+    iStat = oFcwCnvt.String2Str ( 0, iColWidth, oFcwStr, &oStrVal);
+    iPos = oStrVal.compare("34");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 5);
+
+    // read next data from oFcwStr as int
+    iStat = oFcwCnvt.String2Int ( 0, iColWidth, oFcwStr, &iVal);
+    assert(iVal == 56);
+    assert (oFcwCnvt.GetReadPosition()== 7);
+
+    // read next data from oFcwStr as long
+    iStat = oFcwCnvt.String2Long ( 0, iColWidth, oFcwStr, &lVal);
+    assert(lVal == 78);
+    assert (oFcwCnvt.GetReadPosition()== 9);
+
+    // read next data from oFcwStr as double
+    iStat = oFcwCnvt.String2Dbl ( 0, iColWidth, oFcwStr, &dVal);
+    assert(dVal == 90);
+    assert (oFcwCnvt.GetReadPosition()== 11);
+
+    // read next data from oFcwStr as float
+    iStat = oFcwCnvt.String2Float ( 0, iColWidth, oFcwStr, &fVal);
+    assert(fVal == 12);
+    assert (oFcwCnvt.GetReadPosition()== 13);
+  }
+  {
+
+    sstStr01FcwCls oFcwCnvt;
+    int iColWidth = 2;
+    std::string oFcwStr;
+    std::string oStrVal;
+    char cVal[10] = "ab";
+    int iVal = 4;
+    long lVal = 67;
+    double dVal = 33;
+    float fVal = 11;
+
+    assert (oFcwCnvt.GetReadPosition()== 1);
+
+    iStat = oFcwCnvt.Char2String(0,iColWidth,cVal,&oFcwStr);
+    int iPos = oFcwStr.compare("ab");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 3);
+
+    // iStat = oFcwCnvt.Str2String(0,iColWidth,"12",&oFcwStr);
+    strncpy(cVal,"12",10);
+    iStat = oFcwCnvt.Char2String(0,iColWidth,cVal,&oFcwStr);
+    iPos = oFcwStr.compare("ab12");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 5);
+
+    iStat = oFcwCnvt.Int2String(1,iColWidth,iVal,&oFcwStr);
+    iPos = oFcwStr.compare("ab12 4");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 7);
+
+    iStat = oFcwCnvt.Long2String(0,iColWidth,lVal,&oFcwStr);
+    iPos = oFcwStr.compare("ab12 467");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 9);
+
+    iStat = oFcwCnvt.Dbl2String(0,iColWidth,dVal,&oFcwStr);
+    iPos = oFcwStr.compare("ab12 46733");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 11);
+
+    iStat = oFcwCnvt.Float2String(0,iColWidth,fVal,&oFcwStr);
+    iPos = oFcwStr.compare("ab12 4673311");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 13);
+
+  }
+
+  {
+
+    sstStr01FcwCls oFcwCnvt;
+    int iColWidth = 2;
+    std::string oFcwStr;
+    std::string oStrVal;
+    char cVal[10] = "ab";
+    int iVal = 4;
+    long lVal = 67;
+    double dVal = 3.03;
+    float fVal = 11;
+
+    oFcwCnvt.SetReadPositon(0,10);
+    // insert int value into string from position 10 to 14 right aligned
+    oFcwCnvt.Int2String(1,5,iVal,&oFcwStr);
+    //                          123456789-----56
+    int iPos = oFcwStr.compare("             4");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 15);
+
+    oFcwCnvt.SetReadPositon(0,2);
+    // insert double value into string from position 2 to 7 right aligned
+    oFcwCnvt.Dbl2String(1,6,dVal,&oFcwStr);
+    //                      1------89-----56
+    iPos = oFcwStr.compare(" 3.0300      4");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 8);
+
+  }
+
+  printf("Test Class sstStr01FcwCls Checked. \n");
+
+
+  // Fatal Errors goes to an assert
+  if (iRet < 0)
+  {
+    // Expression (iRet >= 0) has to be fullfilled
+    assert(0);
+  }
 
   // Small Errors will given back
   iRet = iStat;

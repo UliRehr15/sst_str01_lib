@@ -20,6 +20,7 @@
 #include <assert.h>
 
 #include <string>
+#include <vector>
 
 #include "sstStr01Lib.h"
 #include "sstStr01LibInt.h"
@@ -459,8 +460,8 @@ unsigned long sstStr011i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
   unsigned long ii;
   // int  iStat = 0;
 //.............................................................................
-  if (Key < 0 || Key > 1) return -1;
-  if(Pos <= 0 || Pos > Text->length()) return -2;
+  if (Key < 0 || Key > 1) return 0;
+  if(Pos <= 0 || Pos > Text->length()) return 0;
 
   // Interne Funktion, keine Prüfung der Stringparameter
 
@@ -489,7 +490,7 @@ unsigned long sstStr011i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
       if (sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
     }
 
-    if (ii > Text->length() + 1)  return -1;   // keine Information im String
+    if (ii > Text->length() + 1)  return 0;   // keine Information im String
 
     EndPos = ii-1;  // Result
 
@@ -506,14 +507,14 @@ unsigned long sstStr011i_EndOfInfo ( int          Key,      // v  -> 0 oder 1
       if ( sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
     }
 
-    if (ii < 1)  return -1;   // keine Information im String
+    if (ii < 1)  return 0;   // keine Information im String
 
     EndPos = ii;  // Result
   }
   return EndPos;
 }
 //=============================================================================
-long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
+unsigned long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
                              unsigned long         Pos,      //   <-> Suchen ab Position
                              char        *NoInfoZ,  //   <-> NoInformation-Zeichen
                              std::string *Text)     //   <-> Prüf-Text
@@ -525,8 +526,8 @@ long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
   unsigned long ii;
   // int  iStat = 0;
 //.............................................................................
-  if (Key < 0 || Key > 1) return -1;
-  if(Pos <= 0 || Pos > Text->length()) return -2;
+  if (Key < 0 || Key > 1) return 0;
+  if(Pos <= 0 || Pos > Text->length()) return 0;
 
   // Interne Funktion, keine Prüfung der Stringparameter
 
@@ -556,7 +557,7 @@ long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
       if (sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) < 1) break;
     }
 
-    if (ii > Text->length()+1)  return -1;   // keine Information im String
+    if (ii > Text->length()+1)  return 0;   // keine Information im String
 
     EndPos = ii-1;  // Result
 
@@ -573,14 +574,14 @@ long sstStr011i_EndOfInfo2 ( int          Key,      // v  -> 0 oder 1
       if ( sstStr011i_PosHasInfo ( 0, Text, ii, NoInfoZ) == 1) break;
     }
 
-    if (ii < 1)  return -1;   // keine Information im String
+    if (ii < 1)  return 0;   // keine Information im String
 
     EndPos = ii;  // Result
   }
   return EndPos;
 }
 //=============================================================================
-long sstStr011i_StartOfInfo ( int          iKey,
+unsigned long sstStr011i_StartOfInfo ( int          iKey,
                          unsigned long         Pos,
                          char *TrnZ,
                          std::string *Text)
@@ -592,8 +593,8 @@ long sstStr011i_StartOfInfo ( int          iKey,
   unsigned long ii;
   int iStat = 0;
 //.............................................................................
-  if (iKey != 0) return -1;
-  if (Pos > Text->length()) return -2;
+  if (iKey != 0) return 0;
+  if (Pos > Text->length()) return 0;
 
   // Interne Funktion, keine Prüfung der Stringparameter
 
@@ -621,14 +622,14 @@ long sstStr011i_StartOfInfo ( int          iKey,
     }
   }
 
-  if (ii > Text->length())  return -3;   // keine Information im String
+  if (ii > Text->length())  return 0;   // keine Information im String
 
   StartPos = ii;  // Result
 
   return StartPos;
 }
 //=============================================================================
-long sstStr011i_StartOfInfo2 ( int          iKey,
+unsigned long sstStr011i_StartOfInfo2 ( int          iKey,
                                unsigned long         Pos,
                                char        *TrnZ,
                                std::string *Text)
@@ -640,8 +641,8 @@ long sstStr011i_StartOfInfo2 ( int          iKey,
    unsigned long ii;
    int iStat = 0;
 //.............................................................................
-  if (iKey != 0) return -1;
-  if (Pos > Text->length()) return -2;
+  if (iKey != 0) return 0;
+  if (Pos > Text->length()) return 0;
 
 //  if (Pos == 0)
 //  {
@@ -667,7 +668,7 @@ long sstStr011i_StartOfInfo2 ( int          iKey,
     }
   }
 
-  if (ii > Text->length())  return -3;   // keine Information im String
+  if (ii > Text->length())  return 0;   // keine Information im String
 
   StartPos = ii;  // Result
 
@@ -982,7 +983,7 @@ int sstStr011i_IntConvertible (int          iKey,
 }
 //=============================================================================
 int sstStr011_FloatConvertible (int          iKey,
-                           std::string *LocReal)
+                                std::string  *LocReal)
 //-----------------------------------------------------------------------------
 {
 //-----------------------------------------------------------------------------
@@ -1000,10 +1001,10 @@ int sstStr011_FloatConvertible (int          iKey,
         if ( (LocReal->at(ii-1) != '.') &&
            (LocReal->at(ii-1) != '+') &&
            (LocReal->at(ii-1) != '-') )
-      {
-        // Nicht-Zahl ist auch kein Dezimal-Zeichen, Abbruch
-        return 0;
-      }
+        {
+          // Nicht-Zahl ist auch kein Dezimal-Zeichen, Abbruch
+          return 0;
+        }
     }
   }
 

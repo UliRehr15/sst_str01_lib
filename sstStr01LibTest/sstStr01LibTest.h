@@ -29,6 +29,10 @@ int Test_String2CSV (int iKey);
 // Test Fcw class and functions
 int Test_FixColumnWidthSystem (int iKey);
 
+// Test Variable definition type classes and functions
+int Test_VarDefType_Functions (int iKey);
+
+
 #endif
 
 // ------------------------------------------------------------------- Ende ----

@@ -87,6 +87,7 @@ int sstStr01_DoSomeInternTests (int iKey)
   assert(oCsvSet.getLVal() == -6666666);
 
   oFrmtTyp.SetBoolTyp(0,2);  // .T.
+  oFrmtTyp.SetSeparatorTyp(0,1);
 
   iStat = oTestCsv.WrtCsv( 0, &oFrmtTyp, &oErrStr, &oCsvSet, &oResultStr);
   assert(iStat >= 0);

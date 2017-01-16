@@ -1225,21 +1225,22 @@ int sstStr01IntCls::Csv_Str_2String (int               iKey,
   if (sst_str->length() > 0)
   {
       // build csv-format
-    // strncat( sst_str->Txt, this->cSeparator, dSSTSTR01_TEXTLEN);
     *sst_str = *sst_str + this->cSeparator;
-    // strcat(sst_str->Txt,";");
-    // sst_str->AktLen = strlen(sst_str->Txt);
   }
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
-  // strncat(locStr1.Txt, this->cBracket, dSSTSTR01_TEXTLEN);
-  locStr1 = locStr1 + this->cBracket;
-  // strncat(locStr1.Txt, cVal, dSSTSTR01_TEXTLEN);
+  if (this->iSeparatorTyp > 0)
+  {
+    locStr1 = locStr1 + this->cBracket;
+  }
+
   iStat = sstStr011Cat(0,&locStr1, sVal.c_str());
-  // strncat( locStr1.Txt, this->cBracket, dSSTSTR01_TEXTLEN);
-  locStr1 = locStr1 + this->cBracket;
-  // locStr1.AktLen = strlen(locStr1.Txt);
+
+  if (this->iSeparatorTyp > 0)
+  {
+    locStr1 = locStr1 + this->cBracket;
+  }
 
   // append local string to result string
   iStat = sstStr011Cat(0,sst_str, locStr1.c_str());

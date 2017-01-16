@@ -363,6 +363,17 @@ class sstStr01VarDefCls
      std::string Get_EleNam();
      //==============================================================================
      /**
+     * @brief // // Get extended element name with type,width and dec as string <BR>
+     * oEleNamStrExt = oVarDef.Get_EleNamExt();
+     *
+     * For example: VarName[DD;6;2]
+     *
+     * @return string Extended Element Name
+     */
+     // ----------------------------------------------------------------------------
+     std::string Get_EleNamExt();
+     //==============================================================================
+     /**
      * @brief // Get System Info from def type class <BR>
      * oSysInfoStr = oVarDef.Get_SysInfo();
      *
@@ -1039,7 +1050,7 @@ class sstStr01Cls
      * iStat = oSstStr.SetSeparatorTyp( iKey, iSeparatorTyp);
      *
      * @param iKey          [in] For the moment 0
-     * @param iSeparatorTyp [in] For the moment 0
+     * @param iSeparatorTyp [in] 0=No Sep, 1=only strings,2=All
      *
      * @return Errorstate
      *

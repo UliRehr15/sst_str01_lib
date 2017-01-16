@@ -52,4 +52,6 @@ Structure of coding projects should be:
 13.01.2017: Version 1.17: Full test of fix column width functions. <BR>
                           New function split csv string into parts and return as vector. <BR>
                           New function -GetSeparator- . <BR>
+16.01.2017: Version 1.18: New VarDefTyp function -GetNameExt- <BR>
+                          More VarDefTyp Test functions.
 

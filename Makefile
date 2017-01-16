@@ -577,6 +577,7 @@ sstStr01VarType.o: sstStr01VarType.cpp Header/sstStr01Lib.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01VarType.o sstStr01VarType.cpp
 
 sstStr01DefType.o: sstStr01DefType.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01DefType.o sstStr01DefType.cpp
 

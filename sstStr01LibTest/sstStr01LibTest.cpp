@@ -400,7 +400,6 @@ int Test_FixColumnWidthSystem (int iKey)
   }
 
   {
-
     sstStr01FcwCls oFcwCnvt;
     // int iColWidth = 2;
     std::string oFcwStr;
@@ -426,6 +425,28 @@ int Test_FixColumnWidthSystem (int iKey)
     iPos = oFcwStr.compare(" 3.0300      4");
     assert(iPos == 0);
     assert (oFcwCnvt.GetReadPosition()== 8);
+  }
+
+  {
+    sstStr01FcwCls oFcwCnvt;
+    // int iColWidth = 2;
+    std::string oFcwStr;
+    std::string oFrmtStr= "%03i";
+    // char cFmtStr[10] = "%03i";
+    // std::string oStrVal;
+    // char cVal[10] = "ab";
+    int iVal = 4;
+    // long lVal = 67;
+    // double dVal = 3.03;
+    // float fVal = 11;
+
+    oFcwCnvt.SetReadPositon(0,10);
+    // insert int value into string from position 10 to 14 right aligned
+    oFcwCnvt.IntFrmt2String(1,5,iVal, oFrmtStr, &oFcwStr);
+    //                          123456789-----56
+    int iPos = oFcwStr.compare("           004");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 15);
 
   }
 

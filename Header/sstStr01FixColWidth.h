@@ -1,3 +1,16 @@
+/**********************************************************************
+ *
+ * sstStrLib - cpp string library for sst
+ * Hosted on github
+ *
+ * Copyright (C) 2015 Uli Rehr
+ *
+ * This is free software; you can redistribute and/or modify it under
+ * the terms of the GNU Lesser General Public Licence as published
+ * by the Free Software Foundation.
+ * See the COPYING file for more information.
+ *
+ **********************************************************************/
 // sstStr01FixColWidth.h   29.04.10  Re.   29.04.10  Re.
 //
 // Datastructures and Prototypes for system "sstStr01FixColWidth"
@@ -123,6 +136,24 @@ class sstStr01FcwCls
     */
     // ----------------------------------------------------------------------------
     int Int2String(int iKey, int iColWidth, int iVal, std:: string *oFcwStr);
+    //==============================================================================
+    /**
+    * @brief // write int value with format info as string to oFcwStr <BR>
+    * iStat = oFcwStr.IntFrmt2String ( iKey, iColWidth, iVal, oFrmtStr, &oFcwStr);
+    *
+    * @param iKey      [in] For the moment 0
+    * @param iColWidth [in] read next data
+    * @param iVal      [in] char string value
+    * @param oFrmtStr  [in] format string
+    * @param oFcwStr   [out] return string with fix column width data
+    *
+    * @return Errorstate
+    *
+    * @retval   = 0: OK
+    * @retval   < 0: Unspecified Error
+    */
+    // ----------------------------------------------------------------------------
+    int IntFrmt2String(int iKey, int iColWidth, int iVal, std::string oFrmtStr, std:: string *oFcwStr);
     //============================================================================
     /**
     * @brief // read next data from oFcwStr as long int value <BR>
@@ -143,7 +174,7 @@ class sstStr01FcwCls
     //==============================================================================
     /**
     * @brief // write long int value as string to oFcwStr <BR>
-    * iStat = oFcwStr.Char2String ( iKey, iColWidth, lVal, &oFcwStr);
+    * iStat = oFcwStr.Long2String ( iKey, iColWidth, lVal, &oFcwStr);
     *
     * @param iKey      [in] For the moment 0
     * @param iColWidth [in] read next data
@@ -157,6 +188,24 @@ class sstStr01FcwCls
     */
     // ----------------------------------------------------------------------------
     int Long2String(int iKey, int iColWidth, long lVal, std:: string *oFcwStr);
+    //==============================================================================
+    /**
+    * @brief // write long int value  with format info as string to oFcwStr <BR>
+    * iStat = oFcwStr.LongFrmt2String ( iKey, iColWidth, lVal, oFrmtStr, &oFcwStr);
+    *
+    * @param iKey      [in] For the moment 0
+    * @param iColWidth [in] read next data
+    * @param lVal      [in] long int value
+    * @param oFrmtStr  [in] format string
+    * @param oFcwStr   [out] return string with fix column width data
+    *
+    * @return Errorstate
+    *
+    * @retval   = 0: OK
+    * @retval   < 0: Unspecified Error
+    */
+    // ----------------------------------------------------------------------------
+    int LongFrmt2String(int iKey, int iColWidth, long lVal, std::string oFrmtStr, std:: string *oFcwStr);
     //============================================================================
     /**
     * @brief // read next data from oFcwStr as double value <BR>
@@ -193,8 +242,8 @@ class sstStr01FcwCls
     int Dbl2String(int iKey, int iColWidth, double dVal, std:: string *oFcwStr);
     //==============================================================================
     /**
-    * @brief // write char string as string to oFcwStr <BR>
-    * iStat = oFcwStr.Char2String ( iKey, iColWidth, dVal, oFrmtStr, &oFcwStr);
+    * @brief // write double value with format info as string to oFcwStr <BR>
+    * iStat = oFcwStr.DblFrmt2String ( iKey, iColWidth, dVal, oFrmtStr, &oFcwStr);
     *
     * @param iKey      [in] For the moment 0
     * @param iColWidth [in] read next data
@@ -245,8 +294,8 @@ class sstStr01FcwCls
     int Float2String(int iKey, int iColWidth, float fVal, std:: string *oFcwStr);
     //==============================================================================
     /**
-    * @brief // write char string as string to oFcwStr <BR>
-    * iStat = oFcwStr.Char2String ( iKey, iColWidth, fVal, oFrmtStr, &oFcwStr);
+    * @brief // write float value with format info as string to oFcwStr <BR>
+    * iStat = oFcwStr.FloatFrmt2String ( iKey, iColWidth, fVal, oFrmtStr, &oFcwStr);
     *
     * @param iKey      [in] For the moment 0
     * @param iColWidth [in] read next data

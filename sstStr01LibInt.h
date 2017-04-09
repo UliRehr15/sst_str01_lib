@@ -1173,7 +1173,7 @@ int sstStr011_Int2ZeileFmt ( int           iKey,
                         unsigned long          Von,
                         unsigned long          Bis,
                         int           iWert,
-                        char         *cFmtStr,
+                             char         *cFmtStr,
                         std::string  *Zeile);
 
 //=============================================================================
@@ -1211,6 +1211,45 @@ int sstStr011_Int4Zeile ( int          Key,
                      unsigned long         Von,
                      unsigned long         Bis,
                      long         lWert,
+                     std::string *Zeile);
+//=============================================================================
+//=============================================================================
+/**
+* @brief Int4 in einen String konvertieren und in Zeilenbereich kopieren.
+*
+* iStat = sstStr011_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
+*
+* Key = 0: linksbündig
+* Key = 1: rechtsbündig
+*
+* Geändert: 28.06.05  UR
+*
+* 28.06.05: Doxy-Header.  UR
+*
+* @ingroup sstStr01IntLib
+*
+* @param Key:     [in]     0 oder 1
+* @param Von:     [in]     von Textposition im Zielstring
+* @param Bis:     [in]     bis Textposition im Zielstring
+* @param lWert:   [in]     Quelle
+* @param cFmtStr [in]     Format string for intern sprintf
+* @param Zeile:   [in out] Zielstring
+*
+* @return Fehlerstatus
+*
+* @retval   = 0: OK
+* @retval   < 0: Allgemeiner Fehler
+*
+* @author ur
+*
+* @date 07.07.00
+*/
+//-----------------------------------------------------------------------------
+int sstStr011_Int4ZeileFmt ( int          Key,
+                     unsigned long         Von,
+                     unsigned long         Bis,
+                     long         lWert,
+                     char         *cFmtStr,
                      std::string *Zeile);
 //=============================================================================
 /**

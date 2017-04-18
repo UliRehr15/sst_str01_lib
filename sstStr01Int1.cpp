@@ -333,7 +333,7 @@ int sstStr01IntCls::CsvString2_Dbl ( int          iKey,
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  *dRetVal = dSSTSTR01_UNDEF_DOUBLE;
+  *dRetVal = dSSTSTR01_UNDEF_R8;
 
   iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
 
@@ -364,7 +364,7 @@ int sstStr01IntCls::CsvString2_Flt ( int          iKey,
   // If Interpretation position is greater than actual string, return error
   if (this->ulPos > sZeile->length()) return -1;
 
-  *fRetVal = dSSTSTR01_UNDEF_DOUBLE;
+  *fRetVal = dSSTSTR01_UNDEF_R4;
 
   iStat = this->CsvString2_Str(0,sZeile,&oRetStr);
 

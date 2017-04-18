@@ -124,7 +124,7 @@ int main ()
   assert( iResult == 3100);
   // Information 3
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Dbl ( 0, &oTestString, &dResult);
-  assert( dResult == dSSTSTR01_UNDEF_DOUBLE);
+  assert( dResult == dSSTSTR01_UNDEF_R8);
   // Information 4
   if(iStat >= 0)  iStat = oStringMan.CsvString2_Str ( 0, &oTestString, &oResultStr);
   assert( strcmp(oResultStr.c_str(),"Aufnahmepunkt") == 0);

@@ -568,7 +568,7 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   iStat = sstStr011_Init ( 0, &LocStr);
 
   // Convert Float to string with format string
-  if (fWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && fWert > dSSTSTR01_UNDEF_DOUBLE)
+  if (fWert < (dSSTSTR01_UNDEF_R4) && fWert > dSSTSTR01_UNDEF_R4 * -1.0)
   {
     sprintf(cLocChar, cFmtStr, fWert);
     LocStr = cLocChar;
@@ -650,7 +650,7 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
   // Convert Float to string with format string
   iStat = sstStr011_Init ( 0, &LocStr);
 
-  if (fWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && fWert > dSSTSTR01_UNDEF_DOUBLE)
+  if (fWert < (dSSTSTR01_UNDEF_R4) && fWert > dSSTSTR01_UNDEF_R4 * -1.0)
   {
     sprintf(cLocChar, Format, fWert);
     LocStr = cLocChar;
@@ -716,7 +716,7 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
 
 
   // Convert double to string wiht format string
-  if (dWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && dWert > dSSTSTR01_UNDEF_DOUBLE)
+  if (dWert < (dSSTSTR01_UNDEF_R8) && dWert > dSSTSTR01_UNDEF_R8 * -1.0)
   {
     sprintf(cLocChar, cFmtStr, dWert);
     LocStr = cLocChar;
@@ -790,7 +790,7 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
 
   // Convert double to string wiht format string
   iStat = sstStr011_Init ( 0, &LocStr);
-  if (dWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && dWert > dSSTSTR01_UNDEF_DOUBLE)
+  if (dWert < (dSSTSTR01_UNDEF_R8) && dWert > dSSTSTR01_UNDEF_R8 * -1.0)
   {
     sprintf(cLocChar, Format, dWert);
     LocStr = cLocChar;
@@ -864,7 +864,7 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
 
   // Convert double to string with format string
   iStat = sstStr011_Init ( 0, &LocStr);
-  if (dWert < (dSSTSTR01_UNDEF_DOUBLE * -1.0) && dWert > dSSTSTR01_UNDEF_DOUBLE)
+  if (dWert < (dSSTSTR01_UNDEF_R8) && dWert > dSSTSTR01_UNDEF_R8 * -1.0)
   {
     sprintf(cLocChar, Format, dWert);
     LocStr = cLocChar;
@@ -1258,7 +1258,7 @@ int sstStr011_AbPos2Dbl ( int              Key,    // v  -> Vorerst immer 0
   if (Key != 0) return -1;
   istat = 0;
 
-  *dRet = dSSTSTR01_UNDEF_DOUBLE;
+  *dRet = dSSTSTR01_UNDEF_R8;
 
   // nÃ¤chste Information in Zeile ab TPos bis TrennZeichen nach tRet kopieren
   istat = sstStr011_AbPos2Str ( 0, TPos, TrnZ, Zeile, ErrTxt, &tRet);

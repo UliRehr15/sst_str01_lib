@@ -43,7 +43,12 @@
 #define dSSTSTR01_CINT4_MAX    2147483647L     // Maximum für Cint4
 #define dSSTSTR01_CUINT4_MAX   4294967295UL    // Maximum für Cuint4
 
-#define dSSTSTR01_UNDEF_DOUBLE -999999999      // Undefine for Double
+// Define UNDEF Values
+#define      dSSTSTR01_UNDEF_R4    1.0E+30
+#define      dSSTSTR01_UNDEF_R8    1.0E+300
+#define      dSSTSTR01_UNDEF_I1    0x80
+#define      dSSTSTR01_UNDEF_I2    0x8000
+#define      dSSTSTR01_UNDEF_I4    0x80000000
 
 //**************************************************************************
 

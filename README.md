@@ -1,6 +1,7 @@
 sstStr01Lib - sst String Processing Lib
 
 Import and Export of csv format files.
+Import and Export of fix column width format files.
 
 for example create user record:
 double myDouble
@@ -55,4 +56,5 @@ Structure of coding projects should be:
 16.01.2017: Version 1.18: New VarDefTyp function -GetNameExt- <BR>
                           More VarDefTyp Test functions. <BR>
 09.04.2017: Version 1.19: Write-Functions with format info for fix-column-width class. <BR>
+18.04.2017: Version 1.20: Expand / Rework UNDEF-Behaviour. <BR>
 

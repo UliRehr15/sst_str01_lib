@@ -24,6 +24,7 @@
 #include <vector>
 
 #include "sstStr01Lib.h"
+#include "sstStr01FixColWidth.h"
 #include "sstStr01LibInt.h"
 
 #define DIFF_R 0.00001
@@ -240,11 +241,12 @@ int sstStr011_Zeile2Float ( int          Key,    // v  -> Vorerst immer 0
   return istat;
 }
 //=============================================================================
-int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
+int sstStr011_Str2Zeile ( int                   Key,     // v  -> 0 oder 1
+                          sstStr01FcwCls        *oFcw,
                           unsigned long         Von,     // v  -> von Textposition im Zielstring
                           unsigned long         Bis,     // v  -> bis Textposition im Zielstring
-                          std::string *sWert,   //   <-> Quelle
-                          std::string *Zeile)   //   <-> Ziel
+                          std::string          *sWert,   //   <-> Quelle
+                          std::string          *Zeile)   //   <-> Ziel
 //-----------------------------------------------------------------------------
 {
   unsigned long sWertBis;   // LÃ¤nge sWert
@@ -265,7 +267,8 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
 //-----------------------------------------------------------------------------
   if (Key != 0 && Key != 1) return -1;
 
-  strcpy(TrnZ," ");     // kein Trennzeichen
+  // strcpy(TrnZ," ");     // kein Trennzeichen
+  strncpy(TrnZ,oFcw->GetNoInfoChar(),2);     // kein Trennzeichen
 
   // Eingangsparameter auswerten: Teil 1
   if ( Bis > dSSTSTR01_TEXTLEN) return -1;       // Platzbedarf in -Zeile- zu groÃ
@@ -307,12 +310,13 @@ int sstStr011_Str2Zeile ( int          Key,     // v  -> 0 oder 1
   }
 
   // Remove ending spaces from string
-  iStat = sstStr011i_RemoveEndingSpaces ( 0, &oFmtInfo, Zeile);
+  iStat = sstStr011i_RemoveEndingSpaces ( 0, oFcw, Zeile);
 
   return iStat;
 }
 //=============================================================================
 int sstStr011_Char2Zeile ( int          iKey,    // v  -> 0 oder 1
+                           sstStr01FcwCls        *oFcw,
                            unsigned long         Von,     // v  -> von Textposition im Zielstring
                            unsigned long         Bis,     // v  -> bis Textposition im Zielstring
                            char        *cWert,   //   <-> Quelle
@@ -329,12 +333,13 @@ int sstStr011_Char2Zeile ( int          iKey,    // v  -> 0 oder 1
   if (iStat < 0) return -2;
 
   // Kopieren eines String in einen Zeilenbereich.
-  iStat = sstStr011_Str2Zeile ( iKey, Von, Bis, &sWert, Zeile);
+  iStat = sstStr011_Str2Zeile ( iKey, oFcw, Von, Bis, &sWert, Zeile);
 
   return iStat;
 }
 //=============================================================================
 int sstStr011_Int2Zeile ( int          Key,     // v  -> 0 oder 1
+                          sstStr01FcwCls        *oFcw,
                           unsigned long         Von,     // v  -> von Textposition
                           unsigned long         Bis,     // v  -> bis Textposition
                           int          iWert,   //   <-> Quelle
@@ -357,7 +362,7 @@ int sstStr011_Int2Zeile ( int          Key,     // v  -> 0 oder 1
   sprintf(cLocChar,"%d",iWert);
   LocStr = cLocChar;
 
-  iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
+  iStat = sstStr011_Str2Zeile ( Key, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -368,6 +373,7 @@ int sstStr011_Int2Zeile ( int          Key,     // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_UInt2Zeile ( int          Key,     // v  -> 0 oder 1
+                           sstStr01FcwCls        *oFcw,
                            unsigned long          Von,     // v  -> von Textposition
                            unsigned long          Bis,     // v  -> bis Textposition
                            unsigned int  uiWert,   //   <-> Quelle
@@ -390,7 +396,7 @@ int sstStr011_UInt2Zeile ( int          Key,     // v  -> 0 oder 1
   sprintf(cLocChar,"%d",uiWert);
   LocStr = cLocChar;
 
-  iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
+  iStat = sstStr011_Str2Zeile ( Key, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -401,6 +407,7 @@ int sstStr011_UInt2Zeile ( int          Key,     // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Int2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
+                             sstStr01FcwCls        *oFcw,
                              unsigned long         Von,     // v  -> von Textposition
                              unsigned long         Bis,     // v  -> bis Textposition
                              int          iWert,   //   <-> Quelle
@@ -425,7 +432,7 @@ int sstStr011_Int2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
   sprintf ( cLocChar,cFmtStr, iWert);      // zweistellig, linksbÃ¼ndig, mit Nullen auffÃ¼llen
   LocStr = cLocChar;     // zweistellig, linksbÃ¼ndig, mit Nullen auffÃ¼llen
 
-  iStat = sstStr011_Str2Zeile ( iKey, Von, Bis, &LocStr, Zeile);
+  iStat = sstStr011_Str2Zeile ( iKey, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -436,6 +443,7 @@ int sstStr011_Int2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Int4Zeile ( int          Key,     // v  -> 0 oder 1
+                          sstStr01FcwCls        *oFcw,
                           unsigned long         Von,     // v  -> von Textposition
                           unsigned long         Bis,     // v  -> bis Textposition
                           long         lWert,   //   <-> Quelle
@@ -459,7 +467,7 @@ int sstStr011_Int4Zeile ( int          Key,     // v  -> 0 oder 1
   snprintf(cLocChar,dSSTSTR01_TEXTLEN,"%ld",lWert);
   LocStr = cLocChar;
 
-  iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
+  iStat = sstStr011_Str2Zeile ( Key, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -470,6 +478,7 @@ int sstStr011_Int4Zeile ( int          Key,     // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Int4ZeileFmt ( int          Key,     // v  -> 0 oder 1
+                             sstStr01FcwCls        *oFcw,
                              unsigned long         Von,     // v  -> von Textposition
                              unsigned long         Bis,     // v  -> bis Textposition
                              long         lWert,   //   <-> Quelle
@@ -494,7 +503,7 @@ int sstStr011_Int4ZeileFmt ( int          Key,     // v  -> 0 oder 1
   snprintf(cLocChar,dSSTSTR01_TEXTLEN,cFmtStr,lWert);
   LocStr = cLocChar;
 
-  iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
+  iStat = sstStr011_Str2Zeile ( Key, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -505,6 +514,7 @@ int sstStr011_Int4ZeileFmt ( int          Key,     // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_UInt4Zeile ( int             Key,     // v  -> 0 oder 1
+                           sstStr01FcwCls        *oFcw,
                            unsigned long            Von,     // v  -> von Textposition
                            unsigned long            Bis,     // v  -> bis Textposition
                            unsigned long   ulWert,   //   <-> Quelle
@@ -529,7 +539,7 @@ int sstStr011_UInt4Zeile ( int             Key,     // v  -> 0 oder 1
   snprintf(cLocChar,dSSTSTR01_TEXTLEN,"%lu",ulWert);
   LocStr = cLocChar;
 
-  iStat = sstStr011_Str2Zeile ( Key, Von, Bis, &LocStr, Zeile);
+  iStat = sstStr011_Str2Zeile ( Key, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -540,6 +550,7 @@ int sstStr011_UInt4Zeile ( int             Key,     // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Real2ZeileFmt ( int          iKey,
+                              sstStr01FcwCls        *oFcw,
                               unsigned long         Von,
                               unsigned long         Bis,
                               float        fWert,
@@ -592,9 +603,9 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
   }
 
   if (iKey == 0 || iKey == 2)
-    iStat = sstStr011_Str2Zeile ( 0, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 0, oFcw, Von, Bis, &LocStr, Zeile);
   else
-    iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 1, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -608,6 +619,7 @@ int sstStr011_Real2ZeileFmt ( int          iKey,
 }
 //=============================================================================
 int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
+                           sstStr01FcwCls        *oFcw,
                            unsigned long         Von,     // v  -> von Textposition
                            unsigned long         Bis,     // v  -> bis Textposition
                            float        fWert,   //   <-> Quelle
@@ -671,9 +683,9 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
   }
 
   if (iKey == 0 || iKey == 2)
-    iStat = sstStr011_Str2Zeile ( 0, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 0, oFcw, Von, Bis, &LocStr, Zeile);
   else
-    iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 1, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -687,6 +699,7 @@ int sstStr011_Real2Zeile ( int          iKey,    // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
+                             sstStr01FcwCls        *oFcw,
                              unsigned long         Von,     // v  -> von Textposition
                              unsigned long         Bis,     // v  -> bis Textposition
                              double       dWert,   //   <-> Quelle
@@ -737,9 +750,9 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
   }
 
   if (iKey == 0 || iKey == 2)
-    iStat = sstStr011_Str2Zeile ( 0, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 0, oFcw, Von, Bis, &LocStr, Zeile);
   else
-    iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 1, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -753,6 +766,7 @@ int sstStr011_Dbl2ZeileFmt ( int          iKey,    // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
+                             sstStr01FcwCls        *oFcw,
                              unsigned long         Von,     // v  -> von Textposition
                              unsigned long         Bis,     // v  -> bis Textposition
                              double       dWert,   //   <-> Quelle
@@ -811,9 +825,9 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
   }
 
   if (iKey == 0 || iKey == 2)
-    iStat = sstStr011_Str2Zeile ( 0, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 0, oFcw, Von, Bis, &LocStr, Zeile);
   else
-    iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 1, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -827,6 +841,7 @@ int sstStr011_Dbl2ZeileWnk ( int          iKey,    // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
+                          sstStr01FcwCls        *oFcw,
                           unsigned long  Von,     // v  -> von Textposition
                           unsigned long  Bis,     // v  -> bis Textposition
                           double         dWert,   //   <-> Quelle
@@ -888,9 +903,9 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
   }
 
   if (iKey == 0 || iKey == 2)
-    iStat = sstStr011_Str2Zeile ( 0, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 0, oFcw, Von, Bis, &LocStr, Zeile);
   else
-    iStat = sstStr011_Str2Zeile ( 1, Von, Bis, &LocStr, Zeile);
+    iStat = sstStr011_Str2Zeile ( 1, oFcw, Von, Bis, &LocStr, Zeile);
 
   // AbschlieÃende Spaces in String lÃ¶schen
   // Ende der Information in einem String rÃ¼ckwÃ¤rts suchen
@@ -904,6 +919,7 @@ int sstStr011_Dbl2Zeile ( int            iKey,    // v  -> 0 oder 1
 }
 //=============================================================================
 int sstStr011_Bool2Zeile ( int          iKey,
+                           sstStr01FcwCls        *oFcw,
                       long         iStrTyp,
                       unsigned long         lVon,
                       unsigned long         lBis,
@@ -943,7 +959,7 @@ int sstStr011_Bool2Zeile ( int          iKey,
   }
 
   // Kopieren eines String in einen Zeilenbereich.
-  iStat = sstStr011_Str2Zeile ( iKey, lVon, lBis, &sWert, Zeile);
+  iStat = sstStr011_Str2Zeile ( iKey, oFcw, lVon, lBis, &sWert, Zeile);
 
   return iStat;
 }
@@ -1574,6 +1590,7 @@ int sstStr011_AbPosK3Str ( int          iKey,
 int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   unsigned long ulPos=0;
   std::string sLocZeile;
   int iRet  = 0;
@@ -1629,7 +1646,7 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   }
 
   // Zahl nach String konvertieren
-  iStat = sstStr011_Dbl2Zeile( 1, 1,6,-22.2, 2, &sLocZeile);
+  iStat = sstStr011_Dbl2Zeile( 1,&oFcw, 1,6,-22.2, 2, &sLocZeile);
   ulPos = sLocZeile.find("-22.20",0);
   assert(ulPos==0);
 

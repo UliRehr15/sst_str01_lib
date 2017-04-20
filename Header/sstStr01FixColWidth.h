@@ -358,6 +358,16 @@ int SetSeparatorTyp(int iKey, int iSeparatorTyp);
 // ----------------------------------------------------------------------------
 int SetBoolTyp(int iKey, int iBoolTyp);
 //==============================================================================
+/** Set No Information Char <BR>
+*
+* Default " " (Blank)
+*
+* @param iKey        [in] For the moment 0
+* @param cNoInfoChar [in] No Information Char
+*
+*/
+int SetNoInfoChar(int iKey, char *cNoInfoChar);
+//==============================================================================
 /**
 * @brief Shortstory
 *

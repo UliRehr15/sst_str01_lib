@@ -1028,10 +1028,12 @@ class sstStr01Cls
      */
      std::string GetSeparator();
      //==============================================================================
-     /** Set No Information  char
+     /** Set No Information Char <BR>
      *
-     * @param iKey For the moment 0
-     * @param cNoInfoChar CSV Separator: for example ";" (default)
+     * Default " " (Blank)
+     *
+     * @param iKey        [in] For the moment 0
+     * @param cNoInfoChar [in] No Information Char
      *
      */
      int SetNoInfoChar(int iKey, char *cNoInfoChar);

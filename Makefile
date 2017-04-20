@@ -545,34 +545,42 @@ compiler_clean:
 ####### Compile
 
 sstStr01Test.o: sstStr01Test.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Test.o sstStr01Test.cpp
 
 sstStr01Int1.o: sstStr01Int1.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Int1.o sstStr01Int1.cpp
 
 sstStr01Int2.o: sstStr01Int2.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Int2.o sstStr01Int2.cpp
 
 sstStr01Int3.o: sstStr01Int3.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Int3.o sstStr01Int3.cpp
 
 sstStr01Int4.o: sstStr01Int4.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Int4.o sstStr01Int4.cpp
 
 sstStr01Int5.o: sstStr01Int5.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01Int5.o sstStr01Int5.cpp
 
 sstStr01.o: sstStr01.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01.o sstStr01.cpp
 
 sstStr01VarType.o: sstStr01VarType.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01VarType.o sstStr01VarType.cpp
 
@@ -582,6 +590,7 @@ sstStr01DefType.o: sstStr01DefType.cpp Header/sstStr01Lib.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01DefType.o sstStr01DefType.cpp
 
 sstStr01TestRec.o: sstStr01TestRec.cpp Header/sstStr01Lib.h \
+		Header/sstStr01FixColWidth.h \
 		sstStr01LibInt.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o sstStr01TestRec.o sstStr01TestRec.cpp
 

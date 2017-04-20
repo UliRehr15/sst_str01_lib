@@ -22,6 +22,7 @@
 #include <string>
 
 #include "sstStr01Lib.h"
+#include "sstStr01FixColWidth.h"
 #include "sstStr01LibInt.h"
 
 //=============================================================================

@@ -983,8 +983,7 @@ int sstStr011_Zeile2Float ( int          iKey,    // v  -> Vorerst immer 0
 //=============================================================================
 /**
 * @brief Kopieren eines String in einen Zeilenbereich
-*
-* iStat = sstStr011_Str2Zeile ( Key, Von, Bis, *sWert, *Zeile);
+* iStat = sstStr011_Str2Zeile ( Key, &oFcw, Von, Bis, *sWert, *Zeile);
 *
 * Und zwar in -Zeile- Platz-genau !!
 * Key = 0: linksbündig
@@ -1004,11 +1003,12 @@ int sstStr011_Zeile2Float ( int          iKey,    // v  -> Vorerst immer 0
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param sWert:   [in]     Quelle
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param sWert   [in]     Quelle
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1021,6 +1021,7 @@ int sstStr011_Zeile2Float ( int          iKey,    // v  -> Vorerst immer 0
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Str2Zeile ( int          Key,
+                          sstStr01FcwCls        *oFcw,
                      unsigned long         Von,
                      unsigned long         Bis,
                      std::string *sWert,
@@ -1030,7 +1031,7 @@ int sstStr011_Str2Zeile ( int          Key,
 /**
 * @brief Kopieren eines Char in einen Zeilenbereich
 *
-* iStat = sstStr011_Char2Zeile ( iKey, Von, Bis, *cWert, *Zeile);
+* iStat = sstStr011_Char2Zeile ( iKey, &oFcw, Von, Bis, *cWert, *Zeile);
 *
 * Und zwar in -Zeile- Platz-genau !!
 * Key = 0: linksbündig
@@ -1042,11 +1043,12 @@ int sstStr011_Str2Zeile ( int          Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param cWert:   [in]     Quelle
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param cWert   [in]     Quelle
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1059,6 +1061,7 @@ int sstStr011_Str2Zeile ( int          Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Char2Zeile ( int          Key,
+                           sstStr01FcwCls        *oFcw,
                       unsigned long         Von,
                       unsigned long         Bis,
                       char        *cWert,
@@ -1068,7 +1071,7 @@ int sstStr011_Char2Zeile ( int          Key,
 /**
 * @brief Int2 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Int2Zeile ( Key, Von, Bis, iWert, *Zeile, ZeilLen);
+* iStat = sstStr011_Int2Zeile ( Key, &oFcw, Von, Bis, iWert, *Zeile, ZeilLen);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1079,11 +1082,12 @@ int sstStr011_Char2Zeile ( int          Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param iWert:   [in]     Quelle
-* @param Zeile:   [in out] Zielstring (initialisiert!)
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param iWert   [in]     Quelle
+* @param Zeile   [in out] Zielstring (initialisiert!)
 *
 * @return Fehlerstatus
 *
@@ -1096,6 +1100,7 @@ int sstStr011_Char2Zeile ( int          Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Int2Zeile ( int          Key,
+                          sstStr01FcwCls        *oFcw,
                      unsigned long         Von,
                      unsigned long         Bis,
                      int          iWert,
@@ -1104,7 +1109,7 @@ int sstStr011_Int2Zeile ( int          Key,
 /**
 * @brief UInt2 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_UInt2Zeile ( Key, Von, Bis, uiWert, *Zeile, ZeilLen);
+* iStat = sstStr011_UInt2Zeile ( Key, &oFcw, Von, Bis, uiWert, *Zeile, ZeilLen);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1115,11 +1120,12 @@ int sstStr011_Int2Zeile ( int          Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param uiWert:  [in]     Quelle
-* @param Zeile:   [in out] Zielstring (initialisiert!)
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param uiWert  [in]     Quelle
+* @param Zeile   [in out] Zielstring (initialisiert!)
 *
 * @return Fehlerstatus
 *
@@ -1132,6 +1138,7 @@ int sstStr011_Int2Zeile ( int          Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_UInt2Zeile ( int           Key,
+                           sstStr01FcwCls        *oFcw,
                       unsigned long          Von,
                       unsigned long          Bis,
                       unsigned int  uiWert,
@@ -1140,7 +1147,7 @@ int sstStr011_UInt2Zeile ( int           Key,
 /**
 * @brief Int2 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Int2Zeile ( Key, Von, Bis, iWert, *Zeile, ZeilLen);
+* iStat = sstStr011_Int2Zeile ( Key, &oFcw, Von, Bis, iWert, *Zeile, ZeilLen);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1153,6 +1160,7 @@ int sstStr011_UInt2Zeile ( int           Key,
 * @ingroup sstStr01IntLib
 *
 * @param iKey    [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
 * @param Von     [in]     von Textposition im Zielstring
 * @param Bis     [in]     bis Textposition im Zielstring
 * @param iWert   [in]     Quelle
@@ -1170,6 +1178,7 @@ int sstStr011_UInt2Zeile ( int           Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Int2ZeileFmt ( int           iKey,
+                             sstStr01FcwCls        *oFcw,
                         unsigned long          Von,
                         unsigned long          Bis,
                         int           iWert,
@@ -1180,7 +1189,7 @@ int sstStr011_Int2ZeileFmt ( int           iKey,
 /**
 * @brief Int4 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
+* iStat = sstStr011_Int4Zeile ( Key, &oFcw, Von, Bis, *lWert, *Zeile);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1191,11 +1200,12 @@ int sstStr011_Int2ZeileFmt ( int           iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param lWert:   [in]     Quelle
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param lWert   [in]     Quelle
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1208,16 +1218,16 @@ int sstStr011_Int2ZeileFmt ( int           iKey,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Int4Zeile ( int          Key,
+                          sstStr01FcwCls        *oFcw,
                      unsigned long         Von,
                      unsigned long         Bis,
                      long         lWert,
                      std::string *Zeile);
 //=============================================================================
-//=============================================================================
 /**
 * @brief Int4 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
+* iStat = sstStr011_Int4Zeile ( Key, &oFcw, Von, Bis, *lWert, *Zeile);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1228,12 +1238,13 @@ int sstStr011_Int4Zeile ( int          Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param lWert:   [in]     Quelle
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param lWert   [in]     Quelle
 * @param cFmtStr [in]     Format string for intern sprintf
-* @param Zeile:   [in out] Zielstring
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1246,6 +1257,7 @@ int sstStr011_Int4Zeile ( int          Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Int4ZeileFmt ( int          Key,
+                             sstStr01FcwCls        *oFcw,
                      unsigned long         Von,
                      unsigned long         Bis,
                      long         lWert,
@@ -1255,7 +1267,7 @@ int sstStr011_Int4ZeileFmt ( int          Key,
 /**
 * @brief Int4 in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Int4Zeile ( Key, Von, Bis, *lWert, *Zeile);
+* iStat = sstStr011_Int4Zeile ( Key, &oFcw, Von, Bis, *lWert, *Zeile);
 *
 * Key = 0: linksbündig
 * Key = 1: rechtsbündig
@@ -1267,6 +1279,7 @@ int sstStr011_Int4ZeileFmt ( int          Key,
 * @ingroup sstStr01IntLib
 *
 * @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
 * @param Von     [in]     von Textposition im Zielstring
 * @param Bis     [in]     bis Textposition im Zielstring
 * @param ulWert  [in]     Quelle
@@ -1283,6 +1296,7 @@ int sstStr011_Int4ZeileFmt ( int          Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_UInt4Zeile ( int             Key,
+                           sstStr01FcwCls        *oFcw,
                       unsigned long            Von,
                       unsigned long            Bis,
                       unsigned long   ulWert,
@@ -1291,7 +1305,7 @@ int sstStr011_UInt4Zeile ( int             Key,
 /**
 * @brief Real in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Real2ZeileFmt ( Key, Von, Bis, *fWert ,cFmtStr, *Zeile);
+* iStat = sstStr011_Real2ZeileFmt ( Key, &oFcw, Von, Bis, *fWert ,cFmtStr, *Zeile);
 *
 * Konvertieren eines Real in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1306,12 +1320,13 @@ int sstStr011_UInt4Zeile ( int             Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param fWert:   [in]     Quelle
-* @param cFmtStr: [in]     Format string for intern sprintf
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param fWert   [in]     Quelle
+* @param cFmtStr [in]     Format string for intern sprintf
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1324,6 +1339,7 @@ int sstStr011_UInt4Zeile ( int             Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Real2ZeileFmt ( int           Key,
+                              sstStr01FcwCls        *oFcw,
                          unsigned long          Von,
                          unsigned long          Bis,
                          float         fWert,
@@ -1333,7 +1349,7 @@ int sstStr011_Real2ZeileFmt ( int           Key,
 /**
 * @brief Real in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Real2Zeile ( Key, Von, Bis, *fWert ,NachKo, *Zeile);
+* iStat = sstStr011_Real2Zeile ( Key, &oFcw, Von, Bis, *fWert ,NachKo, *Zeile);
 *
 * Konvertieren eines Real in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1346,12 +1362,13 @@ int sstStr011_Real2ZeileFmt ( int           Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param fWert:   [in]     Quelle
-* @param NachKo:  [in]     Nachkommastellen
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param fWert   [in]     Quelle
+* @param NachKo  [in]     Nachkommastellen
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1364,6 +1381,7 @@ int sstStr011_Real2ZeileFmt ( int           Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Real2Zeile ( int           Key,
+                           sstStr01FcwCls        *oFcw,
                       unsigned long          Von,
                       unsigned long          Bis,
                       float         fWert,
@@ -1373,7 +1391,7 @@ int sstStr011_Real2Zeile ( int           Key,
 /**
 * @brief Double in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Dbl2ZeileFmt ( Key, Von, Bis, *dWert ,cFmtStr, *Zeile);
+* iStat = sstStr011_Dbl2ZeileFmt ( Key, &oFcw, Von, Bis, *dWert ,cFmtStr, *Zeile);
 *
 * Konvertieren eines Double in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1388,12 +1406,13 @@ int sstStr011_Real2Zeile ( int           Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param dWert:   [in]     Quelle
-* @param cFmtStr: [in]     Format string for intern sprintf
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param dWert   [in]     Quelle
+* @param cFmtStr [in]     Format string for intern sprintf
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1406,6 +1425,7 @@ int sstStr011_Real2Zeile ( int           Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Dbl2ZeileFmt ( int           Key,
+                             sstStr01FcwCls        *oFcw,
                         unsigned long          Von,
                         unsigned long          Bis,
                         double        dWert,
@@ -1415,7 +1435,7 @@ int sstStr011_Dbl2ZeileFmt ( int           Key,
 /**
 * @brief Double in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Dbl2ZeileWnk ( Key, Von, Bis, *dWert ,NachKo, *Zeile);
+* iStat = sstStr011_Dbl2ZeileWnk ( Key, &oFcw, Von, Bis, *dWert ,NachKo, *Zeile);
 *
 * Konvertieren eines Double in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1430,12 +1450,13 @@ int sstStr011_Dbl2ZeileFmt ( int           Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param dWert:   [in]     Quelle
-* @param NachKo:  [in]     Nachkommastellen
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param dWert   [in]     Quelle
+* @param NachKo  [in]     Nachkommastellen
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1448,6 +1469,7 @@ int sstStr011_Dbl2ZeileFmt ( int           Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Dbl2ZeileWnk ( int           Key,
+                             sstStr01FcwCls       *oFcw,
                         unsigned long          Von,
                         unsigned long          Bis,
                         double        dWert,
@@ -1458,7 +1480,7 @@ int sstStr011_Dbl2ZeileWnk ( int           Key,
 /**
 * @brief Double in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Dbl2Zeile ( Key, Von, Bis, *dWert ,NachKo, *Zeile);
+* iStat = sstStr011_Dbl2Zeile ( Key, &oFcw, Von, Bis, *dWert ,NachKo, *Zeile);
 *
 * Konvertieren eines Double in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1471,12 +1493,13 @@ int sstStr011_Dbl2ZeileWnk ( int           Key,
 *
 * @ingroup sstStr01IntLib
 *
-* @param Key:     [in]     0 oder 1
-* @param Von:     [in]     von Textposition im Zielstring
-* @param Bis:     [in]     bis Textposition im Zielstring
-* @param dWert:   [in]     Quelle
-* @param NachKo:  [in]     Nachkommastellen
-* @param Zeile:   [in out] Zielstring
+* @param Key     [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
+* @param Von     [in]     von Textposition im Zielstring
+* @param Bis     [in]     bis Textposition im Zielstring
+* @param dWert   [in]     Quelle
+* @param NachKo  [in]     Nachkommastellen
+* @param Zeile   [in out] Zielstring
 *
 * @return Fehlerstatus
 *
@@ -1489,6 +1512,7 @@ int sstStr011_Dbl2ZeileWnk ( int           Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Dbl2Zeile ( int           Key,
+                          sstStr01FcwCls        *oFcw,
                      unsigned long          Von,
                      unsigned long          Bis,
                      double        dWert,
@@ -1499,7 +1523,7 @@ int sstStr011_Dbl2Zeile ( int           Key,
 /**
 * @brief Bool in einen String konvertieren und in Zeilenbereich kopieren.
 *
-* iStat = sstStr011_Bool2Zeile (iKey, iStrTyp, lVon, lBis, *bVal, *sZeile);
+* iStat = sstStr011_Bool2Zeile (iKey, &oFcw, iStrTyp, lVon, lBis, *bVal, *sZeile);
 *
 * Konvertieren eines Real in einen Zeilen-Bereich
 * Key = 0: linksbündig
@@ -1510,6 +1534,7 @@ int sstStr011_Dbl2Zeile ( int           Key,
 * @ingroup sstStr01IntLib
 *
 * @param iKey    [in]     0 oder 1
+* @param oFcw    [in out] Fix column width object
 * @param iStrTyp [in]     Format of Output String
 * @param lVon    [in]     von Textposition im Zielstring
 * @param lBis    [in]     bis Textposition im Zielstring
@@ -1527,6 +1552,7 @@ int sstStr011_Dbl2Zeile ( int           Key,
 */
 //-----------------------------------------------------------------------------
 int sstStr011_Bool2Zeile ( int          iKey,
+                           sstStr01FcwCls        *oFcw,
                       long         iStrTyp,
                       unsigned long         lVon,
                       unsigned long         lBis,
@@ -2366,15 +2392,15 @@ unsigned long sstStr011i_StartOfInfo2 ( int            iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param iKey    [in] For the moment 0
-* @param ulPos   [in] Suchen ab Position
-* @param TrnZ    [in] NoInformation-Zeichen
-* @param Text    [in] Prüf-Text
+* @param iKey    [in] 0: Search forward, 1: Search backward
+* @param ulPos   [in] Search from string position
+* @param TrnZ    [in] NoInformation-Char
+* @param Text    [in] String for searching
 *
 * @return Errorstate
 *
-* @retval   >  0: Gefundene Position
-* @retval   =  0: Nix gefunden
+* @retval   >  0: Found position in string
+* @retval   =  0: nothing found
 * @retval   = -1: Wrong Key
 * @retval   = -2: Wrong Position
 * @retval   <  0: Unspecified Error
@@ -2694,7 +2720,7 @@ int sstStr01i_RemoveSpaces (int           iKey,
 */
 //------------------------------------------------------------------------------
 int sstStr011i_RemoveEndingSpaces (int               iKey,
-                              sstStr01IntCls *oFmtInfo,
+                              sstStr01FcwCls *oFmtInfo,
                               std::string      *sZeile);
 //==============================================================================
 /**

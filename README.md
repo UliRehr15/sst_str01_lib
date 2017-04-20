@@ -18,6 +18,8 @@ Create user csv Export function:
    sstStr01Export_from_int(record.myInt)
    sstStr01Export_from_char(record.myChar)
 
+More Examples see Lib Test project.
+
 Compile with QT 5.2 and QTCreator 3.0
 
 Structure of coding projects should be:
@@ -57,4 +59,5 @@ Structure of coding projects should be:
                           More VarDefTyp Test functions. <BR>
 09.04.2017: Version 1.19: Write-Functions with format info for fix-column-width class. <BR>
 18.04.2017: Version 1.20: Expand / Rework UNDEF-Behaviour. <BR>
+20.04.2017: Version 1.21: Fix column width class: Expand behavior with NoInformation Chars. <BR>
 

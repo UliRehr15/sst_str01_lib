@@ -21,8 +21,8 @@
 
 #include <string>
 
-// #include "sstStr01Kern.h"
 #include "sstStr01Lib.h"
+#include "sstStr01FixColWidth.h"
 #include "sstStr01LibInt.h"
 
 //=============================================================================
@@ -84,7 +84,7 @@ int sstStr011i_IsDelimiter (int            iKey,
 // Complete function description is in headerfile
 //-----------------------------------------------------------------------------
 int sstStr011i_RemoveEndingSpaces (int               iKey,
-                              sstStr01IntCls *oFmtInfo,
+                              sstStr01FcwCls *oFmtInfo,
                               std::string      *sZeile)
 //-----------------------------------------------------------------------------
 {

@@ -23,6 +23,7 @@
 #include <vector>
 
 #include "sstStr01Lib.h"
+#include "sstStr01FixColWidth.h"
 #include "sstStr01LibInt.h"
 
 //=============================================================================
@@ -620,6 +621,7 @@ int sstStr01IntCls::CsvString2_VectorAll ( int                  iKey,
 int sstStr011_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -638,7 +640,7 @@ int sstStr011_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *E
       // sst_str->AktLen = strlen(sst_str->Txt);
   }
   // convert integer to string
-  iStat = sstStr011_Int2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, iVal, &locStr1);
+  iStat = sstStr011_Int2Zeile ( 0, &oFcw,1, dSSTSTR01_TEXTLEN, iVal, &locStr1);
 
   if (iStat < 0) *ErrTxt = "Convert_Error";
 
@@ -663,6 +665,7 @@ int sstStr011_Int2_2Csv (int iKey,int iVal, std::string *sst_str, std::string *E
 int sstStr011_UInt2_2Csv (int iKey,unsigned int uiVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -681,7 +684,7 @@ int sstStr011_UInt2_2Csv (int iKey,unsigned int uiVal, std::string *sst_str, std
     //  sst_str->AktLen = strlen(sst_str->Txt);
   }
   // convert integer to string
-  iStat = sstStr011_Int2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, uiVal, &locStr1);
+  iStat = sstStr011_Int2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, uiVal, &locStr1);
 
   if (iStat < 0) *ErrTxt = "Convert_Error";
 
@@ -706,6 +709,7 @@ int sstStr011_UInt2_2Csv (int iKey,unsigned int uiVal, std::string *sst_str, std
 int sstStr011_Int4_2Csv (int iKey, long lVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -725,7 +729,7 @@ int sstStr011_Int4_2Csv (int iKey, long lVal, std::string *sst_str, std::string 
   }
 
   // convert integer to string
-  iStat = sstStr011_Int4Zeile ( 0, 1, dSSTSTR01_TEXTLEN, lVal, &locStr1);
+  iStat = sstStr011_Int4Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, lVal, &locStr1);
 
   if (iStat < 0) *ErrTxt = "Convert_Error";
 
@@ -750,6 +754,7 @@ int sstStr011_Int4_2Csv (int iKey, long lVal, std::string *sst_str, std::string 
 int sstStr011_UInt4_2Csv (int iKey, unsigned long ulVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -769,7 +774,7 @@ int sstStr011_UInt4_2Csv (int iKey, unsigned long ulVal, std::string *sst_str, s
   }
 
   // convert integer to string
-  iStat = sstStr011_UInt4Zeile ( 0, 1, dSSTSTR01_TEXTLEN, ulVal, &locStr1);
+  iStat = sstStr011_UInt4Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, ulVal, &locStr1);
 
   if (iStat < 0) *ErrTxt = "Convert_Error";
 
@@ -794,6 +799,7 @@ int sstStr011_UInt4_2Csv (int iKey, unsigned long ulVal, std::string *sst_str, s
 int sstStr011_Dbl_2Csv (int iKey,double dVal, std::string *sst_str, std::string *ErrTxt)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -813,7 +819,7 @@ int sstStr011_Dbl_2Csv (int iKey,double dVal, std::string *sst_str, std::string 
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
-  iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+  iStat = sstStr011_Dbl2Zeile ( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
 
   if (iStat < 0) *ErrTxt = "Convert_Error";
 
@@ -885,6 +891,7 @@ int sstStr01IntCls::Csv_Int2_2String (int               iKey,
                                       std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -903,7 +910,7 @@ int sstStr01IntCls::Csv_Int2_2String (int               iKey,
     //  sst_str->AktLen = strlen(sst_str->Txt);
   }
   // convert integer to string
-  iStat = sstStr011_Int2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, iVal, &locStr1);
+  iStat = sstStr011_Int2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, iVal, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -930,6 +937,7 @@ int sstStr01IntCls::Csv_UInt2_2String (int               iKey,
                                        std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -948,7 +956,7 @@ int sstStr01IntCls::Csv_UInt2_2String (int               iKey,
     //   sst_str->AktLen = strlen(sst_str->Txt);
   }
   // convert integer to string
-  iStat = sstStr011_UInt2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, uiVal, &locStr1);
+  iStat = sstStr011_UInt2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, uiVal, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -975,6 +983,7 @@ int sstStr01IntCls::Csv_Int4_2String (int               iKey,
                                       std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -994,7 +1003,7 @@ int sstStr01IntCls::Csv_Int4_2String (int               iKey,
   }
 
   // convert integer to string
-  iStat = sstStr011_Int4Zeile ( 0, 1, dSSTSTR01_TEXTLEN, lVal, &locStr1);
+  iStat = sstStr011_Int4Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, lVal, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1021,6 +1030,7 @@ int sstStr01IntCls::Csv_UInt4_2String (int               iKey,
                                        std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -1040,7 +1050,7 @@ int sstStr01IntCls::Csv_UInt4_2String (int               iKey,
   }
 
   // convert integer to string
-  iStat = sstStr011_UInt4Zeile ( 0, 1, dSSTSTR01_TEXTLEN, ulVal, &locStr1);
+  iStat = sstStr011_UInt4Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, ulVal, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1067,6 +1077,7 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
                                      std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -1088,10 +1099,10 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
   // convert double to string (floating comma value: KeyBit1=1)
   if (this->iDecType == 0)
     // iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
-    iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
+    iStat = sstStr011_Dbl2Zeile ( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
   else
     // iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
-    iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
+    iStat = sstStr011_Dbl2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1119,6 +1130,7 @@ int sstStr01IntCls::Csv_Real_2String (int               iKey,
                                       std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -1138,7 +1150,7 @@ int sstStr01IntCls::Csv_Real_2String (int               iKey,
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
-  iStat = sstStr011_Real2ZeileFmt( 2, 1, dSSTSTR01_TEXTLEN, fVal, cFmtStr, &locStr1);
+  iStat = sstStr011_Real2ZeileFmt( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, fVal, cFmtStr, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1166,6 +1178,7 @@ int sstStr01IntCls::Csv_DblFrmt_2String (int               iKey,
                                          std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
+  sstStr01FcwCls oFcw;
   std::string locStr1;
   int iRet  = 0;
   int iStat = 0;
@@ -1185,7 +1198,7 @@ int sstStr01IntCls::Csv_DblFrmt_2String (int               iKey,
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
-  iStat = sstStr011_Dbl2ZeileFmt( 2, 1, dSSTSTR01_TEXTLEN, dVal, cFmtStr, &locStr1);
+  iStat = sstStr011_Dbl2ZeileFmt( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, dVal, cFmtStr, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
@@ -1314,6 +1327,7 @@ int sstStr01IntCls::Csv_Bool_2String (int               iKey,
   std::string locStr1;
   std::string locStr2;
   char cLocBracket[3];
+  sstStr01FcwCls oFcw;
 
   int iRet  = 0;
   int iStat = 0;
@@ -1340,7 +1354,7 @@ int sstStr01IntCls::Csv_Bool_2String (int               iKey,
   }
 
   //Bool in einen String konvertieren und in Zeilenbereich kopieren.
-  iStat = sstStr011_Bool2Zeile (0, this->GetBoolTyp(), 1, 4, &bVal, &locStr2);
+  iStat = sstStr011_Bool2Zeile (0, &oFcw, this->GetBoolTyp(), 1, 4, &bVal, &locStr2);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 

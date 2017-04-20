@@ -370,7 +370,6 @@ int Test_FixColumnWidthSystem (int iKey)
     assert(iPos == 0);
     assert (oFcwCnvt.GetReadPosition()== 3);
 
-    // iStat = oFcwCnvt.Str2String(0,iColWidth,"12",&oFcwStr);
     strncpy(cVal,"12",10);
     iStat = oFcwCnvt.Char2String(0,iColWidth,cVal,&oFcwStr);
     iPos = oFcwStr.compare("ab12");
@@ -397,6 +396,12 @@ int Test_FixColumnWidthSystem (int iKey)
     assert(iPos == 0);
     assert (oFcwCnvt.GetReadPosition()== 13);
 
+    strncpy(cVal,"12 ",10);
+    oFcwCnvt.SetNoInfoChar(0,(char*)"");
+    iStat = oFcwCnvt.Char2String(0,3,cVal,&oFcwStr);
+    iPos = oFcwStr.compare("ab12 467331112 ");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 16);
   }
 
   {

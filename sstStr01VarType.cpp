@@ -303,6 +303,7 @@ int sstStr01VarTypeCls::Enm2FullStr (int           iKey,
   case sstStr01Bool:   *oTypeChar = "bool";break;
   // case myDate:   strcpy(cTypeChar,"sstDate_stru");break;
   case sstStr01Date:   *oTypeChar = "char";break;  // for example "20040506"
+  case sstStr01String:   *oTypeChar = "std::string";break;  // for example "20040506"
     default: *oTypeChar = "";break;
   }
 
@@ -335,6 +336,7 @@ int sstStr01VarTypeCls::Enm2Str (int                    iKey,
   case sstStr01Long:   *oTypeStr = "LL"; break;
   case sstStr01ULong:  *oTypeStr = "UL"; break;
   case sstStr01Char:   *oTypeStr = "CC"; break;
+  case sstStr01String: *oTypeStr = "SS"; break;
   case sstStr01Float:  *oTypeStr = "FF"; break;
   case sstStr01Double: *oTypeStr = "DD"; break;
   case sstStr01Bool:   *oTypeStr = "BB"; break;
@@ -361,6 +363,7 @@ int sstStr01VarTypeCls::Enm2ShortStr (int                    iKey,
   case sstStr01Long:   *oTypeStr = "l"; break;
   case sstStr01ULong:   *oTypeStr = "ul"; break;
   case sstStr01Char:   *oTypeStr = "c"; break;
+  case sstStr01String:   *oTypeStr = "o"; break;
   case sstStr01Float:  *oTypeStr = "f"; break;
   case sstStr01Double: *oTypeStr = "d"; break;
   case sstStr01Bool:   *oTypeStr = "b"; break;

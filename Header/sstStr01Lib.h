@@ -379,6 +379,15 @@ class sstStr01VarDefCls
      std::string Get_EleNamExt();
      //==============================================================================
      /**
+     * @brief // Get type string <BR>
+     * oTypeStr = oVarDef.Get_TypeStr();
+     *
+     * @return string TypeStr
+     */
+     // ----------------------------------------------------------------------------
+     std::string Get_TypeStr();
+     //==============================================================================
+     /**
      * @brief // Get System Info from def type class <BR>
      * oSysInfoStr = oVarDef.Get_SysInfo();
      *

@@ -144,6 +144,31 @@ std::string sstStr01VarDefCls::Get_EleNamExt()
   return oLocStr1;
 }
 //=============================================================================
+std::string sstStr01VarDefCls::Get_TypeStr()
+{
+  sstStr01VarTypeCls oTypCnvt;
+  sstStr01FcwCls oStrCnvt;
+  std::string oLocStr1;
+  std::string oLocStr2;
+  // Type
+  // convert type enum to cpp var type string II, DD, CC ...
+  oTypCnvt.Enm2Str ( 0, this->eType, &oLocStr2);
+  oLocStr1 += oLocStr2;
+  // oLocStr1 += ";";
+  // Width
+  oLocStr2.clear();
+  oStrCnvt.SetReadPositon(0,1);
+  oStrCnvt.Int2String(0,10,this->iWidth,&oLocStr2);
+  oLocStr1 += oLocStr2;
+  oLocStr1 += ".";
+  // Decimal
+  oLocStr2.clear();
+  oStrCnvt.SetReadPositon(0,1);
+  oStrCnvt.Int2String(0,10,this->iDec,&oLocStr2);
+  oLocStr1 += oLocStr2;
+  return oLocStr1;
+}
+//=============================================================================
 std::string sstStr01VarDefCls::Get_SysInfo()
 {
   std::string oLocStr;

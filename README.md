@@ -60,4 +60,6 @@ Structure of coding projects should be:
 09.04.2017: Version 1.19: Write-Functions with format info for fix-column-width class. <BR>
 18.04.2017: Version 1.20: Expand / Rework UNDEF-Behaviour. <BR>
 20.04.2017: Version 1.21: Fix column width class: Expand behavior with NoInformation Chars. <BR>
+11.08.2017: Version 1.22: New function -get_TypeStr- for class VarDef. <BR>
+                          Better support of std::string type.  <BR>
 

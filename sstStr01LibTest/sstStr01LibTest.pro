@@ -29,6 +29,7 @@ HEADERS    += sstStr01LibTest.h \
 SOURCES    += \
     sstStr01LibTest.cpp
 
-
-
 TARGET	  	= sstStr01LibTest
+
+# copy to deployment directory
+# DESTDIR     = ../../../../local_deploy

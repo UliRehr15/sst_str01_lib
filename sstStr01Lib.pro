@@ -2,7 +2,6 @@ TEMPLATE	= lib
 CONFIG		+= warn_on
 CONFIG    -= qt
 CONFIG    -= windows
-# CONFIG    += c++11
 
 # CONFIG    -= debug  # ist RELEASE aktiv
 CONFIG    -= release  # ist DEBUG aktiv
@@ -11,11 +10,9 @@ CONFIG    += staticlib
 
 INCLUDEPATH = ./Header
 
-# SOURCES		+= str1_lib1.cpp
 HEADERS		+=  sstStr01LibInt.h \
               Header/sstStr01Lib.h \
               Header/sstStr01FixColWidth.h
-    # Header/sstStr01Kern.h
 
 SOURCES		+= \
     sstStr01Test.cpp \

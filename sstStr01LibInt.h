@@ -1906,7 +1906,7 @@ int sstStr011Cpy (int            iKey,
              char          *cCopyChar);
 //==============================================================================
 /**
-* @brief Cat Chars to Str1 structure
+* @brief Cat Chars to std::string
 *
 * iStat = sstStr011Cat ( iKey, *sStrInfo, *cCatChar);
 *
@@ -1916,9 +1916,9 @@ int sstStr011Cpy (int            iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param iKey:     [in]     For the moment 0
-* @param sStrInfo: [in out] string structure for import string
-* @param cCatChar: [in]     copy chars
+* @param iKey     [in]     For the moment 0
+* @param sStrInfo [in out] string structure for import string
+* @param cCatChar [in]     copy chars
 *
 * @return Errorstate
 *
@@ -1931,8 +1931,8 @@ int sstStr011Cpy (int            iKey,
 */
 //------------------------------------------------------------------------------
 int sstStr011Cat (int            iKey,
-             std::string   *sStrInfo,
-             const char          *cCatChar);
+                  std::string   *sStrInfo,
+                  const char    *cCatChar);
 //==============================================================================
 /**
 * @brief Get Information until next delimiter and ignore brakes

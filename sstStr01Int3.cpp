@@ -454,19 +454,19 @@ int sstStr011Cpy (int            iKey,
 }
 //=============================================================================
 int sstStr011Cat (int            iKey,
-             std::string   *StrInfo,
-             const char          *cCatChar)
+                  std::string   *StrInfo,
+                  const char    *cCatChar)
 //-----------------------------------------------------------------------------
 {
-  long lStrLen = 0;
+  // long lStrLen = 0;
   int iRet  = 0;
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
 
-  lStrLen = strlen(cCatChar);
+  // lStrLen = strlen(cCatChar);
 
-  if (lStrLen <= 0) return -2;
+  // if (lStrLen <= 0) return -2;
   // if ((StrInfo->AktLen+lStrLen) >= dSSTSTR01_TEXTLEN) return -3;
 
   // strncat(StrInfo->Txt, cCatChar, dSSTSTR01_TEXTLEN-1);

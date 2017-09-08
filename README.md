@@ -62,4 +62,5 @@ Structure of coding projects should be:
 20.04.2017: Version 1.21: Fix column width class: Expand behavior with NoInformation Chars. <BR>
 11.08.2017: Version 1.22: New function -get_TypeStr- for class VarDef. <BR>
                           Better support of std::string type.  <BR>
+08.09.2017: Version 1.23: Small changes in intern function sstStr011Cat. <BR>
 

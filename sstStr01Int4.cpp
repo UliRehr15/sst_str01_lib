@@ -870,6 +870,8 @@ int sstStr011i_Txt2Dbl ( int          Key,     // v  -> Vorerst immer 0
 
   *dRet = 0.0;  // Return-Wert zurücksetzen
 
+  // int iLenStr = LocDbl->length();  // Zahlenstring zu lang/zu kurz!
+  // if (iLenStr <= 0) return -3;  // Zahlenstring zu lang/zu kurz!
   if (LocDbl->length() <= 0) return -3;  // Zahlenstring zu lang/zu kurz!
 
   // Interne Funktion, keine Prüfung der Stringparameter
@@ -886,9 +888,23 @@ int sstStr011i_Txt2Dbl ( int          Key,     // v  -> Vorerst immer 0
     return -2;
   }
 
+//  char *saved_locale;
+//  saved_locale = setlocale(LC_NUMERIC, "C");
+//  /* do your strtod thing */
+//  *rRet = strtof( LocReal->c_str(), &enz);
+//  setlocale(LC_NUMERIC, saved_locale);
+
+
   // Kein Routine, die auch mit Komma funktioniert ??
+  // std::string::size_type sz;
+  // *dRet = std::stod(*LocDbl,&sz);
+  char *saved_locale;
+  saved_locale = setlocale(LC_NUMERIC, "C");
   *dRet = strtod( LocDbl->c_str(), &enz);
+  setlocale(LC_NUMERIC, saved_locale);
+
   if ( strlen(enz) != 0)
+  // if ( sz != iLenStr)
   {
     *dRet = 0.0;  // Return-Wert zurücksetzen
     return -2;

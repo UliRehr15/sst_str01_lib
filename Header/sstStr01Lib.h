@@ -1155,7 +1155,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // Set decimal type <BR>
-     * oSstStr.SetDecType ( value);
+     * oSstStr.setDecType ( value);
      *
      * floating comma = 0 (default)  <BR>
      * floating point = 1  <BR>
@@ -1178,7 +1178,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // Set number of decimal values for formatting double/float <BR>
-     * oSstStr.SetUiVal ( value);
+     * oSstStr.setUiVal ( value);
      *
      * Default is uiDec = 3
      *

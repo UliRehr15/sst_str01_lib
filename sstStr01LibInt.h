@@ -484,9 +484,38 @@ class sstStr01IntCls
                            std::string      *sst_str);
      //==============================================================================
      /**
+     * @brief convert float value to csv-formatted string and append to string
+     *
+     * iStat = Csv_Real_2String ( iKey, fVal, *sst_str);
+     *
+     * More Comment
+     *
+     * Changed: 04.05.11  Re.
+     *
+     * @ingroup sstStr01IntLib
+     *
+     * @param iKey     [in] For the moment 0
+     * @param fVal     [in] float value
+     * @param sst_str  [in out] csv-formatted string
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     *
+     * @author Re.
+     *
+     * @date 04.05.11
+     */
+     //------------------------------------------------------------------------------
+     int Csv_Real_2String ( int               iKey,
+                            float             fVal,
+                            std::string      *sst_str);
+     //==============================================================================
+     /**
      * @brief convert double value to csv-formatted string and append to string
      *
-     * iStat = Csv_Real_2String ( iKey, *cFmtStr, fVal, *sst_str);
+     * iStat = Csv_RealFrmt_2String ( iKey, *cFmtStr, fVal, *sst_str);
      *
      * More Comment
      *
@@ -509,7 +538,7 @@ class sstStr01IntCls
      * @date 04.05.11
      */
      //------------------------------------------------------------------------------
-     int Csv_Real_2String (int               iKey,
+     int Csv_RealFrmt_2String (int               iKey,
                            char             *cFmtStr,
                            float             fVal,
                            std::string      *sst_str);
@@ -1906,7 +1935,7 @@ int sstStr011Cpy (int            iKey,
              char          *cCopyChar);
 //==============================================================================
 /**
-* @brief Cat Chars to std::string
+* @brief Cat Chars to Str1 structure
 *
 * iStat = sstStr011Cat ( iKey, *sStrInfo, *cCatChar);
 *
@@ -1916,9 +1945,9 @@ int sstStr011Cpy (int            iKey,
 *
 * @ingroup sstStr01IntLib
 *
-* @param iKey     [in]     For the moment 0
-* @param sStrInfo [in out] string structure for import string
-* @param cCatChar [in]     copy chars
+* @param iKey:     [in]     For the moment 0
+* @param sStrInfo: [in out] string structure for import string
+* @param cCatChar: [in]     copy chars
 *
 * @return Errorstate
 *
@@ -1931,8 +1960,8 @@ int sstStr011Cpy (int            iKey,
 */
 //------------------------------------------------------------------------------
 int sstStr011Cat (int            iKey,
-                  std::string   *sStrInfo,
-                  const char    *cCatChar);
+             std::string   *sStrInfo,
+             const char          *cCatChar);
 //==============================================================================
 /**
 * @brief Get Information until next delimiter and ignore brakes

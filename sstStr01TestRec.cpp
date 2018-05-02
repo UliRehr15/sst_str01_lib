@@ -266,7 +266,7 @@ int sstStr01TestRecFullFncCls::WrtCsv( int               iKey,
   if (iStat >= 0)
     iStat = oFrmtTyp->Csv_DblFrmt_2String ( 0, cFrmtStrDbl, oCsvSet->getDVal(), sResult_Row);
   if (iStat >= 0)
-    iStat = oFrmtTyp->Csv_Real_2String ( 0, cFrmtStrFlt, oCsvSet->getFVal(), sResult_Row);
+    iStat = oFrmtTyp->Csv_RealFrmt_2String ( 0, cFrmtStrFlt, oCsvSet->getFVal(), sResult_Row);
   if (iStat >= 0)
     iStat = oFrmtTyp->Csv_Str_2String ( 0, oCsvSet->getSVal(), sResult_Row);
   if (iStat >= 0)

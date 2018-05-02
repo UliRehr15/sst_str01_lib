@@ -195,7 +195,7 @@ int main ()
   if (iStat >= 0)
     iStat = oStringMan.Csv_DblFrmt_2String ( 0, cFrmtStrDbl, -23456.66, &sResult_Row);
   if (iStat >= 0)
-    iStat = oStringMan.Csv_Real_2String ( 0, cFrmtStrFlt, 234.1, &sResult_Row);
+    iStat = oStringMan.Csv_RealFrmt_2String ( 0, cFrmtStrFlt, 234.1, &sResult_Row);
   if (iStat >= 0)
     iStat = oStringMan.Csv_Str_2String ( 0, oInput_Row, &sResult_Row);
   if (iStat >= 0)
@@ -435,30 +435,15 @@ int Test_FixColumnWidthSystem (int iKey)
   {
     sstStr01FcwCls oFcwCnvt;
     // int iColWidth = 2;
-    std::string oFcwStr = "032539500.0000";
-    // std::string oFrmtStr= "%03i";
+    std::string oFcwStr;
+    std::string oFrmtStr= "%03i";
     // char cFmtStr[10] = "%03i";
     // std::string oStrVal;
     // char cVal[10] = "ab";
-    // int iVal = 4;
-    // long lVal = 67;
-    double dVal = 0.0;
-    // float fVal = 11;
-
-    oFcwCnvt.SetReadPositon(0,1);
-    // insert int value into string from position 10 to 14 right aligned
-    iStat = oFcwCnvt.String2Dbl(0,14,oFcwStr,&dVal);
-    //                          123456789-----56
-    assert (dVal > 32539499.9 && dVal < 32539500.1);
-    assert (oFcwCnvt.GetReadPosition()== 15);
-
-  }
-
-  {
-    sstStr01FcwCls oFcwCnvt;
-    std::string oFcwStr;
-    std::string oFrmtStr= "%03i";
     int iVal = 4;
+    // long lVal = 67;
+    // double dVal = 3.03;
+    // float fVal = 11;
 
     oFcwCnvt.SetReadPositon(0,10);
     // insert int value into string from position 10 to 14 right aligned

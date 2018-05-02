@@ -64,4 +64,5 @@ Structure of coding projects should be:
                           Better support of std::string type.  <BR>
 08.09.2017: Version 1.23: Small changes in intern function sstStr011Cat. <BR>
 15.02.2018: Version 1.24: Setlocale for convert float/double functions.  <BR>
+02.05.2018: Version 1.25: Extend interface for ReadFloat Csv. <BR>
 

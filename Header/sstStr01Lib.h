@@ -866,6 +866,32 @@ class sstStr01Cls
                            std::string      *oSstStr);
      //==============================================================================
      /**
+     * @brief // convert float value to csv-formatted string and append to string <BR>
+     * iStat = oSstStr.Csv_Real_2String ( iKey, fVal, *oSstStr);
+     *
+     * Decimal Formatted with intern value uiDec.
+     *
+     * Changed: 04.05.11  Re.
+     *
+     * @param iKey     [in] For the moment 0
+     * @param fVal     [in] float value
+     * @param oSstStr  [in out] csv-formatted string
+     *
+     * @return Errorstate
+     *
+     * @retval   = 0: OK
+     * @retval   < 0: Unspecified Error
+     *
+     * @author Re.
+     *
+     * @date 04.05.11
+     */
+     //------------------------------------------------------------------------------
+     int Csv_Real_2String ( int              iKey,
+                           float             fVal,
+                           std::string      *oSstStr);
+     //==============================================================================
+     /**
      * @brief // convert float value to csv-formatted string with format info and append to string <BR>
      * iStat = oSstStr.Csv_Dbl_2String ( iKey, *cFmtStr, dVal, *oSstStr);
      *
@@ -888,7 +914,7 @@ class sstStr01Cls
      * @date 04.05.11
      */
      //------------------------------------------------------------------------------
-     int Csv_Real_2String (int               iKey,
+     int Csv_RealFrmt_2String (int               iKey,
                            char             *cFmtStr,
                            float             fVal,
                            std::string      *oSstStr);
@@ -1155,7 +1181,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // Set decimal type <BR>
-     * oSstStr.setDecType ( value);
+     * oSstStr.SetDecType ( value);
      *
      * floating comma = 0 (default)  <BR>
      * floating point = 1  <BR>
@@ -1178,7 +1204,7 @@ class sstStr01Cls
      //==============================================================================
      /**
      * @brief // Set number of decimal values for formatting double/float <BR>
-     * oSstStr.setUiVal ( value);
+     * oSstStr.SetUiVal ( value);
      *
      * Default is uiDec = 3
      *

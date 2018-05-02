@@ -184,13 +184,21 @@ int sstStr01Cls::Csv_Dbl_2String ( int               iKey,
   return this->poStr01Intern->Csv_Dbl_2String( iKey,dVal,sst_str);
 }
 //==============================================================================
-int sstStr01Cls::Csv_Real_2String (int               iKey,
+int sstStr01Cls::Csv_Real_2String ( int               iKey,
+                                   float            fVal,
+                                   std::string      *sst_str)
+//-----------------------------------------------------------------------------
+{
+  return this->poStr01Intern->Csv_Real_2String( iKey,fVal,sst_str);
+}
+//==============================================================================
+int sstStr01Cls::Csv_RealFrmt_2String (int               iKey,
                                    char             *cFmtStr,
                                    float             fVal,
                                    std::string      *sst_str)
 //-----------------------------------------------------------------------------
 {
-  return this->poStr01Intern->Csv_Real_2String(iKey,cFmtStr,fVal,sst_str);
+  return this->poStr01Intern->Csv_RealFrmt_2String(iKey,cFmtStr,fVal,sst_str);
 }
 //==============================================================================
 int sstStr01Cls::Csv_DblFrmt_2String (int               iKey,

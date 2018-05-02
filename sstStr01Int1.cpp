@@ -997,9 +997,8 @@ int sstStr01IntCls::Csv_Int4_2String (int               iKey,
   if (sst_str->length() > 0)
   {
       // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //  sst_str->AktLen = strlen(sst_str->Txt);
+    // *sst_str = *sst_str + ";";
+    *sst_str = *sst_str + this->GetSeparator();
   }
 
   // convert integer to string
@@ -1125,6 +1124,58 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
 }
 //=============================================================================
 int sstStr01IntCls::Csv_Real_2String (int               iKey,
+                                     float            fVal,
+                                     std::string      *sst_str)
+//-----------------------------------------------------------------------------
+{
+  sstStr01FcwCls oFcw;
+  std::string locStr1;
+  int iRet  = 0;
+  int iStat = 0;
+//-----------------------------------------------------------------------------
+  if ( iKey != 0) return -1;
+  // cZeile[0] = 0;
+
+  // Init Str1-Structure
+  iStat = sstStr011_Init ( 0, &locStr1);
+
+  if (sst_str->length() > 0)
+  {
+      // build csv-format
+    // strcat(sst_str->Txt,";");
+    *sst_str = *sst_str + ";";
+    //   sst_str->AktLen = strlen(sst_str->Txt);
+  }
+
+  // convert double to string (floating comma value: KeyBit1=1)
+  if (this->iDecType == 0)
+    // iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+    iStat = sstStr011_Real2Zeile( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, fVal, this->uiDec, &locStr1);
+  else
+    // iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
+    iStat = sstStr011_Real2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, fVal, this->uiDec, &locStr1);
+
+  if (iStat < 0) this->oErrStr = "Convert_Error";
+
+  // append str1 to line
+  // strcat(sst_str->Txt, locStr1.Txt);
+  *sst_str = *sst_str + locStr1;
+  // sst_str->AktLen = strlen(sst_str->Txt);
+
+  // Fatal Errors goes to an assert
+  if (iRet < 0)
+  {
+    // Expression (iRet >= 0) has to be fullfilled
+    assert(0);
+  }
+
+  // Small Errors will given back
+  iRet = iStat;
+
+  return iRet;
+}
+//=============================================================================
+int sstStr01IntCls::Csv_RealFrmt_2String (int               iKey,
                                       char             *cFmtStr,
                                       float             fVal,
                                       std::string      *sst_str)

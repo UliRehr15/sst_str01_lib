@@ -20,7 +20,7 @@ Create user csv Export function:
 
 More Examples see Lib Test project.
 
-Compile with QT 5.2 and QTCreator 3.0
+This Library is created with QtCreator 4.5.2 and gcc 7.3.0.
 
 Structure of coding projects should be:
 
@@ -65,4 +65,5 @@ Structure of coding projects should be:
 08.09.2017: Version 1.23: Small changes in intern function sstStr011Cat. <BR>
 15.02.2018: Version 1.24: Setlocale for convert float/double functions.  <BR>
 02.05.2018: Version 1.25: Extend interface for ReadFloat Csv. <BR>
+14.09.2018: Version 1.26: Update to QtCreator 4.5.2 and gcc 7.3.0. <BR>
 

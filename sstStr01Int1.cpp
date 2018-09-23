@@ -11,7 +11,7 @@
  * See the COPYING file for more information.
  *
  **********************************************************************/
-// sstStr01Int1.cpp    24.11.15  Re.    24.11.15  Re.
+// sstStr01Int1.cpp    23.09.18  Re.    24.11.15  Re.
 //
 
 #include <stdio.h>
@@ -897,7 +897,6 @@ int sstStr01IntCls::Csv_Int2_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
@@ -905,9 +904,7 @@ int sstStr01IntCls::Csv_Int2_2String (int               iKey,
   if (sst_str->length() > 0)
   {
       // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //  sst_str->AktLen = strlen(sst_str->Txt);
+    *sst_str = *sst_str + this->GetSeparator();
   }
   // convert integer to string
   iStat = sstStr011_Int2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, iVal, &locStr1);
@@ -915,9 +912,7 @@ int sstStr01IntCls::Csv_Int2_2String (int               iKey,
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -943,7 +938,6 @@ int sstStr01IntCls::Csv_UInt2_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
@@ -951,9 +945,7 @@ int sstStr01IntCls::Csv_UInt2_2String (int               iKey,
   if (sst_str->length() > 0)
   {
       // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //   sst_str->AktLen = strlen(sst_str->Txt);
+    *sst_str = *sst_str + this->GetSeparator();
   }
   // convert integer to string
   iStat = sstStr011_UInt2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, uiVal, &locStr1);
@@ -961,9 +953,7 @@ int sstStr01IntCls::Csv_UInt2_2String (int               iKey,
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -989,7 +979,6 @@ int sstStr01IntCls::Csv_Int4_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
@@ -997,7 +986,6 @@ int sstStr01IntCls::Csv_Int4_2String (int               iKey,
   if (sst_str->length() > 0)
   {
       // build csv-format
-    // *sst_str = *sst_str + ";";
     *sst_str = *sst_str + this->GetSeparator();
   }
 
@@ -1007,9 +995,7 @@ int sstStr01IntCls::Csv_Int4_2String (int               iKey,
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -1035,17 +1021,14 @@ int sstStr01IntCls::Csv_UInt4_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
 
   if (sst_str->length() > 0)
   {
-      // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //  sst_str->AktLen = strlen(sst_str->Txt);
+    // build csv-format
+      *sst_str = *sst_str + this->GetSeparator();
   }
 
   // convert integer to string
@@ -1054,9 +1037,7 @@ int sstStr01IntCls::Csv_UInt4_2String (int               iKey,
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -1082,7 +1063,6 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
@@ -1090,25 +1070,19 @@ int sstStr01IntCls::Csv_Dbl_2String (int               iKey,
   if (sst_str->length() > 0)
   {
       // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //   sst_str->AktLen = strlen(sst_str->Txt);
+    *sst_str = *sst_str + this->GetSeparator();
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
   if (this->iDecType == 0)
-    // iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
     iStat = sstStr011_Dbl2Zeile ( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
   else
-    // iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
     iStat = sstStr011_Dbl2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, dVal, this->uiDec, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -1134,33 +1108,26 @@ int sstStr01IntCls::Csv_Real_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
 
   if (sst_str->length() > 0)
   {
-      // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //   sst_str->AktLen = strlen(sst_str->Txt);
+    // build csv-format
+    *sst_str = *sst_str + this->GetSeparator();
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
   if (this->iDecType == 0)
-    // iStat = sstStr011_Dbl2Zeile ( 2, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
     iStat = sstStr011_Real2Zeile( 2, &oFcw, 1, dSSTSTR01_TEXTLEN, fVal, this->uiDec, &locStr1);
   else
-    // iStat = sstStr011_Dbl2Zeile ( 0, 1, dSSTSTR01_TEXTLEN, dVal, 3, &locStr1);
     iStat = sstStr011_Real2Zeile ( 0, &oFcw, 1, dSSTSTR01_TEXTLEN, fVal, this->uiDec, &locStr1);
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -1187,17 +1154,14 @@ int sstStr01IntCls::Csv_RealFrmt_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
 
   if (sst_str->length() > 0)
   {
-      // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //  sst_str->AktLen = strlen(sst_str->Txt);
+    // build csv-format
+    *sst_str = *sst_str + this->GetSeparator();
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
@@ -1206,9 +1170,7 @@ int sstStr01IntCls::Csv_RealFrmt_2String (int               iKey,
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -1235,17 +1197,14 @@ int sstStr01IntCls::Csv_DblFrmt_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
 
   if (sst_str->length() > 0)
   {
-      // build csv-format
-    // strcat(sst_str->Txt,";");
-    *sst_str = *sst_str + ";";
-    //  sst_str->AktLen = strlen(sst_str->Txt);
+    // build csv-format
+    *sst_str = *sst_str + this->GetSeparator();
   }
 
   // convert double to string (floating comma value: KeyBit1=1)
@@ -1254,9 +1213,7 @@ int sstStr01IntCls::Csv_DblFrmt_2String (int               iKey,
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
   // append str1 to line
-  // strcat(sst_str->Txt, locStr1.Txt);
   *sst_str = *sst_str + locStr1;
-  // sst_str->AktLen = strlen(sst_str->Txt);
 
   // Fatal Errors goes to an assert
   if (iRet < 0)
@@ -1281,7 +1238,6 @@ int sstStr01IntCls::Csv_Str_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
@@ -1332,27 +1288,19 @@ int sstStr01IntCls::Csv_Char_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   // Init Str1-Structure
   iStat = sstStr011_Init ( 0, &locStr1);
 
   if (sst_str->length() > 0)
   {
-      // build csv-format
-    // strncat( sst_str->Txt, this->cSeparator, dSSTSTR01_TEXTLEN);
+    // build csv-format
     *sst_str = *sst_str + this->cSeparator;
-    // strcat(sst_str->Txt,";");
-    // sst_str->AktLen = strlen(sst_str->Txt);
   }
 
   if (iStat < 0) this->oErrStr = "Convert_Error";
 
-  // strncat(locStr1.Txt, this->cBracket, dSSTSTR01_TEXTLEN);
-  // strncat(locStr1.Txt, cVal, dSSTSTR01_TEXTLEN);
-  // strncat(locStr1.Txt, this->cBracket, dSSTSTR01_TEXTLEN);
   locStr1 = locStr1 + this->cBracket + cVal + this->cBracket;
-  // locStr1.AktLen = strlen(locStr1.Txt);
 
   // append local string to result string
   iStat = sstStr011Cat(0,sst_str, locStr1.c_str());
@@ -1384,7 +1332,6 @@ int sstStr01IntCls::Csv_Bool_2String (int               iKey,
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
-  // cZeile[0] = 0;
 
   if (this->GetSeparatorTyp() == 2)
     strncpy( cLocBracket, this->cBracket, 3);
@@ -1399,9 +1346,6 @@ int sstStr01IntCls::Csv_Bool_2String (int               iKey,
   {
       // build csv-format
     iStat = sstStr011Cat(0,sst_str, this->cSeparator);
-    // strncat( sst_str->Txt, oFrmtTyp->cSeparator, dSSTSTR01_TEXTLEN);
-    // strcat(sst_str->Txt,";");
-    // sst_str->AktLen = strlen(sst_str->Txt);
   }
 
   //Bool in einen String konvertieren und in Zeilenbereich kopieren.
@@ -1412,7 +1356,6 @@ int sstStr01IntCls::Csv_Bool_2String (int               iKey,
   iStat = sstStr011Cpy(0,&locStr1, cLocBracket);
   iStat = sstStr011Cat(0,&locStr1, locStr2.c_str());
   iStat = sstStr011Cat(0,&locStr1, cLocBracket);
-  // locStr1.AktLen = strlen(locStr1.Txt);
 
   // append local string to result string
   iStat = sstStr011Cat(0,sst_str, locStr1.c_str());

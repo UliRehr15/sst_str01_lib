@@ -66,4 +66,5 @@ Structure of coding projects should be:
 15.02.2018: Version 1.24: Setlocale for convert float/double functions.  <BR>
 02.05.2018: Version 1.25: Extend interface for ReadFloat Csv. <BR>
 14.09.2018: Version 1.26: Update to QtCreator 4.5.2 and gcc 7.3.0. <BR>
+23.09.2018: Version 1.27: Fixed problem writing variable separator char. <BR>
 

@@ -164,17 +164,17 @@ int sstStr01i_RemoveSpaces (int          iKey,
   ii = sstStr01_StartOfInfo ( 0, 1, TrnZ, txt1);
   if (ii>LenT1) return -1;  // Text complete empty
 
-  // seach backwarts from LenT1
-  sstStr01_EndOfInfo ( 1, LenT1, TrnZ, txt1);
-
-  // txt2 = (char*) malloc(LenT1+1);
-  // strcpy(txt2,txt1);
-  // txt2 = *txt1;
-
   // strcpy(txt1,&txt2[ii-1]);  // Deleting starting spaces
-  txt1->erase(0,ii-1);
+  if (ii > 1) txt1->erase(0,ii-1);
+
+  LenT1 = txt1->length();  // Länge von Text 1
+  if (LenT1 < 1) return -1;  // no text
+
+  // seach backwarts from LenT1
+  unsigned long int ulEnd = sstStr01_EndOfInfo ( 1, LenT1, TrnZ, txt1);
 
   // txt1[jj-ii+1] = '\0';      // Deleting ending space
+  if (ulEnd < LenT1) txt1->erase(ulEnd,LenT1-1);
 
   // free(txt2);
 

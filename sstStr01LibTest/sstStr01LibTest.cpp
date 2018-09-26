@@ -33,7 +33,7 @@ int main ()
 //=============================================================================
 {
   std::string oTestString;
-  std::string oErrorStr;
+  // std::string oErrorStr;
   std::string oResultStr;
   int iResult = 0;
   double dResult = 0.0;
@@ -45,13 +45,12 @@ int main ()
 
   printf("Test Str01Lib Start. \n");
 
+  // Do some intern sstStr01 Tests
+  iStat = sstStr01_DoSomeInternTests (0);
 
   // Test Variable definition type classes and functions
   iStat = Test_VarDefType_Functions ( 0);
   assert(iStat==0);
-
-  // Do some intern sstStr01 Tests
-  iStat = sstStr01_DoSomeInternTests (0);
 
   { // Test decimal floating point or comma
     sstStr01Cls oSstStr;
@@ -350,6 +349,27 @@ int Test_FixColumnWidthSystem (int iKey)
     iStat = oFcwCnvt.String2Float ( 0, iColWidth, oFcwStr, &fVal);
     assert(fVal == 12);
     assert (oFcwCnvt.GetReadPosition()== 13);
+  }
+  {
+    sstStr01FcwCls oFcwCnvt;
+    int iColWidth = 8;
+    std::string oFcwStr = "12  34  56";
+    std::string oStrVal;
+
+    assert (oFcwCnvt.GetReadPosition()== 1);
+
+    // read next data from oFcwStr as string
+    iStat = oFcwCnvt.String2Str ( 0, iColWidth, oFcwStr, &oStrVal);
+    int iPos = oStrVal.compare("12  34");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 9);
+
+    // read next data from oFcwStr as string
+    iColWidth = 2;
+    iStat = oFcwCnvt.String2Str ( 0, iColWidth, oFcwStr, &oStrVal);
+    iPos = oStrVal.compare("56");
+    assert(iPos == 0);
+    assert (oFcwCnvt.GetReadPosition()== 11);
   }
   {
 

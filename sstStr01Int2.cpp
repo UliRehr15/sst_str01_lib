@@ -83,6 +83,9 @@ int sstStr011_Zeile2Str ( int          Key,    // v  -> Vorerst immer 0
       break;  // keine weitere Information
     }
   }
+
+  istat = sstStr01i_RemoveSpaces( 0, txt2);
+
   *ErrTxt = *txt2;  // wo lag das Problem, zurÃ¼ck fÃ¼r Protokoll
 
   return istat;
@@ -1597,6 +1600,28 @@ int sstStr011_Test_FuncInt (int iKey) // v  -> For the moment 0
   int iStat = 0;
 //-----------------------------------------------------------------------------
   if ( iKey != 0) return -1;
+  {
+    std::string oTestStr = "aa";
+    iStat = sstStr01i_RemoveSpaces(0,&oTestStr);
+    assert(iStat == 0);
+    assert(oTestStr.compare("aa") == 0);
+    oTestStr = " bb";
+    iStat = sstStr01i_RemoveSpaces(0,&oTestStr);
+    assert(iStat == 0);
+    assert(oTestStr.compare("bb") == 0);
+    oTestStr = "cc  ";
+    iStat = sstStr01i_RemoveSpaces(0,&oTestStr);
+    assert(iStat == 0);
+    assert(oTestStr.compare("cc") == 0);
+    oTestStr = "  dd  ";
+    iStat = sstStr01i_RemoveSpaces(0,&oTestStr);
+    assert(iStat == 0);
+    assert(oTestStr.compare("dd") == 0);
+    oTestStr = "  dd ee  ";
+    iStat = sstStr01i_RemoveSpaces(0,&oTestStr);
+    assert(iStat == 0);
+    assert(oTestStr.compare("dd ee") == 0);
+  }
 
   {
     // Is String to Float/Double convertible? <BR>

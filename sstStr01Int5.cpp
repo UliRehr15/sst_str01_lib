@@ -11,7 +11,7 @@
  * See the COPYING file for more information.
  *
  **********************************************************************/
-// sstStr01Int5.cpp    26.11.15  Re.    26.11.15  Re.
+// sstStr01Int5.cpp    22.04.19  Re.    26.11.15  Re.
 //
 
 #include <stdio.h>
@@ -162,7 +162,12 @@ int sstStr01i_RemoveSpaces (int          iKey,
   if (LenT1 < 1) return -1;  // no text
 
   ii = sstStr01_StartOfInfo ( 0, 1, TrnZ, txt1);
-  if (ii>LenT1) return -1;  // Text complete empty
+  if (ii > LenT1) // return -1;  // Text complete empty
+  {
+    txt1->clear();
+    return 0;  // Text complete empty
+    // return -1;  // Text complete empty
+  }
 
   // strcpy(txt1,&txt2[ii-1]);  // Deleting starting spaces
   if (ii > 1) txt1->erase(0,ii-1);

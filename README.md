@@ -1,7 +1,7 @@
 sstStr01Lib - sst String Processing Lib
 
 Import and Export of csv format files.
-Import and Export of fix column width format files.
+Import and Export of fix column width (fcw) format files.
 
 for example create user record:
 double myDouble
@@ -68,4 +68,5 @@ Structure of coding projects should be:
 14.09.2018: Version 1.26: Update to QtCreator 4.5.2 and gcc 7.3.0. <BR>
 23.09.2018: Version 1.27: Fixed problem writing variable separator char. <BR>
 26.09.2018: Version 1.28: Fixed problem with beginning/ending blanks in string. <BR>
+22.04.2019: Version 1.29: Fixed problems reading char string in Fcw Format. <BR>
 

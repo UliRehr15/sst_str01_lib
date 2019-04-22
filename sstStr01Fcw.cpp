@@ -11,7 +11,7 @@
  * See the COPYING file for more information.
  *
  **********************************************************************/
-// sstStr01Fcw.cpp    17.08.16  Re.    17.08.16  Re.
+// sstStr01Fcw.cpp    22.04.19  Re.    17.08.16  Re.
 //
 
 #include <stdio.h>
@@ -66,7 +66,7 @@ int sstStr01FcwCls::String2Char(int iKey, int iColWidth, std:: string oFcwStr, c
   std::string oErrStr;
   std::string oRetStr;
 
-  int iStat = sstStr011_Zeile2Str ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth, &oFcwStr, &oErrStr, &oRetStr);
+  int iStat = sstStr011_Zeile2Str ( iKey, this->GetReadPosition(), this->GetReadPosition()+iColWidth-1, &oFcwStr, &oErrStr, &oRetStr);
   strncpy(cVal,oRetStr.c_str(), iCharLen);
   this->SetErrorString(oErrStr);
   this->SetReadPositon(0,this->GetReadPosition()+iColWidth);

@@ -1,0 +1,9 @@
+sst_str01_lib;Tst1Cls;iVal;II;3;0;sst Str01_Lib;Test 1 Class;Signed Integer Value
+sst_str01_lib;Tst1Cls;uiVal;UI;3;0;sst Str01_Lib;Test 1 Class;Unsigned Integer Value
+sst_str01_lib;Tst1Cls;lVal;LL;8;0;sst Str01_Lib;Test 1 Class;Signed Long Integer Value
+sst_str01_lib;Tst1Cls;ulVal;UL;8;0;sst Str01_Lib;Test 1 Class;Unsigned Long Integer Value
+sst_str01_lib;Tst2Cls;dVal;DD;10;2;sst Str01_Lib;Test 2 Class;Double Value
+sst_str01_lib;Tst2Cls;fVal;FF;6;2;sst Str01_Lib;Test 2 Class;Float Value
+sst_str01_lib;Tst3Cls;cVal;CC;6;0;sst Str01_Lib;Test 3 Class;Character Value
+sst_str01_lib;Tst3Cls;sVal;SS;6;0;sst Str01_Lib;Test 3 Class;String Value
+sst_str01_lib;Tst3Cls;bVal;BB;1;0;sst Str01_Lib;Test 3 Class;Bool Value

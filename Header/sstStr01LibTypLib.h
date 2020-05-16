@@ -49,12 +49,19 @@ class sstStr01LibTypBaseCls
     //==============================================================================
     /**
     * @brief // getStringName <BR>
+    *
+    * @return String getStringName
     */
     // -----------------------------------------------------------------------------
     std::string getStringName();// Get Csv-String with all Class member names
     //==============================================================================
     /**
     * @brief // getStringType <BR>
+    //==============================================================================
+    /**
+    * @brief // getStringName <BR>
+    *
+    * @return String getStringType
     */
     // -----------------------------------------------------------------------------
     std::string getStringType();// Get Csv-String with all Class member definition types

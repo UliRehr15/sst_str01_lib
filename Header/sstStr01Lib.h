@@ -172,8 +172,8 @@ class sstStr01VarTypeCls
      * iStat = oVarType.Enm2ShortStr ( iKey, eCppType, *cTypeChar);
      *
      * @param iKey      [in]  For the moment 0
-     * @param eCppType  [in] For the moment 0
-     * @param oTypeStr  [out]  For the moment 0
+     * @param eCppType  [in]  eCppType
+     * @param oTypeStr  [out] oTypeStr
      *
      * @return Errorstate
      *
@@ -182,8 +182,8 @@ class sstStr01VarTypeCls
      */
      // ----------------------------------------------------------------------------
      int Enm2ShortStr (int                    iKey,
-                           sstStr01VarType_enum   eCppType,
-                           std::string           *oTypeStr);
+                       sstStr01VarType_enum   eCppType,
+                       std::string           *oTypeStr);
 // ----------------------------------------------------------------------------
 private:  // Private functions
 // int Dum;        /**< Dummy */
@@ -472,7 +472,21 @@ class sstStr01Cls
 {
   public:   // Öffentliche Funktionen
      sstStr01Cls();  // Konstruktor
-     sstStr01Cls(const sstStr01Cls& rhs);  // Copy Kontruktor
+     //==============================================================================
+     /**
+     * @brief // Copy Constructor <BR>
+     *
+     * @param rhs [in] rhs
+     */
+     // ----------------------------------------------------------------------------
+     sstStr01Cls(const sstStr01Cls& rhs);  // Copy Constructor
+     //==============================================================================
+     /**
+     * @brief // Copy operator <BR>
+     *
+     * @param z [in] z
+     */
+     // ----------------------------------------------------------------------------
      sstStr01Cls& operator=(const sstStr01Cls& z);
      ~sstStr01Cls();
 

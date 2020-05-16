@@ -51,7 +51,21 @@ class sstStr01IntCls
 {
   public:   // Öffentliche Funktionen
      sstStr01IntCls();  // Konstruktor
+     //==============================================================================
+     /**
+     * @brief // Copy Constructor <BR>
+     *
+     * @param rhs [in] rhs
+     */
+     // ----------------------------------------------------------------------------
      sstStr01IntCls(const sstStr01IntCls& rhs);  // Copy Konstruktor
+     //==============================================================================
+     /**
+     * @brief // Copy operator <BR>
+     *
+     * @param rv [in] rv
+     */
+     // ----------------------------------------------------------------------------
      sstStr01IntCls& operator=(const sstStr01IntCls& rv);
      //=============================================================================
      /**

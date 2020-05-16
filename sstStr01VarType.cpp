@@ -73,6 +73,10 @@ int sstStr01VarTypeCls::Str2Enm (int                   iKey,
   {
     *eLocType = sstStr01Char;
   }
+//  else if(strncmp(oTypeStr.c_str(),"SS",2) == 0)  // no static datatype
+//  {
+//    *eLocType = sstStr01String;
+//  }
   else if(strncmp(oTypeStr.c_str(),"BB",2) == 0)
   {
     *eLocType = sstStr01Bool;

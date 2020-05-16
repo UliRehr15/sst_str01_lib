@@ -68,6 +68,31 @@ int main ()
     oRetStr.clear();
     iStat = oSstStr.Csv_Dbl_2String(0,22.2,&oRetStr);
     assert( oRetStr.compare("22.200") == 0);
+    sstStr01Cls oCopyStr;
+    oCopyStr = oSstStr;
+    oRetStr.clear();
+    iStat = oCopyStr.Csv_Dbl_2String(0,22.2,&oRetStr);
+    assert( oRetStr.compare("22.200") == 0);
+  }
+
+  { // Test decimal floating point or comma
+    sstStr01Cls* poSstStr = new (sstStr01Cls);
+
+    std::string oRetStr;
+    int iDecType = poSstStr->getDecType();
+    assert (iDecType==0);  // default is decimal comma
+    iStat = poSstStr->Csv_Dbl_2String(0,22.2,&oRetStr);
+    assert( oRetStr.compare("22,200") == 0);
+    oRetStr.clear();
+    poSstStr->setUiDec(4);
+    iStat = poSstStr->Csv_Dbl_2String(0,22.23456,&oRetStr);
+    assert( oRetStr.compare("22,2346") == 0);
+    poSstStr->setDecType(1); // set decimal point
+    poSstStr->setUiDec(3);
+    oRetStr.clear();
+    iStat = poSstStr->Csv_Dbl_2String(0,22.2,&oRetStr);
+    assert( oRetStr.compare("22.200") == 0);
+    delete (poSstStr);
   }
 
   {

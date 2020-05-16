@@ -472,6 +472,8 @@ class sstStr01Cls
 {
   public:   // Öffentliche Funktionen
      sstStr01Cls();  // Konstruktor
+     sstStr01Cls(const sstStr01Cls& rhs);  // Copy Kontruktor
+     sstStr01Cls& operator=(const sstStr01Cls& z);
      ~sstStr01Cls();
 
      //=============================================================================

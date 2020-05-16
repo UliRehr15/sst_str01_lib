@@ -283,19 +283,28 @@ int sstStr01VarDefFncCls::ReadCSV(int           iKey,
     oStrType->Set_Dec( iRet);
   }
 
-  // Read optional description
-  this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
-  oStrType->Set_SysInfo(sRetStr);
+  if(iStat >= 0)
+  {
+    // Read optional description
+    this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
+    oStrType->Set_SysInfo(sRetStr);
+  }
 
-  // Read optional description
+  if(iStat >= 0)
+  {
+    // Read optional description
     this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
     oStrType->Set_ObjInfo(sRetStr);
+  }
 
+  if(iStat >= 0)
+  {
     // Read optional description
     this->oCnvtStr.CsvString2_Str( 0, sFilStr, &sRetStr);
     oStrType->Set_EleInfo(sRetStr);
+  }
 
-    *sErrTxt = this->oCnvtStr.GetErrorString();
+  *sErrTxt = this->oCnvtStr.GetErrorString();
 
   // Fatal Errors goes to an assert
   if (iRet < 0)

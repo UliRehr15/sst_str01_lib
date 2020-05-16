@@ -69,4 +69,6 @@ Structure of coding projects should be:
 23.09.2018: Version 1.27: Fixed problem writing variable separator char. <BR>
 26.09.2018: Version 1.28: Fixed problem with beginning/ending blanks in string. <BR>
 22.04.2019: Version 1.29: Fixed problems reading char string in Fcw Format. <BR>
+16.05.2020: Version 1.30: Copy Constructor, copy operator for class sstStr01Cls added. <BR>
+                          File -TestTypes.def- added. Generated Code added. <BR>
 

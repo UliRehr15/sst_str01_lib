@@ -12,7 +12,8 @@ INCLUDEPATH = ./Header
 
 HEADERS		+=  sstStr01LibInt.h \
               Header/sstStr01Lib.h \
-              Header/sstStr01FixColWidth.h
+              Header/sstStr01FixColWidth.h \
+    Header/sstStr01LibTypLib.h
 
 SOURCES		+= \
     sstStr01Test.cpp \
@@ -25,7 +26,11 @@ SOURCES		+= \
     sstStr01VarType.cpp \
     sstStr01DefType.cpp \
     sstStr01TestRec.cpp \
-    sstStr01Fcw.cpp
+    sstStr01Fcw.cpp \
+    Generate/sstStr01LibTypBase.cpp \
+    Generate/sstStr01LibTypTst1Cls.cpp \
+    Generate/sstStr01LibTypTst2Cls.cpp \
+    Generate/sstStr01LibTypTst3Cls.cpp
 
 OTHER_FILES += README.md
 
@@ -37,4 +42,7 @@ release{
 }
 
 DESTDIR     = ../libs
+
+DISTFILES += \
+    TestTypes.def
 

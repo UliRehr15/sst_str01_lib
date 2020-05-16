@@ -51,6 +51,8 @@ class sstStr01IntCls
 {
   public:   // Öffentliche Funktionen
      sstStr01IntCls();  // Konstruktor
+     sstStr01IntCls(const sstStr01IntCls& rhs);  // Copy Konstruktor
+     sstStr01IntCls& operator=(const sstStr01IntCls& rv);
      //=============================================================================
      /**
      * @brief // Csv ab Position in Integer konvertieren  <BR>
@@ -845,7 +847,7 @@ class sstStr01IntCls
      //==============================================================================
 
 private:  // Private functions
-     char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
+    char cSeparator[2];     //!< Separator Character, for example " " or ";"   */
     char cBracket[2];       //!< For example "\x22"                    */
     char cBracketOpen[2];   //!< For example "("                     */
     char cBracketClose[2];  //!< For example ")"                    */

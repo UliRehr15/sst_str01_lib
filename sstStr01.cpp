@@ -31,6 +31,19 @@ sstStr01Cls::sstStr01Cls()
 {
   poStr01Intern = new sstStr01IntCls();
 }
+// Kopierkonstruktor:
+// hat in C++ immer die Signatur "Klassenname(const Klassenname&)"
+sstStr01Cls::sstStr01Cls(const sstStr01Cls& rhs) // Üblicherweise rhs: "Right Hand Side"
+{
+    this->poStr01Intern = rhs.poStr01Intern;
+    this->setUiDec(5);
+}
+//==============================================================================
+sstStr01Cls& sstStr01Cls::operator=(const sstStr01Cls& z)
+{
+    *this->poStr01Intern = *z.poStr01Intern;
+    return *this;
+}
 //==============================================================================
 sstStr01Cls::~sstStr01Cls() {
     delete(poStr01Intern);

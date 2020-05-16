@@ -1432,7 +1432,6 @@ int sstStr011_Csv_Test (int            iKey,
 
   return iRet;
 }
-//=============================================================================
 sstStr01IntCls::sstStr01IntCls()
 {
   memset(this->cSeparator,0,2);
@@ -1449,6 +1448,41 @@ sstStr01IntCls::sstStr01IntCls()
   this->iSeparatorTyp = 0;
   this->iBoolTyp = 0;
   this->uiDec = 3;
+}
+//=============================================================================
+// Kopierkonstruktor:
+// hat in C++ immer die Signatur "Klassenname(const Klassenname&)"
+sstStr01IntCls::sstStr01IntCls(const sstStr01IntCls& rhs) // Üblicherweise rhs: "Right Hand Side"
+{
+    strncpy(this->cSeparator,rhs.cSeparator,2);
+    strncpy(this->cNoInfo,rhs.cNoInfo,2);
+    strncpy(this->cBracket,rhs.cBracket,2);
+    strncpy(this->cBracketOpen,rhs.cBracketOpen,2);
+    strncpy(this->cBracketClose,rhs.cBracketClose,2);
+    this->ulPos = rhs.ulPos;
+    this->iFormatKenn = rhs.iFormatKenn;
+    this->iDecType = rhs.iDecType;
+    this->iSeparatorTyp = rhs.iSeparatorTyp;
+    this->iBoolTyp = rhs.iBoolTyp;
+    this->uiDec = rhs.uiDec;
+}
+// cString = new char[strlen(rhs.cString) + 1];
+// strcpy(cString, rhs.cString);
+//=============================================================================
+sstStr01IntCls& sstStr01IntCls::operator=(const sstStr01IntCls& rv)
+{
+    strncpy(this->cSeparator,rv.cSeparator,2);
+    strncpy(this->cNoInfo,rv.cNoInfo,2);
+    strncpy(this->cBracket,rv.cBracket,2);
+    strncpy(this->cBracketOpen,rv.cBracketOpen,2);
+    strncpy(this->cBracketClose,rv.cBracketClose,2);
+    this->ulPos = rv.ulPos;
+    this->iFormatKenn = rv.iFormatKenn;
+    this->iDecType = rv.iDecType;
+    this->iSeparatorTyp = rv.iSeparatorTyp;
+    this->iBoolTyp = rv.iBoolTyp;
+    this->uiDec = rv.uiDec;
+    return *this;
 }
 //=============================================================================
 int sstStr01IntCls::SetBracket(int iKey, char *cTmpBracket)

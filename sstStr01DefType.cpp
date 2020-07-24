@@ -11,7 +11,7 @@
  * See the COPYING file for more information.
  *
  **********************************************************************/
-// sstStr01DefType.cpp    10.05.16  Re.    10.05.16  Re.
+// sstStr01DefType.cpp    24.07.20  Re.    10.05.16  Re.
 //
 
 #include <stdio.h>
@@ -30,15 +30,7 @@
 // Constructor
 sstStr01VarDefCls::sstStr01VarDefCls()
 {
-  memset(this->cSysNam,0,dSST_STR01_VAR_NAM_LEN);
-  memset(this->cObjNam,0,dSST_STR01_VAR_NAM_LEN);
-  memset(this->cEleNam,0,dSST_STR01_VAR_NAM_LEN);
-  this->eType = sstStr01Unknown;
-  this->iWidth=0;
-  this->iDec=0;
-  memset(this->cSysInfo,0,dSST_STR01_VAR_NAM_LEN);
-  memset(this->cObjInfo,0,dSST_STR01_VAR_NAM_LEN);
-  memset(this->cEleInfo,0,dSST_STR01_VAR_NAM_LEN);
+  this->clear();
 }
 //=============================================================================
 int sstStr01VarDefCls::Set_SysNam(std::string oLocStr)
@@ -203,6 +195,19 @@ int sstStr01VarDefCls::Get_Width()
 int sstStr01VarDefCls::Get_Dec()
 {
   return this->iDec;
+}
+//=============================================================================
+void sstStr01VarDefCls::clear()
+{
+  memset(this->cSysNam,0,dSST_STR01_VAR_NAM_LEN);
+  memset(this->cObjNam,0,dSST_STR01_VAR_NAM_LEN);
+  memset(this->cEleNam,0,dSST_STR01_VAR_NAM_LEN);
+  this->eType = sstStr01Unknown;
+  this->iWidth=0;
+  this->iDec=0;
+  memset(this->cSysInfo,0,dSST_STR01_VAR_NAM_LEN);
+  memset(this->cObjInfo,0,dSST_STR01_VAR_NAM_LEN);
+  memset(this->cEleInfo,0,dSST_STR01_VAR_NAM_LEN);
 }
 //=============================================================================
 // Constructor

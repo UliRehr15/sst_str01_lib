@@ -71,4 +71,6 @@ Structure of coding projects should be:
 22.04.2019: Version 1.29: Fixed problems reading char string in Fcw Format. <BR>
 16.05.2020: Version 1.30: Copy Constructor, copy operator for class sstStr01Cls added. <BR>
                           File -TestTypes.def- added. Generated Code added. <BR>
+24.07.2020: Version 1.31: New Method -clear- of class sstStr01VarDefCls. <BR>
+
 

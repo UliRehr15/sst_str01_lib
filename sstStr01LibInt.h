@@ -19,6 +19,12 @@
 #ifndef   _SST_STR01_LIB_INT_HEADER
 #define   _SST_STR01_LIB_INT_HEADER
 
+#include <string>
+#include <vector>
+
+#include <sstStr01Lib.h>
+#include <sstStr01FixColWidth.h>
+
 /**
  * @defgroup sstStr01IntLib sstStr01IntLib: sst Intern String lib (Version 1)
  * cpp string library for intern sst
@@ -2162,11 +2168,11 @@ long sstStr011i_TrnZFind ( int          iKey,     // v  -> Vorerst immer 0
 *
 * @return Errorstate
 *
-* @retval   =  0: OK
-* @retval   = -1: Wrong Key
-* @retval   = -2: String not convertible
-* @retval   = -3: String too long
-* @retval   <  0: Unspecified Error
+* @retval   =0:  OK
+* @retval   =-1: Wrong Key
+* @retval   =-2: String not convertible
+* @retval   =-3: String too long
+* @retval   <0:  Unspecified Error
 *
 * @author ur
 *
@@ -2197,11 +2203,11 @@ int sstStr011i_Txt2Int ( int          iKey,
 *
 * @return Errorstate
 *
-* @retval   =  0: OK
-* @retval   = -1: Wrong Key
-* @retval   = -2: String not convertible
-* @retval   = -3: String too long
-* @retval   <  0: Unspecified Error
+* @retval   =0:  OK
+* @retval   =-1: Wrong Key
+* @retval   =-2: String not convertible
+* @retval   =-3: String too long
+* @retval   <0:  Unspecified Error
 *
 * @author ur
 *
@@ -2267,11 +2273,11 @@ int sstStr011i_Txt2UInt4 ( int            iKey,
 *
 * @return Errorstate
 *
-* @retval   =  0: OK
-* @retval   = -1: Wrong Key
-* @retval   = -2: String not convertible
-* @retval   = -3: Stringlength not OK
-* @retval   <  0: Unspecified Error
+* @retval   =0:  OK
+* @retval   =-1: Wrong Key
+* @retval   =-2: String not convertible
+* @retval   =-3: Stringlength not OK
+* @retval   <0:  Unspecified Error
 *
 * @author ur
 *
@@ -2317,9 +2323,9 @@ int sstStr011i_Txt2Dbl ( int           iKey,
 *
 * @return Errorstate
 *
-* @retval   = 1: TRUE, Char is Value
-* @retval   = 0: FALSE, Char is no Value
-* @retval   < 0: Unspecified Error
+* @retval   =1: TRUE, Char is Value
+* @retval   =0: FALSE, Char is no Value
+* @retval   <0: Unspecified Error
 *
 * @author ur
 *
@@ -2348,10 +2354,10 @@ int sstStr011i_IsDigit ( int   iKey,
 *
 * @return Errorstate
 *
-* @retval   =  1: Positon found
-* @retval   =  0: No Position found
-* @retval   = -1: Wrong Key
-* @retval   <  0: Unspecified Error
+* @retval   =1:  Positon found
+* @retval   =0:  No Position found
+* @retval   =-1: Wrong Key
+* @retval   <0:  Unspecified Error
 *
 * @author ur
 *
@@ -2408,14 +2414,14 @@ unsigned long sstStr011i_StartOfInfo ( int             iKey,
 *
 * @return Position in string or Error
 *
-* @retval   > 0: Position in string (1..n)
-* @retval   = 0: Error or no position found
+* @retval   >0: Position in string (1..n)
+* @retval   =0: Error or no position found
 */
 //-----------------------------------------------------------------------------
 unsigned long sstStr011i_StartOfInfo2 ( int            iKey,
-                          unsigned long  Pos,
-                          char          *TrnZ,
-                          std::string   *Text);
+                                        unsigned long  Pos,
+                                        char          *TrnZ,
+                                        std::string   *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
@@ -2442,13 +2448,11 @@ unsigned long sstStr011i_StartOfInfo2 ( int            iKey,
 * @param TrnZ    [in] NoInformation-Char
 * @param Text    [in] String for searching
 *
-* @return Errorstate
-*
-* @retval   >  0: Found position in string
-* @retval   =  0: nothing found
-* @retval   = -1: Wrong Key
-* @retval   = -2: Wrong Position
-* @retval   <  0: Unspecified Error
+* @retval   =0   Error or no position found
+* @retval   >0   Position in string (1..n)
+* @retval   =-1  Wrong Key
+* @retval   =-2  Wrong Position
+* @retval   <0   Unspecified Error
 *
 * @author ur
 *
@@ -2456,14 +2460,12 @@ unsigned long sstStr011i_StartOfInfo2 ( int            iKey,
 *
 * @return Position in string or Error
 *
-* @retval   > 0: Position in string (1..n)
-* @retval   = 0: Error or no position found
 */
 //-----------------------------------------------------------------------------
 unsigned long sstStr011i_EndOfInfo ( int             iKey,
-                                unsigned long   ulPos,
-                                char           *TrnZ,
-                                std::string    *Text);
+                                     unsigned long   ulPos,
+                                     char           *TrnZ,
+                                     std::string    *Text);
 //=============================================================================
 /**
 * @brief Ende der Information in einem String feststellen
@@ -2490,13 +2492,11 @@ unsigned long sstStr011i_EndOfInfo ( int             iKey,
 * @param TrnZ   [in] NoInformation-Zeichen
 * @param Text   [in] Prüf-Text
 *
-* @return Errorstate
-*
-* @retval   >  0: Gefundene Position
-* @retval   =  0: Nix gefunden
-* @retval   = -1: Wrong Key
-* @retval   = -2: Wrong Position
-* @retval   <  0: Unspecified Error
+* @retval   >0:  Position in string (1..n)
+* @retval   =0:  Error or no position found
+* @retval   =-1: Wrong Key
+* @retval   =-2: Wrong Position
+* @retval   <0:  Unspecified Error
 *
 * @author ur
 *
@@ -2504,8 +2504,6 @@ unsigned long sstStr011i_EndOfInfo ( int             iKey,
 *
 * @return Position in string or Error
 *
-* @retval   > 0: Position in string (1..n)
-* @retval   = 0: Error or no position found
 */
 //-----------------------------------------------------------------------------
 unsigned long sstStr011i_EndOfInfo2 ( int            iKey,
@@ -2596,11 +2594,11 @@ int sstStr011i_PosHasInfo ( int             iKey,
 *
 * @return Fehlerstatus
 *
-* @retval   =1: Ja, an Position steht eins der übergebenen Zeichen
-* @retval   =0: Nein, keins der übergebenen Zeichen gefunden
-* @retval   = -1: Wrong Key
-* @retval   = -2: Given Position wrong
-* @retval   <  0: Unspecified Error
+* @retval   =1:  Ja, an Position steht eins der übergebenen Zeichen
+* @retval   =0:  Nein, keins der übergebenen Zeichen gefunden
+* @retval   =-1: Wrong Key
+* @retval   =-2: Given Position wrong
+* @retval   <0:  Unspecified Error
 *
 * @author ur
 *
@@ -2670,9 +2668,9 @@ int sstStr011i_AbPos_Dbl ( int          Key);      /**< v  -> Vorerst immer 0   
 *
 * @return Errorstate
 *
-* @retval   = 1: TRUE, to Int convertible
-* @retval   = 0: FALSE, not to Int convertible
-* @retval   < 0: Unspecified Error
+* @retval   =1: TRUE, to Int convertible
+* @retval   =0: FALSE, not to Int convertible
+* @retval   <0: Unspecified Error
 *
 * @author ur
 *
@@ -2698,9 +2696,9 @@ int sstStr011i_IntConvertible (int          iKey,
 *
 * @return Errorstate
 *
-* @retval   = 1: TRUE, to F/D convertible
-* @retval   = 0: FALSE, not to F/D convertible
-* @retval   < 0: Unspecified Error
+* @retval   =1: TRUE, to F/D convertible
+* @retval   =0: FALSE, not to F/D convertible
+* @retval   <0: Unspecified Error
 *
 * @author ur
 *
@@ -2814,9 +2812,9 @@ int sstStr011i_IsDelimiter (int          iKey,
 *
 * @return Errorstate
 *
-* @retval   = 1: char at position is bracket open
-* @retval   = 0: char at position is not bracket open
-* @retval   < 0: Unspecified Error
+* @retval   =1: char at position is bracket open
+* @retval   =0: char at position is not bracket open
+* @retval   <0: Unspecified Error
 *
 * @author Re.
 *
@@ -3026,9 +3024,9 @@ int sstStr011_GetNextBrakeInfo (int             iKey,
 *
 * @return Errorstate
 *
-* @retval   = 1: result found
-* @retval   = 0: no result found
-* @retval   < 0: Unspecified Error
+* @retval   =1: result found
+* @retval   =0: no result found
+* @retval   <0: Unspecified Error
 *
 * @author Re.
 *

@@ -455,7 +455,7 @@ int sstStr011_Int4Zeile ( int          Key,     // v  -> 0 oder 1
 {
   std::string LocStr;
   char TrnZ[2];    // String of no Information
-  char cLocChar[50];
+  char cLocChar[dSSTSTR01_TEXTLEN];
   unsigned long Pos1;
 
   int iStat=0;
@@ -491,7 +491,7 @@ int sstStr011_Int4ZeileFmt ( int          Key,     // v  -> 0 oder 1
 {
   std::string LocStr;
   char TrnZ[2];    // String of no Information
-  char cLocChar[50];
+  char cLocChar[dSSTSTR01_TEXTLEN];
   unsigned long Pos1;
 
   int iStat=0;
@@ -527,7 +527,7 @@ int sstStr011_UInt4Zeile ( int             Key,     // v  -> 0 oder 1
 {
   std::string LocStr;
   char TrnZ[2];    // String of no Information
-  char cLocChar[50];
+  char cLocChar[dSSTSTR01_TEXTLEN];
   unsigned long Pos1;
 
   int iStat=0;

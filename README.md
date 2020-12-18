@@ -72,5 +72,6 @@ Structure of coding projects should be:
 16.05.2020: Version 1.30: Copy Constructor, copy operator for class sstStr01Cls added. <BR>
                           File -TestTypes.def- added. Generated Code added. <BR>
 24.07.2020: Version 1.31: New Method -clear- of class sstStr01VarDefCls. <BR>
+18.12.2020: Version 1.32: Patched some Doxygen problems. Closed some warnings. <BR>
 
 

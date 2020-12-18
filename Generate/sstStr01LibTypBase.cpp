@@ -11,9 +11,6 @@
 #include <string>
  
 #include <sstStr01Lib.h>
-//#include <sstMath01Lib.h>
-//#include <sstMisc01Lib.h>
-//#include <sstRec04Lib.h>
  
 #include "sstStr01LibTypLib.h"
  
@@ -48,7 +45,7 @@ std::string sstStr01LibTypBaseCls::getStringType()
 }
  
 // Csv Read Function
-int sstStr01LibTypBaseCls::Csv_Read(int iKey, std::string *sErrTxt, std::string *ssstStr01Lib_Str)
+int sstStr01LibTypBaseCls::Csv_Read(int iKey, std::string *sErrTxt)
 {
   int iStat = 0;
 //  sstStr01Cls sErrTxt;
@@ -79,7 +76,7 @@ int sstStr01LibTypBaseCls::Csv_Read(int iKey, std::string *sErrTxt, std::string 
 }
  
 // Csv Write Function
-int sstStr01LibTypBaseCls::Csv_Write(int iKey , std::string *ssstStr01Lib_Str)
+int sstStr01LibTypBaseCls::Csv_Write(int iKey)
 {
   int iStat = 0;
   sstStr01Cls oCsvRow;

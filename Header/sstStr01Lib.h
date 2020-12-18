@@ -19,6 +19,7 @@
 #ifndef   _SST_STR01_LIB_HEADER
 #define   _SST_STR01_LIB_HEADER
 
+#include <string>
 #include <vector>
 
 /**

@@ -5,6 +5,11 @@
   
 #ifndef   _SST_sstStr01Lib_Typ_HEADER
 #define   _SST_sstStr01Lib_Typ_HEADER
+
+#include <string>
+
+#include <sstStr01Lib.h>
+#include <sstStr01FixColWidth.h>
   
 /**
  * @defgroup sstStr01LibLib sstStr01LibLib
@@ -57,9 +62,6 @@ class sstStr01LibTypBaseCls
     //==============================================================================
     /**
     * @brief // getStringType <BR>
-    //==============================================================================
-    /**
-    * @brief // getStringName <BR>
     *
     * @return String getStringType
     */
@@ -73,7 +75,7 @@ class sstStr01LibTypBaseCls
     * @param *ssstStr01Lib_Str
     */
     // -----------------------------------------------------------------------------
-    int Csv_Read(int iKey, std::string *sErrTxt, std::string *ssstStr01Lib_Str);// Csv Read Function
+    int Csv_Read(int iKey, std::string *sErrTxt);// Csv Read Function
     //==============================================================================
     /**
     * @brief // Csv_Write <BR>
@@ -81,7 +83,7 @@ class sstStr01LibTypBaseCls
     * @param *ssstStr01Lib_Str
     */
     // -----------------------------------------------------------------------------
-    int Csv_Write(int iKey , std::string *ssstStr01Lib_Str);// Csv Write Function
+    int Csv_Write(int iKey);// Csv Write Function
      sstStr01Cls oCsvCnvt;  /**< oCsvCnvt Info */
   private:
 };
